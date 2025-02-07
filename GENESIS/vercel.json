@@ -1,0 +1,15 @@
+{
+    "builds": [
+      {
+        "src": "brightminds/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "brightminds/wsgi.py"
+      }
+    ]
+  }
+  
