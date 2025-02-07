@@ -1,0 +1,125 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sillicon marg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.80552, 20.35160]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rasulgarh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.866058, 20.297100]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Saheed nagar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.845294,20.29099]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Patia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.833267, 20.358824]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Jaydev vihar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.826747, 20.29624]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Old town"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.831676, 20.238301]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "C.S pur"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.82707, 20.33406]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mancheswar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.84494, 20.32218]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Acharya vihar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.82932, 20.29556]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Janpath road"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.84300, 20.27498]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Damana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.82306, 20.33353]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Khandagiri"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [85.779061,20.25697]
+      }
+    }
+  ]
+}

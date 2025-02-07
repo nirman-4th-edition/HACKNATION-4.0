@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "856786180202",
+    "project_id": "kanha-6c9f1",
+    "storage_bucket": "kanha-6c9f1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856786180202:android:cf31048bf2da657fed9213",
+        "android_client_info": {
+          "package_name": "com.example.uday"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQXI06FG0iSYVB8TifnsCfEMgz8rFWB6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

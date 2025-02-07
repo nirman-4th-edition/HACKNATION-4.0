@@ -1,0 +1,87 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- MapView with no gap -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.mapbox.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/card_top_rounded"
+            android:clipToOutline="true"
+            app:cardElevation="4dp"
+            app:strokeColor="@android:color/transparent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:weightSum="3">
+
+                <ImageButton
+                    android:id="@+id/batm"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/help_layout_butt"
+                    android:padding="1dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/batman"
+                    android:backgroundTint="#9694FF"/>
+
+                <!-- SOS Button -->
+                <ImageButton
+                    android:id="@+id/sosm"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/help_layout_butt"
+                    android:padding="1dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/sos"
+                    android:backgroundTint="#EB5A3C"/>
+
+                <ImageButton
+                    android:id="@+id/firstresponders_datam"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/help_layout_butt"
+                    android:padding="1dp"
+                    android:scaleType="centerInside"
+                    android:backgroundTint="#9694FF"
+                    android:src="@drawable/firstresponders_data" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mylocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="85dp"
+            android:src="@drawable/baseline_my_location_24" />
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

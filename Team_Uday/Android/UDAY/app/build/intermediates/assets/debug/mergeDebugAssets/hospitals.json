@@ -1,0 +1,105 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pradyumna Bal Memorial Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.35380, 85.81237]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Maxfort Hospital Bhubaneswar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.34119054987907, 85.82085245735642]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "UTKAL HOSPITAL"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.326954900019356, 85.79988597857545]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Apollo Hospitals, Bhubaneswar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.307966495775965, 85.83165964133201]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kalinga Institute of Medical Sciences (KIMS)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.35622621224173, 85.8124811396191]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "All India Institute of Medical Sciences, Bhubaneswar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.237582804664566, 85.77330092796973]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SUM Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.284462226794002, 85.77029614621904]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hi-Tech Hospital & Medical College"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.301135580489174, 85.87699922491797]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Blue Wheel Hospital"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.309614509791018, 85.85399698418813]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Manipal Hospitals, Bhubaneswar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.260238447833142, 85.77746752678128]
+      }
+    }
+  ]
+}

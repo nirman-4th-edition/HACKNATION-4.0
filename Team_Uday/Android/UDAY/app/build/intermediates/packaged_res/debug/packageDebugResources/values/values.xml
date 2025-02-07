@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="UDAYbg">#FCFAEE</color>
+    <color name="appbar">#7E5CAD</color>
+    <color name="black">#FF000000</color>
+    <color name="colorDivide">#BDBDBD</color>
+    <color name="colorPrimaryDark">#536DFE</color>
+    <color name="colorText">#282828</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="colorwhite">#FFFFFF</color>
+    <color name="gray">#ECECEC</color>
+    <color name="grayDark">#65656565</color>
+    <color name="green">#06D001</color>
+    <color name="ic_rorange">#F14A00</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="x">#4CC9FE</color>
+    <item name="phno" type="id"/>
+    <item name="resendotp" type="id"/>
+    <item name="submit" type="id"/>
+    <item name="submitotp" type="id"/>
+    <string name="app_name">UDAY</string>
+    <string name="gcm_defaultSenderId" translatable="false">856786180202</string>
+    <string name="google_api_key" translatable="false">AIzaSyCQXI06FG0iSYVB8TifnsCfEMgz8rFWB6w</string>
+    <string name="google_app_id" translatable="false">1:856786180202:android:cf31048bf2da657fed9213</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCQXI06FG0iSYVB8TifnsCfEMgz8rFWB6w</string>
+    <string name="google_storage_bucket" translatable="false">kanha-6c9f1.firebasestorage.app</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mapbox_access_token" ns1:ignore="UnusedResources" translatable="false">sk.eyJ1Ijoic291bXlhMDIwNCIsImEiOiJjbTN1NzlrOHowZ2V2MmxzY3JjNXE1YnptIn0.zo3FO_fZ_IV5qH7oZu46Qg</string>
+    <string name="nav_close">Close navigation drawer</string>
+    <string name="nav_open">Open navigation drawer</string>
+    <string name="project_id" translatable="false">kanha-6c9f1</string>
+    <style name="Theme.UDAY" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryVariant">@color/green</item>
+
+    </style>
+</resources>

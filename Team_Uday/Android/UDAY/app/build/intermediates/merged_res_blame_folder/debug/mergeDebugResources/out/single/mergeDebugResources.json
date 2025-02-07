@@ -1,0 +1,338 @@
+[
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_bottom_sheet_layout.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\bottom_sheet_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_flash_off.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\flash_off.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_delete_vector.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\delete_vector.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_sos.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\sos.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_back_arrow.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\back_arrow.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_batman.png.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\batman.png"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_activity_chat_room.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\activity_chat_room.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_image_placeholder.jpeg.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\image_placeholder.jpeg"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\xml_network_security_config.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\xml\\network_security_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_fragment_familymap.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_familymap.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_ic_recoder.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\ic_recoder.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_signup_page.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\signup_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_chat_nav.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\chat_nav.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\color_nav_item_color.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\color\\nav_item_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_main_activity.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\main_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_firstresponders_data.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\firstresponders_data.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_app_logo.jpg.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\app_logo.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_sos_layout_chat.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\sos_layout_chat.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_camera.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_map_nav.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\map_nav.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_pause_vector.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\pause_vector.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_x.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\x.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_fragment_chat_fragment.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_chat_fragment.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\font_lobster.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\font\\lobster.xml"
+    },
+    {
+        "merged": "com.example.uday.app-debug-89:/layout_bottom_sheet_layout.xml.flat",
+        "source": "com.example.uday.app-main-91:/layout/bottom_sheet_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_textfield.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\textfield.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_verifyotp.png.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\verifyotp.png"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_avatar.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\avatar.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_help_layout_butt.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\help_layout_butt.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_sos_layout.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\sos_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_activity_otp_login.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\activity_otp_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_camera_icon.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\camera_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_fragment_chat_bat.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_chat_bat.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_ic_ripple.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\ic_ripple.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\xml\\file_paths.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_button_bg.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\button_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_send_msg.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\send_msg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_profile.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_send_msg.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\send_msg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_add_box.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\add_box.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_voice_btn.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\voice_btn.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_sos_camera_buttt.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\sos_camera_buttt.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_activity_otp_verification.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\activity_otp_verification.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_receive_msg.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\receive_msg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_fire_stations.png.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\fire_stations.png"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_flash_on.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\flash_on.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_send_button_chat.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\send_button_chat.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_tick_vector.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\tick_vector.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_otplogin.png.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\otplogin.png"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_camera_switch.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\camera_switch.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_video_icon.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\video_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_login_submit_butt.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\login_submit_butt.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_news_icon.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\news_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\menu_bottom_menu.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\menu\\bottom_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_hospital_icon.png.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\hospital_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_fragment_gotham_map.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_gotham_map.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_card_top_rounded.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\card_top_rounded.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_fragment_news.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_news.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\layout_chat_user_item.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\chat_user_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_logo.jpg.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\logo.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_family_loc_nav.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\family_loc_nav.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_send_btn.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\send_btn.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_receive_msg.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\receive_msg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_camera.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_police_icon.png.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\police_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_red_marker.png.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\red_marker.png"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_top_background.png.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\top_background.png"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-debug-89:\\drawable_baseline_my_location_24.xml.flat",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\drawable\\baseline_my_location_24.xml"
+    }
+]

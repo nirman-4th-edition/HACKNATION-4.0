@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.uday.app-mergeDebugResources-87:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Prach\\.gradle\\caches\\8.9\\transforms\\ecc8a1e14648725fa01c74d1ebf4b3cb\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

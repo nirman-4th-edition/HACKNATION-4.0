@@ -1,0 +1,95 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Central Reserve Police Force Bhubaneswar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.281732764443735, 85.80081639993568]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Khandagiri Police Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.259763096809994, 85.78973356264463]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nayapalli Police Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.29046892488901, 85.81528327362535]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Infocity Police Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.35454539243279, 85.80912399366167]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chandaka Police Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.368238843332364, 85.76687800618794]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nandankanan Police Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.392344989665975, 85.82506874631817]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pahala Police Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.347179699806563, 85.88468984540222]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "sailashree vihar police station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.33423696093866, 85.80917744497135]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Saheed Nagar Police Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.29607982977481, 85.83857898473109]
+      }
+    }
+  ]
+}

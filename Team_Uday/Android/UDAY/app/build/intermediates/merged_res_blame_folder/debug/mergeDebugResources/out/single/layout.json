@@ -1,0 +1,78 @@
+[
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\sos_layout_chat.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\sos_layout_chat.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\fragment_familymap.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_familymap.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\fragment_chat_bat.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_chat_bat.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\receive_msg.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\receive_msg.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/bottom_sheet_layout.xml",
+        "source": "com.example.uday.app-main-91:/layout/bottom_sheet_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\main_activity.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\main_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\fragment_gotham_map.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_gotham_map.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\x.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\x.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\signup_page.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\signup_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\camera.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\activity_otp_login.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\activity_otp_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\activity_chat_room.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\activity_chat_room.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\activity_otp_verification.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\activity_otp_verification.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\bottom_sheet_layout.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\bottom_sheet_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\fragment_chat_fragment.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_chat_fragment.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\chat_user_item.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\chat_user_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\sos_layout.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\sos_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\send_msg.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\send_msg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-mergeDebugResources-88:\\layout\\fragment_news.xml",
+        "source": "C:\\Users\\Prach\\.gradle\\daemon\\8.9\\com.example.uday.app-main-91:\\layout\\fragment_news.xml"
+    }
+]

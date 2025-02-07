@@ -1,0 +1,75 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fire Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.330995715514206, 85.80968053892454]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Secretariat Fire Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.270610405753036, 85.8268470995627]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Baramunda Fire Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.27905933504653, 85.79925795976638]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dampada Fire Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.33018906206059, 85.73291358530501]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fire station pahal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.343652682232243, 85.88558197330913]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Biju Patnaik International Airport Fire Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.25448008664896, 85.81366134303299]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Striking Fire Force Central Range."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [20.277499630726542, 85.79809485397716]
+      }
+    }
+  ]
+}
