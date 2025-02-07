@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<logo xmlns:tools="http://schemas.android.com/tools">
+    <name tools:ignore="ExtraText">Bibliotheca Library</name>
+    <format>PNG</format>
+    <dimensions>
+        <width>500</width>
+        <height>500</height>
+    </dimensions>
+    <elements>
+        <circle>
+            <color>#0F3D4C</color>
+            <borderColor>#D4A759</borderColor>
+        </circle>
+        <text>
+            <content>BIBLIOTHECA LIBRARY</content>
+            <font>Serif</font>
+            <color>White</color>
+        </text>
+        <icon>
+            <name>Light Bulb</name>
+            <color>Yellow</color>
+            <meaning>Knowledge &amp; Ideas</meaning>
+        </icon>
+        <book>
+            <color>Beige</color>
+            <meaning>Library &amp; Learning</meaning>
+        </book>
+    </elements>
+    <filePath>/mnt/data/Bibliotheca_logo1.png</filePath>
+</logo>
