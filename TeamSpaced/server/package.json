@@ -14,10 +14,17 @@
   "description": "",
   "dependencies": {
     "@tensorflow/tfjs": "^4.22.0",
+    "axios": "^1.7.9",
+    "body-parser": "^1.20.3",
     "canvas": "^3.1.0",
-    "express": "^4.21.2"
+    "csv-parser": "^3.2.0",
+    "express": "^4.21.2",
+    "ml-cart": "^2.1.1",
+    "node-temperature-converter": "^1.0.2"
   },
   "devDependencies": {
-    "@types/express": "^5.0.0"
+    "@types/express": "^5.0.0",
+    "@types/node-temperature-converter": "^1.0.3",
+    "@types/papaparse": "^5.3.15"
   }
 }
