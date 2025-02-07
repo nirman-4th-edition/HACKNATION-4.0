@@ -11,12 +11,31 @@
   font-family: 'Urbanist', sans-serif;
 }
 
+html {
+  /* WebKit (Chrome, Safari) */
+  -webkit-scrollbar-width: none;
+  -webkit-scrollbar-height: none;
+
+  /* Mozilla (Firefox) */
+  scrollbar-width: none;
+
+  /* Microsoft (Edge, IE) */
+  -ms-overflow-style: none;
+
+  /* Opera */
+  -o-overflow-style: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 .logo-gradient {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-green-300 via-emerald-500 to-teal-500;
 }
 
 .btn-gradient2 {
-  @apply bg-gradient-to-br from-green-400 to-emerald-900 px-4 py-2 rounded-lg font-semibold hover:scale-105 transition-all duration-300 ease-in-out text-white w-fit;
+  @apply bg-gradient-to-br from-green-400 to-emerald-900 py-2 rounded-lg font-semibold hover:scale-105 transition-all duration-300 ease-in-out text-white;
 }
 
 .btn-gradient1 {
