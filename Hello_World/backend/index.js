@@ -220,6 +220,6 @@ app.get("/user/:userId", async (req, res) => {
 app.use('/ai', aiRouter);
 
 
-app.listen(3000, "0.0.0.0", () => {
+app.listen(3001, () => {
   console.log("Server is running on port 3000");
 });

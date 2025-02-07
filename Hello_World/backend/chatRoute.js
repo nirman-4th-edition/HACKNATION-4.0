@@ -3,6 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { uuid } from "uuidv4";
 
 import dotenv from "dotenv";
+import { Doctor } from './Models/Models.js';
 dotenv.config();
 
 const router = express.Router();
@@ -169,7 +170,7 @@ router.post('/chat', async (req, res) => {
             const specialization = json.data.specialization;
 
             // Search for doctors based on department and specialization
-            const doctors = await searchDoctors(department, specialization);
+            const doctors = await searchDoctors([department], specialization);
 
 
 
