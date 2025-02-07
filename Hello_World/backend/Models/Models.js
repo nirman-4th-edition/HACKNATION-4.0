@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const DoctorSchema = new mongoose.Schema({
   name: String,
@@ -9,12 +9,11 @@ const DoctorSchema = new mongoose.Schema({
 const UserSchema = new mongoose.Schema({
   name: String,
   yearOfBirth: Number,
-  sex: 
-{
-  type: String,
-  enum: ['Male', 'Female'],
-  required: true
-}
+  sex: {
+    type: String,
+    enum: ['Male', 'Female'],
+    required: true
+  }
 });
 
 const AppointmentSchema = new mongoose.Schema({
@@ -33,12 +32,11 @@ const AppointmentSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
-  status : 
-{
+  status: {
     type: String,
     enum: ['Pending', 'Cancelled', 'Completed'],
     default: 'Pending'
-}
+  }
 });
 
 const DoctorDayHistorySchema = new mongoose.Schema({
@@ -62,4 +60,4 @@ const User = mongoose.model('User', UserSchema);
 const Appointment = mongoose.model('Appointment', AppointmentSchema);
 const DoctorDayHistory = mongoose.model('DoctorDayHistory', DoctorDayHistorySchema);
 
-module.exports = { Doctor, User, Appointment, DoctorDayHistory };
+export { Doctor, User, Appointment, DoctorDayHistory };
