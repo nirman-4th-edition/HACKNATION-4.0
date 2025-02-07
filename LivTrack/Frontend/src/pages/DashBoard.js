@@ -12,7 +12,6 @@ import eyeImg from "./logos/eye.png";
 import logo from "./logos/logoLivTrack.png";
 import ScannerButton from "../components/ScannerButton";
 import pcosImg from "./logos/pcos.png";
-
 import api from "../services/api";
 
 export default function Dashboard() {
@@ -83,6 +82,9 @@ export default function Dashboard() {
         <button onClick={() => navigate("/home")}>🏠 Home</button>
         <button onClick={() => navigate("/Profile")}>👤 Profile</button>
         <button onClick={() => navigate("/reports")}>📄 Reports</button>
+        <button onClick={() => navigate("/hospital-details")}>
+          🏨 Hospital
+        </button>
         <button onClick={() => navigate("/setting")}>⚙️ Settings</button>
       </div>
     </div>
