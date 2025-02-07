@@ -20,7 +20,9 @@ function Navbar() {
             </li>
           </ul>
         </li>
-        
+        <li>
+          <Link to="/lessonplan">Lesson Planner</Link>
+        </li>
         <li className="dropdown">
           <span>Productivity</span>
           <ul className="dropdown-content">

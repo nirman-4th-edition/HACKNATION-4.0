@@ -17,6 +17,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 from modules.youtube_processor import YouTubeSummarizer
 from modules.web_processor import WebPageSummarizer
+from modules.handleLessonPlan import LessonPlanGenerator
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
@@ -32,6 +33,7 @@ mail = Mail(app)
 
 yt_summarizer = YouTubeSummarizer()
 webpage_summarizer = WebPageSummarizer(groq_api_key=GROQ_API_KEY)
+plan_generator = LessonPlanGenerator()
 
 
 def send_email(name, email, message):
@@ -76,3 +78,20 @@ def summarize_web():
         return Response(generate(), mimetype="text/plain")
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+@app.route('/lessonplan', methods=['POST'])
+def lesson_plan():
+    data = request.get_json()
+    required_fields = ['subject', 'topic', 'grade', 'duration', 'learning_objectives']
+    if not all(field in data and data[field] for field in required_fields):
+        return jsonify({'error': 'Please fill out all required fields.'}), 400
+
+    def generate():
+        for chunk in plan_generator.stream_lesson_plan(data):
+            yield chunk + "\n"
+
+    return Response(generate(), mimetype="text/plain")
+
+if __name__ == "__main__":
+    print("Flask app running on http://localhost:5001")
+    app.run(debug=True, use_reloader=False, port=5001)
