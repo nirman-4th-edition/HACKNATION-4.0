@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provider-Onboarding</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 0;">
+
+   
+     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+ <div class="container-fluid">
+     <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="logo.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+        <span class="fw-bold">Waste Reduction & Allocation Platform</span>
+             </a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                     <li class="nav-item"><a class="nav-link" href="Service.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="About Us.html">About Us</a></li>
+                 <li class="nav-item"><a class="nav-link" href="Contact.html">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                     <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                </ul>
+                <a href="login.html" class="btn btn-primary ms-3" style="background-color: black; color: white; padding: 8px 16px; text-decoration: none; border: none;">Login</a>
+                  </div>
+      </div>
+          </nav>
+
+    <br><br>
+ <div style= "display: flex; justify-content: space-around; text-align: left; flex-wrap: wrap; padding: 10px;">
+           <div style="width: 23%; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+         <h2 style="font-size: 18px;">&#9658; <strong>Listing Products</strong></h2>
+        <label>Product Name *</label><br>
+          <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+         <label>Quantity *</label><br>
+             <input type="number" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+             <label>Choose the expiry date *</label><br>
+        <input type="date" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+        <label>Product Price *</label><br>
+            <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;" placeholder="Price"><br>
+
+            <label>Type *</label><br>
+              <input type="radio" name="type" value="Veg"> Veg
+             <input type="radio" name="type" value="Non-Veg"> Non-Veg
+        </div>
+        <div style="width: 23%; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+             <h2 style="font-size: 18px;">&#9658; <strong>Category of Product</strong></h2>
+            
+               <label>Product Type *</label><br>
+          <input type="radio" name="product_type" value="Snacks"> Snacks<br>
+             <input type="radio" name="product_type" value="Meal"> Meal<br><br>
+        
+            <label>Upload Product Picture *</label><br>
+            <input type="file" name="product_image" accept="image/*"><br><br>
+        
+            <label>Product Details *</label><br>
+             <input type="radio" name="product_details" value="Dry"> Dry<br>
+        <input type="radio" name="product_details" value="Gravy"> Gravy<br>
+        </div>
+        <div style="width: 23%; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+        <h2 style="font-size: 18px;">&#9658; <strong>Pick-Up Details</strong></h2>
+              <label>Enter Your Address *</label><br>
+             <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+     <label>Phone Number *</label><br>
+            <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;" placeholder="Add your phone number">
+        </div>
+        <div style="width: 23%; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+            <h2 style="font-size: 18px;">&#9658; <strong>Bank Account Details</strong></h2>
+              <label>Account Holder Name *</label><br>
+        <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+              <label>Bank Name *</label><br>
+        <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+              <label>Account Number *</label><br>
+        <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
+
+            <label>IFSC Code *</label><br>
+               <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+        </div>
+
+       </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button style="background: black; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+           <a style="color: white; text-decoration: none;" href="waithing.html">Confirm</a>
+         </button>
+      </div>
+
+    <br><br><br>
+    <br>
+    <hr>
+   <footer class="bg-light text-dark py-4 mt-5" style="font-family: Arial, sans-serif; background-color: #b5afaf;">
+    <div class="container" style="max-width: 100%;">
+        <div class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div class="col-md-3 text-center text-md-start" style="flex: 1; padding: 10px;">
+             <img src="logo.jpg" alt="WRAP Logo" class="mb-2" style="width: 80px; height: auto;">
+                <p class="fw-bold" style="font-size: 16px; color: #343a40;">Waste Reduction & allocation platform</p>
+        </div>
+            <div class="col-md-3 text-center" style="flex: 1; padding: 10px;">
+                <h5 class="fw-bold" style="font-size: 18px;">HEAD OFFICE</h5>
+                 <p style="font-size: 14px;">ITER, Bhubaneswar<br>Odisha, India</p>
+             <p style="font-size: 14px;">123-456-7890</p>
+                 <p style="font-size: 14px;">info@mysite.com</p>
+            </div>
+            <div class="col-md-2 text-center" style="flex: 1; padding: 10px;">
+                <h5 class="fw-bold" style="font-size: 18px;">NAVIGATION</h5>
+                 <p>
+                    <a href="Service.html" class="text-dark text-decoration-none" style="font-size: 14px;">Services</a></p>
+            <p>
+                <a href="About Us.html" class="text-dark text-decoration-none" style="font-size: 14px;">About Us</a></p>
+              <p>
+                <a href="Contact.html" class="text-dark text-decoration-none" style="font-size: 14px;">Contact</a></p>
+            </div>
+            <div class="col-md-2 text-center" style="flex: 1; padding: 10px;">
+                <h5 class="fw-bold" style="font-size: 18px;">FOLLOW US</h5>
+             <p>
+                <a href="#" class="text-dark text-decoration-none" style="font-size: 14px;">Facebook</a></p>
+                <p>
+                    <a href="#" class="text-dark text-decoration-none" style="font-size: 14px;">Instagram</a></p>
+            <p>
+                <a href="#" class="text-dark text-decoration-none" style="font-size: 14px;">LinkedIn</a></p>
+            </div>
+            <div class="col-md-2 text-center" style="flex: 1; padding: 10px;">
+                <h5 class="fw-bold" style="font-size: 18px;">LEGAL</h5>
+            <p>
+                    <a href="T&C.html" class="text-dark text-decoration-none" style="font-size: 14px;">Terms & Conditions</a></p>
+                <p>
+                    <a href="Privacy.html" class="text-dark text-decoration-none" style="font-size: 14px;">Privacy Policy</a></p>
+                <p>
+                    <a href="assurancst.html" class="text-dark text-decoration-none" style="font-size: 14px;">Accessibility Statement</a></p>
+            </div>
+        </div>
+          <hr style="border-top: 1px solid #e0e0e0;">
+    <div class="row text-center" style="text-align: center;">
+             <div class="col-12 mt-2">
+                <p class="mb-0" style="font-size: 14px; color: #6c757d;">&copy; 2025 by Team Counter Productive</p>
+            </div>
+     </div>
+               </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

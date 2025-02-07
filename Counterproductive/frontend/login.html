@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Log-in page</title>
+ <style>
+        .login-box {
+          display: flex;
+             justify-content: center;
+          align-items: center;
+             height: 100vh;
+              width: 100vw;
+           }
+
+          .login-form {
+              font-family: sans-serif;
+         width: 500px;
+             height: 450px;
+          background-color: #fff;
+         padding: 20px;
+             border: 1px solid #ddd;
+        border-radius: 10px;
+             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+           }
+
+         input[type=text], select, input[type=password] {
+             width: 100%;
+          padding: 10px 16px;
+             margin: 6px 0;
+         display: inline-block;
+              border: 1px solid rgb(0, 0, 0);
+           border-radius: 5px;
+            box-sizing: border-box; }
+
+        button {
+         width: 100%;
+             background-color: rgb(0, 0, 0);
+           color: rgb(255, 255, 255);
+        padding: 12px 16px;
+             margin: 6px 0;
+           border: none;
+          border-radius: 10px;
+         cursor: pointer; }
+
+        button:hover {
+             background-color: rgb(69, 65, 68);
+        }
+
+        .error-message {
+             color: red;
+             font-size: small;
+         display: none;
+        }
+    </style>
+       </head>
+    <body>
+       <div class="login-box">
+          <div class="login-form"> 
+               <h1 style="font-size: xx-large;text-align: center;">Log in</h1>
+     <p style="text-align: center;"> New to this site? <a href="signupcustomer.html">Sign up</a></p>
+          <form id="loginForm">
+               <label for="Phone">Phone</label><br><br>
+            <input type="text" id="Phone" name="Phone" placeholder="Enter Your phone number.."><br>
+             <span id="phoneError" class="error-message">Please enter a valid 10-digit phone number.</span><br><br>
+                 <label for="password">Password</label><br><br>
+               <input type="password" id="password" name="password" placeholder="Enter Your password.."><br>
+              <span id="passwordError" class="error-message">Please enter a valid password.</span><br><br>
+                 <button type="submit">Confirm</button>
+             </form>
+      </div>
+  </div>
+      <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+               var phone = document.getElementById('Phone').value;
+              var password = document.getElementById('password').value;
+             var role = document.getElementById('role').value;
+            var valid = true;
+
+         if (!validatePhone(phone)) {
+                 document.getElementById('phoneError').style.display = 'block';
+            valid = false;
+           } else {
+                 document.getElementById('phoneError').style.display = 'none';
+            }
+
+     if (password.length < 6) {
+                  document.getElementById('passwordError').style.display = 'block';
+              valid = false;
+           } else {
+                 document.getElementById('passwordError').style.display = 'none';
+             }
+       
+            }
+        
+        );
+
+           function validatePhone(phone) {
+               var re = /^[0-9]{10}$/;
+            return re.test(phone);
+        }
+    </script>
+</body>
+</html>
