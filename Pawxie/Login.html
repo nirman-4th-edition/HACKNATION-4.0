@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    
+    <link rel="shortcut icon" type="image/png" href="images/PAWXIELOGO.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/536ff07e99.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <style>
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+
+            loginForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+                const loginError = document.getElementById('loginError');
+
+                if (!username || !password) {
+                    loginError.textContent = 'All fields are required.';
+                    loginError.style.display = 'block';
+                    return;
+                }
+
+                // Perform login logic here
+                console.log('Login:', { username, password });
+            });
+
+            registerForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const username = document.getElementById('registerUsername').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
+                const registerError = document.getElementById('registerError');
+
+                if (!username || !email || !password || !passwordConfirm) {
+                    registerError.textContent = 'All fields are required.';
+                    registerError.style.display = 'block';
+                    return;
+                }
+
+                if (!email.includes('@')) {
+                    registerError.textContent = 'Email must contain @';
+                    registerError.style.display = 'block';
+                    return;
+                }
+
+                if (password !== passwordConfirm) {
+                    registerError.textContent = 'Passwords do not match';
+                    registerError.style.display = 'block';
+                    return;
+                }
+
+                // Perform registration logic here
+                console.log('Register:', { username, email, password });
+
+                // Example: Redirect to another page after successful registration
+                // window.location.href = 'welcome.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="modal modal__form">
+        <button class="btn--close-modal">&times;</button>
+        <div class="modal__wrap--form">
+            <div class="modal__login">
+                <h2 class="modal__header"><span class="highlight">Login to account</span></h2>
+                <form id="loginForm" class="modal__form-login">
+                    <input type="text" id="loginUsername" placeholder="Username">
+                    <input type="password" id="loginPassword" placeholder="Password">
+                    <a href="index.html"><button type="submit" class="btn btn--login">Login</button></a>
+                    <p id="loginError" class="error-message"></p>
+                </form>
+                <p>Forgot password or username, <a href="#" class="click-here">click here</a></p>
+            </div>
+            <div class="modal__register">
+                <h2 class="modal__header">Or register account when not have yet</h2>
+                <form id="registerForm" class="modal__form-register">
+                    <input type="text" id="registerUsername" placeholder="Username">
+                    <input type="email" id="registerEmail" placeholder="Email Address">
+                    <input type="password" id="registerPassword" placeholder="Password">
+                    <input type="password" id="registerPasswordConfirm" placeholder="Password re-type">
+                    <a href="index.html"><button type="submit" class="btn btn--login">Register</button></a>
+                    <p id="registerError" class="error-message"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal modal__contact hidden">
+        <button class="btn--close-modal">&times;</button>
+        <div class="modal__wrap--contact">
+            <h2 class="modal_header modal_header--contact"><span class="highlight">Contact Us</h2>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email Address">
+            <textarea placeholder="Message"></textarea>
+            <button class="btn btn--send">Send</button>
+        </div>
+    </div>
+</body>
+</html>

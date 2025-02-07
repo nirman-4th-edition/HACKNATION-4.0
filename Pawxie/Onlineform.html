@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Form</title>
+
+    <link rel="shortcut icon" type="image/png" href="images/PAWXIELOGO.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/536ff07e99.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+<style>
+
+.box-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .box {
+      width: 280px;
+      height: 400px;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .box img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .doctors .box-container .box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .share {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .share a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .share a i {
+      color: white;
+      font-size: 20px;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .share a i:hover {
+      background-color:green;
+      transform: scale(1.1);
+    }
+</style>
+<script>
+    
+</script>
+
+</head>
+    <body style="background-color: rgba(246, 232, 174, 0.624);">
+
+  <header class="header" id="#header">
+    <nav class="nav nav__desktop">
+      <img src="images/PAWXIELOGO.png" style="height: 130px;width: 150px;" alt="Pet Care logo" class="nav__logo" id="logo">
+
+      <ul class="nav__links" style="color: rgb(74, 9, 9);">
+        <li class="nav__item current">
+          <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--5" class="nav__link nav__link--section">Contact</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link btn nav__link--btn btn--show-modal"><img src="images/icon-user.svg"
+              alt="login icon"></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav__mobile--wrap">
+        <nav class="nav nav__mobile">
+          <img src="images/paw_logo.png" alt="Pet Care logo" class="nav__logo" id="logo">
+          <ul class="nav__links nav__links-mobile">
+            <li class="nav__item current">
+              <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
+            </li>
+            <li class="nav__item">
+              <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
+            </li>
+            <li class="nav__item">
+              <a href="#section--3" class="nav__link nav__link--section">Products</a>
+            </li>
+            <li class="nav__item">
+              <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
+            </li>
+            <li class="nav__item">
+              <a href="#section--5" class="nav__link nav__link--section">Contact</a>
+            </li>
+            <li class="nav__item">
+              <a href="#" class="nav__link btn nav__link--btn btn--show-modal"><img src="images/icon-user.svg"
+                  alt="login icon"></a>
+            </li>
+          </ul>
+          <div class="nav__mobile--open">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <div class="nav__mobile--close">
+            <i class="fa-solid fa-x"></i>
+          </div>
+        </nav>
+      </div>
+
+      <section class="doctors" id="doctors">
+        <h1 class="heading" style="text-align: center;">Our <span style="text-align: center;">Veterinarians</span></h1>
+        <br>
+        <h2 style="text-align: center;"> Shift A (6:00AM - 2:00PM)</h2> 
+        <br>
+         
+        <div class="box-container">
+          <div class="box " style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;" data-available-dates="2025-01-01,2025-01-10" data-available-times="09:00,10:00">
+            <img src="images/doctor1.jpg" alt="" style="border: 2px solid black;">
+            <h3>DOCTOR1</h3>
+            <span>Veterinarian</span>
+            <div class="share">
+              <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+              
+            </div>
+          </div>
+  
+          <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-11,2025-01-20" data-available-times="09:00,10:00">
+            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+            <h3>DOCTOR2</h3>
+            <span>Veterinarian</span>
+            <div class="share">
+                <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+            </div>
+          </div>
+  
+          <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-21,2025-01-31" data-available-times="09:00,10:00">
+            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+            <h3>DOCTOR3</h3>
+            <span>Veterinarian</span>
+            <div class="share">
+                <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <h2 style="text-align: center;"> Shift B (2:00PM - 10:00PM)</h2> 
+        <br>
+         
+        <div class="box-container">
+          <div class="box " style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;" data-available-dates="2025-01-01,2025-01-10" data-available-times="09:00,10:00">
+            <img src="images/doctor1.jpg" alt="" style="border: 2px solid black;">
+            <h3>DOCTOR1</h3>
+            <span>Veterinarian</span>
+            <div class="share">
+                <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+               
+            </div>
+          </div>
+  
+          <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-11,2025-01-20" data-available-times="09:00,10:00">
+            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+            <h3>DOCTOR2</h3>
+            <span>Veterinarian</span>
+            <div class="share">
+                <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+            </div>
+          </div>
+  
+          <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-21,2025-01-31" data-available-times="09:00,10:00">
+            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+            <h3>DOCTOR3</h3>
+            <span>Veterinarian</span>
+            <div class="share">
+                <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <h2 style="text-align: center;"> Shift C (10:00PM - 6:00AM)</h2> 
+        <br>
+         
+        <div class="box-container">
+          <div class="box " style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;" data-available-dates="2025-01-01,2025-01-10" data-available-times="09:00,10:00">
+            <img src="images/doctor1.jpg" alt="" style="border: 2px solid black;">
+            <h3>DOCTOR1</h3>
+            <span>Veterinarian</span>
+            <div class="share">
+                <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+            </div>
+          </div>
+  
+          <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-11,2025-01-20" data-available-times="09:00,10:00">
+            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+            <h3>DOCTOR2</h3>
+            <span>Veterinarian</span>
+            <div class="share">
+                <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+            </div>
+          </div>
+  
+          <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-21,2025-01-31" data-available-times="09:00,10:00">
+            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+            <h3>DOCTOR3</h3>
+            <span>Veterinarian</span>
+            <div class="share">
+                <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+            </div>
+          </div>
+        </div>
+    </section>
+</body>
+</html>
