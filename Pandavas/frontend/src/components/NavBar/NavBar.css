@@ -1,0 +1,97 @@
+/* Navbar.css */
+
+/* Overall navbar styling */
+.navbar {
+    background: linear-gradient(135deg, #283c86, #45a247);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .navbar h1 {
+    color: #fff;
+    margin: 0;
+    padding: 15px 20px;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  
+  /* Navigation links container with no bullet points */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+  }
+  
+  /* Remove bullet points for dropdown lists as well */
+  .dropdown-content {
+    list-style: none;
+  }
+  
+  /* Style for individual navigation items */
+  .nav-links li {
+    position: relative;
+  }
+  
+  /* Base styles for links and dropdown headers */
+  .nav-links li a,
+  .nav-links li span {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Hover effect for links and dropdown headers */
+  .nav-links li a:hover,
+  .nav-links li span:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+  }
+  
+  /* Dropdown content styling */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    color: #333;
+    min-width: 180px;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    z-index: 100;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Dropdown item styles */
+  .dropdown-content li a {
+    padding: 12px 16px;
+    color: #333;
+    background: #fff;
+    transition: background 0.3s;
+  }
+  
+  /* Hover effect for dropdown items */
+  .dropdown-content li a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Show dropdown on hover with smooth transition */
+  .dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  

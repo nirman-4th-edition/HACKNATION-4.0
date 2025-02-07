@@ -1,0 +1,82 @@
+/* Background and Layout */
+.pomodoro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('./img/tree.jpg') center/cover fixed no-repeat;
+  z-index: 50;
+}
+
+/* Pomodoro Card */
+.pomodoro-card {
+  padding: 24px;
+  width: 320px;
+  max-width: 380px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* Mode Buttons */
+.mode-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mode-btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #222;
+  transition: background 0.3s ease-in-out;
+}
+
+.mode-btn.active-mode {
+  background-color: #facc15;
+}
+
+/* Timer Display */
+.timer-display {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  margin-top: 10px;
+}
+
+/* Control Buttons */
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.control-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: red;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease-in-out;
+}
+
+.control-btn:hover {
+  background-color: #f0f0f0;
+}

@@ -1,0 +1,23 @@
+.summarizer-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.summarizer-container input {
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+}
+
+.summarizer-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.summarizer-container button:hover {
+    background-color: #0056b3;
+}
