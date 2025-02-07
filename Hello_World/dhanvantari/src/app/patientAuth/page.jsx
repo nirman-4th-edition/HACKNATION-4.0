@@ -1,43 +1,46 @@
+// page.tsx
 import Image from "next/image";
-import {Button} from '@/components/ui/button'
 import Link from "next/link";
 import PatientForm from "@/components/forms/PatientForm";
 
-
-
 export default function Home() {
   return (
-
-    <div className="flex h-screen max-h-screen ">
-     {/*TODO: OTP Verification | PasskeyModal*/}
-
-
-      <section className="remove-scrollbar container my-auto ">
-        <div className="sub-container max-w-[496px]">
+    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
+      <section className="flex-1 overflow-auto px-4 py-8 md:px-8 lg:px-12">
+        <div className="max-w-lg mx-auto">
           <Image
-            className="mb-12 h-10 w-fit rounded-md"
+            className="h-12 w-auto mb-16"
             src="/assets/icons/logo-full.svg"
             alt="logo"
             width={1000}
             height={1000}
+            priority
           />
+          
           <PatientForm />
 
-          <div className="text-14-regular mt-20 flex justify-between">
-          <p className="justify-items-end text-dark-600 xl:text-left">
-          © 2025 Aayush Bharat. All rights reserved
-          </p>
-          <Link href="/?admin=true">Admin</Link>
+          <div className="mt-16 flex justify-between items-center text-sm text-gray-600">
+            <p>© 2025 Aayush Bharat. All rights reserved</p>
+            <Link 
+              href="/?admin=true"
+              className="text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              Admin
+            </Link>
           </div>
         </div>
       </section>
-      <Image
-        src="/assets/images/onboarding-img.png"
-        height={1000}
-        width={1000}
-        alt="image"
-        className="side-img max-w-[50%] object-cover rounded-lg"
-      />
+
+      <div className="hidden lg:block w-1/2 relative">
+        <Image
+          src="/assets/images/onboarding-img.png"
+          fill
+          objectFit="cover"
+          alt="Onboarding"
+          className="rounded-l-3xl"
+          priority
+        />
+      </div>
     </div>
   );
 }
