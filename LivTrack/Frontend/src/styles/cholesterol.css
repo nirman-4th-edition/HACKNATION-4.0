@@ -124,7 +124,11 @@ body {
 
 /* Titles */
 .metrics-container .mantine-Title-root {
+<<<<<<< HEAD
+  color: #688cb0;
+=======
   color: #2c3e50;
+>>>>>>> b2e83cd3cc989b0860e9d1d994a3a85ea251b1f7
   font-weight: 600;
 }
 
@@ -144,7 +148,7 @@ body {
 
 .metrics-container .mantine-TextInput-input {
   border-radius: 4px;
-  border: 1px solid #ddd;
+  border: 1px solid #646464;
   padding: 0.5rem;
   font-size: 1rem;
   transition: border-color 0.3s ease;
