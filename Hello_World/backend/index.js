@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import Position from './data.model.js';
 import cors from 'cors';
 import { Appointment, Doctor, DoctorDayHistory, User } from './Models/Models.js';
 
@@ -178,6 +177,6 @@ app.get('/doctor/:doctorId', async (req, res) => {
  });
 
 
-app.listen(3000, () => {
+app.listen(3000, '0.0.0.0' , () => {
     console.log('Server is running on port 3000');
 });
