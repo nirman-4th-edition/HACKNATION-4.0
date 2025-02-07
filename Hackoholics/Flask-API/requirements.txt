@@ -1,0 +1,6 @@
+Flask
+flask-cors
+python-dotenv
+Pillow
+pdf2image
+google-generativeai
