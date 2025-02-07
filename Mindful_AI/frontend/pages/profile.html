@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Profile - MindfulAI</title>
+		<link rel="stylesheet" href="/css/output.css" />
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="bg-gray-50">
+		<!-- Navbar -->
+		<nav class="bg-white shadow-sm">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="flex justify-between h-16 items-center">
+					<div class="flex items-center gap-2">
+						<div
+							class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center"
+						>
+							<i class="fas fa-brain text-indigo-600 text-xl"></i>
+						</div>
+						<span class="text-xl font-semibold text-gray-800"
+							>MindfulAI</span
+						>
+					</div>
+					<div class="flex items-center gap-4">
+						<a href="/chat">AI Bot</a>
+						<a href="/journal">Journal</a>
+						<div
+							class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-semibold"
+						>
+							JS
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Main Content -->
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+			<!-- Greeting Section -->
+			<div class="bg-white rounded-xl p-6 shadow-sm mb-6">
+				<div class="flex items-start justify-between">
+					<div>
+						<h1 class="text-2xl font-bold text-gray-900 mb-2">
+							Good morning, John Smith
+						</h1>
+						<p class="text-gray-600">
+							Here's your mental wellness journey overview
+						</p>
+					</div>
+					<div
+						class="bg-indigo-100 text-indigo-600 px-4 py-2 rounded-lg"
+					>
+						<p class="font-semibold">Streak: 7 days 🔥</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Stats Grid -->
+			<div
+				class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6"
+			>
+				<div class="bg-white rounded-xl p-6 shadow-sm">
+					<div class="flex items-center gap-4">
+						<div
+							class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center"
+						>
+							<i
+								class="fas fa-comments text-indigo-600 text-xl"
+							></i>
+						</div>
+						<div>
+							<p class="text-sm text-gray-600">Chat Sessions</p>
+							<p class="text-2xl font-bold text-gray-900">28</p>
+						</div>
+					</div>
+				</div>
+				<div class="bg-white rounded-xl p-6 shadow-sm">
+					<div class="flex items-center gap-4">
+						<div
+							class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center"
+						>
+							<i class="fas fa-clock text-indigo-600 text-xl"></i>
+						</div>
+						<div>
+							<p class="text-sm text-gray-600">Minutes Mindful</p>
+							<p class="text-2xl font-bold text-gray-900">345</p>
+						</div>
+					</div>
+				</div>
+				<div class="bg-white rounded-xl p-6 shadow-sm">
+					<div class="flex items-center gap-4">
+						<div
+							class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center"
+						>
+							<i
+								class="fas fa-journal-whills text-indigo-600 text-xl"
+							></i>
+						</div>
+						<div>
+							<p class="text-sm text-gray-600">Journal Entries</p>
+							<p class="text-2xl font-bold text-gray-900">12</p>
+						</div>
+					</div>
+				</div>
+				<div class="bg-white rounded-xl p-6 shadow-sm">
+					<div class="flex items-center gap-4">
+						<div
+							class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center"
+						>
+							<i class="fas fa-star text-indigo-600 text-xl"></i>
+						</div>
+						<div>
+							<p class="text-sm text-gray-600">Achievements</p>
+							<p class="text-2xl font-bold text-gray-900">5</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Mood and Progress Section -->
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				<!-- Mood Distribution -->
+				<div class="bg-white rounded-xl p-6 shadow-sm">
+					<h2 class="text-xl font-semibold text-gray-900 mb-4">
+						Monthly Mood Distribution
+					</h2>
+					<div id="mood-chart"></div>
+				</div>
+
+				<!-- Recent Activities -->
+				<div class="bg-white rounded-xl p-6 shadow-sm">
+					<h2 class="text-xl font-semibold text-gray-900 mb-4">
+						Recent Activities
+					</h2>
+					<div class="space-y-4">
+						<div class="flex items-center gap-4">
+							<div
+								class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center"
+							>
+								<i class="fas fa-comments text-indigo-600"></i>
+							</div>
+							<div>
+								<p class="font-medium text-gray-900">
+									Completed chat session
+								</p>
+								<p class="text-sm text-gray-600">
+									Today at 10:30 AM
+								</p>
+							</div>
+						</div>
+						<div class="flex items-center gap-4">
+							<div
+								class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center"
+							>
+								<i
+									class="fas fa-journal-whills text-indigo-600"
+								></i>
+							</div>
+							<div>
+								<p class="font-medium text-gray-900">
+									Wrote journal entry
+								</p>
+								<p class="text-sm text-gray-600">
+									Yesterday at 8:15 PM
+								</p>
+							</div>
+						</div>
+						<div class="flex items-center gap-4">
+							<div
+								class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center"
+							>
+								<i class="fas fa-medal text-indigo-600"></i>
+							</div>
+							<div>
+								<p class="font-medium text-gray-900">
+									Earned "Week Streak" badge
+								</p>
+								<p class="text-sm text-gray-600">2 days ago</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Goals Section -->
+				<div class="bg-white rounded-xl p-6 shadow-sm">
+					<h2 class="text-xl font-semibold text-gray-900 mb-4">
+						Your Goals
+					</h2>
+					<div class="space-y-4">
+						<div>
+							<div class="flex justify-between items-center mb-2">
+								<p class="text-gray-700">Daily Meditation</p>
+								<p class="text-sm text-indigo-600">
+									15/20 mins
+								</p>
+							</div>
+							<div class="w-full bg-gray-200 rounded-full h-2">
+								<div
+									class="bg-indigo-600 h-2 rounded-full"
+									style="width: 75%"
+								></div>
+							</div>
+						</div>
+						<div>
+							<div class="flex justify-between items-center mb-2">
+								<p class="text-gray-700">
+									Weekly Journal Entries
+								</p>
+								<p class="text-sm text-indigo-600">
+									3/5 entries
+								</p>
+							</div>
+							<div class="w-full bg-gray-200 rounded-full h-2">
+								<div
+									class="bg-indigo-600 h-2 rounded-full"
+									style="width: 60%"
+								></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Achievements Section -->
+				<div class="bg-white rounded-xl p-6 shadow-sm">
+					<h2 class="text-xl font-semibold text-gray-900 mb-4">
+						Recent Achievements
+					</h2>
+					<div class="grid grid-cols-2 gap-4">
+						<div class="p-4 bg-indigo-50 rounded-lg text-center">
+							<div
+								class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-2"
+							>
+								<i
+									class="fas fa-fire text-indigo-600 text-xl"
+								></i>
+							</div>
+							<p class="font-medium text-gray-900">
+								7-Day Streak
+							</p>
+						</div>
+						<div class="p-4 bg-indigo-50 rounded-lg text-center">
+							<div
+								class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-2"
+							>
+								<i
+									class="fas fa-book text-indigo-600 text-xl"
+								></i>
+							</div>
+							<p class="font-medium text-gray-900">
+								Journal Master
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// Function to update greeting based on time of day
+			function updateGreeting() {
+				const hour = new Date().getHours();
+				const greeting = document.querySelector("h1");
+				let timeOfDay = "morning";
+
+				if (hour >= 12 && hour < 17) timeOfDay = "afternoon";
+				else if (hour >= 17) timeOfDay = "evening";
+
+				greeting.textContent = `Good ${timeOfDay}, John Smith`;
+			}
+
+			// Update greeting on load
+			updateGreeting();
+		</script>
+	</body>
+</html>

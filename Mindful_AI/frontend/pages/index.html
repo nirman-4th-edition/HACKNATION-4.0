@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MindfulAI - Your Mental Health Companion</title>
+		<link rel="stylesheet" href="/css/output.css" />
+		<style>
+			.popup {
+				animation: fadeIn 0.3s ease-in;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(10px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		</style>
+	</head>
+	<body class="bg-gray-50">
+		<!-- Navbar -->
+		<nav class="bg-white shadow-sm">
+			<div
+				class="container mx-auto px-4 py-4 flex justify-between items-center"
+			>
+				<div class="flex items-center gap-3">
+					<div
+						class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center"
+					>
+						<svg
+							class="w-6 h-6 text-indigo-600"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+							/>
+						</svg>
+					</div>
+					<h1 class="text-xl font-semibold text-gray-800">
+						MindfulAI
+					</h1>
+				</div>
+				<button
+					id="get-started-nav"
+					class="bg-indigo-600 text-white rounded-xl px-6 py-2 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-200 transition-colors duration-200"
+				>
+					Get Started
+				</button>
+			</div>
+		</nav>
+
+		<!-- Hero Section -->
+		<section
+			class="container mx-auto px-4 py-16 flex flex-col items-center text-center"
+		>
+			<h1 class="text-4xl font-bold text-gray-800 mb-4">
+				Your Mental Health Companion
+			</h1>
+			<p class="text-lg text-gray-600 mb-8 max-w-2xl">
+				MindfulAI is here to support you 24/7 with personalized mental
+				health resources, mood tracking, and evidence-based tools to
+				help you feel your best.
+			</p>
+			<button
+				id="get-started-hero"
+				class="bg-indigo-600 text-white rounded-xl px-8 py-3 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-200 transition-colors duration-200"
+			>
+				Get Started
+			</button>
+		</section>
+
+		<!-- Features Section -->
+		<section class="bg-white py-16">
+			<div class="container mx-auto px-4">
+				<h2 class="text-3xl font-bold text-gray-800 text-center mb-12">
+					How MindfulAI Helps You
+				</h2>
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+				>
+					<!-- Feature 1 -->
+					<div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+						<div
+							class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mb-4"
+						>
+							<svg
+								class="w-6 h-6 text-indigo-600"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+								/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-semibold text-gray-800 mb-2">
+							Personalized Support
+						</h3>
+						<p class="text-gray-600">
+							Tailored mental health resources and exercises
+							designed just for you.
+						</p>
+					</div>
+
+					<!-- Feature 2 -->
+					<div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+						<div
+							class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mb-4"
+						>
+							<svg
+								class="w-6 h-6 text-indigo-600"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+								/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-semibold text-gray-800 mb-2">
+							Mood Tracking
+						</h3>
+						<p class="text-gray-600">
+							Track your emotions over time and gain insights into
+							your mental health progress.
+						</p>
+					</div>
+
+					<!-- Feature 3 -->
+					<div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+						<div
+							class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mb-4"
+						>
+							<svg
+								class="w-6 h-6 text-indigo-600"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+								/>
+							</svg>
+						</div>
+						<h3 class="text-xl font-semibold text-gray-800 mb-2">
+							Community Support
+						</h3>
+						<p class="text-gray-600">
+							Connect with others in a stigma-free, supportive
+							community.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Popup for Sign Up -->
+		<div
+			id="popup"
+			class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center"
+			style="backdrop-filter: blur(2px)"
+		>
+			<div class="bg-white rounded-xl p-8 max-w-md w-full popup">
+				<h2 class="text-2xl font-semibold text-gray-800 mb-4">
+					Sign Up
+				</h2>
+				<p class="text-gray-600 mb-6">
+					Get started with MindfulAI today.
+				</p>
+				<a
+					href="/auth/google"
+					class="w-full bg-indigo-600 text-white rounded-xl px-6 py-2 hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-200 transition-colors duration-200 flex items-center justify-center gap-2"
+				>
+					<svg
+						class="w-5 h-5"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+						/>
+					</svg>
+					<span>Sign Up with Google</span>
+				</a>
+			</div>
+		</div>
+
+		<script>
+			// Handle Get Started buttons
+			const getStartedButtons = document.querySelectorAll(
+				"#get-started-nav, #get-started-hero",
+			);
+			const popup = document.getElementById("popup");
+
+			getStartedButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					popup.classList.remove("hidden");
+					popup.classList.add("flex");
+				});
+			});
+
+			// Close popup when clicking outside
+			popup.addEventListener("click", (e) => {
+				if (e.target === popup) {
+					popup.classList.add("hidden");
+					popup.classList.remove("flex");
+				}
+			});
+		</script>
+	</body>
+</html>

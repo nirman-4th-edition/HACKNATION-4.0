@@ -1,0 +1,45 @@
+{
+  "name": "penguineo",
+  "version": "1.0.0",
+  "description": "Server for mindfull ai webapp.",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "tsx watch --env-file=.env ./src/server.ts",
+    "build": "tsc && node dist/server.ts",
+    "test": "tsx watch --env-file=.env --test ./src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/penguineo/mindfullai-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/penguineo/mindfullai-server/issues"
+  },
+  "homepage": "https://github.com/penguineo/mindfullai-server#readme",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.5",
+    "@types/passport": "^1.0.17",
+    "@types/passport-google-oauth20": "^2.0.16",
+    "jest": "^29.7.0",
+    "jest-mock-extended": "^4.0.0-beta1",
+    "ts-jest": "^29.2.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@types/express-session": "^1.18.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.9.7",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
