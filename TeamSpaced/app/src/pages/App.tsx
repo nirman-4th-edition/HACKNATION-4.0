@@ -20,7 +20,7 @@ function App() {
       clearInterval(interval);
       setSplashStatus(false);
     }, 3000);
-  });
+  }, []);
 
   return (
     <AppComponent theme="material">
