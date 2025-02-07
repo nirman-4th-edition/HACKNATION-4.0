@@ -1,9 +1,11 @@
 import React from "react";
 import "../styles/hospital.css";
+import path_to_hospital1 from "../pages/logos/cityhospital.webp";
+import path_to_hospital2 from "../pages/logos/medanta.webp";
 
 const hospitals = [
-  { id: 1, name: "City Hospital", img: "path_to_hospital1.png" },
-  { id: 2, name: "St. Mary's Hospital", img: "path_to_hospital2.png" },
+  { id: 1, name: "City Hospital", img: {path_to_hospital1} },
+  { id: 2, name: "St. Mary's Hospital", img: {path_to_hospital2} },
   { id: 3, name: "Green Valley Hospital", img: "path_to_hospital3.png" },
   { id: 4, name: "Sunrise Medical Center", img: "path_to_hospital4.png" },
 ];

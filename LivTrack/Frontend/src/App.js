@@ -13,6 +13,7 @@ import PcosMetrics from "./pages/pcosMetrics";
 import BloodMetics from "./pages/bloodMetrics";
 import CholesterolGraph from "./pages/cholesterolGraph";
 import PCOSGraphs from "./pages/pcosGraphs";
+import Hospital from "./pages/hospital";
 
 function App() {
   return (
@@ -98,6 +99,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <PCOSGraphs />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/hospital-details"
+              element={
+                <ProtectedRoute>
+                  <Hospital />
                 </ProtectedRoute>
               }
             />
