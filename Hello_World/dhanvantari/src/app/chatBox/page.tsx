@@ -8,6 +8,9 @@ interface Message {
     text: string;
     sender: "user" | "bot";
     file?: File | null;
+    type?:string;
+    data?:any;
+    doctors? : []
 }
 
 interface ChatbotProps {
@@ -20,14 +23,37 @@ export default function Chatbot({ username = "User" }: ChatbotProps) {
     const [file, setFile] = useState<File | null>(null);
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
+    const [id,setId] = useState<string>();
+    const [chatLoading , setChatLoading] = useState<boolean>(false);
+
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        console.log(messages);
+        
     }, [messages]);
 
     const sendMessage = (text: string = input) => {
         if (!text.trim() && !file) return;
 
         setMessages([...messages, { text, sender: "user", file }]);
+        setChatLoading(true);
+        fetch("http://localhost:3001/ai/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ message: text , chatId:id })
+        })
+          .then(response => response.json())
+          .then(data => {
+            setChatLoading(false);
+            setId(data.chatId);
+            setMessages(prevMessages => [...prevMessages, {  text: data.response.message, type:data.response.type ,  sender: "bot" , data: data.response.data , doctors:data.doctors}]);
+          })
+          .catch(error => {
+            setChatLoading(false);
+            console.error("Error:", error);
+          });
         setInput("");
         setFile(null);
     };
@@ -60,13 +86,26 @@ export default function Chatbot({ username = "User" }: ChatbotProps) {
                 )}
                 <div className=" w-3/5 flex-1 relative overflow-y-auto space-y-4 p-4 custom-scrollbar">
                     {messages.map((msg, index) => (
+                        msg.sender === "bot"?
                         <div key={index} className={`flex items-center space-x-3 p-3 rounded-xl max-w-[80%] w-fit ${msg.sender === "bot" ? "bg-gray-900 text-left" : "bg-black/40 text-white ml-auto flex-row-reverse"}`}>
-                            {msg.sender === "bot" ? <Bot className="w-7 h-7 mr-2 text-gray-400" /> : <User className="w-7 h-7 ml-2 text-gray-400" />}
+                            {msg.sender === "bot" ? 
+                            <Bot className="w-7 h-7 mr-2 text-gray-400" /> : <User className="w-7 h-7 ml-2 text-gray-400" />}
                             <div className="text-sm leading-relaxed">
                                 {msg.text}
                                 {msg.file && <p className="text-xs text-gray-400 mt-1">📎 {msg.file.name}</p>}
+                                {msg.type == "call" && <p className="text-xs text-gray-400 mt-1">📞 Call {122}</p>}
+                                {msg.type == "book" && <>{msg.doctors?.map((e)=>{return <p>{e+""}</p>})}</>}
                             </div>
                         </div>
+                        :<div key={index} className={`flex items-center space-x-3 p-3 rounded-xl max-w-[80%] w-fit ${msg.sender === "bot" ? "bg-gray-900 text-left" : "bg-black/40 text-white ml-auto flex-row-reverse"}`}>
+                        {msg.sender === "bot" ? 
+                        <Bot className="w-7 h-7 mr-2 text-gray-400" /> : <User className="w-7 h-7 ml-2 text-gray-400" />}
+                        <div className="text-sm leading-relaxed">
+                            {msg.text}
+                
+                            {}
+                        </div>
+                    </div>
                     ))}
                     <div ref={messagesEndRef} />
                 </div>
@@ -84,6 +123,7 @@ export default function Chatbot({ username = "User" }: ChatbotProps) {
                         onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                     />
                     <button
+                        disabled={chatLoading}
                         className="btn-gradient2 p-2"
                         style={{ borderRadius: "50%" }}
                         onClick={() => sendMessage()}
