@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .upload-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .upload-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .upload-btn:hover {
+            background-color: #45a049;
+        }
+        .file-input {
+            margin-bottom: 20px;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        #preview {
+            margin-top: 20px;
+            width: 100%;
+            min-height: 500px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h2>PDF Upload</h2>
+        <div class="file-input">
+            <input type="file" id="pdfFile" accept=".pdf" />
+        </div>
+        <button class="upload-btn" onclick="uploadFile()">Upload PDF</button>
+        <div id="status" class="status" style="display: none;"></div>
+        <iframe id="preview" style="display: none;"></iframe>
+    </div>
+
+    <script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('pdfFile');
+            const statusDiv = document.getElementById('status');
+            const preview = document.getElementById('preview');
+            
+            if (!fileInput.files.length) {
+                showStatus('Please select a file first.', 'error');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            if (file.type !== 'application/pdf') {
+                showStatus('Please select a PDF file.', 'error');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('http://localhost:5000/api/upload_pdf/67a4d88cc3bde7e1ac54a400', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                console.log(data);
+
+                if (response.ok) {
+                    showStatus('File uploaded successfully!', 'success');
+                } else {
+                    showStatus(`Upload failed: ${data.error}`, 'error');
+                }
+            } catch (error) {
+                showStatus('Upload failed: Network error', 'error');
+                console.error('Error:', error);
+            }
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+            statusDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
