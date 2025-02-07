@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Consultation - MediMatrix</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e3efff;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* Header */
+    header {
+      background-color: #013648;
+      color: #fff;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background-image: url('image/header_background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    header > * {
+      position: relative;
+      z-index: 2;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo {
+      height: 80px;
+      width: auto;
+    }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    /* Main Content */
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 100px auto 0; /* Leave space for the fixed header */
+    }
+    /* Doctor Info Box */
+    .doctor-info {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .info-text {
+      flex: 1;
+    }
+    .info-image {
+      margin-left: 20px;
+    }
+    .doctor-image {
+      width: 200px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .doctor-info h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    .doctor-info p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    /* Other Sections */
+    .services, .time-slots, .consultation-type, .payment-options {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .services h3, .time-slots h3, .consultation-type h3, .payment-options h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    .time-slots .slot {
+      display: inline-block;
+      padding: 10px 15px;
+      margin: 5px;
+      background-color: #3498db;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .time-slots .slot:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .time-slots .slot.selected {
+      background-color: #0f4569;
+    }
+    .slot.unavailable {
+      background-color: #ccc;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    .consultation-type label,
+    .payment-options label {
+      display: block;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .book-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .book-btn:hover {
+      background-color: #2980b9;
+    }
+    /* Popup & Overlay */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+      text-align: center;
+    }
+    .popup h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    .popup p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .popup button {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .popup button:hover {
+      background-color: #2980b9;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+    /* Footer Styles */
+    footer {
+      background-image: url('image/header_background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-top: 50px;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    footer > * {
+      position: relative;
+      z-index: 2;
+    }
+    footer a {
+      color: #3498db;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #2980b9;
+    }
+    /* Fade-In Animation */
+    .fade-in {
+      opacity: 0;
+      animation: fadeInAnimation 1s ease forwards;
+    }
+    @keyframes fadeInAnimation {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Hover Effects */
+    .doctor-info,
+    .services,
+    .time-slots,
+    .consultation-type,
+    .payment-options,
+    .book-btn {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .doctor-info:hover,
+    .services:hover,
+    .time-slots:hover,
+    .consultation-type:hover,
+    .payment-options:hover,
+    .book-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .slot {
+      transition: transform 0.5s ease, background-color 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="image/logo.png" alt="Healthcare Website Logo" class="logo">
+      <span class="brand-name">MediMatrix</span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="fade-in">
+    <!-- Doctor Info Box -->
+    <div class="doctor-info fade-in" id="doctorInfo">
+      <div class="info-text" id="infoText">
+        <!-- Doctor details will be inserted here -->
+      </div>
+      <div class="info-image" id="infoImage">
+        <!-- Doctor image will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Services Offered -->
+    <div class="services fade-in">
+      <h3>Services Offered</h3>
+      <ul id="servicesList">
+        <!-- Services will be dynamically inserted here -->
+      </ul>
+    </div>
+
+    <!-- Time Slots -->
+    <div class="time-slots fade-in">
+      <h3>Available Time Slots</h3>
+      <div id="timeSlots">
+        <!-- Time slots will be dynamically inserted here -->
+      </div>
+    </div>
+
+    <!-- Consultation Type -->
+    <div class="consultation-type fade-in">
+      <h3>Consultation Type</h3>
+      <label>
+        <input type="radio" name="consultationType" value="physical" checked> Physical Consultation
+      </label>
+      <label>
+        <input type="radio" name="consultationType" value="video"> Video Consultation
+      </label>
+    </div>
+
+    <!-- Payment Options -->
+    <div class="payment-options fade-in">
+      <h3>Payment Options</h3>
+      <label>
+        <input type="radio" name="payment" value="creditCard" checked> Credit Card
+      </label>
+      <label>
+        <input type="radio" name="payment" value="debitCard"> Debit Card
+      </label>
+      <label>
+        <input type="radio" name="payment" value="netBanking"> Net Banking
+      </label>
+      <label>
+        <input type="radio" name="payment" value="upi"> UPI
+      </label>
+    </div>
+
+    <!-- Book Button -->
+    <button class="book-btn fade-in" onclick="bookAppointment()">Book Appointment</button>
+  </main>
+
+  <!-- Popup -->
+  <div class="popup" id="bookingPopup">
+    <h2>Appointment Booked!</h2>
+    <p id="bookingDetails"></p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <a href="about.html">About</a> |
+      <a href="blog.html">Blog</a> |
+      <a href="help.html">Contact Us</a>
+    </p>
+    <p>
+      <a href="help.html">Help</a> |
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms and Conditions</a>
+    </p>
+  </footer>
+
+  <script>
+    // Parse URL parameters and set up the doctor object
+    const urlParams = new URLSearchParams(window.location.search);
+    const doctor = {
+      name: urlParams.get('name') || "Dr. John Doe",
+      type: urlParams.get('type') || "Physician",
+      image: urlParams.get('image') || "image/docman.png",
+      qualifications: urlParams.get('qualifications') || "MBBS, MD",
+      rating: parseFloat(urlParams.get('rating')) || 4.5,
+      experience: parseInt(urlParams.get('experience')) || 10,
+      hospital: urlParams.get('hospital') || "AIIMS Bhubaneswar",
+      fees: {
+        physical: 500,
+        video: 300
+      }
+    };
+
+    // Adjust the image path if needed
+    const imagePath = "../" + doctor.image;
+
+    // Render Doctor Text Information
+    document.getElementById("infoText").innerHTML = `
+      <h2>${doctor.name}</h2>
+      <p><strong>Specialization:</strong> ${doctor.type}</p>
+      <p><strong>Qualifications:</strong> ${doctor.qualifications}</p>
+      <p><strong>Hospital:</strong> ${doctor.hospital}</p>
+      <p><strong>Rating:</strong> ${doctor.rating} ★</p>
+      <p><strong>Experience:</strong> ${doctor.experience} years</p>
+    `;
+    // Render Doctor Image on the right side
+    document.getElementById("infoImage").innerHTML = `
+      <img src="${imagePath}" alt="${doctor.name}" class="doctor-image">
+    `;
+
+    // Services based on specialization
+    const services = {
+      Physician: ["General Checkup", "Chronic Disease Management", "Health Screening"],
+      Cardiologist: ["Heart Health Checkup", "ECG", "Angioplasty Consultation"],
+      Dermatologist: ["Skin Checkup", "Acne Treatment", "Hair Loss Consultation"],
+      Neurologist: ["Brain Health Checkup", "Migraine Treatment", "Epilepsy Consultation"],
+      Pediatrician: ["Child Health Checkup", "Vaccination", "Growth Monitoring"],
+      Gynaecologist: ["Women's Health Checkup", "Pregnancy Care", "Menopause Consultation"],
+      Oncologist: ["Cancer Screening", "Chemotherapy Consultation", "Radiation Therapy"],
+      Dentist: ["Dental Checkup", "Tooth Extraction", "Braces Consultation"],
+      Opthalmologist: ["Eye Checkup", "Cataract Surgery", "Glaucoma Treatment"],
+      Physiotherapist: ["Physiotherapy Sessions", "Rehabilitation", "Pain Management"]
+    };
+    const servicesList = document.getElementById("servicesList");
+    (services[doctor.type] || []).forEach(service => {
+      servicesList.innerHTML += `<li>${service}</li>`;
+    });
+
+    // Time Slots
+    const timeSlots = ["10:00 AM", "11:00 AM", "12:00 PM", "2:00 PM", "3:00 PM", "4:00 PM"];
+
+    // Helper function to retrieve stored timeslot booking data
+    function getTimeslotData() {
+      return JSON.parse(localStorage.getItem("timeslotBookings") || "{}");
+    }
+
+    // Render the time slots for this specific doctor using a composite key.
+    function renderTimeSlots() {
+      const container = document.getElementById("timeSlots");
+      container.innerHTML = ""; // Clear existing slots
+      const storedBookings = getTimeslotData();
+
+      timeSlots.forEach(slot => {
+        const uniqueDoctorIdentifier = doctor.id ? doctor.id : doctor.name;
+        const compositeKey = uniqueDoctorIdentifier + "_" + slot;
+        let bookingData = storedBookings[compositeKey] || { count: 0, lastBooked: 0 };
+        let isUnavailable = bookingData.count >= 10;  // Threshold of 10 bookings for this doctor's slot
+
+        const div = document.createElement("div");
+        div.className = "slot" + (isUnavailable ? " unavailable" : "");
+        div.textContent = slot;
+        // Attach the click event only if the slot is available.
+        if (!isUnavailable) {
+          div.addEventListener("click", function() {
+            selectTimeSlot(div);
+          });
+        }
+        container.appendChild(div);
+      });
+    }
+
+    let selectedSlot = null;
+    function selectTimeSlot(element) {
+      if (element.classList.contains("unavailable")) {
+        alert("This time slot is no longer available. Please select another slot.");
+        return;
+      }
+      if (selectedSlot) selectedSlot.classList.remove("selected");
+      element.classList.add("selected");
+      selectedSlot = element;
+    }
+
+    function bookAppointment() {
+      if (!selectedSlot) {
+        alert("Please select a time slot.");
+        return;
+      }
+      
+      let timeslotBookings = JSON.parse(localStorage.getItem("timeslotBookings") || "{}");
+      let slot = selectedSlot.textContent.trim();
+      const uniqueDoctorIdentifier = doctor.id ? doctor.id : doctor.name;
+      const compositeKey = uniqueDoctorIdentifier + "_" + slot;
+      
+      let bookingData = timeslotBookings[compositeKey] || { count: 0, lastBooked: Date.now() };
+      
+      bookingData.count++;
+      bookingData.lastBooked = Date.now();
+      timeslotBookings[compositeKey] = bookingData;
+      localStorage.setItem("timeslotBookings", JSON.stringify(timeslotBookings));
+      
+      if (bookingData.count >= 10) {
+        selectedSlot.classList.add("unavailable");
+        selectedSlot.classList.remove("selected");
+        selectedSlot = null;
+      }
+      
+      const consultationType = document.querySelector('input[name="consultationType"]:checked').value;
+      const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+      const fees = consultationType === "physical" ? doctor.fees.physical : doctor.fees.video;
+      
+      const bookingDetails = `
+        <strong>Doctor:</strong> ${doctor.name}<br>
+        <strong>Time Slot:</strong> ${slot}<br>
+        <strong>Consultation Type:</strong> ${consultationType === "physical" ? "Physical" : "Video"}<br>
+        ${consultationType === "physical" ? `<strong>Address:</strong> ${doctor.hospital}<br>` : ""}
+        <strong>Fees:</strong> ₹${fees}<br>
+        <strong>Payment Method:</strong> ${paymentMethod}
+      `;
+      
+      document.getElementById("bookingDetails").innerHTML = bookingDetails;
+      document.getElementById("bookingPopup").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+      
+      renderTimeSlots();
+    }
+
+    function closePopup() {
+      document.getElementById("bookingPopup").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+      window.location.href = "medim1.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      renderTimeSlots();
+    });
+  </script>
+</body>
+</html>

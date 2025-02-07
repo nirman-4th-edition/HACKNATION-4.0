@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile Setup - MediMatrix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3efff; /* Cool professional blue */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #013648;
+            color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-image: url('image/header_background.jpg'); /* Add your header image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+/* Header Overlay */
+header {
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1;
+}
+
+header > * {
+    position: relative;
+    z-index: 2;
+}
+        h1 {
+            font-size: 38px; /* Increased from 32px */
+            color: #000000; /* Darker color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+            opacity: 0.9; /* Slight transparency */
+        }
+
+        h2 {
+            font-size: 30px; /* Increased from 24px */
+            color: #1a1a1a; /* Darker color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+            opacity: 0.9; /* Slight transparency */
+        }
+
+        label {
+            font-size: 20px; /* Increased from 16px */
+            color: #000000; /* Darker color */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Form Styles */
+        .profile-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 700px; /* Increased width */
+            margin: auto;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color:aliceblue; /* Subtle background color for sections */
+            border-radius: 10px;
+            border: 1px solid #e0e7ff; /* Light border for separation */
+        }
+
+        .form-section h2 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 16px; /* Increased by 2px */
+            font-weight: bold; /* Made bold */
+            color: #666;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 98%; /* Adjusted width to fit well */
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Gender Select (Ensures Consistency with Other Inputs) */
+        .form-group select {
+            appearance: none; /* Removes default browser styles */
+            background-color: white;
+            padding-right: 10px; /* Adjust for dropdown arrow */
+        }
+
+        /* Equal Spacing Between Inline Fields */
+        .form-group .inline-fields {
+            display: flex;
+            gap: 20px; /* Ensures even spacing */
+        }
+
+        .form-group .inline-fields .field {
+            flex: 1;
+        }
+        
+.form-group.inline-fields.gender-age {
+    margin-bottom: 10px; 
+}
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #2980b9;
+        }
+        /* Footer Styles */
+footer {
+    background-image: url('image/header_background.jpg'); /* Add your footer image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+/* Footer Overlay */
+footer {
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1;
+}
+
+footer > * {
+    position: relative;
+    z-index: 2;
+}
+        /* Add this to your existing CSS */
+h1, h2, label {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    opacity: 0.9; /* Slight transparency */
+}
+
+input, select, textarea {
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2), /* Outer shadow */
+                -1px -1px 4px rgba(255, 255, 255, 0.5); /* Inner highlight */
+    opacity: 0.9; /* Slight transparency */
+    transition: box-shadow 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+}
+
+input:hover, select:hover, textarea:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), /* Deeper shadow on hover */
+                -2px -2px 6px rgba(255, 255, 255, 0.6); /* Brighter highlight on hover */
+    opacity: 1; /* Fully opaque on hover */
+}
+
+button[type="submit"] {
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2), /* Outer shadow */
+                -1px -1px 4px rgba(255, 255, 255, 0.5); /* Inner highlight */
+    opacity: 0.9; /* Slight transparency */
+    transition: box-shadow 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+}
+
+button[type="submit"]:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), /* Deeper shadow on hover */
+                -2px -2px 6px rgba(255, 255, 255, 0.6); /* Brighter highlight on hover */
+    opacity: 1; /* Fully opaque on hover */
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .brand-name {
+                font-size: 24px;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .form-group .inline-fields {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        /* Fade-In Animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease forwards;
+}
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects for Form Sections & Submit Button */
+.profile-form .form-section,
+.profile-form button[type="submit"] {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-form .form-section:hover,
+.profile-form button[type="submit"]:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="image/logo.png" alt="Healthcare Website Logo" class="logo">
+            <span class="brand-name">MediMatrix</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="fade-in">
+        <h1>Set Up Your Profile</h1>
+        <form class="profile-form fade-in" id="profileForm">
+            <!-- Personal Information Section -->
+<div class="form-section fade-in">
+    <h2>Personal Information</h2>
+    <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" placeholder="Enter your full name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+    </div>
+    <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required>
+    </div>
+    <!-- Age and Gender Fields -->
+    <div class="form-group inline-fields gender-age">
+        <div class="field">
+            <label for="gender">Gender</label>
+            <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="age">Age</label>
+            <input type="number" id="age" placeholder="Enter your age" required min="1" max="120">
+        </div>
+    </div>
+    <!-- City and Country Fields -->
+    <div class="form-group inline-fields">
+        <div class="field">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Enter your city" required>
+        </div>
+        <div class="field">
+            <label for="country">Country</label>
+            <input type="text" id="country" placeholder="Enter your country" required>
+        </div>
+    </div>
+</div>
+
+            <!-- Medical Information Section -->
+            <div class="form-section fade-in">
+                <h2>Medical Information</h2>
+                <div class="form-group">
+                    <label for="medicalHistory">Medical History</label>
+                    <textarea id="medicalHistory" placeholder="Any past medical conditions or surgeries"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="allergies">Allergies</label>
+                    <textarea id="allergies" placeholder="List any allergies"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="currentMedications">Current Medications</label>
+                    <textarea id="currentMedications" placeholder="List your current medications"></textarea>
+                </div>
+            </div>
+
+            <!-- Emergency Contact Section -->
+            <div class="form-section fade-in">
+                <h2>Emergency Contact</h2>
+                <div class="form-group">
+                    <label for="emergencyContactName">Name</label>
+                    <input type="text" id="emergencyContactName" placeholder="Enter emergency contact name" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyContactPhone">Phone Number</label>
+                    <input type="tel" id="emergencyContactPhone" placeholder="Enter emergency contact phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="relationship">Relationship</label>
+                    <input type="text" id="relationship" placeholder="Enter relationship (e.g., Parent, Spouse)" required>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="fade-in">Submit</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="about.html">About</a> |
+            <a href="blog.html">Blog</a> |
+            <a href="help.html">Contact Us</a>
+        </p>
+        <p>
+            <a href="help.html">Help</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms and Conditions</a>
+        </p>
+    </footer>
+
+    <script>
+        // Handle profile form submission
+        document.getElementById("profileForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const fullName = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            const phoneNumber = document.getElementById("phoneNumber").value;
+            const gender = document.getElementById("gender").value;
+            const age = document.getElementById("age").value;
+            const city = document.getElementById("city").value;
+            const country = document.getElementById("country").value;
+            const medicalHistory = document.getElementById("medicalHistory").value;
+            const allergies = document.getElementById("allergies").value;
+            const currentMedications = document.getElementById("currentMedications").value;
+            const emergencyContactName = document.getElementById("emergencyContactName").value;
+            const emergencyContactPhone = document.getElementById("emergencyContactPhone").value;
+            const relationship = document.getElementById("relationship").value;
+
+            // Validate phone number
+            if (!/^\d{10}$/.test(phoneNumber)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return;
+            }
+
+            // Validate email
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // Save data to localStorage or send to server
+            const profileData = {
+                fullName,
+                email,
+                phoneNumber,
+                gender,
+                age,
+                city,
+                country,
+                medicalHistory,
+                allergies,
+                currentMedications,
+                emergencyContactName,
+                emergencyContactPhone,
+                relationship,
+            };
+            localStorage.setItem("profileData", JSON.stringify(profileData));
+
+            // Redirect to the profile page
+            window.location.href = "profile.html";
+        });
+    </script>
+</body>
+</html>

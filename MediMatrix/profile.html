@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - MediMatrix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3efff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+
+        /* Header */
+        header {
+            background-color: #013648;
+            color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-image: url('image/header_background.jpg'); /* Add your header image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+/* Header Overlay */
+header {
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1;
+}
+
+header > * {
+    position: relative;
+    z-index: 2;
+}
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .profile-info {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: auto;
+            position: relative;
+        }
+
+        .avatar-container {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #3498db;
+            object-fit: cover;
+        }
+
+        .edit-photo-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-photo-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .edit-photo-btn i {
+            font-size: 14px;
+        }
+
+        .edit-profile-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .edit-profile-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .profile-info h2 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .profile-info p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .profile-info p strong {
+            color: #2c3e50;
+        }
+
+        
+/* Footer Styles */
+footer {
+    background-image: url('image/header_background.jpg'); /* Add your footer image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+/* Footer Overlay */
+footer {
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1;
+}
+
+footer > * {
+    position: relative;
+    z-index: 2;
+}
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #2980b9;
+        }
+        /* Fade-In Animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease forwards;
+}
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects for Key Elements */
+.profile-info,
+.edit-profile-btn,
+footer a {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-info:hover,
+.edit-profile-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+footer a:hover {
+    transform: translateY(-2px);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="image/logo.png" alt="Healthcare Website Logo" class="logo">
+            <span class="brand-name">MediMatrix</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="fade-in">
+        <h1>Your Profile</h1>
+        <div class="profile-info fade-in" id="profileInfo">
+            <!-- Avatar and Edit Photo Button -->
+            <div class="avatar-container">
+                <img src="image/user.svg" alt="User Avatar" class="avatar" id="userAvatar">
+                <button class="edit-photo-btn" onclick="editPhoto()">
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+            </div>
+            <!-- Profile data will be dynamically inserted here -->
+        </div>
+        <button class="edit-profile-btn fade-in" onclick="window.location.href='profile_setup.html'">Edit Profile</button>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="about.html">About</a> |
+            <a href="blog.html">Blog</a> |
+            <a href="help.html">Contact Us</a>
+        </p>
+        <p>
+            <a href="help.html">Help</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms and Conditions</a>
+        </p>
+    </footer>
+
+    <script>
+        // Retrieve profile data from localStorage
+        const profileData = JSON.parse(localStorage.getItem("profileData"));
+
+        // Display profile data
+        const profileInfo = document.getElementById("profileInfo");
+        const userAvatar = document.getElementById("userAvatar");
+
+        if (profileData) {
+            // Set avatar image if available
+            if (profileData.avatar) {
+                userAvatar.src = profileData.avatar;
+            }
+
+            // Insert profile data
+            profileInfo.innerHTML += `
+                <h2>Personal Information</h2>
+                <p><strong>Full Name:</strong> ${profileData.fullName}</p>
+                <p><strong>Email:</strong> ${profileData.email}</p>
+                <p><strong>Phone Number:</strong> ${profileData.phoneNumber}</p>
+                <p><strong>Gender:</strong> ${profileData.gender}</p>
+                <p><strong>Age:</strong> ${profileData.age}</p>
+                <p><strong>City:</strong> ${profileData.city}</p>
+                <p><strong>Country:</strong> ${profileData.country}</p>
+
+                <h2>Medical Information</h2>
+                <p><strong>Medical History:</strong> ${profileData.medicalHistory}</p>
+                <p><strong>Allergies:</strong> ${profileData.allergies}</p>
+                <p><strong>Current Medications:</strong> ${profileData.currentMedications}</p>
+
+                <h2>Emergency Contact</h2>
+                <p><strong>Name:</strong> ${profileData.emergencyContactName}</p>
+                <p><strong>Phone Number:</strong> ${profileData.emergencyContactPhone}</p>
+                <p><strong>Relationship:</strong> ${profileData.relationship}</p>
+            `;
+        } else {
+            profileInfo.innerHTML += `<p>No profile data found. Please complete your profile setup.</p>`;
+        }
+
+        // Function to handle edit photo button click
+        function editPhoto() {
+            alert("Edit photo functionality will be implemented here.");
+            // You can add logic to upload a new photo and update the avatar.
+        }
+    </script>
+</body>
+</html>

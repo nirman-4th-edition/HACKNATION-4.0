@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medimatrix - Help & Contact Us</title>
+  <style>
+   html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7f6;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+  background-color: #013648; /* fallback color */
+  padding: 20px 50px;
+  display: flex;
+  justify-content: flex-start; /* content on the left */
+  align-items: center;
+  background-image: url('image/header_background.jpg'); /* check this path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* lighter overlay */
+  z-index: 1;
+}
+header > * {
+  position: relative;
+  z-index: 2;
+}
+.logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: bold;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      color: #0077b6;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      color: #555;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #f9f9f9;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      color: #0077b6;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .contact-info {
+      background: linear-gradient(135deg, #00a8e8, #0077b6);
+      padding: 30px;
+      border-radius: 15px;
+      color: white;
+      text-align: center;
+    }
+
+    .contact-info h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .contact-info a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .chat-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: white;
+      color: #0077b6;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .chat-button:hover {
+      background: #0077b6;
+      color: white;
+    }
+
+    footer {
+  background-image: url('image/header_background.jpg'); /* check this path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding: 20px 50px;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+footer > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Main Content: Ensure it doesn’t hide behind the fixed header/footer */
+
+
+        .container {
+  margin-top: 180px; /* Adjust this value to match or exceed your header's height */
+  margin-bottom: 70px;
+}
+main {
+  animation: fadeIn 1s ease forwards;
+  margin-top: 120px;   /* Adjust to match your header height */
+  margin-bottom: 100px; /* Adjust to match your footer height */
+  padding: 0 2rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+  </style>
+</head>
+<body>
+  <header>
+        <div class="logo-container">
+            <img src="image/logo.png" alt="Healthcare Website Logo" class="logo">
+            <span class="brand-name">MediMatrix</span>
+        </div>
+    </header>
+
+  <div class="container">
+    <!-- Help Section -->
+    <div class="section">
+      <h2>How Can We Assist You Today?</h2>
+      <p>Whether you need help tracking your health, accessing AI-powered insights, or staying informed about virus outbreaks, we're here to help. Explore the options below or reach out to us directly.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Track Your Health</h3>
+          <p>Explore your medical history and insights to stay on top of your health.</p>
+        </div>
+        <div class="card">
+          <h3>AI Health Insights</h3>
+          <p>Get personalized health recommendations powered by advanced AI.</p>
+        </div>
+        <div class="card">
+          <h3>Virus Outbreak Alerts</h3>
+          <p>Stay safe with real-time updates on virus outbreaks in your area.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div class="section">
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <h3>We're Here to Help!</h3>
+        <p>Have questions or need assistance? Our support team is available 24/7 to assist you.</p>
+        <p><strong>Email:</strong> <a href="mailto:medimatrix561@gmail.com">medimatrix561@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+1-800-123-4567">+1-800-123-4567</a></p>
+        <p><strong>Live Chat:</strong> Click the button below to start a chat with our support team.</p>
+        <button class="chat-button" onclick="openChat()">Start Live Chat</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 Medimatrix. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function openChat() {
+      alert("Welcome to Medimatrix Live Chat! Our support team will be with you shortly.");
+      // You can replace this with a live chat widget integration.
+    }
+  </script>
+</body>
+</html>

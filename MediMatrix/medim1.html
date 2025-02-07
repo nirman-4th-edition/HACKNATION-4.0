@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Website</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+            <style>
+        /* General Styles */
+        body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:aliceblue;
+    color: #333;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #2c3e50;
+}
+        /* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;
+    background-image: url('image/header_background.jpg'); /* Add your header image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/* Header Overlay */
+header {
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1;
+}
+
+header > * {
+    position: relative;
+    z-index: 2;
+}
+/* Profile Icon */
+#profileIcon {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.profile-icon {
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    border: 2px solid #3498db;
+    transition: transform 0.3s ease;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
+
+        /* Logo Container */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 25px; /* Space between logo and brand name */
+        }
+
+        /* Logo Styling */
+        .logo {
+            height: 120px; /* Increased logo size */
+            width: auto; /* Maintain aspect ratio */
+        }
+
+        /* Brand Name Styling */
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 45px; /* Large font size */
+            font-weight: 900; /* Bolder font weight */
+            color: #fff; /* White color */
+            letter-spacing: 2px; /* Spacing between letters */
+            line-height: 1.2; /* Adjust line height for taller appearance */
+        }
+
+        /* Navigation Links */
+        header nav a {
+            margin: 0 20px; /* Increased spacing between links */
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 22px; /* Larger font size */
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #3498db; /* Hover color */
+        }   
+
+        .search-bar {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .search-bar input[type="text"] {
+            width: 60%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #3498db;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-bar input[type="text"]:focus {
+            border-color: #2980b9;
+        }
+
+        .search-bar button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+         .articles {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        
+
+        .articles div {
+            width: 160px;
+            height: 160px;
+            background-color: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #fff;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .articles div:hover {
+            transform: scale(1.1);
+            background-color: #2980b9;
+        }
+
+        .testimonials {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .testimonial {
+            flex: 0 0 100%;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(52, 152, 219, 0.8);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(41, 128, 185, 0.8);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        /* Footer Styles */
+footer {
+    background-image: url('image/header_background.jpg'); /* Add your footer image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+/* Footer Overlay */
+footer {
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1;
+}
+
+footer > * {
+    position: relative;
+    z-index: 2;
+}
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #2980b9;
+        }
+
+        .download-app {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .download-app button {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .download-app .playstore {
+            background-color: #34A853;
+            color: #fff;
+        }
+
+        .download-app .appstore {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .download-app button:hover {
+            transform: scale(1.1);
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            background-color: #fff;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+/* Overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+/* Popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* Slightly wider */
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1000;
+    border: 1px solid #e0e0e0; /* Subtle border */
+}
+
+/* Popup Header */
+.popup-header {
+    margin-bottom: 20px;
+}
+
+.popup-header h2 {
+    font-family: 'Poppins', sans-serif; /* Trendy font */
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.popup-header p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Phone Input */
+.phone-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9; /* Light background */
+}
+
+.phone-input span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+}
+
+.phone-input input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: transparent; /* Transparent background */
+}
+
+/* Next Button */
+.next-btn {
+    width: 100%;
+    padding: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.next-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e0e0e0; /* Subtle line */
+}
+
+.divider span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #666;
+    padding: 0 10px;
+}
+
+/* Google Login Button */
+.google-login {
+    width: 100%;
+    padding: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.google-login img {
+    width: 20px;
+    height: 20px;
+}
+
+.google-login:hover {
+    background-color: #f0f0f0;
+}
+
+/* Terms and Conditions */
+.terms {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #999;
+    margin-top: 20px;
+}
+
+.terms a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+        
+
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #backToTop:hover {
+            background-color: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .search-bar input[type="text"] {
+                width: 80%;
+            }
+
+             .articles {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .testimonial {
+                width: 90%;
+            }
+        }
+
+        .carousel-indicators {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .indicator.active {
+            background-color: #3498db;
+        }
+
+        /* Horizontal Scrolling for Awareness Section */
+        .scrollable-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .awareness-grid {
+            display: inline-flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Awareness Card Styling */
+        .awareness-card {
+            display: inline-block;
+            width: 400px; /* Fixed width for each card */
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            white-space: normal; /* Allow text to wrap inside cards */
+            flex-shrink: 0; /* Prevent cards from shrinking */
+        }
+
+        .awareness-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Card Image */
+        .awareness-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for images */
+            object-fit: cover; /* Ensure images cover the area */
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .card-content p {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .awareness-card {
+                width: 250px; /* Smaller cards for mobile */
+            }
+        }
+        /* Horizontal Scrolling for Consult Specialists Section */
+        .specialists-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .specialists-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .specialists-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .specialists-grid {
+            display: inline-flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .specialists-grid div {
+            display: inline-block;
+            width: 160px;
+            height: 160px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 19px;
+            color: #333;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            padding: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+            flex-shrink: 0;
+        }
+        .specialists-grid a {
+            text-decoration: none;
+        }
+
+        .specialists-grid div:hover {
+            transform: scale(1.05);
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .specialists-grid div img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
+            filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
+        }
+        /* Horizontal Scrolling for Articles Section */
+.scrollable-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.scrollable-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.scrollable-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.articles-grid {
+    display: inline-flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Article Card Styling */
+.article-card {
+    display: inline-block;
+    width: 400px; /* Fixed width for each card */
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    white-space: normal; /* Allow text to wrap inside cards */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+    display: flex;
+    justify-content: space-between;
+}
+
+.article-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Article Content */
+.article-content {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+    border-right: 1px solid #ccc; /* Thin grey line separator */
+}
+
+.article-content h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.article-content p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Doctor Info */
+.doctor-info {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.doctor-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.doctor-caption {
+    text-align: center;
+}
+
+.doctor-caption h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.doctor-caption p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .article-card {
+        width: 300px; /* Smaller cards for mobile */
+    }
+
+    .doctor-info {
+        width: 100px;
+        padding: 10px;
+    }
+
+    .doctor-info img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .doctor-caption h4 {
+        font-size: 16px;
+    }
+
+    .doctor-caption p {
+        font-size: 12px;
+    }
+}
+/* Alert Message */
+.alert-message {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: #ff4d4d; /* Red color for error messages */
+    margin-top: 5px;
+    margin-bottom: 15px;
+    display: none; /* Hidden by default */
+}
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #000; /* Darker color on hover */
+}
+/* Download App Section */
+.download-app {
+    text-align: center;
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.download-app p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.download-app button {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.download-app .playstore {
+    background-color: #34A853;
+    color: #fff;
+}
+
+.download-app .appstore {
+    background-color: #000;
+    color: #fff;
+}
+
+.download-app button:hover {
+    transform: scale(1.05);
+}
+
+.store-logo {
+    height: 30px;
+    width: auto;
+    vertical-align: middle;
+}
+.download-app button {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+/* Social Media Links */
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media img {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.social-media img:hover {
+    transform: scale(1.1);
+}
+
+/* Newsletter Form */
+#newsletterForm {
+    margin-top: 20px;
+}
+
+#newsletterForm input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#newsletterForm input:focus {
+    border-color: #2980b9;
+}
+
+#newsletterForm button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#newsletterForm button:hover {
+    background-color: #2980b9;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+.dark-mode header {
+    background-color: #333;
+}
+
+.dark-mode .section {
+    background-color: #2c3e50;
+    color: #f0f0f0;
+}
+
+.dark-mode h1, .dark-mode h2, .dark-mode h5, .dark-mode h6 {
+    color: #f0f0f0;
+}
+
+.dark-mode footer {
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+/* Search Suggestions */
+#searchSuggestions {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    margin-top: 5px;
+}
+
+#searchSuggestions div {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#searchSuggestions div:hover {
+    background-color: #f0f0f0;
+}
+/* Not Logged In Popup */
+#notLoggedInPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.popup-content p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.popup-actions button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup-actions button:first-child {
+    background-color: #ccc;
+    color: #333;
+}
+
+.popup-actions button:last-child {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.popup-actions button:hover {
+    opacity: 0.9;
+}
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Optional: Add a slight upward movement */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply fade-in animation to all sections and elements */
+header, .section, footer, .search-bar, .download-app, .testimonials, .articles-grid, .awareness-grid, .specialists-grid {
+    opacity: 0; /* Start invisible */
+    animation: fadeIn 1s ease-in-out forwards; /* Apply animation */
+}
+
+/* Delay animations for a staggered effect */
+header {
+    animation-delay: 0.2s;
+}
+
+.search-bar {
+    animation-delay: 0.4s;
+}
+
+.section {
+    animation-delay: 0.6s;
+}
+
+.testimonials {
+    animation-delay: 0.8s;
+}
+
+.download-app {
+    animation-delay: 1s;
+}
+
+footer {
+    animation-delay: 1.2s;
+}
+/* Only apply animations after the page has loaded */
+body.page-loaded header,
+body.page-loaded .section,
+body.page-loaded footer,
+body.page-loaded .search-bar,
+body.page-loaded .download-app,
+body.page-loaded .testimonials,
+body.page-loaded .articles-grid,
+body.page-loaded .awareness-grid,
+body.page-loaded .specialists-grid {
+    opacity: 0; /* Start invisible */
+    animation: fadeIn 1s ease-in-out forwards; /* Apply animation */
+}
+/* Smooth transitions for buttons and images */
+button, img, a {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Fade-in effect for buttons and images */
+body.page-loaded button,
+body.page-loaded img,
+body.page-loaded a {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* Staggered delays for buttons and images */
+body.page-loaded button {
+    animation-delay: 0.3s;
+}
+
+body.page-loaded img {
+    animation-delay: 0.5s;
+}
+
+body.page-loaded a {
+    animation-delay: 0.7s;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="image/logo.png" alt="Healthcare Website Logo" class="logo">
+            <span class="brand-name">MediMatrix</span>
+        </div>
+        <nav>
+            <a href="records.html">Records</a>
+            <a href="help.html">Contact</a>
+            <a href="help.html" style="padding-inline-end: 120px;">Help</a>
+            <!-- Circular Profile Icon -->
+            <div id="profileIcon">
+                <img src="image/user.svg" alt="Profile" class="profile-icon">
+            </div>
+        </nav>
+    </header>
+    <!-- Not Logged In Popup -->
+<div class="popup" id="notLoggedInPopup">
+    <button class="close-btn" onclick="closeNotLoggedInPopup()">×</button>
+    <div class="popup-header">
+        <h2>Not Logged In</h2>
+    </div>
+    <div class="popup-content">
+        <p>You are not logged in. Please log in to access your profile.</p>
+        <div class="popup-actions">
+            <button onclick="closeNotLoggedInPopup()">Close</button>
+            <button onclick="redirectToLogin()">Log In</button>
+        </div>
+    </div>
+</div>
+
+       <!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Popup -->
+<div class="popup" id="loginPopup">
+    <!-- Close Button -->
+    <button class="close-btn" onclick="closePopup()">×</button>
+    <div class="popup-header">
+        <h2>Doctor Login</h2>
+        <p>Login with phone number</p>
+    </div>
+    <form id="loginForm">
+        <div class="phone-input">
+            <span>+91</span>
+            <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required>
+        </div>
+        <p class="alert-message" id="phoneAlert"></p>
+        <button type="submit" class="next-btn">Next</button>
+    </form>
+    <div class="divider">
+        <span>or</span>
+    </div>
+    <button class="google-login">
+        <img src="image/google-icon.png" alt="Google Icon"> Login with Google
+    </button>
+    <p class="terms">By continuing, you agree to our <a href="#">terms and conditions</a> and <a href="#">privacy policy</a>.</p>
+</div>
+
+<!-- Modify the search form -->
+<div class="search-bar">
+    <form action="doctors.html" method="GET">
+        <input type="text" id="searchInput" name="search" 
+               placeholder="Search doctors or hospitals..." required>
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+    <section class="section">
+        <h2>Consult Specialists</h2>
+        <div class="specialists-container">
+            <div class="specialists-grid">
+                <a href="doctors.html?category=Physician"><div><img src="image/physician.webp" alt="Physician"><b><i>Physicians</i></b></div></a>
+                <a href="doctors.html?category=Physiotherapist"><div><img src="image/physio.webp" alt="Physiotherapist"><b><i>Physiotherapists</i></b></div></a>
+                <a href="doctors.html?category=Cardiologist"><div><img src="image/heart.webp" alt="Cardiologist"><b><i>Cardiologists</i></b></div></a>
+                <a href="doctors.html?category=Dermatologist"><div><img src="image/skin.png" alt="Dermatologist"><b><i>Dermatologists</i></b></div></a>
+                <a href="doctors.html?category=Neurologist"><div><img src="image\brain.png" alt="Neurologist"><b><i>Neurologists</i></b></div></a>
+                <a href="doctors.html?category=Pediatrician"><div><img src="image/child.png" alt="Pediatrician"><b><i>Pediatricians</i></b></div></a>
+                <a href="doctors.html?category=Gynaecologist"><div><img src="image/gynaec.png" alt="Gynaecologist"><b><i>Gynaecologists</i></b></div></a>
+                <a href="doctors.html?category=Oncologist"><div><img src="image/cancer.png" alt="Oncologist"><b><i>Oncologists</i></b></div></a>
+                <a href="doctors.html?category=Dentist"><div><img src="image/tooth.png" alt="Dentist"><b><i>Dentists</i></b></div></a>
+                <a href="doctors.html?category=Opthalmologist"><div><img src="image/eye.webp" alt="Opthalmologist"><b><i>Opthalmologists</i></b></div></a>
+            </div>
+        </div> 
+    </section>
+
+    <section class="section">
+        <h2>Spread the Awareness</h2>
+        <div class="scrollable-container">
+            <div class="awareness-grid">
+                <!-- Card 1 -->
+                <a href="https://en.wikipedia.org/wiki/Breast_cancer"  target="_blank" class="awareness-card">
+                    <img src="image/breastcancer.webp" alt="Breast Cancer Prevention">
+                    <div class="card-content">
+                        <h3>Tips For Breast Cancer Prevention</h3>
+                        <p>Want to lower your breast cancer risk? Discover simple yet powerful prevention tips you can start today.</p>
+                    </div>
+                </a>
+                <!-- Card 2 -->
+                <a href="https://en.wikipedia.org/wiki/Obesity"  target="_blank" class="awareness-card">
+                    <img src="image/fatman.png" alt="Weight Gain Causes">
+                    <div class="card-content">
+                        <h3>Surprising Causes Behind Weight Gain</h3>
+                        <p>Learn about unexpected factors that could be contributing to your weight gain.</p>
+                    </div>
+                </a>
+                <!-- Card 3 -->
+                <a href="https://en.wikipedia.org/wiki/Knee_replacement"  target="_blank" class="awareness-card">
+                    <img src="image/knee.jpg" alt="Knee Replacement">
+                    <div class="card-content">
+                        <h3>How Long Do Knee Replacements Last?</h3>
+                        <p>Find out the lifespan of knee replacements and what factors affect their durability.</p>
+                    </div>
+                </a>
+                <!-- Card 4 -->
+                <a href="https://en.wikipedia.org/wiki/Immune_system"  target="_blank" class="awareness-card">
+                    <img src="image/immunesystem.jpg" alt="Immune System">
+                    <div class="card-content">
+                        <h3>Signs Your Immune System is Out of Whack</h3>
+                        <p>Recognize the warning signs that your immune system may need attention.</p>
+                    </div>
+                </a>
+                <!-- Card 5 -->
+                <a href="https://en.wikipedia.org/wiki/Chronic_fatigue_syndrome"  target="_blank" class="awareness-card">
+                    <img src="image/chronicfatigue.png" alt="Chronic Fatigue Syndrome">
+                    <div class="card-content">
+                        <h3>Is chronic fatigue syndrome all in your brain?</h3>
+                        <p>A new study from the National Institutes of Health has performed more diverse and extensive biological measurements of people experiencing chronic fatigue syndrome than any previous research.</p>
+                    </div>
+                </a>
+                <!-- Card 6 -->
+                <a href="https://en.wikipedia.org/wiki/Drinking_water"  target="_blank" class="awareness-card">
+                    <img src="image/water.png" alt="Drinking Water">
+                    <div class="card-content">
+                        <h3>Does drinking water before meals really help you lose weight?</h3>
+                        <p>If you've ever tried to lose weight, you've probably heard the advice to drink water before a meal because it makes you feel fuller and you'll stop eating sooner. It seems like a reasonable idea — but does it work? And if it doesn't, why do people think it does?</p>
+                    </div>
+                </a>
+                <!-- Card 7 -->
+                <a href="https://en.wikipedia.org/wiki/Prostate_cancer"  target="_blank" class="awareness-card">
+                    <img src="image/tumor.png" alt="Prostate Cancer">
+                    <div class="card-content">
+                        <h3>Prostate cancer: Zapping metastatic tumors with radiation improves survival</h3>
+                        <p>When prostate cancer spreads beyond the gland, it has been treated with hormone therapy, but there are challenging side effects. A new study shows that a different treatment option involving radiation can allow some men to delay or avoid hormone therapy.</p>
+                    </div>
+                </a>
+                <!-- Card 8 -->
+                <a href="https://en.wikipedia.org/wiki/Placebo"  target="_blank" class="awareness-card">
+                    <img src="image/placebo.png" alt="Placebo Effect">
+                    <div class="card-content">
+                        <h3>The case of the bad placebo</h3>
+                        <p>A trial from 2019 showed a medication dramatically reduced triglyceride levels in participants, but subsequent analysis found that the placebo used in the trial may have negatively affected those assigned to take it.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Read Top Articles from Health Experts</h2>
+        <div class="scrollable-container">
+            <div class="articles-grid">
+                <!-- Card 1 -->
+                <a href="https://en.wikipedia.org/wiki/Cardiovascular_disease"  target="_blank" class="article-card">
+                    <div class="article-content">
+                        <h3>Understanding Heart Health</h3>
+                        <p>Heart disease is a leading cause of death worldwide. Learn how to maintain a healthy heart through diet, exercise, and regular check-ups.</p>
+                    </div>
+                    <div class="doctor-info">
+                        <img src="image/docman.png" alt="Dr. John Doe">
+                        <div class="doctor-caption">
+                            <h4>Dr. John Doe</h4>
+                            <p>Cardiologist, MD</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 2 -->
+                <a href="https://en.wikipedia.org/wiki/Diabetes_management"  target="_blank" class="article-card">
+                    <div class="article-content">
+                        <h3>Managing Diabetes</h3>
+                        <p>Diabetes management requires a balanced approach. Discover the latest strategies for controlling blood sugar levels effectively.</p>
+                    </div>
+                    <div class="doctor-info">
+                        <img src="image/docwoman.png" alt="Dr. Jane Smith">
+                        <div class="doctor-caption">
+                            <h4>Dr. Jane Smith</h4>
+                            <p>Endocrinologist, PhD</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 3 -->
+                <a href="https://en.wikipedia.org/wiki/Mental_health"  target="_blank" class="article-card">
+                    <div class="article-content">
+                        <h3>Mental Health and Well-being</h3>
+                        <p>Mental health is as important as physical health. Explore ways to manage stress, anxiety, and depression in your daily life.</p>
+                    </div>
+                    <div class="doctor-info">
+                        <img src="image/docwoman.png" alt="Dr. Emily Brown">
+                        <div class="doctor-caption">
+                            <h4>Dr. Emily Brown</h4>
+                            <p>Psychiatrist, MD</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 4 -->
+                <a href="https://en.wikipedia.org/wiki/Pediatrics"  target="_blank" class="article-card">
+                    <div class="article-content">
+                        <h3>Pediatric Care Essentials</h3>
+                        <p>Learn about the key aspects of pediatric care, including vaccinations, nutrition, and common childhood illnesses.</p>
+                    </div>
+                    <div class="doctor-info">
+                        <img src="image/docman.png" alt="Dr. Michael Lee">
+                        <div class="doctor-caption">
+                            <h4>Dr. Michael Lee</h4>
+                            <p>Pediatrician, MD</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 5 -->
+                <a href="https://en.wikipedia.org/wiki/Cancer_treatment"  target="_blank" class="article-card">
+                    <div class="article-content">
+                        <h3>Advances in Cancer Treatment</h3>
+                        <p>Discover the latest advancements in cancer treatment, including immunotherapy and targeted therapies.</p>
+                    </div>
+                    <div class="doctor-info">
+                        <img src="image/docwoman.png" alt="Dr. Sarah Johnson">
+                        <div class="doctor-caption">
+                            <h4>Dr. Sarah Johnson</h4>
+                            <p>Oncologist, MD</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 6 -->
+                <a href="https://en.wikipedia.org/wiki/Aging"  target="_blank" class="article-card">
+                    <div class="article-content">
+                        <h3>Healthy Aging Tips</h3>
+                        <p>Explore strategies for healthy aging, including exercise, nutrition, and preventive healthcare.</p>
+                    </div>
+                    <div class="doctor-info">
+                        <img src="image/docman.png" alt="Dr. Robert Wilson">
+                        <div class="doctor-caption">
+                            <h4>Dr. Robert Wilson</h4>
+                            <p>Geriatrician, MD</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 7 -->
+                <a href="https://en.wikipedia.org/wiki/Allergy"  target="_blank" class="article-card">
+                    <div class="article-content">
+                        <h3>Understanding Allergies</h3>
+                        <p>Allergies can significantly impact your quality of life. Learn about common allergens, symptoms, and effective management strategies.</p>
+                    </div>
+                    <div class="doctor-info">
+                        <img src="image/docwoman.png" alt="Dr. Laura Green">
+                        <div class="doctor-caption">
+                            <h4>Dr. Laura Green</h4>
+                            <p>Allergist, MD</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 8 -->
+                <a href="https://en.wikipedia.org/wiki/Gut_health" target="_blank" class="article-card">
+                    <div class="article-content">
+                        <h3>Nutrition for a Healthy Gut</h3>
+                        <p>Your gut health plays a crucial role in overall well-being. Discover the best foods and habits to maintain a healthy digestive system.</p>
+                    </div>
+                    <div class="doctor-info">
+                        <img src="image/docman.png" alt="Dr. Mark Taylor">
+                        <div class="doctor-caption">
+                            <h4>Dr. Mark Taylor</h4>
+                            <p>Nutritionist, PhD</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>What Our Users Have to Say</h2>
+        <div class="testimonials">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+            <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+            <div class="testimonial-carousel">
+                <div class="testimonial">"This app is fantastic! It helped me find the right doctor quickly."</div>
+                <div class="testimonial">"The articles are very informative and easy to understand."</div>
+                <div class="testimonial">"Great platform for managing health records and appointments."</div>
+                <div class="testimonial">"Excellent service and very user-friendly interface."</div>
+                <div class="testimonial">"Highly recommend this platform for anyone looking for reliable healthcare services."</div>
+                <div class="testimonial">"The customer support team is very responsive and helpful."</div>
+            </div>
+            <div class="carousel-indicators">
+                <span class="indicator" onclick="moveCarouselTo(0)"></span>
+                <span class="indicator" onclick="moveCarouselTo(1)"></span>
+                <span class="indicator" onclick="moveCarouselTo(2)"></span>
+                <span class="indicator" onclick="moveCarouselTo(3)"></span>
+                <span class="indicator" onclick="moveCarouselTo(4)"></span>
+                <span class="indicator" onclick="moveCarouselTo(5)"></span>
+            </div>
+        </div>
+    </section>
+
+    <div class="download-app">
+        <p>Always stay connected with your doctor and your health report. Download the app:</p>
+        <button class="playstore" aria-label="Download on Playstore" onclick="window.location.href='https://play.google.com'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Playstore Logo" class="store-logo">
+            Playstore
+        </button>
+        <button class="appstore" aria-label="Download on Appstore" onclick="window.location.href='https://www.apple.com/app-store'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Appstore Logo" class="store-logo">
+            Appstore
+        </button>
+    </div>
+
+    <footer>
+        <p>
+            <a href="about.html">About</a> |
+            <a href="blog.html">Blog</a> |
+            <a href="help.html">Contact Us</a>
+        </p>
+        <p>
+            <a href="help.html">Help</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms and Conditions</a>
+        </p>
+        <!-- Social Media Links -->
+        <div class="social-media">
+            <a href="#" aria-label="Facebook"><img src="image/fb.webp" alt="Facebook"></a>
+            <a href="https://x.com/Medi_Matrix?t=DVdLnBoSlL5gVbMXz24V4w&s=09s" aria-label="Twitter"><img src="image/x.png" alt="Twitter"></a>
+            <a href="https://x.com/Medi_Matrix?t=DVdLnBoSlL5gVbMXz24V4w&s=09" aria-label="Instagram"><img src="image/insta.png" alt="Instagram"></a>
+        </div>
+        <!-- Newsletter Signup -->
+        <form id="newsletterForm">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </footer>
+
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+    <!-- Dark Mode Toggle Button -->
+<button id="themeToggle" onclick="toggleTheme()">Toggle Dark Mode</button>
+
+<!-- Search Suggestions -->
+<div id="searchSuggestions"></div>
+<!-- Loading Spinner -->
+<div id="loading-spinner" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    <img src="spinner.gif" alt="Loading..." style="width: 50px; height: 50px;">
+</div>
+    <script>
+        // Hide the spinner when the page loads
+window.addEventListener("load", function () {
+    document.getElementById("loading-spinner").style.display = "none";
+});
+        // Wait for the page to fully load
+window.addEventListener("load", function () {
+    // Add a class to the body to trigger animations
+    document.body.classList.add("page-loaded");
+});
+
+    // Close popup and overlay
+    function closePopup() {
+        document.getElementById("loginPopup").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    // Handle form submission
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Validate phone number
+        if (validatePhoneNumber()) {
+            // Redirect to profile setup page
+            window.location.href = "profile_setup.html";
+        }
+    });
+
+    // Back to top button
+    window.onscroll = function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("backToTop").style.display = "block";
+        } else {
+            document.getElementById("backToTop").style.display = "none";
+        }
+    };
+
+    // Smooth scroll to top
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Testimonials Carousel
+    let currentIndex = 0;
+    const testimonials = document.querySelectorAll('.testimonial');
+    const totalTestimonials = testimonials.length;
+    const carousel = document.querySelector('.testimonial-carousel');
+
+    function moveCarousel(direction) {
+        currentIndex = (currentIndex + direction + totalTestimonials) % totalTestimonials;
+        const offset = -currentIndex * 100;
+        carousel.style.transform = `translateX(${offset}%)`;
+        updateIndicators();
+    }
+
+    // Auto-play carousel
+    let autoPlayInterval;
+
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => moveCarousel(1), 5000);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+
+    // Start auto-play on page load
+    startAutoPlay();
+
+    // Pause auto-play when user interacts with carousel
+    document.querySelector(".testimonials").addEventListener("mouseenter", stopAutoPlay);
+    document.querySelector(".testimonials").addEventListener("mouseleave", startAutoPlay);
+
+    function moveCarouselTo(index) {
+        currentIndex = index;
+        const offset = -currentIndex * 100;
+        carousel.style.transform = `translateX(${offset}%)`;
+        updateIndicators();
+    }
+
+    function updateIndicators() {
+        const indicators = document.querySelectorAll('.indicator');
+        indicators.forEach((indicator, index) => {
+            if (index === currentIndex) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+    }
+
+    // Phone number validation
+    const phoneInput = document.getElementById('phoneNumber');
+    const phoneAlert = document.getElementById('phoneAlert');
+
+    function validatePhoneNumber() {
+        let phoneNumber = phoneInput.value.trim(); // Trim whitespace
+
+        // Check if input is empty
+        if (phoneNumber.length === 0) {
+            phoneAlert.textContent = "Please enter your phone number.";
+            phoneAlert.style.display = "block";
+            return false;
+        }
+
+        // Ensure input contains only numbers
+        if (!/^\d+$/.test(phoneNumber)) {
+            phoneAlert.textContent = "Please enter only numbers.";
+            phoneAlert.style.display = "block";
+            return false;
+        }
+
+        // Ensure input is exactly 10 digits
+        if (phoneNumber.length !== 10) {
+            phoneAlert.textContent = "Phone number must be exactly 10 digits.";
+            phoneAlert.style.display = "block";
+            return false;
+        }
+
+        // If all validations pass
+        phoneAlert.style.display = "none";
+        return true;
+    }
+
+    // Prevent non-numeric input dynamically
+    phoneInput.addEventListener("input", function () {
+        this.value = this.value.replace(/\D/g, ""); // Remove non-digit characters
+        validatePhoneNumber();
+    });
+
+    // Limit input to 10 digits
+    phoneInput.addEventListener("keydown", function (event) {
+        if (this.value.length >= 10 && event.key !== "Backspace") {
+            event.preventDefault();
+        }
+    });
+
+    // Close popup when clicking outside of it
+    document.getElementById("overlay").addEventListener("click", closePopup);
+
+    // Prevent closing when clicking inside the popup
+    document.getElementById("loginPopup").addEventListener("click", function(event) {
+        event.stopPropagation();
+    });
+    // Dark Mode Toggle
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+}
+
+// Search Suggestions
+const searchInput = document.getElementById("searchInput");
+const searchSuggestions = document.getElementById("searchSuggestions");
+
+searchInput.addEventListener("input", function () {
+    const query = this.value;
+    if (query.length > 2) {
+        // Simulate fetching suggestions from an API
+        const suggestions = ["Doctor", "Hospital", "Clinic", "Cardiologist", "Dermatologist"];
+        searchSuggestions.innerHTML = suggestions.map(item => `<div>${item}</div>`).join("");
+    } else {
+        searchSuggestions.innerHTML = "";
+    }
+});
+
+// Handle clicking on a suggestion
+searchSuggestions.addEventListener("click", function (event) {
+    if (event.target.tagName === "DIV") {
+        searchInput.value = event.target.textContent;
+        searchSuggestions.innerHTML = "";
+    }
+});
+// Check if the user is logged in (dummy function for demonstration)
+let isLoggedIn = false; // Change this to true after login
+
+// Show not logged in popup
+document.getElementById("profileIcon").addEventListener("click", function() {
+    if (!isLoggedIn) {
+        document.getElementById("notLoggedInPopup").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    } else {
+        // Redirect to profile page if logged in
+        window.location.href = "profile_setup.html";
+    }
+});
+
+// Close not logged in popup
+function closeNotLoggedInPopup() {
+    document.getElementById("notLoggedInPopup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
+
+// Redirect to login popup
+function redirectToLogin() {
+    closeNotLoggedInPopup();
+    document.getElementById("loginPopup").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+</script>
+
+</body>
+</html>
