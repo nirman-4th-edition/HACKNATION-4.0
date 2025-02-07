@@ -1,0 +1,48 @@
+{
+    "patients": [
+      {
+        "_id": "64f8a12d987654321c123456",
+        "patientID": "PAT2024001",
+        "fullName": "Rajesh Kumar",
+        "dob": "1985-06-15",
+        "eligibleSchemes": ["Ayushman Bharat", "CGHS"],
+        "medicalHistory": ["Hypertension", "Diabetes"],
+        "healthRecords": ["HR001", "HR002"],
+        "gender": "Male",
+        "registrationDate": "2024-01-15"
+      },
+      {
+        "_id": "64f8a12d987654321c123457",
+        "patientID": "PAT2024002",
+        "fullName": "Priya Patel",
+        "dob": "1992-03-22",
+        "eligibleSchemes": ["Ayushman Bharat"],
+        "medicalHistory": ["Asthma"],
+        "healthRecords": ["HR003"],
+        "gender": "Female",
+        "registrationDate": "2024-01-20"
+      },
+      {
+        "_id": "64f8a12d987654321c123458",
+        "patientID": "PAT2024003",
+        "fullName": "Aarav Singh",
+        "dob": "1978-11-30",
+        "eligibleSchemes": ["CGHS"],
+        "medicalHistory": ["Arthritis"],
+        "healthRecords": ["HR004"],
+        "gender": "Male",
+        "registrationDate": "2024-01-25"
+      },
+      {
+        "_id": "64f8a12d987654321c123459",
+        "patientID": "PAT2024004",
+        "fullName": "Ananya Gupta",
+        "dob": "1990-08-10",
+        "eligibleSchemes": [],
+        "medicalHistory": ["Migraine"],
+        "healthRecords": ["HR005"],
+        "gender": "Female",
+        "registrationDate": "2024-02-01"
+      }
+    ]
+  }

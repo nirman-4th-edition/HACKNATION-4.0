@@ -1,0 +1,40 @@
+{
+  "appointments": [
+    { 
+      "id": 1, 
+      "name": "John Doe", 
+      "time": "9:30 AM", 
+      "date": "2024-02-05", 
+      "status": "Scheduled",
+      "type": "checkup",
+      "notes": ""
+    },
+    { 
+      "id": 2, 
+      "name": "Jane Smith", 
+      "time": "11:15 AM", 
+      "date": "2024-02-05", 
+      "status": "Scheduled",
+      "type": "consultation",
+      "notes": ""
+    },
+    { 
+      "id": 3, 
+      "name": "Mike Johnson", 
+      "time": "2:00 PM", 
+      "date": "2024-02-04", 
+      "status": "Completed",
+      "type": "follow-up",
+      "notes": "Regular checkup completed"
+    },
+    { 
+      "id": 4, 
+      "name": "Sarah Wilson", 
+      "time": "3:45 PM", 
+      "date": "2024-02-03", 
+      "status": "Cancelled",
+      "type": "checkup",
+      "notes": "Patient rescheduled"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "appointments": [
+    {
+      "id": 1,
+      "patient": "John Doe",
+      "time": "9:30 AM",
+      "doctor": "Dr. Smith",
+      "purpose": "Follow-up",
+      "status": "Confirmed"
+    },
+    {
+      "id": 2,
+      "patient": "Emma Wilson",
+      "time": "2:00 PM",
+      "doctor": "Dr. Johnson",
+      "purpose": "Consultation",
+      "status": "Pending"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "age": 42,
+      "lastVisit": "2024-03-15",
+      "nextAppointment": "2024-03-28"
+    },
+    {
+      "id": 2,
+      "name": "Emma Wilson",
+      "age": 34,
+      "lastVisit": "2024-03-18",
+      "nextAppointment": "2024-04-02"
+    }
+  ]
+}
