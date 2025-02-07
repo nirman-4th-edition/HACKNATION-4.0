@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Disease Detection</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Health & Disease Detection</h1>
+
+        <!-- Health Survey Section -->
+        <form id="healthSurvey">
+            <h2>Physical Health Survey</h2>
+            <label for="height">Height (in cm):</label>
+            <input type="number" id="height" name="height" placeholder="Enter height in cm" required>
+            
+            <label for="weight">Weight (in kg):</label>
+            <input type="number" id="weight" name="weight" placeholder="Enter weight in kg" required>
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="Enter your age" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="result"></div>
+
+        <!-- Disease Detection Section -->
+        <form id="diseaseSurvey">
+            <h2>Symptom-Based Disease Detection</h2>
+            <p>Select the symptoms you are experiencing:</p>
+            <label><input type="checkbox" name="symptoms" value="fever"> Fever</label>
+            <label><input type="checkbox" name="symptoms" value="cough"> Cough</label>
+            <label><input type="checkbox" name="symptoms" value="fatigue"> Fatigue</label>
+            <label><input type="checkbox" name="symptoms" value="headache"> Headache</label>
+            <label><input type="checkbox" name="symptoms" value="nausea"> Nausea</label>
+            <label><input type="checkbox" name="symptoms" value="chest pain"> Chest Pain</label>
+            <label><input type="checkbox" name="symptoms" value="shortness of breath"> Shortness of Breath</label>
+            <label><input type="checkbox" name="symptoms" value="joint pain"> Joint Pain</label>
+            <label><input type="checkbox" name="symptoms" value="blurred vision"> Blurred Vision</label>
+            <label><input type="checkbox" name="symptoms" value="weight loss"> Weight Loss</label>
+            <label><input type="checkbox" name="symptoms" value="night sweats"> Night Sweats</label>
+            <label><input type="checkbox" name="symptoms" value="insomnia"> Insomnia</label>
+
+            <button type="submit">Detect Disease</button>
+        </form>
+
+        <div id="diseaseResult"></div>
+
+        <!-- Mental Health Questions -->
+        <form id="mentalHealthSurvey">
+            <h2>Mental Health Assessment</h2>
+            <label>
+                <input type="checkbox" name="mentalSymptoms" value="anxiety"> Feeling anxious or worried often
+            </label>
+            <label>
+                <input type="checkbox" name="mentalSymptoms" value="depression"> Feeling down or hopeless
+            </label>
+            <label>
+                <input type="checkbox" name="mentalSymptoms" value="difficulty concentrating"> Difficulty concentrating
+            </label>
+            <label>
+                <input type="checkbox" name="mentalSymptoms" value="irritability"> Increased irritability
+            </label>
+            <label>
+                <input type="checkbox" name="mentalSymptoms" value="sleep disturbances"> Sleep disturbances
+            </label>
+
+            <button type="submit">Analyze Mental Health</button>
+        </form>
+
+        <div id="mentalHealthResult"></div>
+
+        <!-- Diet Plan & Lifestyle Tips -->
+        <div id="dietPlanSection">
+            <h2>Personalized Diet Plan & Lifestyle Tips</h2>
+            <div id="dietPlan"></div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-container">
+            <canvas id="healthMetrics"></canvas>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
