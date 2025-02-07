@@ -1,0 +1,15 @@
+#markerWithExternalCss {
+  background-image: url(https://tiles.locationiq.com/static/images/marker.png);
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+/*Example 2, most of the CSS is set by JS*/
+.marker {
+  display: block;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}

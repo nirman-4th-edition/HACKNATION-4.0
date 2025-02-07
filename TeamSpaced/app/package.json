@@ -1,0 +1,54 @@
+{
+  "name": "agrispaced-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@capacitor/android": "^7.0.1",
+    "@capacitor/core": "^7.0.1",
+    "@capacitor/geolocation": "^7.0.0",
+    "@capacitor/ios": "^7.0.1",
+    "@heroicons/react": "^2.2.0",
+    "cra-template-typescript": "1.2.0",
+    "konsta": "^4.0.1",
+    "maplibre-gl": "^5.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.1.5",
+    "react-scripts": "5.0.1",
+    "swiper": "^11.2.2",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.0.1",
+    "@types/node": "^22.13.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "tailwindcss": "^3.4.17"
+  }
+}
