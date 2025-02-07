@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 const DoctorSchema = new mongoose.Schema({
   name: String,
   department: String,
-  specialization: String
+  specialization: String,
+  searchQuery: String
 });
 
 const UserSchema = new mongoose.Schema({
