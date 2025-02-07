@@ -12,6 +12,7 @@ import EyeMetics from "./pages/eyeMetrics";
 import PcosMetrics from "./pages/pcosMetrics";
 import BloodMetics from "./pages/bloodMetrics";
 import CholesterolGraph from "./pages/cholesterolGraph";
+import PCOSGraphs from "./pages/pcosGraphs";
 
 function App() {
   return (
@@ -89,6 +90,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <CholesterolGraph />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/pcos-graph"
+              element={
+                <ProtectedRoute>
+                  <PCOSGraphs />
                 </ProtectedRoute>
               }
             />

@@ -24,7 +24,7 @@ body {
 
 .lastreports p:first-child {
   font-weight: 600;
-  color: #ffffff; /* Light Blue */
+  color: #74b9ff; /* Light Blue */
   border-bottom: 2px solid #1e3799;
   padding-bottom: 1.2rem;
   margin-bottom: 1.2rem;
@@ -124,7 +124,11 @@ body {
 
 /* Titles */
 .metrics-container .mantine-Title-root {
+<<<<<<< HEAD
   color: #688cb0;
+=======
+  color: #2c3e50;
+>>>>>>> b2e83cd3cc989b0860e9d1d994a3a85ea251b1f7
   font-weight: 600;
 }
 

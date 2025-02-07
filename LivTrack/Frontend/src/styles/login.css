@@ -19,7 +19,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-/* Container for login */
+/* Center login container */
 .login-container {
   display: flex;
   align-items: center;
@@ -37,6 +37,7 @@ body {
   border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  width: 350px;
 }
 
 .login-card:hover {
@@ -68,21 +69,49 @@ body {
   background: var(--input-focus) !important;
 }
 
-/* Submit button */
+/* Container for buttons */
+.login-register-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Login Button */
 .login-button {
   background: var(--button-bg) !important;
   color: white !important;
-  padding: 12px;
+  padding: 12px 20px;
   font-size: 16px;
   font-weight: bold;
   border-radius: 8px;
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-  margin-top: 1rem;
+  width: 48%;
 }
 
 .login-button:hover {
   background: var(--button-hover) !important;
   transform: translateY(-2px);
+}
+
+/* Register Button */
+.register-button {
+  background: transparent;
+  border: 2px solid var(--button-bg);
+  color: var(--button-bg);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
+  width: 48%;
+}
+
+.register-button:hover {
+  background: var(--button-bg);
+  color: white;
+  transform: scale(1.05);
 }
 
 /* Error alert styling */

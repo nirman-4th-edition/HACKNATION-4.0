@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../styles/login.css";
-
 import { useNavigate } from "react-router-dom";
 import {
   TextInput,
@@ -22,7 +21,6 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", email, password);
     setError(null); // Reset error on new attempt
 
     try {
@@ -42,6 +40,10 @@ export default function Login() {
       setError("Login failed. Please check your credentials.");
       console.error("Login error:", error);
     }
+  };
+
+  const handleRegister = () => {
+    window.location.href = "http://localhost:5001/api/v1/auth/register";
   };
 
   return (
@@ -74,9 +76,15 @@ export default function Login() {
             required
             placeholder="Enter your password"
           />
-          <Button type="submit" fullWidth className="login-button">
-            Login
-          </Button>
+          
+          <div className="login-register-container">
+            <Button type="submit" className="login-button">
+              Login
+            </Button>
+            <Button className="register-button" onClick={handleRegister}>
+              Register
+            </Button>
+          </div>
         </form>
       </Card>
     </div>
