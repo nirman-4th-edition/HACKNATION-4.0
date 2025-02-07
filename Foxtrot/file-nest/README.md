@@ -1,8 +1,47 @@
-# React + Vite
+### To-dos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Directory Structuring
+- Deployment
+- Add PDFS and other formats + handwritten
+- More efficient method for subject matching
 
-Currently, two official plugins are available:
+## other features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Specialized Doubts Section
+- Flag bar for unprocessed images
+
+### Tasks Completed
+
+- Chat Panel
+- Window layout
+- Auth
+- Routing Components
+- Migrating backend from firebase to mongo
+- Integrating WebSockets
+- Front end and backend connection
+- Chat Panel Message display. Fetching msgs from backend
+-  Uploading images/files into a cloud storage. Like cloudinary, MongoGridFS ...
+-  Add image to backend and display it in the chat panel
+- Image Processing :) 
+
+## Installations
+
+- `npm install`
+- npm install tailwindcss @tailwindcss/vite
+- yarn add @material-tailwind/react
+- npm i -D daisyui@beta
+- npm i react-icons
+- npm i react-router-dom
+
+## Backend 2
+
+- Open the backend Folder in a separate terminal with `cd backend-2`
+- Run `npm install` &
+- `node server.js`
+- Your backend will start running in the port
+- Now open another terminal and run --- `npm run dev ` to start the react app
+
+## Python 
+
+- Second backend for for image processing
+- pip install -r requirements.txt
