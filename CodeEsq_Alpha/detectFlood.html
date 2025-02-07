@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flood Detection System</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s ease;
+      }
+      h1 {
+        color: #333;
+      }
+      #water-level {
+        font-size: 2.5em;
+        color: #fff;
+        margin: 20px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      .alert {
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.5em;
+        margin-top: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #fff;
+        background-color: #28a745;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Flood Detection System</h1>
+    <p>Current Water Level:</p>
+    <p id="water-level">0 cm</p>
+    <p id="alert-message"></p>
+    <button onclick="simulateSensor()">Simulate Sensor Data</button>
+
+    <script>
+      let waterLevel = 0;
+      const floodThreshold = 50;
+      const body = document.body;
+
+      function updateDisplay() {
+        const waterLevelElement = document.getElementById("water-level");
+        const alertMessageElement = document.getElementById("alert-message");
+
+        waterLevelElement.textContent = `${waterLevel} cm`;
+
+        if (waterLevel <= 30) {
+          body.style.backgroundColor = "#4CAF50";
+          alertMessageElement.textContent = "";
+        } else if (waterLevel > 30 && waterLevel <= floodThreshold) {
+          body.style.backgroundColor = "#FFEB3B";
+          alertMessageElement.textContent = "Warning: Water level is rising!";
+          alertMessageElement.classList.add("alert");
+        } else {
+          body.style.backgroundColor = "#F44336";
+          alertMessageElement.textContent =
+            "Flood Alert! Water level is too high!";
+          alertMessageElement.classList.add("alert");
+        }
+      }
+
+      function simulateSensor() {
+        waterLevel = Math.floor(Math.random() * 100);
+        console.log(`Simulated water level: ${waterLevel} cm`);
+
+        updateDisplay();
+      }
+
+      updateDisplay();
+    </script>
+  </body>
+</html>
