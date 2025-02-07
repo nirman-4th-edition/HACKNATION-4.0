@@ -94,9 +94,12 @@ export default function Chatbot({ username = "User" }: ChatbotProps) {
                                     {msg.text}
                                     {msg.file && <p className="text-xs text-gray-400 mt-1 pb-2">📎 {msg.file.name}</p>}
                                     {msg.type == "call" && <p className="text-xs text-gray-400 mt-1">📞 Call {122}</p>}
-                                    {msg.type == "book" && <>{msg.doctors?.map((e: any) => {
+                                    {msg.type == "book" && <>{msg.doctors?.map((e: any , i:number) => {
                                         return <div className="border-1 border-[1px] rounded-[5px] bg-white text-black py-2 px-2 flex justify-between items-center">
-                                            <div className="flex flex-col ">
+                                            <div onClick={()=>{
+                                              // set local storage 
+                                              localStorage.setItem('boo', JSON.stringify({doctors : msg.doctors?.[i] , data : msg.data}));
+                                            }} className="flex flex-col ">
                                                 <p className="text-[18px] font-semibold">{e.name}</p>
                                                 <p>{e.department}</p>
                                             </div>
