@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://play-lh.googleusercontent.com/sVy9AmOKtsTq9uv5RsgjOJzI2BM3RnROOmQfMaJfNpDSai5N2ECByqTQSqJBErExpaUc">
+    <title>Rural Education Initiative</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(45deg, #ff6b6b, #f8a5c2, #6a89cc, #f9ca24, #48c9b0); /* Multicolor gradient */
+    animation: gradientBackground 10s ease infinite;
+}
+
+#bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    animation: zoom 30s infinite alternate;
+}
+
+@keyframes zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+.container {
+    background-color: rgba(24, 182, 210, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transform: translateY(-20px);
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.form-group input {
+    width: calc(100% - 40px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 40px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:hover {
+    border-color: #240fe1;
+    box-shadow: 0 0 12px rgba(36, 15, 225, 0.6);
+}
+
+.form-group input:focus {
+    border-color: #240fe1;
+    box-shadow: 0 0 8px rgba(36, 15, 225, 0.5);
+}
+
+.form-group .fa {
+    position: absolute;
+    left: 10px;
+    top: 70%;
+    transform: translateY(-50%);
+    color: #240fe1;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.form-group input:focus + .fa {
+    color: #240fe1;
+}
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    background-color: green;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.form button:hover {
+    background-color: rgb(238, 29, 113);
+    transform: scale(1.05);
+}
+
+.form-group a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: blue;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-group a:hover {
+    text-decoration: underline;
+    color: darkblue;
+}
+
+.form-links {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.form-links a {
+    color: blue;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.form-links a:hover {
+    text-decoration: underline;
+    color: darkblue;
+}
+
+i {
+    color: blue;
+}
+
+.form-links .fa {
+    margin-right: 5px;
+}
+
+.password-strength {
+    margin-top: 10px;
+    font-size: 14px;
+    font-style: italic;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.password-strength.show {
+    opacity: 1;
+}
+
+.weak {
+    color: red;
+    animation: pulseRed 1s infinite;
+}
+
+.medium {
+    color: orange;
+    animation: pulseOrange 1s infinite;
+}
+
+.strong {
+    color: green;
+    animation: pulseGreen 1s infinite;
+}
+
+@keyframes pulseRed {
+    0% { color: red; }
+    50% { color: darkred; }
+    100% { color: red; }
+}
+
+@keyframes pulseOrange {
+    0% { color: orange; }
+    50% { color: darkorange; }
+    100% { color: orange; }
+}
+
+@keyframes pulseGreen {
+    0% { color: green; }
+    50% { color: darkgreen; }
+    100% { color: green; }
+}
+
+.password-toggle {
+    position: absolute;
+    top: 70%;
+    right: 40px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: #240fe1;
+}
+
+.email-validation {
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+.logo img {
+    width: 150px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    animation: fadeIn 2s ease-in, pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+    </style>
+    
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="logo">
+        <img src="edu.png" alt="EduNexus Logo" />
+      </div>
+    <div class="container">
+        <marquee style="color:red">Welcome to Rural Education Initiative for Register.</marquee>
+        <h1 style="text-align:center">Registration</h1>
+
+        <form id="registrationForm" action="register.php" method="POST">
+            <div class="form-group">
+                <label for="name"><i class="fa fa-user"></i> Enter your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="password"><i class="fa fa-lock"></i> Enter your Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+                <span class="password-toggle" onclick="togglePasswordVisibility('password')">
+                    <i class="fa fa-eye" id="password-toggle-icon"></i>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="repassword"><i class="fa fa-lock"></i> Re-Enter your Password:</label>
+                <input type="password" id="repassword" name="repassword" placeholder="Re-Enter your Password" required>
+                <span class="password-toggle" onclick="togglePasswordVisibility('repassword')">
+                    <i class="fa fa-eye" id="repassword-toggle-icon"></i>
+                </span>
+            </div>
+            <div id="password-strength" class="password-strength"></div>
+
+            <div class="form">
+                <button type="submit"><i class="fa fa-sign-in-alt"></i> Register</button><br><br>
+                <button type="reset"><i class="fa fa-sync-alt"></i> Reset</button>
+            </div>
+            <div class="form-links">
+                <a href="login.html"><i class="fa fa-user-plus"></i> Login</a>
+                <a href="forgot_password.html"><i class="fa fa-question-circle"></i> Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        function ctrlShiftKey(e, keyCode) {
+            return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
+
+        document.onkeydown = (e) => {
+            if (
+                e.keyCode === 123 ||
+                ctrlShiftKey(e, 'I') ||
+                ctrlShiftKey(e, 'J') ||
+                ctrlShiftKey(e, 'C') ||
+                (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+            ) {
+                return false;
+            }
+        };
+
+        function togglePasswordVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(`${inputId}-toggle-icon`);
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function updatePasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthText = document.getElementById('password-strength');
+            let strength = 'Weak';
+            let color = 'red';
+
+            if (password.length > 8) {
+                strength = 'Medium';
+                color = 'orange';
+                if (password.match(/[A-Z]/) && password.match(/[0-9]/)) {
+                    strength = 'Strong';
+                    color = 'green';
+                }
+            }
+
+            strengthText.textContent = `Password Strength: ${strength}`;
+            strengthText.className = `password-strength ${strength.toLowerCase()}`;
+        }
+
+        document.getElementById('password').addEventListener('input', updatePasswordStrength);
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const repassword = document.getElementById('repassword').value;
+
+            if (password !== repassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            const formData = new FormData(this);
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(result => {
+                alert(result); 
+                if (result.includes('successful')) {
+                    window.location.href = "login.html"; 
+                }
+            })
+            .catch(error => {
+                alert('An error occurred: ' + error.message);
+            });
+        });
+    </script>
+</body>
+</html>
