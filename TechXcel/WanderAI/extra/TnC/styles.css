@@ -1,0 +1,71 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background-color: #0957ab;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0056b3;
+    padding: 20px 0;
+   
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+   text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main {
+    padding: 50px 0;
+}
+
+.terms-conditions h2, .privacy-policy h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.terms-conditions h3, .privacy-policy h3 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.terms-conditions p, .privacy-policy p {
+    line-height: 1.6;
+}
+
+footer {
+    background-color: #0056b3;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
+}
