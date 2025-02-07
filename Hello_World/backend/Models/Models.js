@@ -18,6 +18,9 @@ const UserSchema = new mongoose.Schema({
 });
 
 const AppointmentSchema = new mongoose.Schema({
+  dbId : {
+    type : String
+  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

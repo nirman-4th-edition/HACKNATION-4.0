@@ -191,6 +191,8 @@ router.post('/chat', async (req, res) => {
     }
 });
 
+
+
 // Get chat history endpoint with improved error handling
 router.get('/chat/:chatId', (req, res) => {
     try {

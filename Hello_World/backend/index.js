@@ -47,11 +47,12 @@ const doctorStatus = {};
 
 app.post("/user/add", async (req, res) => {
   try {
-    const { name, year, sex } = req.body;
+    const { name, year, sex ,dbId } = req.body;
     const user = new User({
       name,
       yearOfBirth: year,
       sex,
+      dbId
     });
     await user.save();
     res.status(201).json(user);
