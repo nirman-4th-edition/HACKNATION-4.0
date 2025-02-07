@@ -1,0 +1,23 @@
+@keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  .border-l-4 {
+    border-left-width: 4px;
+  }
+  
+  .hover\:shadow-2xl:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
