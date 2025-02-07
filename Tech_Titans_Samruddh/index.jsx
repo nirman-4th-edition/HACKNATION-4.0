@@ -3,7 +3,7 @@ import React from 'react'
 const index = () => {
   return (
     <div>
-      Hi
+      Hi Samrudh
     </div>
   )
 }
