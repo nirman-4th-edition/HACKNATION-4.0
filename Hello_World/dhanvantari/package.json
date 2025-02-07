@@ -21,11 +21,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.4.1",
-<<<<<<< HEAD
-    "lucide-react": "^0.474.0",
-=======
     "lucide-react": "^0.475.0",
->>>>>>> 4e056a8456699524a5054d01196203a5c36e433e
     "motion": "^12.4.1",
     "next": "15.1.6",
     "node-appwrite": "^15.0.0",
