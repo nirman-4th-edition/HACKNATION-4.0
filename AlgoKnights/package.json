@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "nodemailer": "^6.10.0",
-    "python-shell": "^5.0.0"
-  }
-}
