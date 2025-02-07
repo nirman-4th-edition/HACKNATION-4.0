@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ESP32 Weather Station</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        margin: 0;
+        padding: 0;
+        color: #fff;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+        margin: 50px auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+      }
+      h1 {
+        font-size: 26px;
+        margin-bottom: 15px;
+      }
+      .weather-info p {
+        font-size: 20px;
+        margin: 10px 0;
+        background: rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        border-radius: 8px;
+      }
+      .weather-info span {
+        font-weight: bold;
+        color: #ffeb3b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Local Weather Forecast</h1>
+      <div class="weather-info">
+        <p><strong>Temperature:</strong> <span id="temp">--</span> °C</p>
+        <p><strong>Pressure:</strong> <span id="pressure">--</span> hPa</p>
+        <p><strong>Forecast:</strong> <span id="forecast">--</span></p>
+      </div>
+    </div>
+    <script>
+      async function fetchWeatherData() {
+        try {
+          const response = await fetch("/data");
+          const data = await response.json();
+          document.getElementById("temp").innerText = data.temp;
+          document.getElementById("pressure").innerText = data.pressure;
+          document.getElementById("forecast").innerText = getWeatherSummary(
+            data.temp,
+            data.pressure
+          );
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+
+      function getWeatherSummary(temp, pressure) {
+        let temperatureDescription = "";
+        let pressureDescription = "";
+
+        if (temp > 30) {
+          temperatureDescription =
+            "It's very hot outside, perfect for a day at the beach. ☀️";
+        } else if (temp > 20) {
+          temperatureDescription =
+            "The weather is warm and pleasant, great for outdoor activities. 🌤️";
+        } else if (temp > 10) {
+          temperatureDescription =
+            "It's cool and refreshing, ideal for a light jacket. ⛅";
+        } else {
+          temperatureDescription =
+            "It's quite cold, so bundle up and stay warm! ❄️";
+        }
+
+       
+        if (pressure > 1015) {
+          pressureDescription =
+            "The skies are clear, and the weather is stable. 🍃";
+        } else if (pressure >= 1005 && pressure <= 1015) {
+          pressureDescription =
+            "The weather is stable, with no major changes expected. 🌥️";
+        } else {
+          pressureDescription =
+            "There's a chance of storms, so be prepared for rain or strong winds. 🌪️";
+        }
+
+       
+        return `${temperatureDescription} ${pressureDescription}`;
+      }
+
+      setInterval(fetchWeatherData, 5000);
+      fetchWeatherData();
+    </script>
+  </body>
+</html>
