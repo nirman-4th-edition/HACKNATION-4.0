@@ -1,38 +1,26 @@
 <?php
-session_start(); 
 $servername = "localhost";
-$username = "root"; 
-$password = "Nishant2003@"; 
-$dbname = "education"; 
-
+$username = "root";
+$password = "Nishant2003@";
+$dbname = "village";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$email = $_POST['email'];
+$username = $_POST['username'];
 $password = $_POST['password'];
 
-$sql = "SELECT user_id, name, password FROM admin WHERE email=?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email);
+$stmt = $conn->prepare("SELECT * FROM student WHERE name = ? AND password = ?");
+$stmt->bind_param("ss", $username, $password);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
-    
-    if ($password === $user['password']) {
-        
-        $_SESSION['user'] = $user['name']; 
-        header("Location: Dashboard-EduNexus.php");
-        exit(); 
-    } else {
-        echo "Invalid email or password";
-    }
+    echo 'Login successful';
 } else {
-    echo "Invalid email or password";
+    echo 'Invalid username or password';
 }
 
 $stmt->close();
