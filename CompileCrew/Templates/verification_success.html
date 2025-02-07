@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #4caf50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .checkmark:after {
+            content: '✔';
+            color: white;
+            font-size: 50px;
+        }
+
+        .message {
+            display: none;
+            animation: fadeIn 1s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checkmark"></div>
+    
+    <div class="message">
+        <h1>Your College ID has been Verified Successfully.</h1>
+        <a href="/"><h1>Click to go to home page</h1></a>
+        <p>Note: A special cover photo will be assigned to you.</p>
+    </div>
+
+    <script>
+        // Delay showing the message after the checkmark
+        setTimeout(function() {
+            document.querySelector('.message').style.display = 'block';
+        }, 500); // 1-second delay
+
+        // You could optionally add a delay to display the checkmark, 
+        // in case you want to show the checkmark later (e.g., after some process is done)
+        setTimeout(function() {
+            document.querySelector('.checkmark').style.opacity = '1';
+        }, 500); // 0.5-second delay
+    </script>
+    
+</body>
+</html>

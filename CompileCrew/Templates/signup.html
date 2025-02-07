@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+    <title>Sign Up - Clear Check</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #2D68FF 5%, #47DEFF 85%);
+            min-height: 100vh;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(45, 104, 255, 0.37);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="/signin" class="text-2xl font-bold text-[#2D68FF]">Clear Check</a>
+            <a href="/signin" class="bg-[#47DEFF] hover:bg-[#2D68FF] text-white font-bold py-2 px-4 rounded transition duration-300">Sign In</a>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8 flex items-center justify-center">
+        <div class="w-full max-w-md">
+            <div class="glass-effect p-8">
+                <h2 class="text-3xl font-bold mb-6 text-center text-white">Sign Up</h2>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                            <span class="block sm:inline">{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <input type="text" name="username" placeholder="Username" class="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#47DEFF] focus:border-[#47DEFF]" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" name="email" placeholder="Email" class="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#47DEFF] focus:border-[#47DEFF]" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" name="pass" placeholder="Password" class="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#47DEFF] focus:border-[#47DEFF]" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" name="pass1" placeholder="Confirm Password" class="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#47DEFF] focus:border-[#47DEFF]" required>
+                    </div>
+                    <div class="mb-4">
+                        <select id="university" name="uni" class="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#47DEFF] focus:border-[#47DEFF]">
+                            <option value="0">University</option>
+                            <option value="SOA">SOA</option>
+                                                    </select>
+                    </div>
+                    <div class="mb-4">
+                        <select id="profession" name="pro" class="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#47DEFF] focus:border-[#47DEFF]" required>
+                            <option value="0">Select User Type</option>
+                            <option value="Teacher">TEACHER</option>
+                            <option value="Student">STUDENT</option>
+                                                    </select>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" name="reg" placeholder="Registration number (Issued by University)" class="w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#47DEFF] focus:border-[#47DEFF]" required>
+                    </div>
+                    <button type="submit" class="w-full bg-[#2D68FF] text-white px-4 py-2 rounded-md hover:bg-[#47DEFF] focus:outline-none focus:bg-[#47DEFF] transition duration-300">Sign Up</button>
+                </form>
+                <div class="mt-6 text-center">
+                    <p class="text-white">Already have an account? <a href="/signin" class="font-bold hover:underline">Sign In</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white py-4 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-gray-600 hover:text-[#2D68FF] mx-2">About</a>
+                    <a href="#" class="text-gray-600 hover:text-[#2D68FF] mx-2">Help</a>
+                    <a href="#" class="text-gray-600 hover:text-[#2D68FF] mx-2">Terms</a>
+                    <a href="#" class="text-gray-600 hover:text-[#2D68FF] mx-2">Privacy</a>
+                </div>
+                <p class="text-gray-600">&copy; 2024 Clear Check. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
