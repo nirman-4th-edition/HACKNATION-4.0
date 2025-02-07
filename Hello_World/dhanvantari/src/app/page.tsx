@@ -12,11 +12,16 @@ export default function Home() {
   const router = useRouter();
   const { scrollYProgress } = useScroll();
 
+  // Reset scroll position when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const height = useTransform(scrollYProgress, [0, 1], ["63vh", "100vh"]);
   const width = useTransform(scrollYProgress, [0, 1], ["26vw", "100vw"]);
   const y = useTransform(scrollYProgress, [0, 1], ["0", "-9rem"]);
   const x = useTransform(scrollYProgress, [0, 1], ["0", "-1rem"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [0, 0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6, 1], [0, 0, 1]);
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange(value => {
@@ -31,7 +36,7 @@ export default function Home() {
   }, [scrollYProgress, router]);
 
   return (
-    <div className="w-full h-[200vh] relative">
+    <div className="w-full h-[200vh] relative ">
       <div className="sticky top-0 h-fit w-full">
         <AuroraBackground>
           <div className="h-full w-full flex items-center justify-start px-12 pt-8 bg-gradient-to-l from-gray-900 via-green-900 to-emerald-900">
@@ -44,11 +49,13 @@ export default function Home() {
               variants={getSlideLeftVariants(0.3)}
             >
               <motion.div
-                className="h-[63vh] w-[14vw] bg-white rounded-2xl absolute top-12 -left-16 shadow-black/40 shadow-inner"
+                className="h-[63vh] w-[14vw] bg-white rounded-2xl absolute top-12 -left-16 shadow-black/40 shadow-inner flex flex-col gap-4 justify-center items-center"
                 initial="initial"
                 animate="animate"
                 variants={getSlideLeftVariants(0.6)}
-              />
+              >
+                <h3 className=' text-2xl font-semibold '>Queue</h3>
+              </motion.div>
 
               <motion.div
                 className="bg-white rounded-2xl absolute z-[1000] top-12 -right-4 shadow-inner shadow-black/40 overflow-hidden"
@@ -58,9 +65,9 @@ export default function Home() {
                 style={{ width, height, y, x }}
               >
                 {/* Initial preview content - visible when not scrolled */}
-                <motion.div 
+                <motion.div
                   className="p-6"
-                  style={{ opacity: useTransform(scrollYProgress, [0, 0.3], [1, 0]) }}
+                  style={{ opacity: useTransform(scrollYProgress, [0, 0.6], [1, 0]) }}
                 >
                   <h3 className="text-lg font-semibold mb-4">AI Health Assistant</h3>
                   <div className="space-y-3">
@@ -71,11 +78,11 @@ export default function Home() {
                 </motion.div>
 
                 {/* iFrame - fades in as you scroll */}
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 w-full h-full"
                   style={{ opacity }}
                 >
-                  <iframe 
+                  <iframe
                     src="/chatBox"
                     className="w-full h-full border-none"
                     title="Chat Interface"
@@ -92,8 +99,8 @@ export default function Home() {
                 variants={getSlideRightVariants(0.3)}
               >
                 <span className="text-green-400 underline decoration-wavy font-normal decoration-4 underline-offset-8">AI-</span>
-                Powered Healthcare <br /> Just for you! 
-                <span className="text-green-400 underline decoration-wavy font-normal decoration-4 underline-offset-8">24/7</span>
+                Powered Healthcare <br /> Just for you!
+                <span className="text-green-400 underline decoration-wavy font-normal decoration-4 underline-offset-8"> 24/7</span>
               </motion.h1>
 
               <motion.div
@@ -102,7 +109,7 @@ export default function Home() {
                 animate="animate"
                 variants={getSlideRightVariants(0.6)}
               >
-                <button 
+                <button
                   className="btn-gradient2 relative w-36 flex items-center justify-center group"
                   onClick={() => {
                     window.scrollTo({
@@ -118,6 +125,14 @@ export default function Home() {
                 </button>
               </motion.div>
             </div>
+            <motion.button
+             className="btn absolute -bottom-44 -left-20"
+             initial={{opacity: 0}}
+             animate={{opacity: 1}}
+             transition={{duration: .5, delay: 1}}
+             >
+              <div className="scroll"> </div>
+            </motion.button>
           </div>
         </AuroraBackground>
       </div>

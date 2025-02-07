@@ -11,9 +11,8 @@ const Navbar = () => {
         >
             <ul className=" flex gap-10 text-white items-center text-xl font-medium">
                 <li className=" text-green-400 underline decoration-wavy">Home</li>
-                <li>Demo</li>
-                <li>Demo</li>
-                <li>Demo</li>
+                <li>Chat</li>
+                <li>Login</li>
             </ul>
         </motion.div>
     )
