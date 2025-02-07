@@ -8,9 +8,9 @@ export default defineConfig({
       "/api": {
         // 👈 Keep all proxy config under the route key
         target: "http://localhost:5000",
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""), // Optional but recommended
+        // changeOrigin: true,
+        // secure: false,
+        // rewrite: (path) => path.replace(/^\/api/, ""), // Optional but recommended
       },
     },
   },

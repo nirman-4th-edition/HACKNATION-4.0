@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-console.log("GEMINI API KEY:", process.env.GEMINI_API_KEY);
+// console.log("GEMINI API KEY:", process.env.GEMINI_API_KEY);
 
 export const getRecommendation = async (req, res) => {
   // Set SSE headers first
@@ -50,7 +50,7 @@ export const getRecommendation = async (req, res) => {
       },
     });
 
-    const prompt = `As an agricultural expert, suggest the best crop that will grow best according to the given data and explain why that crop will be good according to that conditions:
+    const prompt = `As an agricultural expert, suggest the best crops that will grow best according to the given data, excluding rice and wheat. Respond only in numbered format (1, 2, 3, 4, 5, 6, 7, 8...) with crop names:
       - Location: ${params.location}
       - Soil Type: ${params.soilType}
       - Weather: ${params.weather}
