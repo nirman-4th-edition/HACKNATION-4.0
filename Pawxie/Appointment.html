@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" type="image/png" href="images/PAWXIELOGO.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/536ff07e99.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+
+  <title>Appointment</title>
+  <style>
+    .emergency-btn {
+      text-align: center;
+      padding: 15px 10px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      background: #ff0000;
+      border-radius: 10px;
+      box-shadow: 3px 3px 0px 0px #E99F4C;
+      color: white; 
+      width: 40%;
+      cursor: pointer;
+      margin-left: 20px; 
+      transition: background-color 0.3s ease;
+    }
+
+    .emergency-btn:hover {
+      background: #cc0000; 
+    }
+    .emergency-btn:active {
+      transform: translateY(4px);
+      box-shadow: 1px 1px 0px 0px #E99F4C;
+    }
+    body {
+      overflow-x: hidden;
+    }
+
+   
+    .hidden {
+      display: none !important;
+    }
+
+    .box-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .box {
+      width: 280px;
+      height: 400px;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .box img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .doctors .box-container .box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .share {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .share a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .share a i {
+      color: white;
+      font-size: 20px;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .share a i:hover {
+      background-color: #ff0000;
+      transform: scale(1.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #22a4c4;
+    }
+
+    .formbold-mb-5 {
+      margin-bottom: 28px;
+      padding: 8px;
+    }
+
+    .formbold-pt-3 {
+      padding-top: 20px;
+    }
+
+    .formbold-main-wrapper {
+      display: flex;
+      align-items: center;
+      margin-left: 480px;
+      margin-bottom: 170px;
+    }
+
+    .formbold-form-wrapper {
+      max-width: 570px;
+      width: 100%;
+      background-color: #EDDCD9;
+      padding: 30px;
+      border: 2px solid #264143;
+      box-shadow: 3px 4px 0px 1px #E99F4C;
+      margin-top: 30px;
+    }
+
+    .formbold-main-wrapper {
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      border: none;
+    }
+
+    .formbold-form-label {
+      display: block;
+      font-weight: 600;
+      font-size: 16px;
+      color: #07074d;
+      margin-bottom: 10px;
+    }
+
+    .formbold-form-label-2 {
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .formbold-form-input {
+      width: 90%;
+      padding: 15px 15px;
+      border-radius: 6px;
+      background: white;
+      font-weight: 500;
+      font-size: 16px;
+      color: black;
+      outline: none;
+      resize: none;
+      border: 2px solid #264143;
+      box-shadow: 3px 4px 0px 1px #E99F4C;
+    }
+
+    .formbold-form-input:focus {
+      border-color: #6a64f1;
+      color: black;
+    }
+
+    .formbold-btn {
+      text-align: center;
+      padding: 15px 10px;
+      padding-left: 10px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      background: #176565;
+      border-radius: 10px;
+      box-shadow: 3px 3px 0px 0px #E99F4C;
+      color: black;
+      width: 30%;
+      cursor: pointer;
+      margin-left: 120px;
+      
+    }
+
+    .formbold-btn:hover {
+      opacity: .9;
+    }
+
+    .formbold-form-input:focus {
+      transform: translateY(4px);
+      box-shadow: 1px 1px 0px 0px #E99F4C;
+    }
+
+    .formbold-btn:active {
+      transform: translateY(4px);
+      box-shadow: 1px 1px 0px 0px #E99F4C;
+    }
+
+    .formbold--mx-3 {
+      margin-left: -12px;
+      margin-right: -12px;
+    }
+
+    .formbold-px-3 {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .w-full {
+      width: 90%;
+    }
+
+    @media (min-width: 768px) {
+      .row {
+        flex-direction: row;
+      }
+
+      .image,
+      .formbold-main-wrapper {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header" id="#header">
+    <nav class="nav nav__desktop">
+      <img src="images/PAWXIELOGO.png" style="height: 130px;width: 150px;" alt="Pet Care logo" class="nav__logo"
+        id="logo">
+
+      <ul class="nav__links">
+        <li class="nav__item current">
+          <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--3" class="nav__link nav__link--section">Products</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--5" class="nav__link nav__link--section">Contact</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link btn nav__link--btn btn--show-modal"><img src="images/icon-user.svg"
+              alt="login icon"></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav__mobile--wrap">
+      <nav class="nav nav__mobile">
+        <img src="images/paw_logo.png" alt="Pet Care logo" class="nav__logo" id="logo">
+        <ul class="nav__links nav__links-mobile">
+          <li class="nav__item current">
+            <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--3" class="nav__link nav__link--section">Products</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--5" class="nav__link nav__link--section">Contact</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link btn nav__link--btn btn--show-modal"><img src="images/icon-user.svg"
+                alt="login icon"></a>
+          </li>
+        </ul>
+        <div class="nav__mobile--open">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="nav__mobile--close">
+          <i class="fa-solid fa-x"></i>
+        </div>
+      </nav>
+    </div>
+
+    <section class="book" id="book">
+      <h1 class="heading" style="text-align: center;">Book <span style="text-align: center;">Now</span></h1>
+  
+      <div class="row">
+        <div class="image">
+          <img src="images/book.jpg" alt="">
+        </div>
+  
+        <div class="formbold-main-wrapper" style="margin-right: 480px;">
+          <div class="formbold-form-wrapper">
+            <form action="#" method="POST">
+              <div class="formbold-mb-5">
+                <h2 style="text-align: center;">Book Appointment </h2>
+                <br>
+                <label for="name" class="formbold-form-label"> Enter Name </label>
+                <input type="text" name="name" id="name" placeholder="Enter Your Name" class="formbold-form-input" />
+              </div>
+              <div class="flex flex-wrap formbold--mx-3">
+                <div class="form-container" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                  
+                  <div class="w-full sm:w-half formbold-px-3" style="flex: 1;">
+                    <div class="formbold-mb-5 w-full">
+                      <label for="date" class="formbold-form-label" style="font-weight: bold;">Date</label>
+                      <input type="date" name="date" id="date" class="formbold-form-input"
+                        style="width: 200px; color: black;" />
+                    </div>
+                  </div>
+  
+                  
+                  <div class="w-full sm:w-half formbold-px-3" style="flex: 1;">
+                    <div class="formbold-mb-5">
+                      <label for="time" class="formbold-form-label" style="font-weight: bold;">Time</label>
+                      <input type="time" name="time" id="time" class="formbold-form-input" style="width: 140px;"pattern="(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)" placeholder="HH:MM AM/PM" />
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="w-full sm:w-half formbold-px-3">
+                  <div class="formbold-mb-5">
+                    <label for="time" class="formbold-form-label"> Location </label>
+                    <input id="location" placeholder="e.g., Remote or Physical Address" class="formbold-form-input" />
+                  </div>
+                  <div style="display: flex; justify-content: center;">
+                    <button id="submit-btn" class="formbold-btn" type="button">Submit</button>
+                    <button type="button" class="emergency-btn" class="emergency-btn" onclick="window.location.href= 'Emergency.html' "onclick="delayedRedirect()">Emergency Booking  <i class="fa-solid fa-paw"></i></button>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="doctors hidden" id="doctors">
+      <h1 class="heading" style="text-align: center;">Our <span style="text-align: center;">Doctors</span></h1>
+      <div class="box-container">
+
+        <div class="box " style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;" data-available-dates="2025-01-01,2025-01-10" data-available-times="09:00,10:00">
+          <img src="images/doctor1.jpg" alt="" style="border: 2px solid black;">
+          <h3>DOCTOR1</h3>
+          <span>Veterinarian</span>
+          <div class="share">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-11,2025-01-20" data-available-times="09:00,10:00">
+          <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+          <h3>DOCTOR2</h3>
+          <span>Veterinarian</span>
+          <div class="share">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-21,2025-01-31" data-available-times="09:00,10:00">
+          <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+          <h3>DOCTOR3</h3>
+          <span>Veterinarian</span>
+          <div class="share">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-02-01,2025-02-10" data-available-times="09:00,10:00">
+          <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+          <h3>DOCTOR4</h3>
+          <span>Veterinarian</span>
+          <div class="share">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-02-11,2025-02-20" data-available-times="09:00 AM,10:00 PM">
+          <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+          <h3>DOCTOR5</h3>
+          <span>Veterinarian</span>
+          <div class="share">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-02-21,2025-02-31" data-available-times="09:00,10:00">
+          <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
+          <h3>DOCTOR6</h3>
+          <span>Veterinarian</span>
+          <div class="share">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.getElementById('submit-btn').addEventListener('click', function (event) {
+        event.preventDefault(); 
+
+    const name = document.getElementById('name').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const location = document.getElementById('location').value;
+    const nameRegex = /^[A-Za-z\s]+$/;
+
+    if (!name || !date || !time || !location) {
+      alert('Please fill in all the fields.');
+      return;
+    }
+
+    if (!nameRegex.test(name)) {
+      alert('Name can only contain letters.');
+      return;
+    }
+        const doctorsSection = document.getElementById('doctors');
+        const doctorBoxes = doctorsSection.querySelectorAll('.box');
+
+    doctorBoxes.forEach(box => {
+      const availableDates = box.getAttribute('data-available-dates').split(',');
+      const availableTimes = box.getAttribute('data-available-times').split(',');
+
+      if (availableDates.includes(date) && availableTimes.includes(time)) {
+        box.style.display = 'block';
+      } else {
+        box.style.display = 'none';
+      }
+    });
+        doctorsSection.classList.remove('hidden');
+
+       
+        doctorsSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    </script>
+
+</body>
+
+</html>

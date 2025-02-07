@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Chat with Camera Access</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        #videoChatContainer {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        #videoSection {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #videoSection video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        #controlButtons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        #controlButtons i {
+            margin: 0 10px;
+            padding: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+        #controlButtons i:hover {
+            color: #0056b3;
+        }
+        #controlButtons .fa-phone-slash {
+            color: red;
+        }
+        #chatSection {
+            flex: 1;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        #chatSection h3 {
+            margin-bottom: 10px;
+        }
+        #chatMessages {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        #chatInput {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #sendChatButton {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        #sendChatButton:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h2>Camera Access & Video Chat</h2>
+
+    <div id="videoChatContainer">
+        <!-- Video section -->
+        <div id="videoSection">
+            <!-- Video element to display the camera feed -->
+            <video id="cameraFeed" autoplay playsinline></video>
+
+            <!-- Video chat section -->
+            <video id="remoteVideo" autoplay playsinline></video>
+
+            <!-- Control buttons -->
+            <div id="controlButtons">
+                <i id="startCall" class="fas fa-phone"></i>
+                <i id="endCall" class="fas fa-phone-slash"></i>
+                <i id="muteButton" class="fas fa-microphone"></i>
+                <i id="videoButton" class="fas fa-video"></i>
+            </div>
+        </div>
+
+        <!-- Chat section -->
+        <div id="chatSection">
+            <h3>Chat</h3>
+            <div id="chatMessages">
+                <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="sendChatButton">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Camera Access Code
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                document.getElementById("cameraFeed").srcObject = stream;
+
+                // Pass the stream to the video chat logic
+                startVideoChat(stream);
+            } catch (error) {
+                console.error("Error accessing camera:", error);
+            }
+        }
+
+        // Video Chat Code
+        function startVideoChat(localStream) {
+            const remoteVideo = document.getElementById("remoteVideo");
+            const endCallButton = document.getElementById("endCall");
+            const muteButton = document.getElementById("muteButton");
+            const videoButton = document.getElementById("videoButton");
+
+            const peerConnection = new RTCPeerConnection();
+
+            // Add local stream tracks to the peer connection
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+            // Handle remote stream
+            peerConnection.ontrack = event => {
+                remoteVideo.srcObject = event.streams[0];
+            };
+
+            document.getElementById("startCall").addEventListener("click", async () => {
+                const offer = await peerConnection.createOffer();
+                await peerConnection.setLocalDescription(offer);
+
+                // Send the offer to the remote peer (this part needs signaling server)
+                // Example: signalingServer.send({ offer });
+
+                // Simulate receiving an answer from the remote peer
+                // Example: signalingServer.on('answer', async (answer) => {
+                //     await peerConnection.setRemoteDescription(answer);
+                // });
+            });
+
+            endCallButton.addEventListener("click", () => {
+                // Stop all tracks to end the call
+                localStream.getTracks().forEach(track => track.stop());
+                remoteVideo.srcObject = null;
+                document.getElementById("cameraFeed").srcObject = null;
+                peerConnection.close();
+            });
+
+            muteButton.addEventListener("click", () => {
+                const audioTrack = localStream.getAudioTracks()[0];
+                audioTrack.enabled = !audioTrack.enabled;
+                muteButton.classList.toggle("fa-microphone-slash");
+                muteButton.classList.toggle("fa-microphone");
+            });
+
+            videoButton.addEventListener("click", () => {
+                const videoTrack = localStream.getVideoTracks()[0];
+                videoTrack.enabled = !videoTrack.enabled;
+                videoButton.classList.toggle("fa-video-slash");
+                videoButton.classList.toggle("fa-video");
+            });
+        }
+
+        // Start the camera automatically when the page loads
+        startCamera();
+
+        // Chat functionality
+        document.getElementById("sendChatButton").addEventListener("click", () => {
+            const chatInput = document.getElementById("chatInput");
+            const chatMessages = document.getElementById("chatMessages");
+
+            if (chatInput.value.trim() !== "") {
+                const message = document.createElement("div");
+                message.textContent = chatInput.value;
+                chatMessages.appendChild(message);
+                chatInput.value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>

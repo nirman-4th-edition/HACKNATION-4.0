@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency</title>
+
+    <link rel="shortcut icon" type="image/png" href="images/PAWXIELOGO.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/536ff07e99.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-bar-fill {
+            height: 20px;
+            width: 0;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            border-radius: 5px;
+        }
+        .book-ambulance-btn {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .book-ambulance-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+  
+</head>
+<body>
+    <header class="header" id="#header">
+        <nav class="nav nav__desktop">
+            <img src="images/PAWXIELOGO.png" style="height: 130px;width: 150px;" alt="Pet Care logo" class="nav__logo" id="logo">
+    
+            <ul class="nav__links">
+                <li class="nav__item current">
+                    <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#section--5" class="nav__link nav__link--section">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <h1> Nearby Hospitals </h1>
+        <div id="map"></div>
+</body>
+</html>
+
+<script>
+    var map = L.map('map').setView([20.2960, 85.8246], 15);
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});
+    osm.addTo(map);
+
+    if(!navigator.geolocation) {
+        console.log("Your browser doesn't support geolocation feature!")
+    } else {
+        setInterval(() => {navigator.geolocation.getCurrentPosition(getPosition)}, 5000);
+    }
+
+    var marker, circle;
+
+    function getPosition(position){
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        var accuracy = position.coords.accuracy;
+
+        if(marker) {
+            map.removeLayer(marker);
+        }
+
+        if(circle) {
+            map.removeLayer(circle);
+        }
+
+        marker = L.marker([lat, long]);
+        circle = L.circle([lat, long], {radius: accuracy*10});
+
+        var featureGroup = L.featureGroup([marker, circle]).addTo(map);
+
+        map.fitBounds(featureGroup.getBounds());
+
+        console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy);
+
+        fetchNearbyHospitals(lat, long);
+    }
+
+    function fetchNearbyHospitals(lat, long) {
+        var overpassUrl = `https://overpass-api.de/api/interpreter?data=[out:json];node[amenity=hospital](around:5000,${lat},${long});out;`;
+        fetch(overpassUrl)
+            .then(response => response.json())
+            .then(data => {
+                data.elements.forEach(hospital => {
+                    var hospitalMarker = L.marker([hospital.lat, hospital.lon]).addTo(map);
+                    var popupContent = `
+                        <b>${hospital.tags.name || "Hospital"}</b><br>
+                        <button class="book-ambulance-btn" onclick="bookAmbulance('${hospital.id}', '${hospital.tags.name || "Hospital"}')">Book Ambulance</button>
+                        <div class="progress-bar" id="progress-bar-${hospital.id}">
+                            <div class="progress-bar-fill" id="progress-bar-fill-${hospital.id}"></div>
+                        </div>
+                    `;
+                    hospitalMarker.bindPopup(popupContent);
+                });
+            })
+            .catch(error => console.log('Error fetching hospital data:', error));
+    }
+
+    function bookAmbulance(hospitalId, hospitalName) {
+        alert(`Booking ambulance for ${hospitalName}`);
+        startTracking(hospitalId);
+    }
+
+    function startTracking(hospitalId) {
+        var progressBarFill = document.getElementById(`progress-bar-fill-${hospitalId}`);
+        var width = 0;
+        var interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    alert('Ambulance booked successfully!');
+                }, 100);
+            } 
+            else if (width==100){
+                bookAmbulanceBtn.disabled = true;
+                bookAmbulanceBtn.style.backgroundColor = '#d3d3d3';
+                bookAmbulanceBtn.innerText = 'Ambulance Booked';
+                setTimeout(() => {
+                    bookAmbulanceBtn.disabled = false;
+                    bookAmbulanceBtn.style.backgroundColor = '#007bff';
+                    bookAmbulanceBtn.innerText = 'Book Ambulance';
+                }, 300000);
+            }
+            else {
+                width++;
+                progressBarFill.style.width = width + '%';
+                progressBarFill.innerHTML = width + '%';
+                
+            }
+        }, 100);
+    }
+</script>
+
+
+
+
