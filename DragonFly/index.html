@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+</head>
+<body>
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="name">
+           
+        <h1><i>Skillzen</i></h1>
+
+        </div>
+
+       <div>
+        <input type="text" class="search-input" placeholder="Search for latest news, job vacancy & new updates">
+    </div>
+        <div class="space">
+            
+        </div>
+
+
+    </div>
+
+    <!-- Navigation  -->
+    <nav class="nav-bar">
+        <a href="" style="font-weight: 1000; text-decoration: none; color: #4130a1; 
+        text-align: center;"><i style="width: 40px; position: relative; top: 15px;" class="fa-solid fa-house fa-2x"></i></a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="Tech.html">Tech News</a></li>
+            <li><a href="job.html">Job Vacancy</a></li>
+            <li><a href="update.html">Industrial Update</a></li>
+            
+        </ul>
+    
+    </nav>
+
+   
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="briefing">
+                <h1>Dynamic Date & Time Display
+                </h1>
+                <div class="datetime-container">
+                    <div class="date" id="current-date"></div>
+                    <div class="time" id="current-time"></div>
+                    <div class="additional-info" id="additional-info"></div>
+                </div>
+            </div>
+            <!-- <div class="weather">
+                <div class="icon"><img class=icons src="freepik__background__44068.png" alt=""></div>
+                <div>
+                <div class="temp">27°C</div>
+                <div>Odisha</div>
+                <a href="#" style="color: #3b82f6; font-size: 12px;">weather.com</a>
+            </div>
+        </div> -->
+        <div class="weather-sun">
+            <div class="weather-card">
+                <div class="search-box">
+                    <input type="text" id="cityInput" placeholder="Enter city name">
+                    <!-- <button onclick="getWeather()">🔍</button> -->
+                </div>
+                <div class="location" id="location">Bhubaneswar,india</div>
+                <div class="weather-icon" id="weather-icon">
+                    <!-- Default Sun Icon -->
+                    <svg viewBox="0 0 100 100" class="sun">
+                        <circle cx="50" cy="50" r="20" fill="#FFD700" />
+                        <g stroke="#FFD700" stroke-width="2">
+                            <line x1="50" y1="15" x2="50" y2="25" />
+                            <line x1="50" y1="75" x2="50" y2="85" />
+                            <line x1="15" y1="50" x2="25" y2="50" />
+                            <line x1="75" y1="50" x2="85" y2="50" />
+                            <line x1="25" y1="25" x2="35" y2="35" />
+                            <line x1="65" y1="65" x2="75" y2="75" />
+                            <line x1="25" y1="75" x2="35" y2="65" />
+                            <line x1="65" y1="35" x2="75" y2="25" />
+                        </g>
+                    </svg>
+                </div>
+                <div class="temperature" id="temperature">25°C</div>
+                <div class="description" id="description">Sunny</div>
+            </div>
+</div>
+</div>
+
+        <!-- News Grid -->
+        <div class="news-grid">
+            <!-- Top Stories -->
+            <div class="top-stories">
+                <div class="section-header">
+                    <h2> Latest News ></h2>
+                </div>
+                <div class="news-card fill" >
+                    <img src="pic/WhatsApp Image 2025-02-07 at 18.23.12_1bc73461.jpg" alt="News Image">
+                    <div class="news-content">
+                        <div class="source"></div>
+                        
+                   
+                    <a class="aa" href="https://indianexpress.com/article/technology/artificial-intelligence/oracle-adds-ai-pricing-features-to-financial-software-9822335/">  <h3 class="title">Oracle adds AI pricing features to financial software</h3> </a>
+                    <div class="time">2 hours ago</div>
+                    </div>
+                </div>
+
+
+
+                <div class="section-header">
+                    <!-- <h2>Top stories ></h2> -->
+                </div>
+                <div class="news-card fill">
+                    <img src="pic/WhatsApp Image 2025-02-07 at 18.21.05_d1854fa9.jpg" alt="News Image">
+                    <div class="news-content">
+                        <div class="source"></div>
+                       <a class="aa" href="https://www.thehindu.com/sci-tech/technology/indias-artificial-intelligence-safety-institute-to-work-virtually-across-institution-officials-say/article69191949.ece"> <h3 class="title">India's Artificial Intelligence Safety Institute to work virtually across institution, officials say</h3> </a>
+                        <div class="time">3 hours ago</div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="section-header">
+                    <!-- <h2>Top stories ></h2> -->
+                </div>
+                <div class="news-card fill">
+                    <img src="pic/WhatsApp Image 2025-02-07 at 18.41.32_a23d43de.jpg" alt="News Image">
+                    <div class="news-content">
+                        <div class="source"></div>
+                        <a class="aa" href="https://m.economictimes.com/tech/artificial-intelligence/alibaba-executive-says-reports-that-it-plans-to-invest-in-deepseek-are-untrue-report/articleshow/118019638.cms"><h3 class="title">Alibaba executive says reports that it plans to invest in DeepSeek are untrue: Report</h3></a>
+                        <div class="time">3 hours ago</div>
+                    </div>
+                </div>
+
+
+
+                <div class="section-header">
+                    <!-- <h2>Top stories ></h2> -->
+                </div>
+                <div class="news-card fill">
+                    <img src="pic/WhatsApp Image 2025-02-07 at 18.52.27_9990a642.jpg" alt="News Image">
+                    <div class="news-content">
+                        <div class="source"></div>
+                       <a class="aa" href="https://www.pcmag.com/news/ready-to-swap-venmo-for-x-money-visa-signs-on-to-power-money-transfers#:~:text=for%20X%20Money%3F-,Visa%20Signs%20on%20to%20Power%20Money%20Transfers%20on%20X,time%20using%20Visa%20debit%20cards.&text=Elon%20Musk's%20X%20has%20struck,upcoming%20%E2%80%9CX%20Money%E2%80%9D%20service."> <h3 class="title">Ready to Swap Venmo for X Money? Visa Signs on to Power Money Transfers on X</h3> </a>
+                        <div class="time">5 hours ago</div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="section-header">
+                     <!-- <h2>Top stories ></h2> -->
+                </div> 
+                <div class="news-card fill">
+                    <img src="pic/WhatsApp Image 2025-02-07 at 18.52.35_29a48986.jpg" alt="News Image">
+                    <div class="news-content">
+                        <div class="source"></div>
+                       <a class="aa" href="Meta's Safety Advisory Council Says It's Prioritizing Politics Over Safety"><h3 class="title">Meta's Safety Advisory Council Says It's Prioritizing Politics Over Safety</h3></a> 
+                        <div class="time">5 hours ago</div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="section-header">
+                    <!-- <h2>Top stories ></h2> -->
+                </div>
+                <div class="news-card fill">
+                    <img src="pic/WhatsApp Image 2025-02-07 at 18.54.00_09ded686.jpg" alt="News Image">
+                    <div class="news-content">
+                        <div class="source"></div>
+                        <a class="aa" href="https://www.pcmag.com/news/white-house-tech-support-vs-sge-where-does-elon-musk-belong-in-dc"><h3 class="title">White House Tech Support vs. SGE: Where Does Elon Musk Belong in DC?</h3></a>
+                        <div class="time">5 hours ago</div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+                <!-- Add more news cards as needed -->
+           
+           
+        
+        
+               
+            <!-- Local News -->
+            <div class="local-news ">
+                <div class="section-header">
+                    <h2>Tech news ></h2>
+                </div>
+                <div class="news-card ">
+                    <div class="news-content">
+                        <div class="source"></div>
+                        <a class="aa" href="https://thetechportal.com/2025/01/21/reliance-rolls-out-jiocoin-a-blockchain-based-reward-token/#:~:text=Reliance%20has%20now%20made%20an,for%20users%20of%20Jio's%20ecosystem."><h3 class="title">Reliance rolls out JioCoin, a blockchain-based reward token</h3></a>
+                        <div class="time">4 days ago </div>
+                    </div>
+                  
+                    <!-- <img src="pic/WhatsApp Image 2025-02-07 at 19.43.43_ad6ad6e5.jpg" alt="Local News Image"> -->
+                
+       
+   
+</div>
+
+
+
+<div class="section-header">
+    <!-- <h2>Local news ></h2> -->
+</div>
+<div class="news-card">
+    <div class="news-content">
+        <div class="source"></div>
+       <a class="aa" href="https://m.economictimes.com/tech/artificial-intelligence/linkedin-lawsuit-over-use-of-customer-data-for-ai-models-is-dismissed/articleshow/117796901.cms"><h3 class="title">LinkedIn faces lawsuit for alleged use of customer data to train AI models without consent</h3></a> 
+        <div class="time">5 hours ago</div>
+    </div>
+   
+    <!-- <img src="/api/placeholder/100/100" alt="Local News Image"> -->
+
+
+
+
+</div>
+
+
+
+
+
+<div class="section-header">
+    <!-- <h2>Local news ></h2> -->
+</div>
+<div class="news-card">
+    <div class="news-content">
+        <div class="source"></div>
+       <a class="aa" href="https://www.business-standard.com/companies/news/india-ai-reliance-builds-worlds-largest-data-centre-jamnagar-125012400198_1.html#:~:text=Mukesh%20Ambani's%20Reliance%20Industries%20is,artificial%20intelligence%20(AI)%20sector."> <h3 class="title">Reliance plans world’s largest AI data centre in India</h3></a>        <div class="time">6 hours ago </div>
+    </div>
+   
+    <!-- <img src="/api/placeholder/100/100" alt="Local News Image"> -->
+
+
+
+
+</div>
+
+
+
+
+
+<div class="section-header">
+    <!-- <h2>Local news ></h2> -->
+</div>
+<div class="news-card">
+    <div class="news-content">
+        <div class="source"></div>
+       <a class="aa" href="https://thetechportal.com/2025/02/07/amazon-reports-187-8-billion-revenue-in-q4-aws-growth-hits-19/#:~:text=E%2Dcommerce%20and%20tech%20giant,%24170.0%20Bn%20in%20Q4%202023."> <h3 class="title">Amazon reports $187.8Bn in Q4’24 sales, AWS growth hits 19%</h3> </a>
+        <div class="time">3 days ago </div>
+    </div>
+   
+    <!-- <img src="/api/placeholder/100/100" alt="Local News Image"> -->
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="section-header">
+    <!-- <h2>Local news ></h2> -->
+</div>
+<div class="news-card">
+    <div class="news-content">
+        <div class="source">THE TIMES OF INDIA</div>
+       <a class="aa" href="https://foreignpolicy.com/2025/02/06/trump-sovereign-wealth-fund-executive-order-explained/"> <h3 class="title">New US sovereign wealth fund could buy TikTok, Donald Trump hints</h3></a>
+        <div class="time">6 days ago </div>
+    </div>
+   
+    <!-- <img src="/api/placeholder/100/100" alt="Local News Image"> -->
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+   
+                    <!--  News -->
+                    <div class="local-news">
+                        <div class="section-header">
+                            <h2> News ></h2>
+                        </div>
+                        <div class="news-card">
+                            <div class="news-content">
+                                <div class="source"></div>
+                              <a class="aa" href="https://www.youtube.com/watch?v=iuo_PYoMJiI">  <h3 class="title">China imposes new tariffs on US goods, investigates Google</h3></a>
+                                <div class="time">3 hours ago </div>
+                            </div>
+                           
+               
+            </div>
+            
+
+
+            <div class="section-header">
+                <!-- <h2>Tech news ></h2> -->
+            </div>
+            <div class="news-card">
+                <div class="news-content">
+                    <div class="source"></div>
+                   <a class="aa" href="https://www.pwc.com/us/en/tech-effect/emerging-tech/essential-eight-technologies.html"> <h3 class="title">The new Essential Eight technologies: what you need to know</h3></a>
+                    <div class="time">2 days ago </div>
+                </div>
+               
+   
+</div>
+
+
+
+
+<div class="section-header">
+    <!-- <h2>Tech news ></h2> -->
+</div>
+<div class="news-card">
+    <div class="news-content">
+        <div class="source"></div>
+      <a class="aa" href="https://news.stanford.edu/stories/2024/02/technology-in-education">  <h3 class="title">How technology is reinventing education</h3></a>
+        <div class="time">2 days ago </div>
+    </div>
+   
+
+</div>
+
+
+
+
+<div class="section-header">
+    <h2>Job Vacancy ></h2>
+</div>
+<div class="news-card">
+    <div class="news-content">
+        <div class="source"></div>
+       <a class="aa" href="https://axiomq.com/blog/8-largest-e-commerce-companies-in-the-world/"> <h3 class="title">Largest eCommerce Companies in the World – A Fascinating List</h3></a>
+        <div class="time">2 hours ago </div>
+    </div>
+   
+
+</div>
+
+
+
+
+<div class="section-header">
+    <!-- <h2>Tech news ></h2> -->
+</div>
+<div class="news-card">
+    <div class="news-content">
+        <div class="source"></div>
+       <a class="aa" href="https://www.hurix.com/blogs/how-does-cloud-security-as-a-service-support-healthcare-hipaa-compliance/#:~:text=The%20cloud%20offers%20opportunities%20and,sensitive%20patient%20data%20against%20threats."> <h3 class="title">How Does Cloud Security as a Service Support Healthcare HIPAA Compliance?</h3> </a>
+        <div class="time">6 hours ago </div>
+    </div>
+   
+
+</div>
+
+
+
+
+
+        </div>
+
+
+        
+    </div>
+    
+
+
+
+
+  
+    
+
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="#">Our Policy</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Services</h3>
+            <ul>
+                <li><a href="#">Education</a></li>
+                <li><a href="#">Development</a></li>
+                <li><a href="#">Consulting</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <ul>
+                <li>Email: skillzen@977email.com</li>
+                <li>Phone: (555) 123-4567</li>
+                <li>Address: Bhubaneswar</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        © 2025 Skillzen
+    </div>
+
+
+
+    <script src="script.js">
+       
+    </script>
+</body>
+</html>
