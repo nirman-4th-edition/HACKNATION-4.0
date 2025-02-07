@@ -1,9 +1,8 @@
 import type { Config } from "tailwindcss";
-//import { transformer } from "tailwind-variants/transformer";
 
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
-const config: Config = {
+const config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -11,6 +10,7 @@ const config: Config = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -45,7 +45,6 @@ const config: Config = {
           600: "#76828D",
           700: "#ABB8C4",
         },
-        border: "hsl(var(--border))", // Fix border-border issue
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
@@ -65,8 +64,8 @@ const config: Config = {
           to: { height: "0" },
         },
         "caret-blink": {
-          "0%, 70%, 100%": { opacity: "1" },
-          "20%, 50%": { opacity: "0" },
+          "0%,70%,100%": { opacity: "1" },
+          "20%,50%": { opacity: "0" },
         },
       },
       animation: {
@@ -76,11 +75,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    //transformer, // Add transformer plugin here
-  ],
-};
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config;
 
 export default config;
 

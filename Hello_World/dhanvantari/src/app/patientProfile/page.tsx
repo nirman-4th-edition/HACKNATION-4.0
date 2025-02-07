@@ -21,7 +21,7 @@ export default function PatientDashboard() {
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 overflow-hidden rounded-full">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-07%20202751-qyUvMO53BghzMM91eC1xjHj1ctxEKO.png"
+                src="https://images.pexels.com/photos/433635/pexels-photo-433635.jpeg?cs=srgb&dl=man-person-portrait-433635.jpg&fm=jpg"
                 alt="Doctor profile"
                 width={32}
                 height={32}
@@ -41,7 +41,7 @@ export default function PatientDashboard() {
             <div className="text-center">
               <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-lg">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-02-07%20202751-qyUvMO53BghzMM91eC1xjHj1ctxEKO.png"
+                  src="https://images.pexels.com/photos/433635/pexels-photo-433635.jpeg?cs=srgb&dl=man-person-portrait-433635.jpg&fm=jpg"
                   alt="Patient profile"
                   width={96}
                   height={96}

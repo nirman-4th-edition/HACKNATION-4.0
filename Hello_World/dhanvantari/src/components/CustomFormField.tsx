@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import Image from "next/image"; // Correct import for the Image component from Next.js
 import 'react-phone-number-input/style.css'
