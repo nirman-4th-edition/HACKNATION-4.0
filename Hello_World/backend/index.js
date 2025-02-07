@@ -144,21 +144,20 @@ app.get("/doctor/:doctorId", async (req, res) => {
   const { doctorId } = req.params;
 
   try {
+    if (!appointmentQueue[doctorId]) {
+      return res.status(404).json({ message: "No appointments found" });
+    }
+
     const appointments = await Appointment.find({
       _id: { $in: appointmentQueue[doctorId] },
-    })
-      .populate("userId")
-      .sort({
-        _id: {
-          $function: {
-            body: function (ids) {
-              return ids.indexOf(this._id);
-            },
-            args: [appointmentQueue[doctorId]],
-            lang: "js",
-          },
-        },
-      });
+    }).populate("userId");
+
+    // Sort appointments based on their order in appointmentQueue[doctorId]
+    const sortedAppointments = appointments.sort(
+      (a, b) =>
+        appointmentQueue[doctorId].indexOf(a._id.toString()) -
+        appointmentQueue[doctorId].indexOf(b._id.toString())
+    );
 
     const doctor = await Doctor.findById(doctorId);
     if (!doctor) {
@@ -168,14 +167,15 @@ app.get("/doctor/:doctorId", async (req, res) => {
     res.status(200).json({
       doctor,
       status: doctorStatus[doctorId],
-      appointments,
+      appointments: sortedAppointments,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Error fetching appointments", error });
   }
 });
 
-app.get("appointment/:appointmentId", async (req, res) => {
+app.get("/appointment/:appointmentId", async (req, res) => {
     const { appointmentId } = req.params;
     
     try {
