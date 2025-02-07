@@ -9,6 +9,8 @@ import {
   User,
 } from "./Models/Models.js";
 
+import aiRouter from "./chatRoute.js";
+
 dotenv.config();
 
 mongoose
@@ -179,7 +181,7 @@ app.get("/appointment/:appointmentId", async (req, res) => {
     const { appointmentId } = req.params;
     
     try {
-        const appointment = await Appointment.findById(appointmentId).populate("userId");
+        const appointment = await Appointment.findById(appointmentId)
         if (!appointment) {
             return res.status(404).json({ message: "Appointment not found" });
         }
@@ -190,6 +192,8 @@ app.get("/appointment/:appointmentId", async (req, res) => {
         if(!appointmentQueue[doctorId].includes(appointmentId)) {
             return res.status(404).json({ message: "Appointment not found" });
         }
+        console.log(appointmentQueue[doctorId]);
+        
         const position = appointmentQueue[doctorId].indexOf(appointmentId);
         res.status(200).json({ appointment, position });
         
@@ -212,6 +216,8 @@ app.get("/user/:userId", async (req, res) => {
 
 }
 );
+
+app.use('/ai', aiRouter);
 
 
 app.listen(3000, "0.0.0.0", () => {
