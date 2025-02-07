@@ -2,8 +2,12 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/users.js";
-
+import { chatRouter } from "./routes/chat.js";
 import cors from "cors";
+import { messageModel } from "./db/db.js";
+import { socketHandler } from "./routes/socket.js";
+import { filesRouter } from "./routes/files.js";
+import { uploadRouter } from "./routes/upload.js";
 
 import http from "http";
 import { Server } from "socket.io";
@@ -35,5 +39,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/users", userRouter);
+app.use("/chat", chatRouter);
+app.use("/files", filesRouter);
+app.use("/upload", uploadRouter);
 
 socketHandler(io);

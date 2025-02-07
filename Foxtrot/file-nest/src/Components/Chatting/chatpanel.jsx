@@ -43,15 +43,18 @@ const ChatPanel = () => {
   };
 
   return (
-    <div className="h-screen w-[65%] flex flex-col gap-4 float-right shadow-xl scroll-smooth bg-[#f8f4ff]">
+    <div className="h-screen w-[65%] flex flex-col gap-4 float-right shadow-xl scroll-smooth bg-[#f8f4ff] relative">
       <div className="flex justify-between items-center bg-gradient-to-r from-[#100227] to-[#470552] text-gray-50 font-bold rounded-none z-50 border-none p-4">
         Computer Science & Workshop-II
       </div>
-      <ChatSection messages={messages} />
+      {/* <ChatSection messages={messages} /> */}
+      <span className="absolute b-10">
       <span className="w-full h-[1.8px] bg-gradient-to-r from-gray-200 via-[#680B79] to-gray-200 -mt-2"></span>
       <div className="w-full h-[8%] flex justify-around items-center">
         <TextArea onSendMessage={handleSendMessage} />
       </div>
+      </span>
+      
     </div>
   );
 };
