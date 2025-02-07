@@ -76,14 +76,17 @@ export default function Login() {
             required
             placeholder="Enter your password"
           />
-          <Button type="submit" fullWidth className="login-button">
-            Login
-          </Button>
+          
+          <div className="login-register-container">
+            <Button type="submit" className="login-button">
+              Login
+            </Button>
+            <Button className="register-button" onClick={handleRegister}>
+              Register
+            </Button>
+          </div>
         </form>
-        <Button fullWidth variant="outline" className="register-button" onClick={handleRegister}>
-          Register
-        </Button>
       </Card>
     </div>
   );
-} 
+}
