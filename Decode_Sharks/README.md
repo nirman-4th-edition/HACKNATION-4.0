@@ -31,7 +31,7 @@ PS Dark Web Monitoring and Cybercrime Investigation Tool is a powerful cybersecu
 ## Installation & Setup
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo/dark-web-monitoring.git
+   git clone https://github.com/Sw4pn33/HACKNATION-4.0/dark-web-monitoring.git
    cd dark-web-monitoring
    ```
 2. Install dependencies:
@@ -40,7 +40,7 @@ PS Dark Web Monitoring and Cybercrime Investigation Tool is a powerful cybersecu
    ```
 3. Run the tool:
    ```sh
-   python main.py --keyword "your-search-term"
+   python main.py 
    ```
 
 ## Security & Legal Disclaimer
