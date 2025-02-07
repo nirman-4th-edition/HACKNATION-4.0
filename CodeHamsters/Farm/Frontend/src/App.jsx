@@ -15,34 +15,34 @@ import CropRecommandations from "./pages/CropRecommadations";
 import { useQuery } from "@tanstack/react-query";
 
 const App = () => {
-  const { data: authUser, isLoading } = useQuery({
-    queryKey: ["authUser"],
-    queryFn: async () => {
-      try {
-        const res = await fetch("/api/v1/auth/me");
-        const data = await res.json();
+  // const { data: authUser, isLoading } = useQuery({
+  //   queryKey: ["authUser"],
+  //   queryFn: async () => {
+  //     try {
+  //       const res = await fetch("/api/v1/auth/me");
+  //       const data = await res.json();
 
-        if (data.error) {
-          return null;
-        }
+  //       if (data.error) {
+  //         return null;
+  //       }
 
-        if (!res.ok) {
-          throw new Error(data.error || "Something went wrong");
-        }
+  //       if (!res.ok) {
+  //         throw new Error(data.error || "Something went wrong");
+  //       }
 
-        return data;
-      } catch (error) {
-        throw new Error(error);
-      }
-    },
-  });
+  //       return data;
+  //     } catch (error) {
+  //       throw new Error(error);
+  //     }
+  //   },
+  // });
 
-  if (isLoading)
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
+  // if (isLoading)
+  //   return (
+  //     <div>
+  //       <h1>Loading...</h1>
+  //     </div>
+  //   );
   return (
     <>
       <Routes>
