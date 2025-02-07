@@ -1,0 +1,175 @@
+/* Root variables for dark mode theme */
+:root {
+  --bg-color: #0a0f1a;
+  --card-bg: rgba(20, 30, 50, 0.85);
+  --nav-bg: rgba(15, 20, 35, 0.95);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-color: #dce3f0;
+  --highlight-blue: #4e9cf5;
+  --button-bg: #4e9cf5;
+  --button-hover: #3a8be0;
+  --tile-hover: rgba(78, 156, 245, 0.2);
+}
+
+/* Full page layout */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+}
+
+/* Dashboard main container */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  animation: fadeIn 0.8s ease-in-out;
+  padding-bottom: 5rem;
+}
+
+/* Dashboard header */
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  padding: 1.5rem 2rem;
+  background: var(--nav-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.dashboard-header img {
+  height: 50px;
+}
+
+.dashboard-header h1 {
+  font-size: 22px;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+/* Logout button */
+.logout-button {
+  background: var(--button-bg) !important;
+  color: white !important;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.logout-button:hover {
+  background: var(--button-hover) !important;
+  transform: scale(1.05);
+}
+
+/* Dashboard content grid */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  width: 80%;
+  margin-top: 2rem;
+}
+
+/* Individual tiles */
+.dashboard-tile {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-tile img {
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.dashboard-tile p {
+  font-size: 16px;
+  color: var(--text-color);
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.dashboard-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 25px rgba(78, 156, 245, 0.6);
+  background: var(--tile-hover);
+}
+
+.dashboard-tile:hover img {
+  transform: scale(1.1);
+}
+
+/* Scanner Button */
+.scanner-button {
+  background: var(--button-bg);
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  margin-top: 2rem;
+}
+
+.scanner-button:hover {
+  background: var(--button-hover);
+  transform: translateY(-3px);
+}
+
+/* Bottom Navigation Bar */
+.bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--nav-bg);
+  padding: 15px 0;
+  box-shadow: 0px -5px 20px rgba(0, 0, 0, 0.6);
+  border-top: 2px solid var(--border-color);
+}
+
+.bottom-navbar button {
+  background: none;
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.bottom-navbar button:hover {
+  color: var(--highlight-blue);
+  transform: scale(1.1);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#blood {
+  border-radius: 18px;
+}

@@ -1,0 +1,394 @@
+body {
+  display: flex;
+  height: 100%;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+.lastreports {
+  background: #0b1e36; /* Dark Blue */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  margin: 1.5rem 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #dfe6e9; /* Bright Text */
+}
+
+.lastreports p {
+  margin: 0.8rem 0;
+  padding: 0.8rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #c7c4c4;
+}
+
+.lastreports p:first-child {
+  font-weight: 600;
+  color: #ffffff; /* Light Blue */
+  border-bottom: 2px solid #1e3799;
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
+}
+
+.lastreports p:nth-child(n + 2):nth-child(-n + 5) {
+  background: rgba(255, 255, 255, 0.1); /* Subtle Highlight */
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 1rem;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.lastreports p:nth-child(n + 2):nth-child(-n + 5):hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.lastreports p:nth-child(n + 2):nth-child(-n + 5)::before {
+  content: "•";
+  color: #74b9ff; /* Light Blue */
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.lastreports p:nth-child(n + 6) {
+  color: #b2bec3;
+  font-size: 0.9rem;
+  padding-left: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.lastreports p:nth-child(6) {
+  border-top: 2px solid #1e3799;
+  padding-top: 1.5rem;
+}
+
+/* Key metric highlighting */
+.lastreports p:nth-child(2) {
+  /* Total Cholesterol */
+  border-left: 4px solid #74b9ff; /* Light Blue */
+}
+
+.lastreports p:nth-child(3) {
+  /* LDL */
+  border-left: 4px solid #ff7675; /* Red */
+}
+
+.lastreports p:nth-child(4) {
+  /* HDL */
+  border-left: 4px solid #55efc4; /* Green */
+}
+
+.lastreports p:nth-child(5) {
+  /* Triglycerides */
+  border-left: 4px solid #fdcb6e; /* Yellow */
+}
+
+@media (max-width: 768px) {
+  .lastreports {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .lastreports p:nth-child(n + 2):nth-child(-n + 5) {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+/* General Styles */
+.metrics-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+  color: #333;
+}
+
+/* Back Button */
+.metrics-container .mantine-Button-root {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.metrics-container .mantine-Button-root:hover {
+  background-color: #45a049;
+}
+
+/* Titles */
+.metrics-container .mantine-Title-root {
+  color: #74b9ff;
+  font-weight: 600;
+}
+
+/* Cards */
+.metrics-container .mantine-Card-root {
+  background-color: #db1313;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Inputs */
+.metrics-container .mantine-TextInput-root {
+  margin-bottom: 1rem;
+}
+
+.metrics-container .mantine-TextInput-input {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.metrics-container .mantine-TextInput-input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.metrics-container .mantine-TextInput-label {
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+/* Submit Button */
+.metrics-container .mantine-Button-root[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.metrics-container .mantine-Button-root[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Latest Report Section */
+.metrics-container .mantine-Text-root {
+  color: #555;
+  line-height: 1.6;
+}
+
+.metrics-container .mantine-Text-root strong {
+  color: #2c3e50;
+}
+
+/* Chart Container */
+.metrics-container .recharts-wrapper {
+  margin: 0 auto;
+}
+
+.metrics-container .recharts-cartesian-grid line {
+  stroke: #eee;
+}
+
+.metrics-container .recharts-tooltip {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+}
+
+.metrics-container .recharts-legend-item {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Error Message */
+.metrics-container .mantine-Text-root[color="red"] {
+  background-color: #ffebee;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ffcdd2;
+  color: #c62828;
+  margin-bottom: 1rem;
+}
+
+/* Loading Overlay */
+.metrics-container .mantine-LoadingOverlay-root {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+}
+
+/* Animated Metrics Container */
+.metrics-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+  color: #333;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animated Cards */
+.metrics-container .mantine-Card-root {
+  background-color: #ebe8e8;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metrics-container .mantine-Card-root:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Pulse Animation for Error Messages */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.metrics-container .mantine-Text-root[color="red"] {
+  animation: pulse 1s ease-in-out;
+  background-color: #ffebee;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ffcdd2;
+  color: #c62828;
+  margin-bottom: 1rem;
+}
+
+/* Animated Buttons */
+.metrics-container .mantine-Button-root {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.metrics-container .mantine-Button-root:hover {
+  transform: scale(1.05);
+}
+
+.metrics-container .mantine-Button-root:active {
+  transform: scale(0.95);
+}
+
+/* Form Input Animations */
+.metrics-container .mantine-TextInput-input {
+  transition: all 0.3s ease;
+}
+
+.metrics-container .mantine-TextInput-input:focus {
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+/* Chart Animations */
+.recharts-line {
+  transition: stroke-width 0.3s ease;
+}
+
+.recharts-line:hover {
+  stroke-width: 3px !important;
+}
+
+.recharts-dot {
+  transition: r 0.3s ease;
+}
+
+.recharts-dot:hover {
+  r: 6 !important;
+}
+
+/* Loading Overlay Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.metrics-container .mantine-LoadingOverlay-root::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #4caf50;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Staggered List Animations */
+.metrics-container .latest-report-item {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.metrics-container .latest-report-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.metrics-container .latest-report-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.metrics-container .latest-report-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.metrics-container .latest-report-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .metrics-container {
+    padding: 1rem;
+    animation: none;
+  }
+
+  .metrics-container .mantine-Card-root:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+/* Responsive Grid */
+@media (max-width: 768px) {
+  .metrics-container .mantine-Grid-col {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,124 @@
+/* Professional and Sleek Profile Page */
+
+:root {
+  --primary-color: #1e3a8a; /* Navy Blue */
+  --secondary-color: #64748b; /* Grayish Blue */
+  --accent-color: #0ea5e9; /* Light Blue */
+  --text-color: #f8fafc; /* White */
+  --background-color: #0f172a; /* Dark Background */
+  --card-bg: #1e293b; /* Card Background */
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.profile-container {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px var(--shadow-color);
+  width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-container:hover {
+  transform: scale(1.02);
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image-container {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--accent-color);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-details h1 {
+  font-size: 1.8rem;
+  margin: 10px 0 5px;
+  color: var(--accent-color);
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.profile-details p {
+  margin: 5px 0;
+  color: var(--secondary-color);
+}
+
+.profile-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-edit,
+.btn-logout {
+  background: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-edit:hover {
+  background: #0284c7;
+  transform: translateY(-3px);
+}
+
+.btn-logout {
+  background: #dc2626;
+}
+
+.btn-logout:hover {
+  background: #b91c1c;
+  transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

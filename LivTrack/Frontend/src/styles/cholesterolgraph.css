@@ -1,0 +1,174 @@
+/* styles/cholesterolgraph.css */
+
+/* Base Styles */
+.cholesterol-container {
+  background-color: #0a1929;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #e0e0e0;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header Styles */
+.cholesterol-title {
+  font-size: 2.5rem;
+  color: #66b2ff;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Metrics Box Grid */
+.metrics-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Individual Metric Cards */
+.metric-box {
+  background: linear-gradient(145deg, #1a2a3a, #0d1a26);
+  border: 1px solid #2d3a4a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.metric-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ldl-box {
+  color: #82ca9d;
+  border-color: #82ca9d55;
+}
+.hdl-box {
+  color: #ffc658;
+  border-color: #ffc65855;
+}
+.triglycerides-box {
+  color: #8884d8;
+  border-color: #8884d855;
+}
+
+/* Chart Container */
+.cholesterol-chart {
+  background: #0d1a26;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Chart Styling */
+.graph-card {
+  background: #122335 !important;
+  border: 1px solid #2d3a4a;
+  border-radius: 12px;
+}
+
+.recharts-cartesian-grid line {
+  stroke: #2d3a4a;
+}
+
+.recharts-tooltip {
+  background: #1a2a3a !important;
+  border: 1px solid #2d3a4a !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.recharts-legend-item-text {
+  color: #e0e0e0 !important;
+}
+
+/* Button Styling */
+.mantine-Button-root {
+  background: #1a73e8;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.mantine-Button-root:hover {
+  background: #1557b0;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .metrics-boxes {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .cholesterol-chart {
+    padding: 1rem;
+  }
+
+  .LineChart {
+    width: 100% !important;
+  }
+}
+
+/* Chart Animation */
+.animated-chart {
+  opacity: 0;
+  animation: chartEntrance 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes chartEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

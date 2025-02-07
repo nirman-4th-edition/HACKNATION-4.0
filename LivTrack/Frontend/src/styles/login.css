@@ -1,0 +1,108 @@
+/* Dark mode theme with blue highlights */
+:root {
+  --bg-color: #0a0f1a;
+  --card-bg: rgba(20, 30, 50, 0.85);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-color: #dce3f0;
+  --input-bg: rgba(255, 255, 255, 0.1);
+  --input-focus: rgba(78, 156, 245, 0.5);
+  --button-bg: #4e9cf5;
+  --button-hover: #3a8be0;
+  --error-bg: rgba(255, 0, 0, 0.2);
+  --error-text: #ff6b6b;
+}
+
+/* Background styling */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+}
+
+/* Container for login */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Glassmorphism card effect */
+.login-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.login-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Login title */
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* Input fields */
+.login-input input {
+  background: var(--input-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-color) !important;
+  padding: 12px;
+  border-radius: 8px;
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.login-input input:focus {
+  border: 1px solid var(--input-focus) !important;
+  background: var(--input-focus) !important;
+}
+
+/* Submit button */
+.login-button {
+  background: var(--button-bg) !important;
+  color: white !important;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  margin-top: 1rem;
+}
+
+.login-button:hover {
+  background: var(--button-hover) !important;
+  transform: translateY(-2px);
+}
+
+/* Error alert styling */
+.error-alert {
+  background: var(--error-bg) !important;
+  color: var(--error-text) !important;
+  border-left: 4px solid var(--error-text);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
