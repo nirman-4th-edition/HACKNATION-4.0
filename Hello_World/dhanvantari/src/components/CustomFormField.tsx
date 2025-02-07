@@ -19,6 +19,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import { Checkbox } from "./ui/checkbox";
+import { User } from "lucide-react"
 
 interface CustomProp {
   fieldType: FormFieldType;
@@ -41,12 +42,9 @@ const RenderField = ({ field, props }: { field: any; props: CustomProp }) => {
   switch (fieldType) {
     case FormFieldType.INPUT:
       return (
-        <div className="flex items-center gap-2 rounded-lg border border-gray-300 bg-gray-100 p-2">
-          {iconSrc && (
-            <Image src={iconSrc} width={24} height={24} alt={iconAlt || "icon"} className="ml-2" />
-          )}
+        <div className="flex items-center gap-2 py-1 px-2 bg-white/10 rounded-full text-gray-200 border-none outline-none focus:border-none focus:ring-0">
           <FormControl>
-            <Input {...field} placeholder={placeholder} className="w-full border-none bg-transparent focus:ring-0" />
+            <Input {...field} placeholder={placeholder} className="w-full border-none ring-0 bg-transparent focus:ring-0 placeholder:text-gray-200 outline-none focus:outline-none focus:border-none" />
           </FormControl>
         </div>
       );
@@ -62,15 +60,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProp }) => {
     case FormFieldType.PHONE_INPUT:
       return (
         <FormControl>
-          <PhoneInput
-            defaultCountry="IN"
-            placeholder={placeholder}
-            international
-            withCountryCallingCode
-            value={field.value}
-            onChange={field.onChange}
-            className="w-full rounded-lg border border-gray-300 bg-gray-100 p-2"
-          />
+          <input type="number" className=" bg-white/10 w-full border-none ring-0 px-5 py-2 rounded-full focus:ring-0 placeholder:text-gray-200 outline-none focus:outline-none focus:border-none placeholder:text-sm" placeholder="Enter your phone number" />
         </FormControl>
       );
     case FormFieldType.DATE_PICKER:
