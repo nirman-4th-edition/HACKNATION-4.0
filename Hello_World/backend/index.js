@@ -178,29 +178,29 @@ app.get("/doctor/:doctorId", async (req, res) => {
 });
 
 app.get("/appointment/:appointmentId", async (req, res) => {
-    const { appointmentId } = req.params;
-    
-    try {
-        const appointment = await Appointment.findById(appointmentId)
-        if (!appointment) {
-            return res.status(404).json({ message: "Appointment not found" });
-        }
-        const doctorId = appointment.doctorId;
-        if (!appointmentQueue[doctorId] || appointmentQueue[doctorId].length === 0) {
-            return res.status(404).json({ message: "No appointments" });
-        }
-        if(!appointmentQueue[doctorId].includes(appointmentId)) {
-            return res.status(404).json({ message: "Appointment not found" });
-        }
-        console.log(appointmentQueue[doctorId]);
-        
-        const position = appointmentQueue[doctorId].indexOf(appointmentId);
-        res.status(200).json({ appointment, position });
-        
-    }
-    catch (error) {
-        res.status(500).json({ message: "Error fetching appointment", error });
-    }
+  const { appointmentId } = req.params;
+
+  try {
+      const appointment = await Appointment.findById(appointmentId).populate("userId");
+      if (!appointment) {
+          return res.status(404).json({ message: "Appointment not found" });
+      }
+
+      const doctorId = appointment.doctorId.toString(); // Ensure it's a string
+      if (!appointmentQueue[doctorId] || appointmentQueue[doctorId].length === 0) {
+          return res.status(404).json({ message: "No appointments in the queue for this doctor" });
+      }
+
+      const position = appointmentQueue[doctorId].indexOf(appointmentId);
+      if (position === -1) {
+          return res.status(404).json({ message: "Appointment not found in queue" });
+      }
+
+      res.status(200).json({ appointment, position });
+
+  } catch (error) {
+      res.status(500).json({ message: "Error fetching appointment", error });
+  }
 });
 
 app.get("/user/:userId", async (req, res) => {
