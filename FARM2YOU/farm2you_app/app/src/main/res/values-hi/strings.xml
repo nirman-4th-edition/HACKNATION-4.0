@@ -1,0 +1,9 @@
+<resources>
+    <string name="sell">बेचें</string>
+    <string name="buy">खरीदें</string>
+    <string name="why_choose_farm2u">क्यों चुनें Farm2U</string>
+    <string name="frequently_asked_questions">अक्सर पूछे जाने वाले प्रश्न</string>
+    <string name="about_us">हमारे बारे में</string>
+    <string name="fresh_from_farm">फार्म से ताजा</string>
+    <string name="direct_to_doorstep">आपके दरवाजे तक सीधे</string>
+</resources>
