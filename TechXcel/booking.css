@@ -1,0 +1,15 @@
+.bg-container{
+    background-image: url(https://thumbs.dreamstime.com/b/ready-summer-vacation-travel-background-d-rendering-114574299.jpg);
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 100px;
+    border: solid 3px white;
+    border-radius: 30px;
+    width: auto;
+}
