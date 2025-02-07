@@ -55,5 +55,5 @@ We welcome contributions! Feel free to fork the repository, create pull requests
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
-For inquiries and support, reach out to us at [your-email@example.com].
+For inquiries and support, reach out to us at [theabinashnanda.smither@gmail.com].
 
