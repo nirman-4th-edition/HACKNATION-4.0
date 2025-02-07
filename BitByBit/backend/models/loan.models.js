@@ -2,7 +2,12 @@ import mongoose, { Schema } from "mongoose";
 import User from "./user.models.js";
 
 const loanSchema = new Schema(
-    {
+    {   
+        uniqueId: {
+            type: String,
+            unique: true,
+            
+        },
         borrower: {
             type: Schema.Types.ObjectId, 
             ref: "User",
