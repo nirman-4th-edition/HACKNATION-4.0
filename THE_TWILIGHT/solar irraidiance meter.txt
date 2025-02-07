@@ -1,0 +1,76 @@
+captive_portal:
+    
+i2c:
+  sda: 5
+  scl: 4
+  scan: true    
+
+sensor:
+  - platform: bh1750
+    name: "SUN LUX"
+    id: sun_lux
+    address: 0x23
+    update_interval: 5s  
+
+
+  - platform: bmp280_i2c
+    temperature:
+      name: "Outside Air Temperature"
+      oversampling: 16x
+    pressure:
+      name: "Outside Pressure"
+    address: 0x76
+    update_interval: 5s   
+
+  - platform: adc
+    pin: A0
+    name: "Rain sensor"
+    update_interval: 5s 
+    filters:
+      - calibrate_linear:
+          # Calibrate to convert 1V (dry) to 0% and 0.2V (heavy rain) to 100%
+          - 1.0 -> 0.0
+          - 0.2 -> 100.0
+      - sliding_window_moving_average:
+          window_size: 10
+          send_every: 5
+    unit_of_measurement: "%"
+    accuracy_decimals: 1  
+
+
+  - platform: dallas_temp
+    name: temperature
+    update_interval: 5s     
+
+ 
+  - platform: template
+    name: "Solar Irradiance (W/m²)"
+    id: solar_irradiance
+    unit_of_measurement: "W/m²"
+    lambda: |-
+      if (id(sun_lux).state > 0) {
+        const float lux_to_irradiance_ratio = 118000.0 / 1000.0;  // Lux per W/m²
+        return id(sun_lux).state / lux_to_irradiance_ratio;
+      } else {
+        return 0.0;
+      }
+    update_interval: 5s   
+
+  - platform: template
+    name: "Expected Power Output (W)"
+    id: expected_power
+    unit_of_measurement: "W"
+    accuracy_decimals: 2
+    lambda: |-
+      if (id(solar_irradiance).state > 0) {
+        const float panel_rated_power = 1600.0;  // Edit this value for your total panel capacity in watts
+        return id(solar_irradiance).state / 1000.0 * panel_rated_power;
+      } else {
+        return 0.0;
+      }
+    update_interval: 5s
+    
+
+one_wire:
+  - platform: gpio
+    pin: 14    
