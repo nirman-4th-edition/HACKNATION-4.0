@@ -1,0 +1,437 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+#hero h1 {
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+}
+
+#packageBody {
+  background-color: rgb(245, 245, 245);
+}
+.wrapped-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.item-center {
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+body{
+  background:radial-gradient(#ffffff,#ffff,#ffffff);
+}
+.card{
+width:20rem
+}
+.card:hover{
+box-shadow: 5px 10px 20px rgba(0,0,0,0.253)!important;
+}
+.card-body{
+  padding:3rem 0!important;
+}
+.card-text{
+  font-size:0.9rem;
+  padding:0.4rem 1.9rem;
+}
+.container-fluid .row{
+  padding-top:6rem;
+}
+.img-carousel {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  height: 50%;
+}
+
+.carousel-caption h3 {
+  font-size: 5em;
+  font-weight: 700;
+  text-shadow: 3px 3px 10px black;
+}
+
+.carousel-caption p {
+  color: rgb(255, 239, 16);
+  text-shadow: 2px 2px 5px black;
+}
+.navDark {
+  background: rgb(0, 0, 0);
+}
+
+.nav-link {
+  color: rgb(216, 216, 216) !important;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: #fdd86a !important;
+}
+.svg-group p {
+  margin: 15px 0px;
+}
+
+.svg-card {
+  background: rgba(0, 0, 0, 0.1);
+  color: #2b2b2b;
+  padding: 30px;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.svg-card:hover {
+  border-radius: 50%;
+}
+.subComponent {
+  padding: 50px 0px;
+}
+
+.subComponent-lg {
+  padding: 80px 0px;
+}
+#footerBody {
+  background: #000000;
+  color: rgba(255, 255, 255, 0.7);
+}
+#footerBody a {
+  color: rgba(255, 247, 247, 0.6);
+}
+
+#footerBody a:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+#footerBody .headerTitle-text-center{
+color:rgba(255, 255, 255, 0.6);
+}
+
+
+#servicesBody {
+  background: rgba(0, 0, 0, 0.7);
+}
+.multicolortext {
+  background-image: linear-gradient(to  left,green,white,orange);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 35px;
+ 
+}
+:root { 
+  --background: white;
+  --card-top: rgba(9, 132, 227,1.0);
+}
+#card-container {
+  background: var(--background);
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  position: relative;
+  background: white;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.1), 0.5px 0.5px 5px 1px rgba(0,0,0,0.05);
+  width: 16em;
+  height: 24em;
+  top: 5em;
+  left: 2em;
+  transition: 0.7s;
+  display: grid;
+  grid-template-rows: repeat(2, 50%);  
+}
+
+.card-top {
+  background: var(--card-top);
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 33% 33% 33%;
+  grid-template-areas: 
+    "lang lang"
+    "title title"
+    "author pic"
+
+}
+
+.card-top > * {
+  padding-left: 1em;
+  padding-right: 1em;
+/*   border: 1px dashed black; */
+  font-weight: 700;
+}
+
+.tut-lang {
+  grid-area: lang;
+  padding-top: 1em;
+}
+
+
+
+.tut-author {
+  grid-area: author;
+  padding-top: 1em;
+}
+
+.tut-pic {
+  grid-area: pic;
+  justify-self: end;
+}
+
+.tut-pic img {
+  height: 3em;
+
+}
+
+.card-bottom > * {
+  padding: 1em;
+}
+
+
+#card-container:hover {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.19), 1px 1px 5px 1px rgba(0,0,0,0.12);
+}
+mixin flex {
+	display: flex; 
+	flex-direction: column; 
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f7f7;
+}
+
+p {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.card-masonry {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-container {
+  flex:5;
+  width: 320px;
+  margin: 5%;
+  list-style-type: none;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 2px 2px 10px #eae9e9;
+} 
+
+img {
+  border-radius: 4px 4px 0 0;
+  max-width: 100%;
+  order: 1;
+}
+
+.card-container--content {
+ flex:5;
+  order: 2;
+  padding: 0 2rem 2rem;
+}
+
+.card-header--title {
+  color: rgb(0, 0, 0);
+  font-size: 1.5rem;
+}
+
+.card-date {
+	color: darken(darkgray, 20%);
+	font-size: .875rem;
+	font-style: italic;
+  margin-bottom: 0.125rem;
+}
+@media (min-width: 284px) {
+  .card-columns {
+    margin: 0px 20px;
+  }
+
+  .tour-msg {
+    margin: 0px 10px;
+  }
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    -webkit-column-count: 2 !important;
+    -moz-column-count: 2 !important;
+    column-count: 2 !important;
+  }
+
+  .tour-msg {
+    margin: 0px 20px;
+  }
+}
+
+@media (min-width: 986px) {
+  .card-columns {
+    -webkit-column-count: 3 !important;
+    -moz-column-count: 3 !important;
+    column-count: 3 !important;
+  }
+
+  .tour-msg {
+    margin: 0px 50px;
+  }
+}
+
+.packageBody .badge {
+  margin: 0px 5px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.tour-cover {
+  width: 90%;
+  padding: 20px 10px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  margin: 50px auto;
+}
+
+.tour-cover img {
+  width: 100%;
+}
+
+.tour-gallery img {
+  width: 50%;
+  height: 100px;
+  object-fit: cover;
+  padding: 5px;
+}
+
+.tour-msg input,
+.tour-msg textarea {
+  width: 100%;
+  margin: 5px;
+  border: 1px solid #6c757d;
+  padding: 10px;
+  border-radius: 5px;
+  background: none;
+}
+.msg input,
+.msg textarea {
+  width: 100%;
+  margin: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.msg .btn {
+  margin: 5px;
+}
+
+.reviews {
+  background: #f1f1f1;
+  padding: 40px 0px 80px 0px;
+  margin: 0px;
+}
+.col-md-3 text-center box{
+  padding: 0 5px 0 5px;
+
+}
+.svg-card-3{
+  text-align:left;
+}
+
+.marker {
+  /* Set the marker size here */
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  /* Set the marker color here */
+  background: #9c2525;
+
+  display: inline-block;
+  border-bottom-right-radius: 0;
+  position: relative;
+  transform: rotate(45deg);
+
+  /* optional fanciness */
+  border: 1px solid #b32323;
+}
+/* inner circle (optional if you don't need the central dot) */
+.marker::before {
+  content: "";
+  background: white;
+  width: 50%;
+  height: 50%;
+  border-radius: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  /* optional fanciness */
+  border: 1px solid #a53131;
+  box-shadow: 0.1rem 0.1rem 0.2rem 0.1rem rgba(0, 0, 0, 0);
+}
+/* shadow (optional if you don't need a shadow) */
+.marker::after {
+  content: "";
+  background: rgba(22, 21, 21, 0);
+  width: 75%;
+  height: 75%;
+  border-radius: 100%;
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translate(-50%, -50%) rotate(45deg) scaleX(0.5);
+}
