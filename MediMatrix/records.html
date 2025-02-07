@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediMatrix Records</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      color: #2c3e50;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      background-color: aliceblue;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      flex: 1;
+      padding: 2rem;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: #013648;
+      padding:0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-image: url('image/header_background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      z-index: 1000;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      text-align: left;
+      margin: 0; 
+      
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    margin: 0;                   /* No auto margins here */
+    text-align: left;
+    }
+    .logo {
+      height: 80px;
+      width: auto;
+    }
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+      text-align: left;
+    }
+    
+    /* Footer Styles */
+    footer {
+      background-image: url('image/header_background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      width: 100%;
+      margin-left: calc(-50vw + 50%);
+      padding: 20px 0;
+      color: #fff;
+      text-align: center;
+      z-index: 1;
+      margin-top: auto;
+      line-height: 30px;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 50px;
+      position: relative;
+      z-index: 2;
+    }
+    footer a {
+      color: #3498db;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: #2980b9;
+    }
+    
+    /* Records Grid */
+    .records-grid {
+      gap: 2rem;
+      padding: 1rem;
+      margin-top: 140px;
+      display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* Prevent wrapping so all cards stay in one row */
+  overflow-x: auto; /* Enable horizontal scrolling if the content overflows */
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+    }
+    .records-grid::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari, Opera */
+}
+    .record-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      /* Fade-In Animation */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInAnimation 0.5s ease forwards;
+      /* Square shape settings */
+  min-width: 250px;
+  aspect-ratio: 1 / 1;
+    }
+    @keyframes fadeInAnimation {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .record-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    .folder-icon {
+      width: 80px;
+      height: 60px;
+      margin: 0 auto 1rem;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .folder-icon::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 80%;
+      bottom: 0;
+      left: 0;
+      background: #ff9f43;
+      border-radius: 5px;
+    }
+    .folder-icon::after {
+      content: '';
+      position: absolute;
+      width: 40%;
+      height: 20%;
+      top: 0;
+      left: 0;
+      background: #ff9f43;
+      border-radius: 5px 5px 0 0;
+    }
+    .record-card h2 {
+      font-family: 'Playfair Display', serif;
+      color: #2c3e50;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .record-card p {
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    .record-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
+      transition: transform 0.6s ease;
+      transform: translateX(-100%);
+    }
+    .record-card:hover::before {
+      transform: translateX(100%);
+    }
+    .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #e74c3c;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .record-card:hover .badge {
+      opacity: 1;
+      transform: scale(1);
+    }
+    @media (max-width: 768px) {
+      .records-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-container">
+        <img src="image/logo.png" alt="Healthcare Website Logo" class="logo">
+        <span class="brand-name">MediMatrix</span>
+      </div>
+    </div>
+  </header>
+  
+  <div class="container">
+    <h1>MediMatrix Records</h1>
+    <div class="records-grid">
+      <div class="record-card" onclick="handleCardClick('diagnostics')">
+        <div class="folder-icon"></div>
+        <h2>Diagnostics</h2>
+        <p>View medical diagnoses and reports</p>
+        <span class="badge">3 New</span>
+      </div>
+      <div class="record-card" onclick="handleCardClick('lab')">
+        <div class="folder-icon"></div>
+        <h2>Lab Report</h2>
+        <p>Access laboratory test results</p>
+        <span class="badge">1 New</span>
+      </div>
+      <div class="record-card" onclick="handleCardClick('vitals')">
+        <div class="folder-icon"></div>
+        <h2>Vitals</h2>
+        <p>Track vital signs and measurements</p>
+      </div>
+      <div class="record-card" onclick="handleCardClick('documents')">
+        <div class="folder-icon"></div>
+        <h2>Documents</h2>
+        <p>Access medical documentation</p>
+        <span class="badge">2 New</span>
+      </div>
+      <div class="record-card" onclick="handleCardClick('blood')">
+        <div class="folder-icon"></div>
+        <h2>Blood Report</h2>
+        <p>View blood test results and history</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <p>
+        <a href="about.html">About</a> |
+        <a href="blog.html">Blog</a> |
+        <a href="help.html">Contact Us</a>
+      </p>
+      <p>
+        <a href="help.html">Help</a> |
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms and Conditions</a>
+      </p>
+    </div>
+  </footer>
+  
+  <script>
+    function handleCardClick(type) {
+      const card = event.currentTarget;
+      card.style.transform = 'scale(0.98)';
+      setTimeout(() => {
+        card.style.transform = '';
+        alert(`Navigating to ${type} section...`);
+      }, 150);
+    }
+    
+    // Staggered fade-in animation for record cards on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.record-card');
+      cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+  </script>
+</body>
+</html>

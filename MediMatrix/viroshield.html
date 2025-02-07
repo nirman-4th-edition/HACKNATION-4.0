@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViroShield - Health Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0D47A1 0%, #D32F2F 100%);
+            padding: 20px;
+            overflow-x: hidden;
+            color: #ffffff;
+            /* Brighter text color */
+        }
+
+        .header {
+            text-align: center;
+            margin: 40px 0;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        h1,
+        h2 {
+            color: #ffffff !important;
+        }
+
+
+        .header h1 {
+            font-size: 3.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            color: #34495e;
+            font-size: 1.2em;
+        }
+
+        /* Make the dashboard container horizontal */
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 40px auto;
+  background: rgba(0, 0, 0, 0.4);  /* Dark translucent background */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: left; /* Adjust as needed */
+}
+
+        .dashboard-container h2,
+        .dashboard-container p,
+        .dashboard-container li {
+            color: #ffffff;
+            /* Bright white text for contrast */
+        }
+
+
+
+        .dashboard-container h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+
+        .stats {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.stat-card {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 45%;
+  margin: 10px auto;
+}
+
+        .stat-card h3 {
+            font-size: 1.5rem;
+            color: #0077b6;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 0;
+        }
+        .chart-wrapper {
+  flex: 0 0 400px;
+  height: 400px;
+  margin-right: 20px;
+}
+
+        .chart-container {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 20px;
+        }
+
+        .chart-container canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        main {
+            margin-top: 120px;
+            /* Adjust to your header's height */
+            margin-bottom: 80px;
+            /* Adjust to your footer's height */
+            padding: 0 2rem;
+        }
+
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.2em;
+            color: #2c3e50;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #74b9ff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>ViroShield 🛡</h1>
+        <p style="color: antiquewhite;">How can I help you today?</p>
+    </div>
+
+    <div class="dashboard-container fade-in">
+        <h2 class="dashboard-heading">Nearby Cases in Your Locality</h2>
+        <div class="chart-wrapper">
+          <canvas id="casesPieChart"></canvas>
+        </div>
+        <div class="stats">
+          <div class="stat-card">
+            <h3>Total Cases</h3>
+            <p id="totalCases">--</p>
+          </div>
+          <div class="stat-card">
+            <h3>Active Cases</h3>
+            <p id="activeCases">--</p>
+          </div>
+          <div class="stat-card">
+            <h3>Recovered</h3>
+            <p id="recoveredCases">--</p>
+          </div>
+          <div class="stat-card">
+            <h3>Deaths</h3>
+            <p id="deathCases">--</p>
+          </div>
+        </div>
+      </div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Dummy data for the dashboard. Replace these with actual data as needed.
+            const totalCases = 5000;
+            const activeCases = 1200;
+            const recoveredCases = 3600;
+            const deathCases = 200;
+
+            // Update the stat cards
+            document.getElementById("totalCases").textContent = totalCases;
+            document.getElementById("activeCases").textContent = activeCases;
+            document.getElementById("recoveredCases").textContent = recoveredCases;
+            document.getElementById("deathCases").textContent = deathCases;
+
+            // Setup the pie chart for local cases
+            const ctx = document.getElementById('casesPieChart').getContext('2d');
+            new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ['Active', 'Recovered', 'Deaths'],
+    datasets: [{
+      data: [activeCases, recoveredCases, deathCases],
+      backgroundColor: ['#ff7675', '#55efc4', '#ffeaa7'],
+      borderColor: '#000000',
+      borderWidth: 2,
+      hoverOffset: 20,         // Slice expands by 20px on hover
+      hoverBorderWidth: 6,     // Optional: thicker border on hover
+      hoverBorderColor: '#2c3e50'
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        labels: {
+          color: "antiquewhite"  // Legend labels in antique white
+        }
+      }
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    hover: {
+      mode: 'nearest',
+      intersect: true
+    }
+  }
+});
+
+        });
+
+        // Show loading
+        loading.style.display = 'block';
+        document.querySelector('.input-container').style.display = 'none';
+
+
+
+
+        // Add floating effect to header
+        document.querySelector('.header h1').style.animation =
+            'float 3s ease-in-out infinite';
+
+        // Add custom floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+       
+        
+    </script>
+</body>
+
+</html>

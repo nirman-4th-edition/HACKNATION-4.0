@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors - MediMatrix</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e3efff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #013648;
+            color: #fff;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-image: url('image/header_background.jpg');
+            /* Add your header image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Overlay */
+        header {
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent black overlay */
+            z-index: 1;
+        }
+
+        header>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        /* Filters Section */
+        .filters {
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filters select,
+        .filters input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .filters select:focus,
+        .filters input:focus {
+            border-color: #3498db;
+        }
+
+        /* Doctors Grid */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .doctor-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .doctor-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .doctor-card .details {
+            padding: 20px;
+        }
+
+        .doctor-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .doctor-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .doctor-card .rating {
+            color: #f39c12;
+            font-weight: 600;
+        }
+
+        .doctor-card .experience {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #2980b9;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-image: url('image/header_background.jpg');
+            /* Add your footer image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Footer Overlay */
+        footer {
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent black overlay */
+            z-index: 1;
+        }
+
+        footer>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Add hospital filter styling */
+        .doctor-card .hospital {
+            color: #2ecc71;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .search-highlight {
+            background-color: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        /* Fade-In Animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInAnimation 1s ease forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .doctor-card {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="image/logo.png" alt="Healthcare Website Logo" class="logo">
+            <span class="brand-name">MediMatrix</span>
+        </div>
+    </header>
+
+    <!-- Filters Section -->
+    <div class="filters fade-in">
+        <select id="typeFilter">
+            <option value="">All Specializations</option>
+            <option value="Physician">Physician</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Dermatologist">Dermatologist</option>
+            <option value="Neurologist">Neurologist</option>
+            <option value="Pediatrician">Pediatrician</option>
+            <option value="Gynaecologist">Gynaecologist</option>
+            <option value="Oncologist">Oncologist</option>
+            <option value="Physiotherapist">Dentist</option>
+            <option value="Dentist">Dentist</option>
+            <option value="Opthalmologist">Opthalmologist</option>
+        </select>
+        <select id="ratingFilter">
+            <option value="">All Ratings</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4 Stars & Above</option>
+            <option value="3">3 Stars & Above</option>
+        </select>
+        <select id="experienceFilter">
+            <option value="">All Experience</option>
+            <option value="5">5+ Years</option>
+            <option value="10">10+ Years</option>
+            <option value="15">15+ Years</option>
+        </select>
+        <select id="hospitalFilter">
+            <option value="">All Hospitals</option>
+            <option value="AIIMS Bhubaneswar">AIIMS Bhubaneswar</option>
+            <option value="Apollo Hospitals">Apollo Hospitals</option>
+            <option value="KIMS Hospital">KIMS Hospital</option>
+            <option value="SUM Hospital">SUM Hospital</option>
+            <option value="Capital Hospital">Capital Hospital</option>
+            <option value="Care Hospital">Care Hospital</option>
+            <option value="AMRI Hospitals">AMRI Hospitals</option>
+            <option value="Sparsh Hospital">Sparsh Hospital</option>
+            <option value="Kalinga Hospital">Kalinga Hospital</option>
+            <option value="Hi-Tech Medical College">Hi-Tech Medical College</option>
+        </select>
+    </div>
+
+    <!-- Doctors Grid -->
+    <div class="doctors-grid fade-in" id="doctorsGrid">
+        <!-- Doctor cards will be dynamically inserted here -->
+    </div>
+
+
+    <script>
+        // Sample Data for 50 Doctors
+        const doctors = [
+            {
+                name: "Dr. Laxmikant Das",
+                type: "Physician",
+                image: "image/docman.png",
+                qualifications: "MBBS, MD",
+                rating: 4.5,
+                experience: 10,
+                hospital: "Hi-Tech Medical College"
+            },
+            {
+                name: "Dr. Ashok Seth",
+                type: "Cardiologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, MD, DM",
+                rating: 5,
+                experience: 15,
+                hospital: "Kalinga Hospital"
+            },
+            {
+                name: "Dr. Chandra Sekhar Sirka",
+                type: "Dermatologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, MD",
+                rating: 4.7,
+                experience: 8,
+                hospital: "AIIMS Bhubaneswar"
+            },
+            {
+                name: "Dr. Pooja Mehta",
+                type: "Physiotherapist",
+                image: "image/docwoman.png",
+                qualifications: "BPT, MPT (Ortho)",
+                rating: 4.8,
+                experience: 12,
+                hospital: "Hi-Tech Medical College"
+            },
+            {
+                name: "Dr. Puneet Agarwal",
+                type: "Neurologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, DM (Neurology)",
+                rating: 4.9,
+                experience: 18,
+                hospital: "Kalinga Hospital"
+            },
+            {
+                name: "Dr. E. Sangeetha Hariprasath",
+                type: "Pediatrician",
+                image: "image/docwoman.png",
+                qualifications: "MBBS, DCH, MRCPCH",
+                rating: 4.6,
+                experience: 15,
+                hospital: "AIIMS Bhubaneswar"
+            },
+            {
+                name: "Dr. Alka Kriplani",
+                type: "Gynaecologist",
+                image: "image/docwoman.png",
+                qualifications: "MBBS, DGO, FRCOG",
+                rating: 4.7,
+                experience: 20,
+                hospital: "Hi-Tech Medical College"
+            },
+            {
+                name: "Dr. Dilip Kumar Muduly",
+                type: "Oncologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, MD (Oncology)",
+                rating: 4.5,
+                experience: 14,
+                hospital: "AIIMS Bhubaneswar"
+            },
+            {
+                name: "Dr. Aisha Khan",
+                type: "Physiotherapist",
+                image: "image/docwoman.png",
+                qualifications: "BDS, MDS (Ortho)",
+                rating: 4.4,
+                experience: 8,
+                hospital: "Kalinga Hospital"
+            },
+            {
+                name: "Dr. Sucheta Parija",
+                type: "Opthalmologist",
+                image: "image/docwoman.png",
+                qualifications: "MBBS, DOMS, FRCS",
+                rating: 5,
+                experience: 22,
+                hospital: "AIIMS Bhubaneswar"
+            },
+            {
+                name: "Dr. Subash Chandra",
+                type: "Cardiologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, DM (Cardiology)",
+                rating: 4.8,
+                experience: 16,
+                hospital: "AIIMS Bhubaneswar"
+            },
+            {
+                name: "Dr. Shrilata Trasi",
+                type: "Dermatologist",
+                image: "image/docwoman.png",
+                qualifications: "MBBS, MD (Dermatology)",
+                rating: 4.3,
+                experience: 9,
+                hospital: "AIIMS Bhubaneswar"
+            },
+            {
+                name: "Dr. A. V. Venugopal",
+                type: "Physician",
+                image: "image/docman.png",
+                qualifications: "MBBS, MD (General Medicine)",
+                rating: 4.7,
+                experience: 11,
+                hospital: "Sparsh Hospital"
+            },
+            {
+                name: "Dr. Suraj Munjal",
+                type: "Opthalmologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, MS (Ophthalmology), FRCS (Edin)",
+                rating: 4.9,
+                experience: 20,
+                hospital: "Care Hospital"
+            },
+            {
+                name: "Dr. Aman Ahuja",
+                type: "Dentist",
+                image: "image/docman.png",
+                qualifications: "BDS, MDS (Oral Surgery)",
+                rating: 5,
+                experience: 10,
+                hospital: "Capital Hospital"
+            },
+            {
+                name: "Dr. Ashok Vaid",
+                type: "Oncologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, MD (Oncology), ESMO Certified",
+                rating: 4.8,
+                experience: 18,
+                hospital: "Sparsh Hospital"
+            },
+            {
+                name: "Dr. Lakshmi Chirumamilla",
+                type: "Gynaecologist",
+                image: "image/docwoman.png",
+                qualifications: "MBBS, DGO, FRCOG (UK)",
+                rating: 4.6,
+                experience: 16,
+                hospital: "AMRI Hospitals"
+            },
+            {
+                name: "Dr. Prof. Darius F. Mirza",
+                type: "Pediatrician",
+                image: "image/docman.png",
+                qualifications: "MBBS, DCH, MRCPCH (UK)",
+                rating: 4.7,
+                experience: 12,
+                hospital: "Sparsh Hospital"
+            },
+            {
+                name: "Dr. Ashalatha Radhakrishnan",
+                type: "Neurologist",
+                image: "image/docwoman.png",
+                qualifications: "MBBS, DM (Neurology), FNNF",
+                rating: 5,
+                experience: 14,
+                hospital: "AMRI Hospitals"
+            },
+            {
+                name: "Dr. Murlidhar Rajagopalan",
+                type: "Dermatologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, MD (Dermatology), FAAD",
+                rating: 4.5,
+                experience: 11,
+                hospital: "Care Hospital"
+            },
+            {
+                name: "Dr. Purshotam Lal",
+                type: "Cardiologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, DM (Cardiology), FACC",
+                rating: 4.9,
+                experience: 17,
+                hospital: "AMRI Hospitals"
+            },
+            {
+                name: "Dr. Deepa Verma",
+                type: "Physiotherapist",
+                image: "image/docwoman.png",
+                qualifications: "BPT, MPT (Sports Medicine)",
+                rating: 4.7,
+                experience: 9,
+                hospital: "Care Hospital"
+            },
+            {
+                name: "Dr. A. S. V. Narayana Rao",
+                type: "Physician",
+                image: "image/docman.png",
+                qualifications: "MBBS, MD (General Medicine)",
+                rating: 4.6,
+                experience: 13,
+                hospital: "Capital Hospital"
+            },
+            {
+                name: "Dr. Shyama Sundar Mohapatra",
+                type: "Physician",
+                image: "image/docman.png",
+                qualifications: "MBBS, MRCP (UK), Diabetes Management Certification",
+                rating: 4.6,
+                experience: 9,
+                hospital: "Capital Hospital"
+            },
+            {
+                name: "Dr. Nishikant Borse",
+                type: "Opthalmologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, FRCS (Ophth), Cornea Specialist",
+                rating: 4.8,
+                experience: 13,
+                hospital: "SUM Hospital"
+            },
+            {
+                name: "Dr. Sagar Abichandani",
+                type: "Dentist",
+                image: "image/docman.png",
+                qualifications: "DDS, MS (Periodontics), AAP Board Certified",
+                rating: 4.4,
+                experience: 10,
+                hospital: "KIMS Hospital"
+            },
+            {
+                name: "Dr. Gaurav Gupta",
+                type: "Oncologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, MD (Radiation Oncology), ASTRO Certified",
+                rating: 4.7,
+                experience: 15,
+                hospital: "Apollo Hospitals"
+            },
+            {
+                name: "Dr. Monika Wadhwan",
+                type: "Gynaecologist",
+                image: "image/docwoman.png",
+                qualifications: "MBBS, MRCOG, Fetal Medicine Diploma",
+                rating: 4.5,
+                experience: 11,
+                hospital: "SUM Hospital"
+            },
+            {
+                name: "Dr. Priya Sharma",
+                type: "Pediatrician",
+                image: "image/docwoman.png",
+                qualifications: "MBBS, DNB (Pediatrics), Neonatal Intensive Care Certification",
+                rating: 4.9,
+                experience: 16,
+                hospital: "KIMS Hospital"
+            },
+            {
+                name: "Dr. Anand Kumar Saxena",
+                type: "Neurologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, DM (Neurology), Stroke Specialist",
+                rating: 4.6,
+                experience: 14,
+                hospital: "Apollo Hospitals"
+            },
+            {
+                name: "Dr. Fatima Al-Mansor",
+                type: "Dermatologist",
+                image: "image/docwoman.png",
+                qualifications: "MBBS, MD (Dermatology), Cosmetic Dermatology Fellowship",
+                rating: 4.7,
+                experience: 12,
+                hospital: "SUM Hospital"
+            },
+            {
+                name: "Dr. Balbir Singh",
+                type: "Cardiologist",
+                image: "image/docman.png",
+                qualifications: "MBBS, DM (Cardiology), FESC",
+                rating: 4.9,
+                experience: 19,
+                hospital: "KIMS Hospital"
+            },
+            {
+                name: "Dr. Tapan Haresh Shah",
+                type: "Physiotherapist",
+                image: "image/docman.png",
+                qualifications: "DPT, OCS (Orthopedic Clinical Specialist)",
+                rating: 4.8,
+                experience: 8,
+                hospital: "Apollo Hospitals"
+            },
+
+        ];
+
+        
+
+        // Modify renderDoctors function
+        function renderDoctors(filteredDoctors) {
+            const doctorsGrid = document.getElementById("doctorsGrid");
+            const searchQuery = new URLSearchParams(window.location.search).get('search')?.toLowerCase() || '';
+
+            doctorsGrid.innerHTML = filteredDoctors.map(doctor => {
+  const highlightedName = highlightMatches(doctor.name, searchQuery);
+  const highlightedHospital = highlightMatches(doctor.hospital, searchQuery);
+  return `
+    <div class="doctor-card" onclick="redirectToConsultation('${doctor.name}', '${doctor.type}', '${doctor.image}', '${doctor.qualifications}', ${doctor.rating}, ${doctor.experience}, '${doctor.hospital}')">
+      <img src="${doctor.image}" alt="${doctor.name}">
+      <div class="details">
+          <h3>${highlightedName}</h3>
+          <p><strong>Specialization:</strong> ${doctor.type}</p>
+          <p><strong>Qualifications:</strong> ${doctor.qualifications}</p>
+          <p class="hospital">${highlightedHospital}</p>
+          <p class="rating">Rating: ${doctor.rating} ★</p>
+          <p class="experience">Experience: ${doctor.experience} years</p>
+      </div>
+    </div>
+  `;
+}).join("");
+
+        }
+
+        // Add highlight function
+        function highlightMatches(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<span class="search-highlight">$1</span>');
+        }
+
+        // Function to filter doctors
+        function filterDoctors() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('search')?.toLowerCase() || '';
+
+            const type = document.getElementById("typeFilter").value;
+            const rating = document.getElementById("ratingFilter").value;
+            const experience = document.getElementById("experienceFilter").value;
+            const hospital = document.getElementById("hospitalFilter").value;
+
+            const filteredDoctors = doctors.filter(doctor => {
+                const matchesSearch = searchQuery === '' ||
+                    doctor.name.toLowerCase().includes(searchQuery) ||
+                    doctor.hospital.toLowerCase().includes(searchQuery);
+
+                return (
+                    matchesSearch &&
+                    (type === "" || doctor.type === type) &&
+                    (rating === "" || doctor.rating >= parseFloat(rating)) &&
+                    (experience === "" || doctor.experience >= parseFloat(experience)) &&
+                    (hospital === "" || doctor.hospital === hospital)
+                );
+            });
+
+            renderDoctors(filteredDoctors);
+        }
+        // Add search parameter handling on page load
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('search');
+
+            if (searchQuery) {
+                filterDoctors();
+            }
+        });
+
+        // Initial render
+        renderDoctors(doctors);
+
+        // Add event listeners to filters
+        document.getElementById("typeFilter").addEventListener("change", filterDoctors);
+        document.getElementById("ratingFilter").addEventListener("change", filterDoctors);
+        document.getElementById("experienceFilter").addEventListener("change", filterDoctors);
+
+        // Handle category filtering from "Consult Specialists" section
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get("category");
+
+        if (category) {
+            document.getElementById("typeFilter").value = category;
+            filterDoctors();
+        }
+        // Add hospital filter event listener
+        document.getElementById("hospitalFilter").addEventListener("change", filterDoctors);
+
+        // Initialize hospital filter options dynamically
+        const hospitals = [...new Set(doctors.map(doctor => doctor.hospital))];
+        const hospitalFilter = document.getElementById("hospitalFilter");
+        hospitals.forEach(hospital => {
+            if (!hospitalFilter.querySelector(`option[value="${hospital}"]`)) {
+                hospitalFilter.innerHTML += `<option value="${hospital}">${hospital}</option>`;
+            }
+        });
+        function redirectToConsultation(name, type, image, qualifications, rating, experience, hospital) {
+  const url = `consultation.html?name=${encodeURIComponent(name)}&type=${encodeURIComponent(type)}&image=${encodeURIComponent(image)}&qualifications=${encodeURIComponent(qualifications)}&rating=${encodeURIComponent(rating)}&experience=${encodeURIComponent(experience)}&hospital=${encodeURIComponent(hospital)}`;
+  window.location.href = url;
+}
+
+    </script>
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="about.html">About</a> |
+            <a href="blog.html">Blog</a> |
+            <a href="help.html">Contact Us</a>
+        </p>
+        <p>
+            <a href="help.html">Help</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms and Conditions</a>
+        </p>
+    </footer>
+</body>
+
+</html>
