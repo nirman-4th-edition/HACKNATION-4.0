@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MySplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/brown</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="postSplashScreenTheme">Invisonaries</item>
+    </style>
+
+    <style name="Theme.Invisonaries" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
