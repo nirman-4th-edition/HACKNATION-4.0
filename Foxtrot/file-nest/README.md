@@ -1,5 +1,11 @@
 ### To-dos
 
+- Integrating WebSockets
+- Chat Panel Message display. Fetching msgs from backend
+-  Uploading images/files into a cloud storage. Like cloudinary, MongoGridFS ...
+-  Add image to backend and display it in the chat panel
+- Image Processing :( 
+
 - Directory Structuring
 - Deployment
 - Add PDFS and other formats + handwritten
