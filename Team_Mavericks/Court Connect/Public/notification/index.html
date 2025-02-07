@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Dashboard</h2>
+    <div class="container">
+        <div class="section" id="notifications">
+            <h3>New Notifications</h3>
+            <p>No new notifications</p>
+        </div>
+        <div class="section" id="reminders">
+            <h3>Reminders</h3>
+            <ul>
+                <li>Document Submission by 12th Feb </li>
+                <li>Fingerprint Scan Test</li>
+            </ul>
+        </div>
+        <div class="section" id="meetings">
+            <h3>Meetings</h3>
+            <div class="calendar" id="calendar-meetings"></div>
+            <div id="agenda-meetings"></div>
+        </div>
+        <div class="section" id="schedules">
+            <h3>Schedules</h3>
+            <div class="calendar" id="calendar-schedules"></div>
+            <div id="agenda-schedules"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
