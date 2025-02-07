@@ -1,6 +1,6 @@
 # Dark Web Monitoring and Cybercrime Investigation Tool
 
-![Logo](image.png)
+  ![Logo](image.png)
 
 ## Overview
 Dark Web Monitoring and Cybercrime Investigation Tool is a powerful cybersecurity solution designed to track, analyze, and investigate malicious activities occurring on the dark web. Our tool enables law enforcement agencies, cybersecurity professionals, and businesses to proactively identify threats, leaks, and cybercriminal activities.
