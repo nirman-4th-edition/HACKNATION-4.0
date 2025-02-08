@@ -4,6 +4,9 @@ body {
     flex-wrap: nowrap;
     justify-content: space-around;
   }
+  h2{
+    color:#74b9ff;
+  }
   
   .lastreports {
     background: #0b1e36;
@@ -104,4 +107,54 @@ body {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
   }
+  /* Add these styles to your CSS file */
+
+/* Base mobile-first styles */
+.metrics-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.lastreports {
+  order: 1; /* Maintain logical content order */
+}
+
+.pcos-container {
+  order: 2;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .metrics-content {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "form report"
+      "chart chart";
+  }
+
+  .mantine-Card-root {
+    grid-area: form;
+  }
+
+  .lastreports {
+    grid-area: report;
+    align-self: start;
+  }
+
+  .pcos-container {
+    grid-area: chart;
+  }
+}
+
+/* Improved mobile styles */
+@media (max-width: 480px) {
+  .lastreports p {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
   
+  .lastreports p:first-child {
+    font-size: 1.1rem;
+  }
+}

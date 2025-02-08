@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import "../styles/pcos.css";
+import { ResponsiveContainer } from 'recharts';
 
 const PCOSMetrics = () => {
   const { user } = useAuth();
@@ -271,10 +272,12 @@ const PCOSMetrics = () => {
               <Title order={4} className="section-title">
                 Hormonal Trends
               </Title>
+              <ResponsiveContainer width="100%" height={300}>
               <LineChart
                 width={600}
                 height={300}
                 data={metrics}
+                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                 className="animated-chart"
               >
                 <CartesianGrid strokeDasharray="3 3" />
@@ -310,6 +313,7 @@ const PCOSMetrics = () => {
                   name="Fasting Insulin (μIU/mL)"
                 />
               </LineChart>
+              </ResponsiveContainer>
               <Button
                 onClick={() => navigate("/pcos-graph")}
                 style={{ marginTop: "1rem" }}
@@ -318,6 +322,7 @@ const PCOSMetrics = () => {
               </Button>
             </Card>
           </div>
+          
         </div>
       </div>
     </div>
