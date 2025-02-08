@@ -22,18 +22,18 @@ class DashboardViewModel : ViewModel() {
             Log.d("FirebaseData", "Fetched data: ${weatherSnapshot.value}")
 
             // Extract the values for temperature, humidity, and pressure from the snapshot
-            val temperature = weatherSnapshot.child("Tempreature").value as? Double ?: 0.0
-            val humidity = weatherSnapshot.child("Humidity").value as? Double ?: 0.0
-            val pressure = weatherSnapshot.child("Pressure").value as? Double ?: 0.0
+            val temperature = weatherSnapshot.child("Temperature").value as? Double ?: 0.0
+            val humidity = (weatherSnapshot.child("Humidity").value as? Long)?.toInt() ?: 0
+            val pressure = weatherSnapshot.child("pressure").value as? Double ?: 0.0
 
             // Emit the data to be observed
             emit(WeatherData(temperature, humidity, pressure))
         } catch (e: Exception) {
             Log.e("FirebaseData", "Error fetching data", e)
             // Emit default values or handle the error as needed
-            emit(WeatherData(0.0, 0.0, 0.0))
+            emit(WeatherData(0.0, 0, 0.0))
         }
     }
 }
 
-data class WeatherData(val temperature: Double, val humidity: Double, val pressure: Double)
+data class WeatherData(val temperature: Double, val humidity: Int, val pressure: Double)
