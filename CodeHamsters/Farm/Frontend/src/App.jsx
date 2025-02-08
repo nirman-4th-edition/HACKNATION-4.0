@@ -14,6 +14,8 @@ import FertilizerRecommender from "./components/FertilizerRecommender";
 import CropRecommandations from "./pages/CropRecommadations";
 import { useQuery } from "@tanstack/react-query";
 import GovtScheme from "./pages/GovtScheme";
+import Sell from "./pages/Sell";
+import Products from "./pages/Products";
 
 const App = () => {
   // const { data: authUser, isLoading } = useQuery({
@@ -62,6 +64,8 @@ const App = () => {
         />
         <Route path="/recommandation/crop" element={<CropRecommandations />} />
         <Route path="/schemes" element={<GovtScheme />} />
+        <Route path="/sell" element={<Sell />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
     </>
   );

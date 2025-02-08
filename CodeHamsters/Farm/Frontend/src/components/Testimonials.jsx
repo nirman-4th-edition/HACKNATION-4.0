@@ -35,7 +35,7 @@ const Testimonials = () => {
                   OUR TESTIMONIALS
                 </h2>
                 <h3 className="text-4xl font-extrabold text-green-600 mb-6">
-                  What They're <br /> Talking About <br /> Krushak Bandhu
+                  What They're <br /> Talking About <br /> Krushi Bandhu
                 </h3>
                 {/* Navigation Buttons (Optional) */}
                 <div className="flex space-x-4">

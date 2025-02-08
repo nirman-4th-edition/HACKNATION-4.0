@@ -66,7 +66,7 @@ const FertilizerRecommender = () => {
               role: "user",
               parts: [
                 {
-                  text: `Analyze the following soil report parameters and recommend best fertilizers according to that also explain it's merits and demerits : \n                  - Nitrogen: ${soilData.nitrogen} mg/kg\n                  - Phosphorus: ${soilData.phosphorus} mg/kg\n                  - Potassium: ${soilData.potassium} mg/kg\n                  - Zinc: ${soilData.zinc} mg/kg\n                  - Iron: ${soilData.iron} mg/kg\n                  - Manganese: ${soilData.manganese} mg/kg\n                  - Boron: ${soilData.boron} mg/kg\n                  - Copper: ${soilData.copper} mg/kg\n                  - Molybdenum: ${soilData.molybdenum} mg/kg\n                  - Chlorine: ${soilData.chlorine} mg/kg.\n                  Provide precise recommendations including fertilizers and their required amounts in kg/ha.`,
+                  text: `Analyze the following soil report parameters and recommend the best fertilizers along with their required amounts (kg/ha) based on the given data. Also, explain the merits and demerits of each fertilizer recommendation. \n                  - Nitrogen: ${soilData.nitrogen} mg/kg\n                  - Phosphorus: ${soilData.phosphorus} mg/kg\n                  - Potassium: ${soilData.potassium} mg/kg\n                  - Zinc: ${soilData.zinc} mg/kg\n                  - Iron: ${soilData.iron} mg/kg\n                  - Manganese: ${soilData.manganese} mg/kg\n                  - Boron: ${soilData.boron} mg/kg\n                  - Copper: ${soilData.copper} mg/kg\n                  - Molybdenum: ${soilData.molybdenum} mg/kg\n                  - Chlorine: ${soilData.chlorine} mg/kg.\n                  Provide precise recommendations including fertilizers and their required amounts in kg/ha.`,
                 },
               ],
             },
@@ -171,7 +171,8 @@ const FertilizerRecommender = () => {
               </div>
             ) : results ? (
               <div className="prose max-w-none text-gray-700">
-                <p className="whitespace-pre-wrap">{typedText}</p> {/* Use typedText */}
+                <p className="whitespace-pre-wrap">{typedText}</p>{" "}
+                {/* Use typedText */}
                 <button
                   onClick={handleDownloadPDF}
                   className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
@@ -203,4 +204,3 @@ const FertilizerRecommender = () => {
 };
 
 export default FertilizerRecommender;
-
