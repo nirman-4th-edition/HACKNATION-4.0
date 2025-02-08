@@ -40,7 +40,7 @@ const Marketplace = () => {
         },
         {
             id: 2,
-            name: "Recycled Timber",
+            name: "Recycled Bricks",
             description: "Sustainably sourced timber perfect for construction or furniture.",
             price: "75 per cubic meter",
             category: "Timber",
@@ -48,7 +48,7 @@ const Marketplace = () => {
         },
         {
             id: 3,
-            name: "Recycled Steel",
+            name: "Recycled Tiles",
             description: "Durable and affordable recycled steel for construction projects.",
             price: "150 per ton",
             category: "Steel",
@@ -56,7 +56,7 @@ const Marketplace = () => {
         },
         {
             id: 4,
-            name: "Recycled Steel",
+            name: "Recycled Stone",
             description: "Durable and affordable recycled steel for construction projects.",
             price: "150 per ton",
             category: "Steel",
@@ -64,7 +64,7 @@ const Marketplace = () => {
         },
         {
             id: 5,
-            name: "Recycled Steel",
+            name: "Recycled Plastic",
             description: "Durable and affordable recycled steel for construction projects.",
             price: "150 per ton",
             category: "Steel",
@@ -72,7 +72,7 @@ const Marketplace = () => {
         },
         {
             id: 6,
-            name: "Recycled Steel",
+            name: "Recycled InsulationMaterials",
             description: "Durable and affordable recycled steel for construction projects.",
             price: "150 per ton",
             category: "Steel",
@@ -80,7 +80,7 @@ const Marketplace = () => {
         },
         {
             id: 7,
-            name: "Recycled Steel",
+            name: "Recycled Brick",
             description: "Durable and affordable recycled steel for construction projects.",
             price: "150 per ton",
             category: "Steel",
@@ -88,7 +88,7 @@ const Marketplace = () => {
         },
         {
             id: 8,
-            name: "Recycled Steel",
+            name: "Recycled Asphalt",
             description: "Durable and affordable recycled steel for construction projects.",
             price: "150 per ton",
             category: "Steel",
@@ -96,7 +96,7 @@ const Marketplace = () => {
         },
         {
             id: 9,
-            name: "Recycled Steel",
+            name: "Recycled MetalRoofing",
             description: "Durable and affordable recycled steel for construction projects.",
             price: "150 per ton",
             category: "Steel",
@@ -104,7 +104,7 @@ const Marketplace = () => {
         },
         {
             id: 10,
-            name: "Recycled Steel",
+            name: "Recycled CrushedConcrete",
             description: "Durable and affordable recycled steel for construction projects.",
             price: "150 per ton",
             category: "Steel",
@@ -112,7 +112,7 @@ const Marketplace = () => {
         },
         {
             id: 11,
-            name: "Recycled Steel",
+            name: "Recycled ConcreteBlocks",
             description: "Durable and affordable recycled steel for construction projects.",
             price: "150 per ton",
             category: "Steel",
