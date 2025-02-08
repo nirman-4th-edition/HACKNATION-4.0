@@ -1,0 +1,156 @@
+/* login.css */
+
+/* Set the background color for the entire login section */
+section {
+    background-color: black;
+    min-height: 100vh; /* Ensure the background covers the whole screen */
+  }
+  
+  /* Style for the container */
+  .login__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: black; /* Background for the container */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Style for the login form */
+  .login__form {
+    color: white; /* Text color for the form */
+    width: 45%;
+  }
+  
+  /* Add some padding and border radius to the inputs */
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #333; /* Dark background for inputs */
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+  }
+  
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: #007bff; /* Focused border color */
+    outline: none;
+  }
+  
+  /* Style the button */
+  .auth__btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .auth__btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* User icon styles */
+  .user img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  /* Link styles */
+  p {
+    color: white;
+    text-align: center;
+  }
+  
+  p a {
+    color: #007bff;
+  }
+  
+  p a:hover {
+    text-decoration: underline;
+  }
+/*   -----------------------------------------------------------------------------------  */
+.login__img{
+    width: 60%;
+    text-align: center;
+}
+
+.login__img img{
+    width: 70%;
+    object-fit: contain;
+}
+
+.login__form{
+    padding: 50px;
+    background: var(--secondary-color);
+    position: relative;
+}
+
+.login__container{
+    box-shadow: rgba(49, 20, 199, 0.15) 0px 8px 60px 0px;
+    margin-top: 100px;
+}
+
+.login__form .user{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: -9%;
+    left: 50%;
+    transform: translate(-50% , -9%);
+}
+
+.login__form .user img{
+    width: 100%;
+}
+
+.login__form h2{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login__form{
+    width: 40%;
+}
+
+.login__form input{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    color: var(--heading-color);
+}
+
+.login__form input:focus{
+    outline: none;
+}
+
+.auth__btn{
+    background: var(--heading-color) !important;
+    width: 100%;
+    color: #fff !important;
+}
+
+.login__form p{
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.login__form p a{
+    color: var(--heading-color);
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: 500;
+}

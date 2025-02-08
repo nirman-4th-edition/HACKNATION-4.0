@@ -1,0 +1,101 @@
+/* Styling for the whole SearchBar container */
+.search__bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering everything horizontally */
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px; /* Max width of the search bar */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Input field for entering locations */
+  .search__bar input {
+    padding: 12px 20px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+  }
+  
+  .search__icon {
+    cursor: pointer;
+    font-size: 25px;
+    color: #f4f0ec;
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #cb4b06;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  
+    /* This will make the icon shift to the right */
+    margin-left: auto; /* Pushes the icon to the right */
+    display: block; /* Makes the element a block-level element to take up the full width */
+  }
+  
+  
+  .search__icon:hover {
+    background-color: #ff7e00;
+    color: #fff;
+  }
+  
+  /* Styling for the list of added locations */
+  .search__bar ul {
+    margin-top: 20px;
+    list-style-type: none;
+    padding-left: 0;
+    width: 100%;
+  }
+  
+  .search__bar ul li {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .search__bar ul li button {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .search__bar ul li button:hover {
+    background-color: darkred;
+  }
+  
+  /* Styling for the Save Locations & Search button */
+  .search__bar button {
+    background-color: #ff7e00;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search__bar button:hover {
+    background-color: #ff6200;
+  }
+  
+  .search__bar button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
