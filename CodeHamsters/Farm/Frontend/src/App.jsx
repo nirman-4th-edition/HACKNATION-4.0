@@ -13,13 +13,14 @@ import ScheduleForm from "./components/ScheduleForm";
 import FertilizerRecommender from "./components/FertilizerRecommender";
 import CropRecommandations from "./pages/CropRecommadations";
 import { useQuery } from "@tanstack/react-query";
+import Products from "./pages/Products";
 
 const App = () => {
   const { data: authUser, isLoading } = useQuery({
     queryKey: ["authUser"],
     queryFn: async () => {
       try {
-        const res = await fetch("/api/v1/auth/me");
+        const res = await fetch("http://localhost:5000/api/v1/auth/me");
         const data = await res.json();
 
         if (data.error) {
@@ -63,6 +64,7 @@ const App = () => {
           element={<FertilizerRecommender />}
         />
         <Route path="/recommandation/crop" element={<CropRecommandations />} />
+        <Route path="/products" element={<Products/>} />
       </Routes>
     </>
   );
