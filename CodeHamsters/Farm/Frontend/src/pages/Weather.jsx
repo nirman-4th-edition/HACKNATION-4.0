@@ -1,111 +1,122 @@
-import React from "react";
-import axios from "axios";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "tailwindcss/tailwind.css";
 
 const Weather = () => {
-  const [location, setLocation] = useState("");
+  const [city, setCity] = useState("Bhubaneswar");
   const [weather, setWeather] = useState(null);
+  const [background, setBackground] = useState("");
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
-  const API_KEY = "5caea6bf50ba4876909195411250502";
-  const BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
+  // API keys and base URLs
+  const weatherApiKey = "2b855af02101d3c28de0241330eeae47";
+  const weatherURL = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=`;
+  const imageApiKey = "2BsfBnNAfcAGF3oX4F_fRIlYnOXYBGYyJpeHfo8AWp4";
+  const imageURL = "https://api.unsplash.com/search/photos?page=1&query=";
 
-  const fetchWeather = async (e) => {
-    e.preventDefault();
-    if (!location.trim()) return;
-
-    setLoading(true);
-    setError("");
-    
+  // Fetch weather data from OpenWeatherMap
+  const fetchWeather = async (city) => {
     try {
-      const response = await axios.get(BASE_URL, {
-        params: {
-          q: location.trim(),
-          units: 'metric',
-          appid: API_KEY
-        }
-      });
+      const response = await fetch(
+        `${weatherURL}${city}&appid=${weatherApiKey}`
+      );
+      const data = await response.json();
+      if (response.status === 404) {
+        setError(true);
+        setWeather(null);
+      } else {
+        setWeather(data);
+        setError(false);
+      }
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
+  };
 
-      setWeather(response.data);
-    } catch (err) {
-      setError(err.response?.data?.message || "Failed to fetch weather data");
-    } finally {
+  // Fetch background image from Unsplash
+  const fetchBackground = async (city) => {
+    try {
+      const response = await fetch(
+        `${imageURL}${city}&client_id=${imageApiKey}`
+      );
+      const data = await response.json();
+      setBackground(data.results[0]?.urls?.full || "");
+    } catch (error) {
+      console.error("Error fetching background image:", error);
+    }
+  };
+
+  // Handle search and refresh both data sets concurrently
+  const handleSearch = async () => {
+    if (city.trim()) {
+      setLoading(true);
+      await Promise.all([fetchWeather(city), fetchBackground(city)]);
       setLoading(false);
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 to-purple-500 py-8 px-4">
-      <div className="max-w-md mx-auto">
-        <h1 className="text-4xl text-white text-center mb-8 font-bold">
-          Weather App
-        </h1>
+  // Load initial data for the default city on mount
+  useEffect(() => {
+    const loadInitialData = async () => {
+      setLoading(true);
+      await Promise.all([fetchWeather(city), fetchBackground(city)]);
+      setLoading(false);
+    };
+    loadInitialData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-        <form onSubmit={fetchWeather} className="mb-8 flex gap-2">
+  return (
+    <div
+      className="relative flex items-center justify-center h-screen text-white bg-cover bg-center"
+      style={{ backgroundImage: `url(${background})` }}
+    >
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+
+      {/* Weather Card */}
+      <div className="relative z-10 bg-black bg-opacity-60 backdrop-blur-md p-8 rounded-2xl max-w-md w-full text-center shadow-2xl">
+        <div className="mb-6">
+          <h1 className="text-4xl font-extrabold">Weather</h1>
+          <p className="text-sm text-gray-300">
+            Get the latest weather updates in your city
+          </p>
+        </div>
+        <div className="flex mb-6">
           <input
             type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            className="flex-1 p-3 rounded-l-full text-black focus:outline-none"
             placeholder="Enter city name"
-            className="flex-1 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
-            type="submit"
-            disabled={loading}
-            className="bg-white text-blue-500 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 disabled:opacity-50"
+            onClick={handleSearch}
+            className="bg-gradient-to-r from-blue-500 to-blue-700 px-6 py-3 rounded-r-full hover:from-blue-600 hover:to-blue-800 transition"
           >
-            {loading ? "Searching..." : "Search"}
+            Search
           </button>
-        </form>
+        </div>
 
-        {error && (
-          <div className="bg-red-100 p-4 rounded-lg text-red-700 mb-4">
-            {error.includes("404") ? "City not found" : error}
+        {loading ? (
+          // Loading Spinner
+          <div className="flex justify-center items-center">
+            <div className="w-16 h-16 border-4 border-blue-400 border-dashed rounded-full animate-spin"></div>
           </div>
-        )}
-
-        {weather && (
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg">
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-800">
-                  {weather.name}, {weather.sys?.country}
-                </h2>
-                <p className="text-gray-600 capitalize">
-                  {weather.weather[0]?.description}
-                </p>
-              </div>
-              <img
-                src={`http://openweathermap.org/img/wn/${weather.weather[0]?.icon}@2x.png`}
-                alt="weather icon"
-                className="w-20 h-20"
-              />
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex justify-between items-center bg-white p-4 rounded-lg">
-                <span className="text-gray-600">Temperature</span>
-                <span className="text-2xl font-bold text-gray-800">
-                  {weather.main?.temp}°C
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center bg-white p-4 rounded-lg">
-                <span className="text-gray-600">Humidity</span>
-                <span className="text-2xl font-bold text-gray-800">
-                  {weather.main?.humidity}%
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center bg-white p-4 rounded-lg">
-                <span className="text-gray-600">Wind Speed</span>
-                <span className="text-2xl font-bold text-gray-800">
-                  {weather.wind?.speed} m/s
-                </span>
+        ) : error ? (
+          <p className="text-red-500">Invalid City Name</p>
+        ) : (
+          weather && (
+            <div className="transition-all duration-500">
+              <h2 className="text-3xl font-bold">{weather.name}</h2>
+              <p className="text-2xl mt-2">{Math.round(weather.main.temp)}°C</p>
+              <p className="mt-1">{weather.weather[0].main}</p>
+              <div className="flex justify-between mt-4 text-sm">
+                <p>Humidity: {weather.main.humidity}%</p>
+                <p>Wind: {weather.wind.speed} Km/h</p>
               </div>
             </div>
-          </div>
+          )
         )}
       </div>
     </div>

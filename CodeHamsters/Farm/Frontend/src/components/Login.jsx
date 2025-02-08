@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { IoLogIn } from "react-icons/io5";
 
@@ -13,6 +13,7 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const { mutate } = useMutation({
     mutationFn: async ({ email, password }) => {
@@ -32,13 +33,12 @@ const Login = () => {
     onSuccess: () => {
       toast.success("Logged in successfully");
       queryClient.invalidateQueries({ queryKey: ["authUser"] });
+      navigate("/");
     },
     onError: (error) => {
       toast.error(error.message);
     },
   });
-
-  console.log(formData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,71 +54,72 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-secondary text-white px-4">
-      <div className="card w-full max-w-lg bg-base rounded-lg shadow-lg border border-gray-700">
-        <div className="card-body px-6 py-8">
-          <form onSubmit={handleSubmit}>
-            <div className="form-control mb-4">
-              <label htmlFor="email" className="block text-sm font-medium mb-1">
-                email Address
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="input w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
-            <div className="form-control mb-6 relative">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium mb-1"
-              >
-                Password
-              </label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  id="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  className="input w-full px-4 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-12"
-                  placeholder="Enter your password"
-                  required
-                />
-                <button
-                  type="button"
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-primary hover:text-blue-400"
-                  onClick={handleShowPassword}
-                >
-                  {showPassword ? (
-                    <IoMdEye size={24} />
-                  ) : (
-                    <IoMdEyeOff size={24} />
-                  )}
-                </button>
-              </div>
-            </div>
-            <button type="submit" className="text-black">
-              Login
-              <IoLogIn className="ml-2 text-xl" />
-            </button>
-          </form>
-          <p className="text-center mt-4 text-sm text-gray-400">
-            Don't have an account?{" "}
-            <Link
-              to="/signup"
-              className="text-primary hover:underline hover:text-primary-light"
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-gray-700 font-medium mb-2"
             >
-              Register here
-            </Link>
-          </p>
-        </div>
+              Email Address
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Enter your email"
+              required
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-green-300"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-gray-700 font-medium mb-2"
+            >
+              Password
+            </label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                id="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                placeholder="Enter your password"
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-green-300"
+              />
+              <button
+                type="button"
+                onClick={handleShowPassword}
+                className="absolute inset-y-0 right-0 px-3 flex items-center"
+              >
+                {showPassword ? (
+                  <IoMdEye size={24} className="text-gray-600" />
+                ) : (
+                  <IoMdEyeOff size={24} className="text-gray-600" />
+                )}
+              </button>
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 flex justify-center items-center"
+          >
+            Login <IoLogIn className="ml-2" />
+          </button>
+        </form>
+        <p className="text-center text-gray-600 mt-4">
+          Don't have an account?{" "}
+          <Link to="/register" className="text-green-500 hover:underline">
+            Register here
+          </Link>
+        </p>
       </div>
     </div>
   );

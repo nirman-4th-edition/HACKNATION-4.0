@@ -68,7 +68,7 @@ const Navbar = () => {
               className="text-2xl font-bold text-green-700 hover:text-green-500 transition duration-300 flex items-center"
             >
               <FaTractor className="mr-2 text-green-600" />
-              Krushak Bandhu
+              Krushi Bandhu
             </Link>
           </div>
 
