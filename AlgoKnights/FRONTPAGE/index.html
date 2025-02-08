@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGurd - 3D Dark Theme</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt="PhishGurd Logo" class="logo-img"> PhishGurd
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center">
+        <div class="container text-center">
+            <h1 class="display-3 glow-text">Protect Yourself from Phishing Attacks</h1>
+            <p class="lead">PhishGurd is your ultimate solution to detect and prevent phishing attempts in real-time.</p>
+            <a href="#features" class="btn btn-neon btn-lg">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 glow-text">Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/Shield-Icon.png" alt="Real-Time Protection Icon" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title glow-text">Real-Time Protection</h3>
+                            <p class="card-text">Get instant alerts and protection against phishing websites and emails.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/user-icon.png" alt="User-Friendly Icon" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title glow-text">User-Friendly</h3>
+                            <p class="card-text">Easy-to-use interface designed for both individuals and businesses.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/update-icon.png" alt="Regular Updates Icon" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title glow-text">Regular Updates</h3>
+                            <p class="card-text">Our system is constantly updated to protect against the latest threats.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 glow-text">About PhishGurd</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>The PhishGuard project represents a comprehensive approach to
+                         combating phishing attacks, a significant threat in today’s digital landscape. By integrating user engagement, advanced machine learning techniques, and a robust backend architecture, PhishGuard not only empowers individuals to report and analyze suspected
+                          phishing attempts but also fosters a community-driven effort to enhance cybersecurity awareness.
+
+                        The project’s unique features, such as a user-friendly interface, real-time feedback on reported URLs, and educational resources, 
+                        create a valuable platform for users to learn about phishing threats and contribute to a safer online environment. The backend, built with Node.js and Express, ensures secure and efficient handling of user data, while the integration of a machine learning model allows for dynamic detection of phishing attempts.
+                        
+                        Moreover, the proposed earning models provide a sustainable pathway for the project’s 
+                        growth and development. By offering a mix of free and premium services, enterprise solutions,
+                         data insights, and training programs, PhishGuard can generate revenue while maintaining its commitment to user safety and education.
+                        
+                        In summary, PhishGuard is not just a tool for reporting phishing; it is a proactive solution that 
+                        combines technology, community involvement, and education to address one of the most pressing 
+                        challenges in cybersecurity today. As phishing tactics continue to evolve, PhishGuard aims to adapt and grow, ensuring that users are equipped with the knowledge and tools necessary to protect themselves and their organizations from these malicious threats. Through continuous improvement and user engagement, PhishGuard has the potential to make a significant impact in the fight against phishing and contribute to a more secure digital world..</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="images/about-image.jpg" alt="About PhishGurd" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 glow-text" style="color: aliceblue;">Contact Us</h2>
+            <form class="row g-3" style="color: aquamarine;">
+                <div class="col-md-6">
+                
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="col-12">
+                    <textarea class="form-control" placeholder="Your Message" required></textarea>
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-neon">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 PhishGurd. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
