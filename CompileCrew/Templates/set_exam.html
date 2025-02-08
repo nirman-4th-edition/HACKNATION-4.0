@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% csrf_token %}
+    <style>
+        body {
+            background: linear-gradient(135deg, #2D68FF 5%, #47DEFF 85%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(45, 104, 255, 0.37);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+    </style>
+</head>
+<body>
+    <div class="container glass-effect p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold text-white text-center mb-4">Create Exam</h2>
+        <form id="examForm" class="space-y-4" method="POST">
+            {% csrf_token %}
+            <label for="exam_code" class="block text-white font-medium">Exam Code:</label>
+            <input type="text" id="exam_code" name="exam_code" required class="w-full px-4 py-2 border rounded-lg bg-white focus:ring focus:ring-blue-300">
+
+            <label for="recipient" class="block text-white font-medium">Recipient:</label>
+            <textarea id="recipient" name="recipient" required class="w-full px-4 py-2 border rounded-lg bg-white focus:ring focus:ring-blue-300"></textarea>
+
+            <label for="start_time" class="block text-white font-medium">Start Time:</label>
+            <input type="datetime-local" id="start_time" name="start_time" required class="w-full px-4 py-2 border rounded-lg bg-white focus:ring focus:ring-blue-300">
+
+            <label for="duration" class="block text-white font-medium">Duration (minutes):</label>
+            <input type="number" id="duration" name="duration" required class="w-full px-4 py-2 border rounded-lg bg-white focus:ring focus:ring-blue-300">
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Create Exam</button>
+        </form>
+        <p id="message" class="mt-4 text-center text-white font-semibold"></p>
+    </div>
+
+</body>
+</html>

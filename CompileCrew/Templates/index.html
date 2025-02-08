@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proctoring System</title>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        h1 {
+            margin: 0;
+        }
+        .test-info {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .question-container {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .option {
+            margin-bottom: 10px;
+        }
+        .option label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: none;
+        }
+        #webcam-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 320px;
+            height: 240px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        #webcam {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Proctoring System</h1>
+    </header>
+    <div class="container">
+        <div class="test-info">
+            <h2>Test Information</h2>
+            <p><strong>Subject:</strong> Computer Science</p>
+            <p><strong>Duration:</strong> 60 minutes</p>
+            <p><strong>Total Questions:</strong> 30</p>
+        </div>
+        <div class="timer" id="timer">Time Remaining: 60:00</div>
+        <div class="warning" id="warning">Warning: You are not in full-screen mode!</div>
+        <div class="warning" id="face-warning" style="display: none;">Warning: Face not detected!</div>
+        <div class="warning" id="movement-warning" style="display: none;">Warning: Excessive movement detected!</div>
+        <div class="question-container">
+            <div class="question" id="question"></div>
+            <ul class="options" id="options"></ul>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="#" class="btn" id="prevBtn">Previous</a>
+            <a href="#" class="btn" id="nextBtn">Next</a>
+        </div>
+    </div>
+    <div id="webcam-container">
+        <video id="webcam" autoplay muted></video>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                options: ["London", "Berlin", "Paris", "Madrid"],
+                correctAnswer: 2
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                options: ["Venus", "Mars", "Jupiter", "Saturn"],
+                correctAnswer: 1
+            },
+            {
+                question: "What is the largest mammal in the world?",
+                options: ["African Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+                correctAnswer: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let timeRemaining = 60 * 60; // 60 minutes in seconds
+        let lastImageData;
+        let movementThreshold = 50;
+
+        function displayQuestion() {
+            const questionEl = document.getElementById('question');
+            const optionsEl = document.getElementById('options');
+            
+            questionEl.textContent = ${currentQuestion + 1}. ${questions[currentQuestion].question};
+            optionsEl.innerHTML = '';
+            
+            questions[currentQuestion].options.forEach((option, index) => {
+                const li = document.createElement('li');
+                li.className = 'option';
+                li.innerHTML = `
+                    <label>
+                        <input type="radio" name="answer" value="${index}">
+                        ${option}
+                    </label>
+                `;
+                optionsEl.appendChild(li);
+            });
+        }
+
+        function updateTimer() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('timer').textContent = Time Remaining: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};
+            
+            if (timeRemaining > 0) {
+                timeRemaining--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                alert("Time's up!");
+            }
+        }
+
+        function checkFullScreen() {
+            const warningEl = document.getElementById('warning');
+            if (!document.fullscreenElement) {
+                warningEl.style.display = 'block';
+            } else {
+                warningEl.style.display = 'none';
+            }
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                displayQuestion();
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+            }
+        });
+
+        document.addEventListener('fullscreenchange', checkFullScreen);
+
+        // Face detection and movement detection
+        const video = document.getElementById('webcam');
+        const faceWarning = document.getElementById('face-warning');
+        const movementWarning = document.getElementById('movement-warning');
+
+        async function setupWebcam() {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            video.srcObject = stream;
+        }
+
+        async function loadFaceDetectionModel() {
+            await faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/weights/');
+        }
+
+        function detectFaceAndMovement() {
+            const canvas = faceapi.createCanvasFromMedia(video);
+            const displaySize = { width: video.width, height: video.height };
+            faceapi.matchDimensions(canvas, displaySize);
+
+            setInterval(async () => {
+                const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
+                
+                if (detections.length === 0) {
+                    faceWarning.style.display = 'block';
+                } else {
+                    faceWarning.style.display = 'none';
+                }
+
+                // Movement detection
+                const imageData = getImageData(video);
+                if (lastImageData) {
+                    const movement = calculateMovement(imageData, lastImageData);
+                    if (movement > movementThreshold) {
+                        movementWarning.style.display = 'block';
+                        setTimeout(() => {
+                            movementWarning.style.display = 'none';
+                        }, 3000);
+                    }
+                }
+                lastImageData = imageData;
+            }, 100);
+        }
+
+        function getImageData(video) {
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            return canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+        }
+
+        function calculateMovement(imageData1, imageData2) {
+            let movement = 0;
+            const data1 = imageData1.data;
+            const data2 = imageData2.data;
+            for (let i = 0; i < data1.length; i += 4) {
+                movement += Math.abs(data1[i] - data2[i]);
+            }
+            return movement / (imageData1.width * imageData1.height);
+        }
+
+        // Initialize
+        displayQuestion();
+        updateTimer();
+        checkFullScreen();
+        setupWebcam().then(() => {
+            loadFaceDetectionModel().then(() => {
+                detectFaceAndMovement();
+            });
+        });
+    </script>
+</body>
+</html>

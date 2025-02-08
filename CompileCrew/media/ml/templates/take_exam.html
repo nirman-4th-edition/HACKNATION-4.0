@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proctoring System</title>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #CDC1FF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .container {
+            max-width: calc(100% - 330px);
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+        header {
+            background-color: #A294F9;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        h1 {
+            margin: 0;
+        }
+        .test-info {
+            background-color: #F5EFFF;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 80px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #prediction-result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #e74c3c;
+            text-align: center;
+        }
+        #webcam-container {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 290px;
+            height: 220px;
+            border: 4px solid #dcccf7;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            background-color: #fff;
+        }
+        #webcam {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #face-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Proctoring System</h1>
+    </header>
+    <div class="container">
+        <div class="test-info">
+            <h2>Test Information:</h2>
+            <p><strong>Subject:</strong> Computer Science</p>
+            <p><strong>Duration:</strong> 60 minutes</p>
+            <p><strong>Total Questions:</strong></p>
+        </div>
+        <div class="timer" id="timer">Time Remaining: 60:00</div>
+        <div id="prediction-result">Prediction: Waiting for frame analysis...</div>
+        <form method="POST">
+        
+            <h2>Answer the questions for Exam Code: </h2>
+           
+                <div class="question-container">
+                    <p><strong>Question</strong></p>
+                    
+                            <div class="option">
+                                <input type="radio" name="answer" value="67" required>
+                                <label style="display:inline;"></label>
+                            </div>
+                    
+                        <textarea name="answer" required></textarea>
+                  
+                            <div class="option">
+                                <input type="radio" name="answer" value="89" required>
+                                <label style="display:inline;"></label>
+                            </div>
+                     
+                </div>
+            
+            <button type="submit" class="btn">Submit Exam</button>
+        </form>
+    </div>
+    
+    <div id="webcam-container">
+        <video id="webcam" autoplay muted></video>
+        <canvas id="face-canvas"></canvas>
+    </div>
+
+    <script>
+        let totalTime = 60 * 60; // 60 minutes in seconds
+        let timeRemaining = localStorage.getItem('timeRemaining') ? parseInt(localStorage.getItem('timeRemaining')) : totalTime;
+        
+        function updateTimer() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('timer').textContent = `Time Remaining: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+            if (timeRemaining > 0) {
+                timeRemaining--;
+                localStorage.setItem('timeRemaining', timeRemaining); // Save the time remaining to localStorage
+                setTimeout(updateTimer, 1000);
+            } else {
+                alert("Time's up!");
+                localStorage.removeItem('timeRemaining'); // Clear the saved time
+                document.querySelector('.btn').click();
+            }
+        }
+        
+        // Clear the timer if it's the first time or the previous session has expired
+        window.onload = function() {
+            if (timeRemaining <= 0) {
+                localStorage.removeItem('timeRemaining');
+                timeRemaining = totalTime;
+            }
+            updateTimer();
+        };
+
+        async function setupWebcam() {
+            const video = document.getElementById('webcam');
+            const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
+            video.srcObject = stream;
+        }
+
+        async function sendFrameToServer() {
+            const video = document.getElementById('webcam');
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            const frameBlob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg'));
+
+            const formData = new FormData();
+            formData.append('frame', frameBlob, 'frame.jpg');
+
+            try {
+                const response = await fetch('/process-frame/', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+                document.getElementById('prediction-result').textContent = result.result;
+            } catch (error) {
+                console.error('Error sending frame to server:', error);
+            }
+        }
+
+        setupWebcam();
+        updateTimer();
+        setInterval(sendFrameToServer, 2000);  
+        
+        function sendStatusData(data) {
+            fetch('/receive_status/', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'alert') {
+                    alert(data.message);  // Show the alert when triggered by the server
+                    resumeExam();         // Resume the exam after acknowledging the alert
+                } else if (data.status === 'success') {
+                    console.log(data.message);  // Handle success response
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    
+        function resumeExam() {
+    console.log("Resume Exam");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Dashboard</title>
+    <script src="https://unpkg.com/lucide@0.344.0"></script>
+</head>
+<style>
+    /* Base styles */
+:root {
+    --color-primary: #4f46e5;
+    --color-primary-hover: #4338ca;
+    --color-secondary: #6b7280;
+    --color-success: #22c55e;
+    --color-danger: #ef4444;
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+    
+    /* New theme colors */
+    --color-accent: #8b5cf6;
+    --color-accent-light: #a78bfa;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-900);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header styles - Enhanced */
+.header {
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: box-shadow 0.3s ease;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--color-gray-200);
+    border: 2px solid var(--color-accent);
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: 0.25rem;
+}
+
+.profile-info p {
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-info p i {
+    color: var(--color-accent);
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Notification styles - Fixed and Enhanced */
+.notifications {
+    position: relative;
+    margin-left: 1rem;
+}
+
+.notification-btn {
+    padding: 0.75rem;
+    color: var(--color-gray-400);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+}
+
+.notification-btn:hover {
+    color: var(--color-accent);
+    background-color: var(--color-gray-100);
+}
+
+.notification-indicator {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    height: 1rem;
+    width: 1rem;
+}
+
+.ping {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: var(--color-accent-light);
+    opacity: 0.75;
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+}
+
+@keyframes ping {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Navigation styles - Enhanced */
+.nav {
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    margin-top: 0.25rem;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.btn:active::after {
+    width: 150%;
+    height: 150%;
+}
+
+.btn i {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(79, 70, 229, 0.15);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: white;
+    border-color: var(--color-gray-300);
+    color: var(--color-gray-700);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-gray-50);
+    border-color: var(--color-gray-400);
+}
+
+.btn-logout {
+    color: var(--color-danger);
+    background: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+}
+
+.btn-logout:hover {
+    color: #dc2626;
+    background-color: #fee2e2;
+    border-radius: 0.5rem;
+}
+
+/* Main content styles - Enhanced */
+.main {
+    padding: 2rem 0;
+    min-height: calc(100vh - 8rem);
+}
+
+.guidelines {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 2rem;
+    border: 1px solid var(--color-gray-200);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guidelines:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.guidelines-toggle {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.guidelines-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-gray-900);
+}
+
+.guidelines-header i {
+    color: var(--color-accent);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.guidelines-content {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.guidelines-content.expanded {
+    padding: 1rem 1.5rem 1.5rem;
+    max-height: 500px;
+    opacity: 1;
+}
+
+.guidelines-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .guidelines-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.guidelines-section h4 {
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.guidelines-section h4 i {
+    color: var(--color-accent);
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.guidelines-section ul {
+    list-style: none;
+    padding-left: 1.75rem;
+    color: var(--color-gray-600);
+}
+
+.guidelines-section li {
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+.guidelines-section li::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: 0.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+}
+
+.support-info {
+    background-color: #eff6ff;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    border: 1px solid #bfdbfe;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.support-info i {
+    color: var(--color-info);
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+}
+
+.support-info p {
+    color: var(--color-info);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-title i {
+    color: var(--color-accent);
+}
+
+.exam-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .exam-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.exam-card {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+    border: 1px solid var(--color-gray-200);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exam-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.exam-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.exam-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: 0.25rem;
+}
+
+.exam-subject {
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.exam-subject i {
+    color: var(--color-accent);
+    width: 1rem;
+    height: 1rem;
+}
+
+.exam-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    background-color: var(--color-gray-100);
+    padding: 0.375rem 0.75rem;
+    border-radius: 1rem;
+}
+
+.exam-time i {
+    color: var(--color-accent);
+    width: 1rem;
+    height: 1rem;
+}
+
+.score-section {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: var(--color-gray-50);
+    border-radius: 0.75rem;
+}
+
+.score-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.score-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.score-label i {
+    color: var(--color-accent);
+    width: 1rem;
+    height: 1rem;
+}
+
+.score-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--color-gray-200);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.progress-value {
+    height: 100%;
+    background-color: var(--color-success);
+    border-radius: 9999px;
+    transition: width 0.5s ease-out;
+}
+
+.exam-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-gray-50);
+    border-radius: 0.75rem;
+}
+
+.exam-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.exam-stats i {
+    color: var(--color-accent);
+    width: 1rem;
+    height: 1rem;
+}
+
+.exam-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Responsive enhancements */
+@media (max-width: 640px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .notifications {
+        align-self: flex-end;
+    }
+
+    .nav-content {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+        gap: 1rem;
+    }
+
+    .nav-buttons {
+        width: 100%;
+    }
+
+    .btn {
+        flex: 1;
+    }
+
+    .exam-actions {
+        flex-direction: column;
+    }
+
+    .exam-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Loading animation */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right, var(--color-gray-100) 4%, var(--color-gray-200) 25%, var(--color-gray-100) 36%);
+    background-size: 1000px 100%;
+}
+</style>
+<body>
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="profile-section">
+                        <div class="avatar">
+                            <img src="{{profile_obj.profile.url }}" alt="Profile">
+                        </div>
+                        <div class="profile-info">
+                            <h2>Welcome, {{profile_obj.user}}</h2>
+                            <p>
+                                <i data-lucide="clock"></i>
+                                Last login: Today at 9:30 AM
+                            </p>
+                        </div>
+                    </div>
+                    <div class="notifications">
+                        <button class="notification-btn">
+                            <i data-lucide="bell"></i>
+                        </button>
+                        <span class="notification-indicator">
+                            <span class="ping"></span>
+                            <span class="dot"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="nav-buttons">
+                        <a href="{% url 'question_form' %}" class="btn btn-primary">
+                            <i data-lucide="plus"></i>
+                            Create Exam
+                        </a>
+                        {% comment %} <a href="{% url 'previous_exams' %}" class="btn btn-secondary">
+                            <i data-lucide="history"></i>
+                            Previous Exams
+                        </a> {% endcomment %}
+                    </div>
+                    <a href="{% url 'logout' %}" class="btn btn-logout">
+                        <i data-lucide="log-out"></i>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+
+        <main class="main container">
+            <!-- Guidelines Section -->
+            <div class="guidelines">
+                <button class="guidelines-toggle" id="guidelinesToggle">
+                    <div class="guidelines-header">
+                        <i data-lucide="book-open"></i>
+                        <h3>Examination Guidelines</h3>
+                    </div>
+                    <i data-lucide="chevron-down" id="guidelinesIcon"></i>
+                </button>
+                <div class="guidelines-content" id="guidelinesContent">
+                    <div class="guidelines-grid">
+                        <div class="guidelines-section">
+                            <h4>
+                                <i data-lucide="check-circle"></i>
+                                Key Policies
+                            </h4>
+                            <ul>
+                                <li>No external monitors must be attached via the primary device</li>
+                                <li>No tab switching during examination and restrict the mouse within the shown area</li>
+                                <li>Complete all sections within time limit</li>
+                                <li>Submit answers before closing browser</li>
+                            </ul>
+                        </div>
+                        <div class="guidelines-section">
+                            <h4>
+                                <i data-lucide="settings"></i>
+                                Technical Requirements
+                            </h4>
+                            <ul>
+                                <li>Modern browser (Chrome, Firefox, Safari)</li>
+                                <li>Minimum 1Mbps internet speed</li>
+                                <li>Webcam and microphone access</li>
+                                <li>JavaScript enabled</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="support-info">
+                        <i data-lucide="help-circle"></i>
+                        <p>For technical support, contact: supportclearcheck@hotmail.com or call +91-7970869003</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Exams -->
+            <h3 class="section-title">
+                <i data-lucide="clipboard-list"></i>
+                Recent Examinations
+            </h3>
+            <div class="exam-grid" id="examGrid">
+                <div class="container">
+                    <h1>Welcome to Your Dashboard</h1>
+            
+                    <h2>Exams</h2>
+                    {% if exam_codes %}
+                        <ul>
+                            {% for code in exam_codes %}
+                                <li>
+                                    <strong>{{ code }}</strong>
+                                    <ul>
+                                        {% for question in questions %}
+                                            {% if question.exam_code == code %}
+                                                <li>
+                                                    <strong>Question:</strong> {{ question.question_text }}<br>
+                                                    <strong>Type:</strong> {{ question.get_question_type_display }}<br>
+                                                    <strong>Difficulty:</strong> {{ question.get_difficulty_display }}
+                                                    {% if question.options %}
+                                                        <br><strong>Options:</strong> 
+                                                        {{ question.get_options|join:", " }}
+                                                    {% endif %}
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No exams available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Initialize Lucide icons
+lucide.createIcons();
+
+// Guidelines toggle functionality
+const guidelinesToggle = document.getElementById('guidelinesToggle');
+const guidelinesContent = document.getElementById('guidelinesContent');
+const guidelinesIcon = document.getElementById('guidelinesIcon');
+
+guidelinesToggle.addEventListener('click', () => {
+    guidelinesContent.classList.toggle('expanded');
+    guidelinesIcon.setAttribute(
+        'data-lucide',
+        guidelinesContent.classList.contains('expanded') ? 'chevron-up' : 'chevron-down'
+    );
+    lucide.createIcons();
+});
+
+// Exam history data
+const examHistory = [
+    {
+        title: "Advanced Mathematics",
+        date: "2024-03-10",
+        subject: "Calculus",
+        score: 80,
+        timeTaken: "1h 45m",
+        questionsAttempted: 45,
+        totalQuestions: 50,
+        status: "Completed",
+        difficulty: "Advanced"
+    },
+    {
+        title: "Google Advance Sheet",
+        date: "2025-02-05",
+        subject: "Data Structures",
+        score: 92,
+        timeTaken: "1h 30m",
+        questionsAttempted: 40,
+        totalQuestions: 40,
+        status: "Completed",
+        difficulty: "Intermediate"
+    }
+];
+
+// Render exam cards with enhanced UI
+const examGrid = document.getElementById('examGrid');
+
+examHistory.forEach(exam => {
+    const examCard = document.createElement('div');
+    examCard.className = 'exam-card';
+    
+    // Calculate score color based on performance
+    const getScoreColor = (score) => {
+        if (score >= 90) return '#22c55e';
+        if (score >= 75) return '#eab308';
+        return '#ef4444';
+    };
+
+    examCard.innerHTML = `
+        <div class="exam-header">
+            <div>
+                <h4 class="exam-title">${exam.title}</h4>
+                <p class="exam-subject">
+                    <i data-lucide="book-open"></i>
+                    ${exam.subject}
+                </p>
+            </div>
+            <div class="exam-time">
+                <i data-lucide="clock"></i>
+                <span>${exam.timeTaken}</span>
+            </div>
+        </div>
+        
+        <div class="score-section">
+            <div class="score-header">
+                <span class="score-label">
+                    <i data-lucide="target"></i>
+                    Score
+                </span>
+                <span class="score-value">${exam.score}%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-value" style="width: ${exam.score}%; background-color: ${getScoreColor(exam.score)}"></div>
+            </div>
+        </div>
+
+        <div class="exam-stats">
+            <span>
+                <i data-lucide="help-circle"></i>
+                Questions: ${exam.questionsAttempted}/${exam.totalQuestions}
+            </span>
+            <span>
+                <i data-lucide="calendar"></i>
+                Date: ${exam.date}
+            </span>
+        </div>
+
+        <div class="exam-actions">
+            <button class="btn btn-primary">
+                <i data-lucide="file-text"></i>
+                View Result
+            </button>
+            <button class="btn btn-secondary">
+                <i data-lucide="search"></i>
+                Review
+            </button>
+        </div>
+    `;
+    examGrid.appendChild(examCard);
+});
+
+// Add last login time update
+const updateLastLogin = () => {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-US', { 
+        hour: 'numeric', 
+        minute: '2-digit', 
+        hour12: true 
+    });
+    document.querySelector('.profile-info p').innerHTML = `
+        <i data-lucide="clock"></i>
+        Last login: Today at ${timeString}
+    `;
+    lucide.createIcons();
+};
+
+updateLastLogin();
+
+// Add notification counter
+let notificationCount = 2;
+const updateNotificationBadge = () => {
+    const badge = document.querySelector('.notification-indicator');
+    if (notificationCount > 0) {
+        badge.style.display = 'block';
+    } else {
+        badge.style.display = 'none';
+    }
+};
+
+// Notification click handler
+document.querySelector('.notification-btn').addEventListener('click', () => {
+    notificationCount = 0;
+    updateNotificationBadge();
+});
+
+// Initialize tooltips
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach(button => {
+    button.addEventListener('mouseenter', (e) => {
+        const rect = button.getBoundingClientRect();
+        const ripple = document.createElement('div');
+        ripple.style.left = `${e.clientX - rect.left}px`;
+        ripple.style.top = `${e.clientY - rect.top}px`;
+        ripple.className = 'ripple';
+        button.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 1000);
+    });
+});
+
+// Re-initialize icons for dynamically added content
+lucide.createIcons();
+    </script>
+</body>
+</html>

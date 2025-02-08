@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .hidden { display: none; }
+        .question-card { padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px; background: #f9f9f9; }
+        .delete-question { float: right; color: red; cursor: pointer; }
+        .code-preview { background: #eee; padding: 10px; border-radius: 5px; font-family: monospace; }
+    </style>
+</head>
+<body class="container mt-5">
+
+    <h2 class="text-center">Create New Question</h2>
+    <form id="questionForm" class="border p-4 rounded shadow" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="examCode" value="{{ exam_code }}">
+
+        <!-- Question Text -->
+        <div class="mb-3">
+            <label for="questionText" class="form-label">Question Text:</label>
+            <textarea name="questionText" id="questionText" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <!-- Question Type -->
+        <div class="mb-3">
+            <label for="questionType" class="form-label">Question Type:</label>
+            <select name="questionType" id="questionType" class="form-select" required>
+                <option value="mcq">Multiple Choice</option>
+                <option value="truefalse">True/False</option>
+                <option value="shortanswer">Short Answer</option>
+                <option value="code">Code</option>
+            </select>
+        </div>
+
+        <!-- Code Section (Hidden by Default) -->
+        <div id="codeSection" class="hidden">
+            <div class="mb-3">
+                <label for="programmingLanguage" class="form-label">Programming Language:</label>
+                <select name="programmingLanguage" id="programmingLanguage" class="form-select">
+                    <option value="python">Python</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="java">Java</option>
+                    <option value="cpp">C++</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="codeTemplate" class="form-label">Code Template (Optional):</label>
+                <textarea name="codeTemplate" id="codeTemplate" class="form-control" rows="4"></textarea>
+            </div>
+        </div>
+
+        <!-- Difficulty Level -->
+        <div class="mb-3">
+            <label for="difficulty" class="form-label">Difficulty Level:</label>
+            <select name="difficulty" id="difficulty" class="form-select" required>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+
+        <!-- Options for MCQ -->
+        <div id="optionsSection" class="mb-3">
+            <label class="form-label">Options:</label>
+            <div id="optionsContainer">
+                <div class="input-group mb-2 option-group">
+                    <input type="text" name="options" class="form-control option-input" placeholder="Option 1">
+                    <button type="button" class="btn btn-danger remove-option">Remove</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" id="addOption">Add Option</button>
+        </div>
+
+        <!-- Correct Answer -->
+        <div class="mb-3">
+            <label for="correctAnswer" class="form-label">Correct Answer:</label>
+            <input type="text" name="correctAnswer" id="correctAnswer" class="form-control" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-success w-100">Add Question</button>
+    </form>
+
+    <!-- Display Added Questions -->
+    <div class="mt-5">
+        <h3>Added Questions</h3>
+        <a href="/exam_set/" class="bg-blue-600 text-black py-2 px-4 rounded-lg hover:bg-blue-700 transition inline-block text-center">
+            Done
+        </a>
+        {% for question in questions %}
+            <div class="question-card">
+                <a href="{% url 'delete_question' question.id %}" class="delete-question">🗑</a>
+                <p><strong>Exam Code:</strong> {{ question.exam_code }}</p>
+                <p><strong>Question:</strong> {{ question.question_text }}</p>
+                <p><strong>Type:</strong> {{ question.get_question_type_display }}</p>
+                <p><strong>Difficulty:</strong> {{ question.get_difficulty_display }}</p>
+
+                {% if question.question_type == 'code' %}
+                    <p><strong>Programming Language:</strong> {{ question.get_programming_language_display }}</p>
+                    <pre class="code-preview">{{ question.code_template }}</pre>
+                {% elif question.question_type != 'truefalse' %}
+                    <p><strong>Options:</strong> {{ question.get_options|join:", " }}</p>
+                {% endif %}
+
+                <p><strong>Correct Answer:</strong> {{ question.correct_answer }}</p>
+            </div>
+        {% empty %}
+            <p>No questions added yet.</p>
+        {% endfor %}
+        
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Show/hide relevant fields based on question type
+            $('#questionType').change(function () {
+                let selectedType = $(this).val();
+                if (selectedType === "mcq") {
+                    $('#optionsSection').show();
+                    $('#codeSection').hide();
+                } else if (selectedType === "code") {
+                    $('#optionsSection').hide();
+                    $('#codeSection').show();
+                } else {
+                    $('#optionsSection').hide();
+                    $('#codeSection').hide();
+                }
+            });
+
+            // Add new option for MCQ
+            $('#addOption').click(function () {
+                let optionCount = $('#optionsContainer .option-group').length + 1;
+                let newOption = `
+                    <div class="input-group mb-2 option-group">
+                        <input type="text" name="options" class="form-control option-input" placeholder="Option ${optionCount}">
+                        <button type="button" class="btn btn-danger remove-option">Remove</button>
+                    </div>`;
+                $('#optionsContainer').append(newOption);
+            });
+
+            // Remove option
+            $(document).on('click', '.remove-option', function () {
+                $(this).parent('.option-group').remove();
+            });
+        });
+    </script>
+
+</body>
+</html>
