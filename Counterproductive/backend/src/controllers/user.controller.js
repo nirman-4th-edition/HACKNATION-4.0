@@ -4,7 +4,6 @@ import {User} from '../models/user.model.js';
 import {uploadOnCloudinary} from '../utils/cloudinary.js';
 import {ApiResponse} from '../utils/ApiResponse.js';
 import jwt, { decode } from 'jsonwebtoken';
-import { sendEmail } from '../utils/email.js';
 
 
 const genrateAccessAndRefreshTokens =async(userId)=>{
@@ -24,71 +23,32 @@ const genrateAccessAndRefreshTokens =async(userId)=>{
 
 
 const registerBusinessOrConsumer = asyncHandler(async (req, res) => {
-    const { fullName, email, username, password, role, bankName, accountNumber, ifscCode, accountHolderName } = req.body;
+    const { firstName, lastname, password, role, phoneno} = req.body;
   
-    if ([fullName, email, username, password, role].some((field) => field?.trim() === "")) {
+    if ([firstName, lastname, password, role, phoneno].some((field) => field?.trim() === "")) {
       throw new ApiError(400, "Please fill in all fields");
     }
-  
+
     if (!['Business', 'Consumer'].includes(role)) {
       throw new ApiError(400, "Invalid role specified");
     }
-    
-    if (role === 'Business' && !['Restaurant', 'Grocery Store'].includes(businessType)) {
-        throw new ApiError(400, "Invalid business type specified");
-    }
-
     const existedUser = await User.findOne({
-      $or: [{ email }, { username }]
+      $or: [{ phoneno }, { password }]
     });
     if (existedUser) {
       throw new ApiError(409, "User with this email or username already exists");
     }
   
-    const avatarLocalPath = req.files?.avatar[0]?.path;
-    if (!avatarLocalPath) {
-      throw new ApiError(400, "Please upload avatar image");
-    }
-    const avatar = await uploadOnCloudinary(avatarLocalPath);
-    if (!avatar) {
-      throw new ApiError(400, "Please upload avatar image");
-    }
-  
     const user = await User.create({
-      fullName,
-      avatar: avatar.url,
-      email,
-      username: username.toLowerCase(),
+      firstName,
+      // avatar: avatar.url,
+      phoneno,
+      lastname,
       password,
-      role,
-      businessType: role === 'Business' ? businessType : undefined
+      role
     });
-  
-    if (role === 'Business') {
-      const bankDetails = await bankDetails.create({
-        user: user._id,
-        bankName,
-        accountNumber,
-        ifscCode,
-        accountHolderName
-      });
-      user.bankDetails = bankDetails._id;
-      await user.save();
-    }
-  
-    if (user) {
-      await sendEmail(user.email, 'Welcome to Our Service', 'Thank you for registering!');
-      res.status(201).json({
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-        fullName: user.fullName
-      });
-    } else {
-      throw new ApiError(400, 'Invalid user data');
-    }
-  
-    const createdUser = await User.findById(user._id).select("-password -refreshToken");
+
+    const createdUser = await User.findById(user._id).select("-refreshToken");
   
     if (!createdUser) {
       throw new ApiError(500, "User creation failed");
@@ -113,16 +73,7 @@ const registerDelivery = asyncHandler(async (req, res) => {
     if (existedUser) {
       throw new ApiError(409, "User with this email or username already exists");
     }
-  
-    const avatarLocalPath = req.files?.avatar[0]?.path;
-    if (!avatarLocalPath) {
-      throw new ApiError(400, "Please upload avatar image");
-    }
-    const avatar = await uploadOnCloudinary(avatarLocalPath);
-    if (!avatar) {
-      throw new ApiError(400, "Please upload avatar image");
-    }
-  
+   
     const user = await User.create({
       fullName,
       avatar: avatar.url,
@@ -167,22 +118,14 @@ const registerDelivery = asyncHandler(async (req, res) => {
 
 
 const loginUser = asyncHandler(async(req,res) => {
-    
-    //check username or email
-    //find user
-    //check password
-    //access and refresh token will be sent to user
-    //send cookies
-    //return response
+    const {phoneno,password} = req.body;
 
-    const {username,email,password} = req.body;
-
-    if(!username && !email){
+    if(!phoneno && !password){
         throw new ApiError(400,"Please provide username or email");
     }
 
     const user = await User.findOne({
-        $or: [{username},{email}]
+        $or: [{phoneno},{password}]
     })
     if(!user){
         throw new ApiError(404,"User not found");
@@ -195,7 +138,7 @@ const loginUser = asyncHandler(async(req,res) => {
     
     const {accessToken,refreshToken}= await genrateAccessAndRefreshTokens(user._id);
 
-    const loggedInUser = User.findById(user._id).select("-password -refreshToken");
+    const loggedInUser = User.findById(user._id).select("-refreshToken");
 
     const options={
         httpOnly:true,
@@ -211,29 +154,6 @@ const loginUser = asyncHandler(async(req,res) => {
             accessToken,
             refreshToken
         },"User logged in successfully")
-    )
-});
-
-
-const logoutUser = asyncHandler(async(req,res) => {
-    
-    await User.findByIdAndUpdate(req.user._id,{
-        $unset:{refreshToken: 1}  
-    },
-    {
-        new:true
-    });
-
-    const options={
-        httpOnly:true,
-        secure:true
-    }
-
-    return response.status(200)
-    .clearCookie("accessToken",options)
-    .clearCookie("refreshToken",options)
-    .json(
-        new ApiResponse(200,{},"User logged out successfully")
     )
 });
 
@@ -307,9 +227,9 @@ const changeCurrentPassword = asyncHandler(async(req,res) => {
 
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
-    const { fullName, email, role } = req.body;
+    const { firstName,lastname,  phoneno, role } = req.body;
   
-    if (!fullName && !email && !role) {
+    if (!firstName && !lastname && !phoneno && !role) {
       throw new ApiError(400, "Please provide fields to update");
     }
   
@@ -441,7 +361,6 @@ export{
     registerBusinessOrConsumer,
     registerDelivery,
     loginUser,
-    logoutUser,
     refreshAccessToken,
     changeCurrentPassword,
     updateAccountDetails,

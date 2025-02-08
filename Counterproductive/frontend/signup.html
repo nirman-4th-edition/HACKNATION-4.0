@@ -125,5 +125,33 @@
             }
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            formData.append('phoneno', document.getElementById('phoneno').value);
+            formData.append('password', document.getElementById('password').value);
+            formData.append('lastname', document.getElementById('lastname').value);
+            formData.append('firstName', document.getElementById('firstName').value);
+            formData.append('role', document.getElementById('role').value);
+            
+
+            try {
+                const response = await axios.post('http://localhost:3000/api/v1/users/register', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+
+                if (response.status === 200) {
+                    alert('Registration successful');
+                    // Redirect or perform other actions
+                }
+            } catch (error) {
+                alert('Registration failed: ' + error.response.data.message);
+            }
+        });
+    </script>
 </body>
 </html>

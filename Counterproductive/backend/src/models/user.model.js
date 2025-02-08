@@ -3,15 +3,11 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 const userSchema = new Schema({
-  username: {
+  firstname: {
     type:String,
     required:true
   },
-  email:{
-    type:String,
-    required:true 
-  },
-  fullName:{
+  lastName:{
     type:String,
     required:true
   },
@@ -19,18 +15,14 @@ const userSchema = new Schema({
     type:String,
     required:[true,"Password is required"]
   },
-  avatar:{
-    type:String 
+  phoneno:{
+    type:String,
+    required:true
   },
   role: {
     type: String,
     enum: ['Consumer', 'Business','Delivery'],
     required: true,
-  },
-  businessType: {
-    type: String,
-    enum: ['Restaurant', 'Grocery Store'],
-    required: function() { return this.role === 'Business'; }
   },
   preferences: {
     foodTypes: [String],
@@ -67,9 +59,8 @@ userSchema.methods.comparePassword = async function (password) {
 userSchema.methods.generateAccessToken = function () {
   return jwt.sign({
       _id: this._id,
-      email: this.email,
-      username: this.username,
-      fullName: this.fullName,
+      phoneno: this.phoneno,
+      password: this.password
   },
   process.env.ACCESS_TOKEN_SECRET,{
       expiresIn: process.env.ACCESS_TOKEN_EXPIRY

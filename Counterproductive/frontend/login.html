@@ -71,36 +71,26 @@
              </form>
       </div>
   </div>
-      <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-               var phone = document.getElementById('Phone').value;
-              var password = document.getElementById('password').value;
-             var role = document.getElementById('role').value;
-            var valid = true;
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        const phoneNumber = document.getElementById('phoneNumber').value;
+        const password = document.getElementById('password').value;
 
-         if (!validatePhone(phone)) {
-                 document.getElementById('phoneError').style.display = 'block';
-            valid = false;
-           } else {
-                 document.getElementById('phoneError').style.display = 'none';
+        try {
+            const response = await axios.post('http://localhost:3000/api/v1/users/login', {
+                phoneno: phoneNumber,
+                password: password
+            });
+
+            if (response.status === 200) {
+                alert('Login successful');
+                window.location.href = "home.html";
             }
-
-     if (password.length < 6) {
-                  document.getElementById('passwordError').style.display = 'block';
-              valid = false;
-           } else {
-                 document.getElementById('passwordError').style.display = 'none';
-             }
-       
-            }
-        
-        );
-
-           function validatePhone(phone) {
-               var re = /^[0-9]{10}$/;
-            return re.test(phone);
+        } catch (error) {
+            alert('Login failed: ' + error.response.data.message);
         }
-    </script>
+    });
+</script>
 </body>
 </html>

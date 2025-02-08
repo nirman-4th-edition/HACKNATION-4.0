@@ -2,8 +2,7 @@ import { Router } from 'express';
 import { 
     registerBusinessOrConsumer,
     registerDelivery, 
-    loginUser,
-    logoutUser, 
+    loginUser, 
     updateAccountDetails, 
     changeCurrentPassword, 
     refreshAccessToken, 
@@ -21,13 +20,7 @@ import { upload } from '../middlewares/multer.middleware.js';
 const router = Router();
 
 
-router.route('/register').post(
-    upload.fields([
-        {
-            name:"avatar",
-            maxCount:1
-        }
-]),registerBusinessOrConsumer);
+router.route('/register').post(registerBusinessOrConsumer);
 
 
 router.route('/register-delivery').post(
@@ -39,8 +32,6 @@ router.route('/register-delivery').post(
     ]),registerDelivery);
 
 router.route('/login').post(loginUser);
-
-router.route('/logout').post(verifyJWT,logoutUser);
 
 router.route('/account').put(verifyJWT,updateAccountDetails);
 
