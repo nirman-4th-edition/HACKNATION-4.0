@@ -1,0 +1,109 @@
+.ask-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.known-details-section, .unknown-details-section {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ 
+  padding: 20px;
+  width: 45%;
+  text-align: center;
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+}
+.unknown-details-section{
+ height: 350px;
+}
+.audio-preview{
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.record-btn{
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff0000;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
+}
+.known-details-section:hover, .unknown-details-section:hover {
+  /* transform: scale(1.05); */
+}
+
+
+.known-details-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  color: black;
+  /* position: relative; */
+}
+
+.known-details-form label {
+  display: flex ;
+  flex-direction: column;
+  text-align: left;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+label{
+  position: relative;
+  color: black;
+}
+.known-details-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+  color: black;
+}
+.details-btn{
+  /* position: absolute; */
+  /* bottom: 0; */
+}
+.predict-btn, .details-btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+}
+
+.predict-btn:hover, .details-btn:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .ask-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .known-details-section, .unknown-details-section {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}

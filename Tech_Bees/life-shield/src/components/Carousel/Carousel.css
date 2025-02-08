@@ -1,0 +1,25 @@
+.carousel {
+    margin-top: 70px; /* Push below navbar */
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.carousel-inner img {
+    height: 650px; /* Set max height for a balanced look */
+    object-fit: cover; /* Ensure full image coverage */
+    /* border-radius: 10px; */
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* Rounded corners for a modern look */
+}
+
+/* Customize carousel controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%); /* Make controls white */
+}
+
+.carousel-control-prev, 
+.carousel-control-next {
+    width: 5%;
+}

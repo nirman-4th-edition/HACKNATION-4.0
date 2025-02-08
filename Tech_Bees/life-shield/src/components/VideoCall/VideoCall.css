@@ -1,0 +1,68 @@
+.video-call-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #121212;
+  }
+  
+  .video-grid {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 900px;
+    margin-bottom: 20px;
+  }
+  
+  .video-window {
+    width: 45%;
+    height: 300px;
+    background: black;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .control-btn {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .control-btn:hover {
+    background: #555;
+  }
+  
+  .end-call {
+    background: red;
+  }
+  
+  .end-call:hover {
+    background: darkred;
+  }
+  
+  @media (max-width: 768px) {
+    .video-grid {
+      flex-direction: column;
+    }
+  
+    .video-window {
+      width: 90%;
+      height: 200px;
+    }
+  }
+  

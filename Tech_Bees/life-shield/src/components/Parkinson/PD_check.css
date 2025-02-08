@@ -1,0 +1,28 @@
+.check-prediction {
+    padding: 50px;
+    text-align: center;
+    /* height: 100vh; */
+    
+  }
+  
+  .check-prediction h2 {
+    font-size: 2rem;
+    color: #b721ff;
+  }
+  
+  .check-prediction p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  .prediction-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #b721ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

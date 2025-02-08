@@ -1,0 +1,72 @@
+.bc-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .bc-details-section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 50%;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .bc-details-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    color: black;
+  }
+  
+  .bc-details-form label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  
+  .bc-details-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    color: black;
+  }
+  
+  .bc-predict-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 20px;
+  }
+  
+  .bc-predict-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .bc-details-section {
+      width: 90%;
+    }
+  }
+  

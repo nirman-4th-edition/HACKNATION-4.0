@@ -1,0 +1,203 @@
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* Left side styling (Video Background) */
+.left {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+.background-video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.heading {
+  position: absolute;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff !important;
+  z-index: 2;
+  text-align: center;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  right: 3%;
+  top: 30%;
+}
+
+/* Right side styling (Form Section) */
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.switchs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.switchlink {
+  background: transparent;
+  border: 2px solid #007bff;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  color: #007bff;
+}
+
+.switchlink.active {
+  background: #007bff;
+  color: white;
+}
+
+.roles {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.rolelink {
+  background: transparent;
+  border: 2px solid #28a745;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  color: #28a745;
+}
+
+.rolelink.active {
+  background: #28a745;
+  color: white;
+}
+
+/* Form container */
+.switch-container {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.switchcontent {
+  display: none;
+}
+
+.switchcontent h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.field-wrap {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.field-wrap input,
+.field-wrap select {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.field-wrap input:focus,
+.field-wrap select:focus {
+  border-color: #007bff;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+.field-wrap label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #888;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.field-wrap input:focus~label,
+.field-wrap input:not(:placeholder-shown)~label {
+  top: -10px;
+  left: 10px;
+  font-size: 0.75rem;
+  color: #007bff;
+  background: white;
+  padding: 0 5px;
+}
+
+.actionbtn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.actionbtn:hover {
+  background: #0056b3;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left {
+    flex: none;
+    height: 40vh;
+  }
+
+  .right {
+    flex: none;
+    height: 60vh;
+  }
+
+  .switch-container {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .switch-container {
+    padding: 20px;
+  }
+}

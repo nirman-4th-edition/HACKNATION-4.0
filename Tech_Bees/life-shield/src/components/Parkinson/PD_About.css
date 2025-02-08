@@ -1,0 +1,73 @@
+.about-parkinsons-disease {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #f3f4f7;
+  border-radius: 12px;
+  /* box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1); */
+}
+
+.text-section {
+  width: 60%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.text-section h2 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.text-section p {
+  font-size: 18px;
+  color: #34495e;
+  line-height: 1.6;
+}
+
+.text-section ul {
+  font-size: 16px;
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.text-section li {
+  margin-bottom: 10px;
+}
+
+.image-section-pd {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.image-section-pd img {
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  height: 350px !important;
+  width: 500px;
+}
+
+@media (max-width: 768px) {
+  .about-parkinsons-disease {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
+
+  .text-section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .image-section-pd {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

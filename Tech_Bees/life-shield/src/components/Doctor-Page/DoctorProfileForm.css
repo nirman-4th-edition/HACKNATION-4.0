@@ -1,0 +1,86 @@
+
+    .Doctor-container-1 {
+        position: relative;
+      width: 100%;
+      max-width: 1000px;
+      height: 600px;
+      margin: auto;
+      padding: 20px;
+      padding-bottom: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+    .submit-btn-div{
+        display: flex;
+        position: absolute;
+        bottom: 5px;
+        left: 40%;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #3b82f6;
+    }
+    .form-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: space-between;
+    }
+    .form-group {
+      flex: 1 1 calc(50% - 10px);
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .btn-submit {
+      width: 100%;
+      background-color: #3b82f6;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn-submit:hover {
+      background-color: #2563eb;
+    }
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    .success-message {
+      color: green;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+    @media (max-width: 600px) {
+      .form-group {
+        flex: 1 1 100%;
+      }
+    }
+    @media (max-width: 460px) {
+        .submit-btn-div{
+            display: block;
+            position: absolute;
+            bottom: 0px;
+            left: 0%;
+        }
+      }
+ 

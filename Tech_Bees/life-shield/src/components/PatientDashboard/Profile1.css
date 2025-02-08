@@ -1,0 +1,117 @@
+
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:none;
+    box-shadow: none;
+    /* min-height: 100vh; */
+    /* background: linear-gradient(135deg, #ff9a9e, #fad0c4); */
+    /* padding: 20px; */
+  }
+  
+  /* Title Styling */
+  .profile-title {
+    font-size: 28px;
+    color: #000000;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Form Styling */
+  .profile-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 750px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Form Inputs & Select */
+  .profile-form input,
+  .profile-form select {
+    flex: 1;
+    min-width: 220px;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  .dob-input{
+color: #000000;
+  }
+  /* Input & Select Focus Effect */
+  .profile-form input:focus,
+  .profile-form select:focus {
+    background: white;
+    transform: scale(1.05);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Update Button */
+  .update-btn {
+    background:#17C964 !important;;
+    /* background: #ff416c; */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    font-weight: bold;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Button Hover Effect */
+  .update-btn:hover {
+    background: #17C964 !important;
+    /* background: #ff2a51; */
+    transform: scale(1.07);
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transition: 0.5s all linear;
+  }
+  
+  /* Fade-In Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profile-form {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .profile-form input,
+    .profile-form select {
+      min-width: 100%;
+    }
+  
+    .update-btn {
+      width: 100%;
+    }
+  }
+  
