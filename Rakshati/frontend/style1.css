@@ -1,0 +1,114 @@
+
+    /* General Styles */
+    body {
+        background-color: #eef2f3;
+        font-family: 'Poppins', sans-serif;
+        color: #333;
+        height: 10000;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+    }
+    .navbar-brand {
+        font-weight: bold;
+        font-size: 22px;
+    }
+    .navbar-nav .nav-link {
+        font-weight: 500;
+        transition: color 0.3s ease-in-out;
+    }
+    .navbar-nav .nav-link:hover, .nav-link.active {
+        color: #b65c32 !important;
+    }
+
+    /* Section Titles */
+    h2 {
+        color: #222;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    /* Cards & Boxes */
+    .status-box, .plan-card, .partner-card, .testimonial-card, .contact-form {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .status-box:hover, .plan-card:hover, .partner-card:hover, .testimonial-card:hover, .contact-form:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Buttons */
+    .btn-primary, .btn-success, .btn-danger {
+        width: 100%;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    .btn-success:hover {
+        background-color: #218838;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+    /* Subscription Plans */
+    .plan-card ul {
+        list-style: none;
+        padding: 0;
+    }
+    .plan-card ul li {
+        padding: 5px 0;
+    }
+
+    /* Contact Form */
+    .contact-form input, .contact-form textarea {
+        border-radius: 5px;
+    }
+
+    /* Center vehicle status section */
+    #vehicle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 50vh;
+        text-align: center;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .status-box {
+        text-align: center;
+        width: 200px;
+    }
+
+    /* Center the footer */
+    footer {
+        background-color: #b65c32;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        width: 100%;
+        position: relative;
+    }
+    
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    

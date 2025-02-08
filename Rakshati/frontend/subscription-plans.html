@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans - Rakshati</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            
+            background: linear-gradient(45deg, #b65c32, #e2e8f0);
+            font-family: Arial, sans-serif;
+            height: 1000px;
+        }
+        .plan-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .plan-card:hover {
+            transform: scale(1.05);
+        }
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Rakshati</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Rakshati1.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="how_it_works.html">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Emergency Contacts</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="subscription-plans.html">Subscription Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="partners-testimonials.html">Partners & Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-support.html">Contact & Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subscription Plans -->
+    <div class="container mt-5">
+        <h2 class="text-center">Choose Your Plan</h2>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="plan-card text-center p-4">
+                    <h4>Basic Plan</h4>
+                    <p class="text-muted">$5/month</p>
+                    <ul class="list-unstyled">
+                        <li>✔ Accident Detection</li>
+                        <li>✔ Emergency Alerts</li>
+                        <li>❌ Roadside Assistance</li>
+                        <li>❌ Live Tracking</li>
+                    </ul>
+                    <button class="btn btn-primary">Subscribe</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="plan-card text-center p-4">
+                    <h4>Standard Plan</h4>
+                    <p class="text-muted">$10/month</p>
+                    <ul class="list-unstyled">
+                        <li>✔ Accident Detection</li>
+                        <li>✔ Emergency Alerts</li>
+                        <li>✔ Roadside Assistance</li>
+                        <li>❌ Live Tracking</li>
+                    </ul>
+                    <button class="btn btn-success">Subscribe</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="plan-card text-center p-4">
+                    <h4>Premium Plan</h4>
+                    <p class="text-muted">$15/month</p>
+                    <ul class="list-unstyled">
+                        <li>✔ Accident Detection</li>
+                        <li>✔ Emergency Alerts</li>
+                        <li>✔ Roadside Assistance</li>
+                        <li>✔ Live Tracking</li>
+                    </ul>
+                    <button class="btn btn-danger">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

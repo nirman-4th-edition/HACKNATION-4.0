@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency SOS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(45deg, #b65c32, #e2e8f0);
+        }
+        .sos-container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .sos-button {
+            width: 100%;
+            font-size: 1.5rem;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Rakshati</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="Rakshati1.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link " href="how-it-works.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Emergency Contacts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="subscription-plans.html">Subscription Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="partners-testimonials.html">Partners &
+                            Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-support.html">Contact & Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="sos-container">
+            <h1 class="text-danger">Emergency SOS</h1>
+            <p>Press the button below to alert emergency responders.</p>
+            <button id="sosBtn" class="btn btn-danger sos-button">🚨 Send SOS Alert</button>
+            <div class="mt-4">
+                <h2 class="text-dark">Emergency Contacts</h2>
+                <button class="btn btn-primary w-100 mt-2 call-btn" data-number="911">📞 Call Local Helpline</button>
+                <button class="btn btn-success w-100 mt-2 call-btn" data-number="+1234567890">📞 Call Family Contact</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#sosBtn').click(function () {
+                alert('SOS Alert Sent! Emergency responders have been notified.');
+            });
+            $('.call-btn').click(function () {
+                var number = $(this).data('number');
+                window.location.href = 'tel:' + number;
+            });
+        });
+    </script>
+</body>
+</html>
