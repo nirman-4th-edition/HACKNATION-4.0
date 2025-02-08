@@ -1,0 +1,104 @@
+
+{
+  "statsData": [
+    {
+      "label": "Total Patients",
+      "value": "599",
+      "bg": "bg-purple-100",
+      "text": "text-purple-800"
+    },
+    {
+      "label": "Today's Appts",
+      "value": "32",
+      "bg": "bg-blue-100",
+      "text": "text-blue-800"
+    },
+    {
+      "label": "New Patients",
+      "value": "124",
+      "bg": "bg-green-100",
+      "text": "text-green-800"
+    },
+    {
+      "label": "Follow-ups",
+      "value": "235",
+      "bg": "bg-yellow-100",
+      "text": "text-yellow-800"
+    },
+    {
+      "label": "Avg Wait Time",
+      "value": "14m",
+      "bg": "bg-gray-200",
+      "text": "text-gray-900"
+    }
+  ],
+  "appointments": [
+    {
+      "name": "Akash Nayak",
+      "time": "9:30 AM",
+      "type": "General Checkup"
+    },
+    {
+      "name": "Biswa Mohanty",
+      "time": "11:30 AM",
+      "type": "Vaccination"
+    },
+    {
+      "name": "Chandan Behera",
+      "time": "12:00 PM",
+      "type": "Dental Consult"
+    },
+    {
+      "name": "Anita Singhania",
+      "time": "1:15 PM",
+      "type": "Physiotherapy"
+    },
+    {
+      "name": "Farhan Ali",
+      "time": "2:30 PM",
+      "type": "Cardio Screening"
+    }
+  ],
+  "treatments": [
+    {
+      "id": "01",
+      "name": "Annual Physical Exam",
+      "type": "Routine Checkup",
+      "date": "Jan 1, 2023",
+      "status": "Completed"
+    },
+    {
+      "id": "02",
+      "name": "Flu Vaccination Program",
+      "type": "Vaccination",
+      "date": "Mar 15, 2023",
+      "status": "Ongoing"
+    }
+  ],
+  "patientData": [
+    {
+      "month": "Mar",
+      "patients": 140
+    },
+    {
+      "month": "Apr",
+      "patients": 180
+    },
+    {
+      "month": "May",
+      "patients": 150
+    },
+    {
+      "month": "Jun",
+      "patients": 140
+    },
+    {
+      "month": "Jul",
+      "patients": 200
+    },
+    {
+      "month": "Aug",
+      "patients": 170
+    }
+  ]
+}

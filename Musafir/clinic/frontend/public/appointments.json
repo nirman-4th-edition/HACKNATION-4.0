@@ -1,0 +1,48 @@
+{
+    "appointments": [
+      {
+        "_id": "65c3b45f987654321c123460",
+        "appointmentID": "APT2024001",
+        "patientID": "PAT2024001",
+        "clinicID": "CLINIC001",
+        "date": "2024-02-07T10:00:00.000Z",
+        "status": "Confirmed",
+        "type": "Regular Checkup",
+        "doctorName": "Dr. Mehta",
+        "department": "General Medicine"
+      },
+      {
+        "_id": "65c3b45f987654321c123461",
+        "appointmentID": "APT2024002",
+        "patientID": "PAT2024002",
+        "clinicID": "CLINIC001",
+        "date": "2024-02-07T11:30:00.000Z",
+        "status": "Pending",
+        "type": "Follow-up",
+        "doctorName": "Dr. Shah",
+        "department": "Pulmonology"
+      },
+      {
+        "_id": "65c3b45f987654321c123462",
+        "appointmentID": "APT2024003",
+        "patientID": "PAT2024003",
+        "clinicID": "CLINIC001",
+        "date": "2024-02-07T13:00:00.000Z",
+        "status": "Confirmed",
+        "type": "Regular Checkup",
+        "doctorName": "Dr. Mehta",
+        "department": "General Medicine"
+      },
+      {
+        "_id": "65c3b45f987654321c123463",
+        "appointmentID": "APT2024004",
+        "patientID": "PAT2024004",
+        "clinicID": "CLINIC001",
+        "date": "2024-02-07T14:30:00.000Z",
+        "status": "Cancelled",
+        "type": "Specialist Consultation",
+        "doctorName": "Dr. Reddy",
+        "department": "Neurology"
+      }
+    ]
+  }
