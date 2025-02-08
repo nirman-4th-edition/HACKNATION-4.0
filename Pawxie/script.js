@@ -279,3 +279,4 @@ const prev = () => {
 btnRight.addEventListener('click', next);
 btnLeft.addEventListener('click', prev);
 
+

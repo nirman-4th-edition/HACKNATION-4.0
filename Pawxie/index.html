@@ -18,7 +18,7 @@
   <style>
     /* Loader styles */
     .loader {
-      display: none;
+        display: none;
         position: fixed;
         z-index: 9999;
         top: 50%;
@@ -128,24 +128,13 @@
 </style>
 
   <title>PAWXIE</title>
-  <script>
-    function delayedRedirect() {
-        // Show the loader
-        document.getElementById('loader').style.display = 'block';
-
-        // Redirect after a delay
-        setTimeout(function() {
-            window.location.href = "Appointment.html";
-        }, 2000); // 2000 milliseconds = 2 seconds delay
-    }
-</script>
 </head>
 
 <body style="background-color: rgba(246, 232, 174, 0.624);">
 
   <header class="header" id="#header">
-    <nav class="nav nav__desktop">
-      <img src="images/PAWXIELOGO.png" style="height: 130px;width: 150px;" alt="Pet Care logo" class="nav__logo" id="logo">
+    <nav class="nav nav__desktop" style="padding-top: 10px;">
+      <img src="images/output.jpg" style="height: 80px;width: 90px;background: cover; border-radius: 48%;" alt="Pet Care logo" class="nav__logo" id="logo">
 
       <ul class="nav__links" style="color: rgb(74, 9, 9);">
         <li class="nav__item current">
@@ -169,16 +158,13 @@
 
     <div class="nav__mobile--wrap">
       <nav class="nav nav__mobile">
-        <img src="images/paw_logo.png" alt="Pet Care logo" class="nav__logo" id="logo">
+        <img src="images/output.jpg"  style="height: 80px;width: 90px;background: cover; border-radius: 50%;" alt="Pet Care logo" id="logo">
         <ul class="nav__links nav__links-mobile">
           <li class="nav__item current">
             <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
           </li>
           <li class="nav__item">
             <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
-          </li>
-          <li class="nav__item">
-            <a href="#section--3" class="nav__link nav__link--section">Products</a>
           </li>
           <li class="nav__item">
             <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
@@ -217,60 +203,6 @@
     </div>
 
     <div class="services">
-      <img src="images/boarding-lazy.jpg" data-src="images/boarding.jpg" alt="Dog with book"
-        class="services__img lazy-img">
-      <div class="services__service">
-        <div class="services__icon">
-          <img src="images/icon-boarding.svg" alt="Dog" class="svg-icon">
-        </div>
-        <h5 class="services__header highlight">Boarding</h5>
-        <p>Comfy boarding for dogs, cats and pocket pets.</p>
-      </div>
-
-      <div class="services__service">
-        <div class="services__icon">
-          <img src="images/icon-grooming.svg" alt="Grooming pet" class="svg-icon">
-        </div>
-        <h5 class="services__header highlight">Grooming</h5>
-        <p>Whether your pet needs a quick shampoo or “the works,” our expert groomers will make your furry friend
-          fabulous.</p>
-      </div>
-      <img src="images/grooming-lazy.jpg" data-src="images/grooming.jpg" alt="Dog with with toothbrush"
-        class="services__img lazy-img">
-
-      <img src="images/camp-lazy.jpg" data-src="images/camp.jpg" alt="Dog playing computer"
-        class="services__img lazy-img">
-      <div class="services__service">
-        <div class="services__icon">
-          <img src="images/icon-camp.svg" alt="Bone" class="svg-icon">
-        </div>
-        <h5 class="services__header highlight">Doggy Day Camp</h5>
-        <p>Daytime playtime in a fun, safe environment. Your dog will spend the day doing what dogs do best: playing,
-          snacking, napping and loving life.</p>
-      </div>
-
-      <div class="services__service">
-        <div class="services__icon">
-          <img src="images/icon-group.svg" alt="Paw" class="svg-icon">
-        </div>
-        <h5 class="services__header highlight">Puppy Play Group</h5>
-        <p>Daytime puppy playtime in a fun, safe environment. Puppies play in a supervised group that has strong pack
-          tendencies due to consistent attendance. Since the group has limited change to pack members, your puppy
-          achieves a clear rank within a pack of furry “friends for life,” plus gains impeccable social and behavioral
-          skills that will carry through to adulthood.</p>
-      </div>
-      <img src="images/group-lazy.jpg" data-src="images/group.jpg" alt="Puppy" class="services__img lazy-img">
-
-      <img src="images/training-lazy.jpg" data-src="images/training.jpg" alt="Viking dog"
-        class="services__img lazy-img">
-      <div class="services__service">
-        <div class="services__icon">
-          <img src="images/icon-training.svg" alt="Training" class="svg-icon">
-        </div>
-        <h5 class="services__header highlight">Training</h5>
-        <p>Basic and advanced classes for pets of all ages. We offer a wide range of classes for puppies, teenagers and
-          adult dogs.</p>
-      </div>
 
       <div class="services__service">
         <div class="services__icon">
@@ -281,6 +213,38 @@
           and enhance the well-being of all pets in our care.</p>
       </div>
       <img src="images/vet-lazy.jpg" data-src="images/vet.jpg" alt="Vet dog" class="services__img lazy-img">
+
+      <img src="images/2157.jpg" data-src="images/2157.jpg" alt="Dog with book"
+        class="services__img lazy-img">
+      <div class="services__service">
+        <div class="services__icon">
+          <img src="images/icon-boarding.svg" alt="Dog" class="svg-icon">
+        </div>
+        <h5 class="services__header highlight">Emergency and critical case</h5>
+        <p>Be their hope in times of crisis. Report, rescue, and rehabilitate.</p>
+      </div>
+
+      <div class="services__service">
+        <div class="services__icon">
+          <img src="images/icon-grooming.svg" alt="Grooming pet" class="svg-icon">
+        </div>
+        <h5 class="services__header highlight"> Pet Grooming</h5>
+        <p>Whether your pet needs a quick shampoo or “the works,” our expert groomers will make your furry friend
+          fabulous.</p>
+      </div>
+      <img src="images/grooming-lazy.jpg" data-src="images/grooming.jpg" alt="Dog with with toothbrush"
+        class="services__img lazy-img">
+
+      <img src="images/2250.jpg" data-src="images/2250.jpg" alt="Dog playing computer"
+        class="services__img lazy-img" style="background: center; width: 100%;height: 100%;">
+      <div class="services__service">
+        <div class="services__icon">
+          <img src="images/icon-camp.svg" alt="Bone" class="svg-icon">
+        </div>
+        <h5 class="services__header highlight">Online and health services</h5>
+        <p>Video calls, prescriptions, and expert advice—all from the comfort of your home.</p>
+      </div>
+      
     </div>
   </section>
    
@@ -434,13 +398,12 @@
   <section class="section section--contact " id="section--5">
     <div class="section__title">
       <h3 class="section__header">
-        To find out more about what we do and how we can help
+        Your feedback helps us improve and save more lives! Share your experience and suggestions with us.
       </h3>
     </div>
-    <button class="btn btn--show-modal-contact">Contact us</button>
+    <button class="btn btn--show-modal-contact">Feedback</button>
   </section>
 
-  <div class="loader" id="loader"></div> <!-- Loader Part Change -->
 
   <div class="container">
   <footer class="footer">
@@ -453,9 +416,6 @@
       </li>
       <li class="footer__item">
         <a href="" class="footer__link"style="color: white;">Privacy Policy</a>
-      </li>
-      <li class="footer__item">
-        <a href="" class="footer__link"style="color: white;">Blog</a>
       </li>
       <li class="footer__item">
         <a href="#section--5" class="footer__link"style="color: white;">Contact Us</a>
@@ -486,11 +446,14 @@
   </footer>
 
 
+
   
+
 
   <div class="overlay hidden"></div>
 
   <button class="btn btn--scroll"><i class="fa-solid fa-arrow-up"></i></button>
+
 
 </body>
 

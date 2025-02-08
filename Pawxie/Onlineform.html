@@ -6,100 +6,134 @@
     <title>Online Form</title>
 
     <link rel="shortcut icon" type="image/png" href="images/PAWXIELOGO.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/536ff07e99.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/536ff07e99.js" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-<style>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <style>
+        .box-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-.box-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      max-width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+        .box {
+            width: 280px;
+            height: 400px;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    .box {
-      width: 280px;
-      height: 400px;
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-    }
+        .box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
 
-    .box img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
+        .doctors .box-container .box {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
 
-    .doctors .box-container .box {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 20px;
-      text-align: center;
-    }
+        .share {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1rem;
+            display: none; /* Hide the share section initially */
+        }
 
-    .share {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin-top: 1rem;
-    }
+        .share a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s ease-in-out;
+        }
 
-    .share a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      text-decoration: none;
-      transition: transform 0.3s ease-in-out;
-    }
+        .share a i {
+            color: white;
+            font-size: 20px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
 
-    .share a i {
-      color: white;
-      font-size: 20px;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background-color 0.3s;
-    }
+        .share a i:hover {
+            background-color: green;
+            transform: scale(1.1);
+        }
 
-    .share a i:hover {
-      background-color:green;
-      transform: scale(1.1);
-    }
-</style>
-<script>
-    
-</script>
+        .book-appointment-btn {
+            text-align: center;
+            padding: 10px 20px;
+            border: none;
+            font-weight: 700;
+            font-size: 14px;
+            background: #22a4c4;
+            border-radius: 6px;
+            box-shadow: 2px 2px 0px 0px #E99F4C;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
 
+        .book-appointment-btn:hover {
+            background: #1a7f9c;
+        }
+
+        .book-appointment-btn:active {
+            transform: translateY(2px);
+            box-shadow: 1px 1px 0px 0px #E99F4C;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const bookButtons = document.querySelectorAll(".book-appointment-btn");
+            bookButtons.forEach((button) => {
+                button.addEventListener("click", function () {
+                    alert("Your appointment has been booked!");
+                    const shareSection = this.nextElementSibling;
+                    if (shareSection && shareSection.classList.contains("share")) {
+                        shareSection.style.display = "flex";
+                    }
+                });
+            });
+        });
+    </script>
 </head>
-    <body style="background-color: rgba(246, 232, 174, 0.624);">
+<body style="background-color: rgba(246, 232, 174, 0.624);">
 
   <header class="header" id="#header">
     <nav class="nav nav__desktop">
-      <img src="images/PAWXIELOGO.png" style="height: 130px;width: 150px;" alt="Pet Care logo" class="nav__logo" id="logo">
+      <img src="images/output.jpg" style="height: 80px;width: 90px;background: cover; border-radius: 48%;margin-top: 9px;" alt="Pet Care logo" class="nav__logo" id="logo">
 
       <ul class="nav__links" style="color: rgb(74, 9, 9);">
         <li class="nav__item current">
@@ -163,27 +197,32 @@
         <div class="box-container">
           <div class="box " style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;" data-available-dates="2025-01-01,2025-01-10" data-available-times="09:00,10:00">
             <img src="images/doctor1.jpg" alt="" style="border: 2px solid black;">
-            <h3>DOCTOR1</h3>
-            <span>Veterinarian</span>
+            <h3>Dr. Sudeep Nayak</h3>
+            <span>Vet Surgeon</span>
+            <span>Certified Veterinary Acupuncturist (CVA)</span>
+            <button class="book-appointment-btn">Book Appointment</button>
             <div class="share">
               <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
-              
             </div>
           </div>
   
           <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-11,2025-01-20" data-available-times="09:00,10:00">
             <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
-            <h3>DOCTOR2</h3>
-            <span>Veterinarian</span>
+            <h3>Dr. Yash Kumar</h3>
+            <span>Master of Veterinary Science (MVSc)</span>
+            <span>PhD in Veterinary Science</span>
+            <button class="book-appointment-btn">Book Appointment</button>
             <div class="share">
                 <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
             </div>
           </div>
   
           <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-21,2025-01-31" data-available-times="09:00,10:00">
-            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
-            <h3>DOCTOR3</h3>
-            <span>Veterinarian</span>
+            <img src="images/doctor3.jpg" alt="" style="border: 2px solid black;">
+            <h3>Dr. Bishal Mohanty</h3>
+            <span>Doctor of Veterinary Medicine (DVM)</span>
+            <span>Bachelor of Veterinary Science (BVSc)</span>
+            <button class="book-appointment-btn">Book Appointment</button>
             <div class="share">
                 <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
             </div>
@@ -196,28 +235,33 @@
          
         <div class="box-container">
           <div class="box " style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;" data-available-dates="2025-01-01,2025-01-10" data-available-times="09:00,10:00">
-            <img src="images/doctor1.jpg" alt="" style="border: 2px solid black;">
-            <h3>DOCTOR1</h3>
-            <span>Veterinarian</span>
+            <img src="images/doctor4.jpg" alt="" style="border: 2px solid black;">
+            <h3>Dr. Sumitra Jena</h3>
+            <span>Master of Veterinary Science (MVSc)</span>
+            <span>PhD in Veterinary Science</span>
+            <button class="book-appointment-btn">Book Appointment</button>
             <div class="share">
                 <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
-               
             </div>
           </div>
   
           <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-11,2025-01-20" data-available-times="09:00,10:00">
-            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
-            <h3>DOCTOR2</h3>
-            <span>Veterinarian</span>
+            <img src="images/doctor5.jpg" alt="" style="border: 2px solid black;">
+            <h3>Dr. Ayush Batra</h3>
+            <span>Doctor of Veterinary Medicine (DVM)</span>
+            <span>Bachelor of Veterinary Science (BVSc)</span>
+            <button class="book-appointment-btn">Book Appointment</button>
             <div class="share">
                 <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
             </div>
           </div>
   
           <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-21,2025-01-31" data-available-times="09:00,10:00">
-            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
-            <h3>DOCTOR3</h3>
-            <span>Veterinarian</span>
+            <img src="images/doctor6.jpg" alt="" style="border: 2px solid black;">
+            <h3>Dr. Sai Kishan</h3>
+            <span>Vet Surgeon</span>
+            <span>Certified Veterinary Acupuncturist (CVA)</span>
+            <button class="book-appointment-btn">Book Appointment</button>
             <div class="share">
                 <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
             </div>
@@ -230,27 +274,33 @@
          
         <div class="box-container">
           <div class="box " style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;" data-available-dates="2025-01-01,2025-01-10" data-available-times="09:00,10:00">
-            <img src="images/doctor1.jpg" alt="" style="border: 2px solid black;">
-            <h3>DOCTOR1</h3>
-            <span>Veterinarian</span>
+            <img src="images/doctor7.jpg" alt="" style="border: 2px solid black;">
+            <h3>Dr. Priya Sharma</h3>
+            <span>Master of Veterinary Science (MVSc)</span>
+            <span>PhD in Veterinary Science</span>
+            <button class="book-appointment-btn">Book Appointment</button>
             <div class="share">
-                <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
+              <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
             </div>
           </div>
   
           <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-11,2025-01-20" data-available-times="09:00,10:00">
-            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
-            <h3>DOCTOR2</h3>
-            <span>Veterinarian</span>
+            <img src="images/doctor8.jpg" alt="" style="border: 2px solid black;">
+            <h3>Dr. Neha Singh</h3>
+            <span>Vet Surgeon</span>
+            <span>Certified Veterinary Acupuncturist (CVA)</span>
+            <button class="book-appointment-btn">Book Appointment</button>
             <div class="share">
                 <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
             </div>
           </div>
   
           <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;"data-available-dates="2025-01-21,2025-01-31" data-available-times="09:00,10:00">
-            <img src="images/doctor2.jpg" alt="" style="border: 2px solid black;">
-            <h3>DOCTOR3</h3>
-            <span>Veterinarian</span>
+            <img src="images/doctor9.jpg" alt="" style="border: 2px solid black;object-fit:cover;">
+            <h3>Dr. Rohit Dhul</h3>
+            <span>Doctor of Veterinary Medicine (DVM)</span>
+            <span>Bachelor of Veterinary Science (BVSc)</span>
+            <button class="book-appointment-btn">Book Appointment</button>
             <div class="share">
                 <a href="VideoChat.html"><i class="fa-solid fa-video"></i></a>
             </div>

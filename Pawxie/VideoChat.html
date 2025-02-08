@@ -100,18 +100,17 @@
     </style>
 </head>
 <body>
-    <h2>Camera Access & Video Chat</h2>
+    <h2>Video Chat</h2>
 
     <div id="videoChatContainer">
-        <!-- Video section -->
         <div id="videoSection">
-            <!-- Video element to display the camera feed -->
+           
             <video id="cameraFeed" autoplay playsinline></video>
 
-            <!-- Video chat section -->
+            
             <video id="remoteVideo" autoplay playsinline></video>
 
-            <!-- Control buttons -->
+            
             <div id="controlButtons">
                 <i id="startCall" class="fas fa-phone"></i>
                 <i id="endCall" class="fas fa-phone-slash"></i>
@@ -120,11 +119,11 @@
             </div>
         </div>
 
-        <!-- Chat section -->
+       
         <div id="chatSection">
             <h3>Chat</h3>
             <div id="chatMessages">
-                <!-- Chat messages will appear here -->
+                
             </div>
             <input type="text" id="chatInput" placeholder="Type a message...">
             <button id="sendChatButton">Send</button>
@@ -132,20 +131,20 @@
     </div>
 
     <script>
-        // Camera Access Code
+        
         async function startCamera() {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
                 document.getElementById("cameraFeed").srcObject = stream;
 
-                // Pass the stream to the video chat logic
+                
                 startVideoChat(stream);
             } catch (error) {
                 console.error("Error accessing camera:", error);
             }
         }
 
-        // Video Chat Code
+        
         function startVideoChat(localStream) {
             const remoteVideo = document.getElementById("remoteVideo");
             const endCallButton = document.getElementById("endCall");
@@ -154,10 +153,10 @@
 
             const peerConnection = new RTCPeerConnection();
 
-            // Add local stream tracks to the peer connection
+            
             localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
 
-            // Handle remote stream
+            
             peerConnection.ontrack = event => {
                 remoteVideo.srcObject = event.streams[0];
             };
@@ -166,17 +165,10 @@
                 const offer = await peerConnection.createOffer();
                 await peerConnection.setLocalDescription(offer);
 
-                // Send the offer to the remote peer (this part needs signaling server)
-                // Example: signalingServer.send({ offer });
-
-                // Simulate receiving an answer from the remote peer
-                // Example: signalingServer.on('answer', async (answer) => {
-                //     await peerConnection.setRemoteDescription(answer);
-                // });
+                
             });
 
             endCallButton.addEventListener("click", () => {
-                // Stop all tracks to end the call
                 localStream.getTracks().forEach(track => track.stop());
                 remoteVideo.srcObject = null;
                 document.getElementById("cameraFeed").srcObject = null;
@@ -198,10 +190,10 @@
             });
         }
 
-        // Start the camera automatically when the page loads
+        
         startCamera();
 
-        // Chat functionality
+        
         document.getElementById("sendChatButton").addEventListener("click", () => {
             const chatInput = document.getElementById("chatInput");
             const chatMessages = document.getElementById("chatMessages");

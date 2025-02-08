@@ -39,6 +39,9 @@
 
                 // Perform login logic here
                 console.log('Login:', { username, password });
+
+                // Redirect to another page after successful login
+                window.location.href = 'index.html';
             });
 
             registerForm.addEventListener('submit', (event) => {
@@ -70,22 +73,23 @@
                 // Perform registration logic here
                 console.log('Register:', { username, email, password });
 
-                // Example: Redirect to another page after successful registration
-                // window.location.href = 'welcome.html';
+                // Redirect to another page after successful registration
+                window.location.href = 'index.html';
             });
         });
     </script>
 </head>
 <body>
+    
     <div class="modal modal__form">
-        <button class="btn--close-modal">&times;</button>
         <div class="modal__wrap--form">
+            <img src="images/output.jpg" alt="PAWXIE Logo" class="logo" style="height: 80px;width: 90px;border-radius: 30% ;">
             <div class="modal__login">
                 <h2 class="modal__header"><span class="highlight">Login to account</span></h2>
                 <form id="loginForm" class="modal__form-login">
                     <input type="text" id="loginUsername" placeholder="Username">
                     <input type="password" id="loginPassword" placeholder="Password">
-                    <a href="index.html"><button type="submit" class="btn btn--login">Login</button></a>
+                    <button type="submit" class="btn btn--login">Login</button>
                     <p id="loginError" class="error-message"></p>
                 </form>
                 <p>Forgot password or username, <a href="#" class="click-here">click here</a></p>
@@ -97,7 +101,7 @@
                     <input type="email" id="registerEmail" placeholder="Email Address">
                     <input type="password" id="registerPassword" placeholder="Password">
                     <input type="password" id="registerPasswordConfirm" placeholder="Password re-type">
-                    <a href="index.html"><button type="submit" class="btn btn--login">Register</button></a>
+                    <button type="submit" class="btn btn--login">Register</button>
                     <p id="registerError" class="error-message"></p>
                 </form>
             </div>
@@ -105,7 +109,7 @@
     </div>
     
     <div class="modal modal__contact hidden">
-        <button class="btn--close-modal">&times;</button>
+        
         <div class="modal__wrap--contact">
             <h2 class="modal_header modal_header--contact"><span class="highlight">Contact Us</h2>
             <input type="text" placeholder="Name">
