@@ -1,0 +1,28 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$directory = 'E:/XAMAPP/htdocs/test_site/8/bio';
+
+if (is_dir($directory)) {
+    $files = scandir($directory);
+    
+    foreach ($files as $file) {
+        if ($file !== '.' && $file !== '..') {
+            $filePath = $directory . '/' . $file;
+            
+            if (is_file($filePath)) {
+                $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
+                
+                $allowedExtensions = ['mp4', 'avi', 'mov', 'pdf'];
+                if (in_array(strtolower($fileExtension), $allowedExtensions)) {
+                    $relativePath = str_replace('Es:/XAMAPP/htdocs/', '', $filePath);
+                    echo "<li><a href='/$relativePath' target='_blank'>" . htmlspecialchars($file) . "</a></li>";
+                }
+            }
+        }
+    }
+} else {
+    echo "<li>No content available</li>";
+}
+?>

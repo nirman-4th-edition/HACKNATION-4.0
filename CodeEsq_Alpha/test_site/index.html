@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>N.O.D.E.S</title>
+    <link rel="stylesheet" href="studentPortal.css" />
+  </head>
+  <body>
+    <header class="header">
+      <span class="title" style="font-weight: bold; font-size: 21px"
+        >N.O.D.E.S</span
+      >
+      <span class="welcome" style="padding-right: 70px">Welcome Shreyash!</span>
+    </header>
+
+    <div class="dropdown-container">
+      <div class="dropdown">
+        <button class="dropbtn" style="border-color: #c1ff72">
+          <img
+            src="bio-logo.png"
+            alt="bio-logo"
+            style="width: 170px; height: 115px"
+          />
+        </button>
+        <div class="dropdown-content">
+          <a href="10bio.php">Class 10</a>
+          <a href="9bio.php">Class 9</a>
+          <a href="8bio.php">Class 8</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" style="border-color: #5271ff">
+          <img
+            src="phy-logo.png"
+            alt="phy-logo"
+            style="width: 170px; height: 115px"
+          />
+        </button>
+        <div class="dropdown-content">
+          <a href="10phy.php">Class 10</a>
+          <a href="9phy.php">Class 9</a>
+          <a href="8phy.php">Class 8</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" style="border-color: #ff3131">
+          <img
+            src="chem-logo.png"
+            alt="chem-logo"
+            style="width: 170px; height: 115px"
+          />
+        </button>
+        <div class="dropdown-content">
+          <a href="10chem.php">Class 10</a>
+          <a href="9chem.php">Class 9</a>
+          <a href="8chem.php">Class 8</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" style="border-color: #ffde59">
+          <img
+            src="math-logo.png"
+            alt="math-logo"
+            style="width: 170px; height: 115px"
+          />
+        </button>
+        <div class="dropdown-content">
+          <a href="10math.php">Class 10</a>
+          <a href="9math.php">Class 9</a>
+          <a href="8math.php">Class 8</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".dropdown").forEach((dropdown) => {
+        dropdown.querySelector(".dropbtn").addEventListener("click", (e) => {
+          e.preventDefault();
+          dropdown.querySelector(".dropdown-content").classList.toggle("show");
+        });
+      });
+
+      window.addEventListener("click", (e) => {
+        if (!e.target.matches(".dropbtn")) {
+          document
+            .querySelectorAll(".dropdown-content")
+            .forEach((content) => content.classList.remove("show"));
+        }
+      });
+    </script>
+  </body>
+</html>
