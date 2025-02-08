@@ -34,20 +34,36 @@ app.use("/image", express.static("images"))
 /* IOT Stuff starts here I guess*/
 
 // <your-auth-token> is the authorization token for your Blynk project (you'll find this in the Blynk app).
-const blynkAuthToken = 'your-auth-token'; // Replace with your Blynk Auth Token
-const blynkApiUrl = `http://blynk-cloud.com/${blynkAuthToken}/get/V1`; // V1 is an example virtual pin
+const blynkAuthToken = 'SSQkThqEWuXD1c768hVxBng3Hjp8kD6D'; // Replace with your Blynk Auth Token
+const blynkApiBaseUrl = `http://blr1.blynk.cloud/external/api/get?token=${blynkAuthToken}&`;
 
 async function getBlynkData() {
-    // try {
-    //     const response = await axios.get(blynkApiUrl);
-    //     const data = response.data;
-    //     console.log(data)
-    //     return data;
-    // } catch (error) {
-    //     console.error('Error fetching data from Blynk:', error);
-    // }
+    const humidityPIN = "v5"
+    const temperaturePIN = "v6"
+    const moisturePIN = "v2"
 
-    return 69
+    
+
+    try {
+        const blynkMainUrl = blynkApiBaseUrl + `${humidityPIN}&${temperaturePIN}&${moisturePIN}`;    
+
+        const response = await axios.get(blynkMainUrl); 
+
+        const data = response.data;
+        console.log(data)
+        
+        const humidity = data.v5
+        const temperature = data.v6
+        const moisture = data.v2
+
+        return {
+            humidity: humidity,
+            temperature: temperature,
+            moisture: moisture, 
+        };
+    } catch (error) {
+        console.error('Error fetching data from Blynk:', error);
+    }
 }
 
 
@@ -69,22 +85,17 @@ async function getBlynkData() {
 
 app.post("/predict-disease", upload.single("image"), async (req, res) => {
     try {
-        // Create a new FormData object
         const formData = new FormData()
-        
-        // Attach the image to the FormData object
         formData.append("image", fs.createReadStream(path.join(__dirname, "images", req.file.filename)))
         
-        // Send the image to the FastAPI route
         const response = await axios.post("http://localhost:8000/predict-disease", formData, {
             headers: {
-                ...formData.getHeaders() // Automatically adds the correct headers for multipart/form-data
+                ...formData.getHeaders()
             }
         })
         
         const disease_name = response.data.disease_name
             
-        // Return the image URL from FastAPI to the client
         res.json({
             disease_name: disease_name
         })
@@ -98,12 +109,20 @@ app.post("/predict-disease", upload.single("image"), async (req, res) => {
 app.post("/predict-suitable-crop", upload.single("image"), async (req, res) => {
     const formData = new FormData()
         
-    // Attach the image to the FormData object
     formData.append("image", fs.createReadStream(path.join(__dirname, "images", req.file.filename)))
 
-    const { location } = req.body
+    const location = req.body.location  
+    const nitrogen = req.body.nitrogen  
+    const potassium = req.body.potassium 
+    const phosphorus = req.body.phosphorus
+    const pHValue = req.body.pHValue    
 
-    const moisture = await getBlynkData()
+    // const IOTResponse = await getBlynkData()
+    // const humidity = IOTResponse.humidity
+    // const temperature = IOTResponse.temperature
+    // const moisture = IOTResponse.moisture
+
+    const moisture = 69 // Comment this
 
     const openWeatherMapAPIKey = "28523b528990680c54c67f3b5de1d41d"
     const openWeatherMapAPIURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
@@ -111,12 +130,12 @@ app.post("/predict-suitable-crop", upload.single("image"), async (req, res) => {
     const weatherResponse = await axios.get(weatherFullURL)
     const weatherData = weatherResponse.data
 
-    const temperature = weatherData.main.temp
+    const humidity = weatherData.main.humidity  // Comment this
+    const temperature = 20  // Comment this
     const weather = weatherData.weather[0].main
-    const humidity = weatherData.main.humidity
     const windSpeed = weatherData.wind.speed
 
-    console.log("Debug Message : " + location + " " + temperature + " " + weather + " " + moisture + " " + humidity + " " + windSpeed)
+    console.log("Debug Message : " + location + " " + temperature + " " + weather + " " + moisture + " " + humidity + " " + windSpeed + "\n" + nitrogen + " " + potassium + " " + phosphorus + " " + pHValue)
 
 
     formData.append("temperature", temperature)
@@ -125,20 +144,21 @@ app.post("/predict-suitable-crop", upload.single("image"), async (req, res) => {
     formData.append("location", location)
     formData.append("humidity", humidity)
     formData.append("windSpeed", windSpeed)
+    formData.append("nitrogen", nitrogen)
+    formData.append("potassium", potassium)
+    formData.append("phosphorus", phosphorus)   
+    formData.append("pHValue", pHValue)
 
-    
-    // Send the image to the FastAPI route
     const response = await axios.post("http://localhost:8000/predict-suitable-crop", formData, {
         headers: {
-            ...formData.getHeaders() // Automatically adds the correct headers for multipart/form-data
+            ...formData.getHeaders() 
         }
     })
     
     const suitable_crop = response.data.suitable_crop
     
-    // Return the image URL from FastAPI to the client
     res.json({
-        suitable_crop: suitable_crop
+        suitable_crop: suitable_crop 
     })
 })
 
@@ -148,29 +168,60 @@ app.post("/predict-suitable-crop", upload.single("image"), async (req, res) => {
 
 
 
-/*  */
+/* Fertiliser Recommender part starts here */
+app.post("/fertiliser-recommender",  async (req, res) => {
+    const nitrogen = req.body.nitrogen
+    const phosphorus = req.body.phosphorus
+    const potassium = req.body.potassium
+    const pH = req.body.pH
+    const cropName = req.body.cropName
+
+    // const IOTResponse = await getBlynkData()
+    // const moisture = IOTResponse.moisture
+    // const temperature = IOTResponse.temperature
+
+    const moisture = 50 // Comment this
+    const temperature = 25 // Comment this
+
+    console.log("Debug Message : " + nitrogen + " " + phosphorus + " " + potassium + " " + pH + " " + cropName + " " + temperature + " " + moisture)
+
+    const response = await axios.post("http://localhost:8000/fertiliser-recommender", {
+        nitrogen: nitrogen,
+        phosphorus: phosphorus,
+        potassium: potassium,
+        pH: pH,
+        cropName: cropName, 
+
+        temperature: temperature,
+        moisture: moisture,
+    })
+
+    const recommended_fertiliser = response.data.recommended_fertiliser
+
+    res.json({
+        recommended_fertiliser: recommended_fertiliser
+    })
+})
+
+
+/* Fertiliser Recommender part ends here */
 
 
 
 
 app.post("/test-send-image", upload.single("image"), async (req, res) => {
     try {
-        // Create a new FormData object
         const formData = new FormData()
-        
-        // Attach the image to the FormData object
         formData.append("image", fs.createReadStream(path.join(__dirname, "images", req.file.filename)))
         
-        // Send the image to the FastAPI route
         const response = await axios.post("http://localhost:8000/send-image", formData, {
             headers: {
-                ...formData.getHeaders() // Automatically adds the correct headers for multipart/form-data
+                ...formData.getHeaders()
             }
         })
         
         const image_url = response.data.image_url
         
-        // Return the image URL from FastAPI to the client
         res.json({
             image_url: image_url
         })
