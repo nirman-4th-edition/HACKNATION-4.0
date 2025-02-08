@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WRAP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1AnmOhEeyzHyW0irxV2y4GekSByEGpqEMgBjrAp7T9CSk5yeWKK" crossorigin="anonymous">
+  <style>
+    .navbar {
+      background-color: white;
+      color: black;
+      width: 100%;
+      height: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    .navbar .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .navbar-nav {
+      display: flex;
+      gap: 20px;
+      margin-right: 20px;
+    }
+    .navbar-nav .nav-link {
+      color: black !important;
+      text-decoration: none;
+    }
+    .btn-login {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+    .card {
+      border: 2px solid #000;
+      overflow: hidden;
+      margin: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .card img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .card-body {
+      overflow: hidden;
+      padding: 20px;
+    }
+    .card-title {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .card:hover{
+      transform: scale(1.1);
+  opacity: 0.8;
+    }
+    .row {
+      margin: 0;
+    }
+    .col-md-4 {
+      padding: 0;
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .content {
+      margin-top: 60px;
+    }
+    .nav-link{
+      font-weight: bold;
+
+    }
+    .full-width-image-container {
+    position: relative;
+    width: 100%;
+  }
+  .full-width-image-container img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: white;
+    text-align: left;
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .full-width-image-container {
+    position: relative;
+    width: 100%;
+  }
+  .full-width-image-container img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: white;
+    text-align: left;
+    padding: 20px;
+    font-size: 1.5rem;
+  }
+  .learn-more-btn {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .learn-more-btn:hover {
+    background-color: rgba(80, 76, 76, 0.9);
+    transform: scale(1.1);
+  opacity: 0.8;
+  }
+  .clients-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+    .clients-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .client {
+      flex: 1;
+      max-width: 200px;
+      text-align: center;
+    }
+    .client img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .client span {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .row{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .col-md-3{
+      width: 20%;
+      padding: 0 px;
+    }
+    .col-md-2{
+      width: 20%;
+      padding: 0 px;
+    }
+    .b{
+      display: block;
+      margin: auto;
+    }
+    
+    
+  </style>
+</head>
+<body>
+  <nav class="navbar" style="background-color: white; color: black; width: 100%; height: auto; position: fixed; top: 0; left: 0; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
+    <div class="d-flex align-items-center">
+      <img src="#" alt="Logo" class="me-2">
+      <div><span style="font-size: 1.5rem; font-weight: bold;">Waste Reduction & Allocation Platform</span></div>
+    </div>
+    <ul class="navbar-nav" style="display: flex; gap: 20px; margin-right: 20px; list-style: none;">
+      <li class="nav-item"><a class="nav-link" href="#" style="color: black; text-decoration: none; font-weight: bold;">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="Service.html" style="color: black; text-decoration: none; font-weight: bold;">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="About Us.html" style="color: black; text-decoration: none; font-weight: bold;">About Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="Contact.html" style="color: black; text-decoration: none; font-weight: bold;">Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="cart.html" style="color: black; text-decoration: none; font-weight: bold;">Cart</a></li>
+      <li class="nav-item"><a class="nav-link" href="#" style="color: black; text-decoration: none; font-weight: bold;">Products</a></li>
+      <li class="nav-item"><button class="btn btn-login" style="background-color: black; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;"><a style="color: white;" href="signupcustomer.html">Join</a></button></li>
+    </ul>
+  </nav>
+  
+  <div class="content" style="position: relative; width: 100%; overflow: hidden;">
+    <div class="image-container" style="position: relative; width: 100%; height: 300px;"> 
+        <img height="80px"; width="20px" src="https://media.istockphoto.com/id/1127769509/photo/zero-waste-shopping-concept.jpg?s=612x612&w=0&k=20&c=WD8Me9hmjiBJ6nf8eQnIBqwvA7KzsDRInFOzIewOPac=">
+             alt="Responsive Image" 
+             class="img-fluid" 
+             style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="text-overlay" 
+             style="position: absolute; top: 50%; left: 0; transform: translateY(-50%);;
+                    color: white; font-size: 24px; font-weight: bold; text-align: left;
+                    background: rgba(0, 0, 0, 0.5); padding: 10px 20px; border-radius: 10px;">
+            <h1>WRAP</h1>
+            <p>A promise to reduce food waste, optimize resources, and create a sustainable future with us.</p>
+        </div>
+    </div>
+</div>
+
+    
+    <br><br><br>
+    <h1>Our Services</h1>
+
+    <div class="container-fluid">
+      <div class="row card-container">
+        <div class="col-md-4">
+          <div class="card w-100">
+            <img src="https://t3.ftcdn.net/jpg/02/17/65/88/360_F_217658823_vVaB79Y6lBL2JRk9eFPBKR6PdwcL8Ett.jpg" class="card-img-top" alt="Service 1">
+            <div class="card-body">
+              <h5 class="card-title">Pick-Up & Deliver</h5>
+              <p class="card-text">Waste food from store, restaurant and home.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card w-100">
+            <img src="https://media.istockphoto.com/id/528181173/photo/woman-checking-quality-of-coffee.jpg?s=612x612&w=0&k=20&c=zpVJlxznF4mVEFV6HyVcvwbF7pI-Dpe7tEyZl0ZSOOk=" class="card-img-top" alt="Service 2">
+            <div class="card-body">
+              <h5 class="card-title">Quality-Check & Supply</h5>
+              <p class="card-text">Food quality is well checked and delivered to the NGOs.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card w-100">
+            <img src="https://img.freepik.com/premium-photo/happy-indian-children-enjoy-food-bread-dirty-crowded-streets-social-problem-poverty-hunger-lack-clean-drinking-water_184982-5905.jpg?w=360" class="card-img-top" alt="Service 3">
+            <div class="card-body">
+              <h5 class="card-title">Quality food at low price</h5>
+              <p class="card-text">Relief from starving night.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  <br>
+
+  <div class="content">
+    <div class="clients-section" style="text-align: center; padding: 20px;">
+        <h1 style="margin-bottom: 20px;">Our Clients</h1>
+        <div class="clients-list" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; width: 150px; height: 200px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <img src="https://img.freepik.com/free-vector/letter-x-dry-brush-stroke-typography-vector_53876-177859.jpg?semt=ais_hybrid" alt="Client 1" style="border-radius: 50%; max-width: 100%; height: auto;">
+                <p style="margin-top: 10px; font-weight: bold;">X</p>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; width: 150px; height: 200px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <img src="https://banner2.cleanpng.com/20180418/zcq/avfmix6cw.webp" alt="Client 2" style="border-radius: 50%; max-width: 100%; height: auto;">
+                <p style="margin-top: 10px; font-weight: bold;">Y</p>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; width: 150px; height: 200px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFM4Oqfvy6YXbdBAKiNC4ZG8WdXygGHO6cGQ&s" alt="Client 3" style="border-radius: 50%; max-width: 100%; height: auto;">
+                <p style="margin-top: 10px; font-weight: bold;">Z</p>
+            </div>
+            <div style="border: 1px solid #ddd; padding: 15px; border-radius: 10px; text-align: center; width: 150px; height: 200px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <img src="https://banner2.cleanpng.com/20180402/ble/kisspng-computer-icons-letter-alphabet-p-aacute-scoa-5ac2a969a84031.8610609415227067936892.jpg" alt="Client 4" style="border-radius: 50%; max-width: 100%; height: auto;">
+                <p style="margin-top: 10px; font-weight: bold;">P</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="full-width-image-container" style="position: relative; width: 100%;">
+    <img src="https://thumbs.dreamstime.com/b/hands-poor-handed-plate-to-receive-food-volunteers-alleviate-hunger-concept-helping-homeless-169675912.jpg" alt="Full Width Image" style="width: 100%; display: block;">
+    <div class="overlay-text" style="position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 50%; padding: 20px; background: rgba(0, 0, 0, 0.5); color: white; border-radius: 10px; text-align: left;">
+        <h2 style="color: white; margin: 0;">About Us</h2>
+        <p style="color: white; margin: 10px 0;">We started an organization to prevent food waste by supplying food to NGOs, helping to feed people in need.</p>
+        <a href="About Us.html" class="learn-more-btn" style="color: white; text-decoration: none; font-weight: bold;">&#10132; LEARN MORE</a>
+    </div>
+</div>
+  <br>
+  <br> 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1 style="text-align: center; margin-bottom: 20px;">Discover Our New Family Members</h1>    <br>
+  <div class="container-fluid" style="padding: 0;">
+    <div class="row card-container" style="display: flex; flex-wrap: wrap; margin: 0; padding: 0; gap: 0;">
+      <div class="col-md-3" style="padding: 0;">
+        <div class="card w-100" style="border: none;">
+          <img src="https://www.smilefoundationindia.org/blog/wp-content/uploads/2024/07/Black-Aesthetic-Photo-Collage-Instagram-Post-LinkedIn-Post-2-1024x1024.jpg" class="card-img-top" alt="Smile Foundation" style="width: 100%;">
+          <div class="card-body" style="text-align: center;">
+            <h5 class="card-title">Smile Foundation</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" style="padding: 0;">
+        <div class="card w-100" style="border: none;">
+          <img src="https://static.mygov.in/media/self4society/2019/08/mygov-999999999393579370.jpg" class="card-img-top" alt="HelpAge India" style="width: 100%;">
+          <div class="card-body" style="text-align: center;">
+            <h5 class="card-title">HelpAge India</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" style="padding: 0;">
+        <div class="card w-100" style="border: none;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/CARE_Logo_Orange.png/800px-CARE_Logo_Orange.png" class="card-img-top" alt="Care" style="width: 100%;">
+          <div class="card-body" style="text-align: center;">
+            <h5 class="card-title">Care</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" style="padding: 0;">
+        <div class="card w-100" style="border: none;">
+          <img src="https://yt3.googleusercontent.com/ytc/AIdro_kcBW073FvrkAJ34oe4cihRdSKJqSK9WIsQ9kw_7ZMVOvE=s900-c-k-c0x00ffffff-no-rj" class="card-img-top" alt="Akshya Patra" style="width: 100%;">
+          <div class="card-body" style="text-align: center;">
+            <h5 class="card-title">Akshya Patra</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+<br><br><br><br><br><br><br><br>
+<div style= "  height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: rgb(12, 170, 243); box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); border: 2px solid #007bff; border-radius: 10px; padding: 20px;">
+  <h1 style="font-size: 24px; color:black; margin: 0;"><strong>Join as a Delivery Partner</strong></h1>
+  <p style="font-size: 16px; color: black; text-align: center; max-width: 600px; margin: 10px 0;">
+      <strong>Become a part of our delivery team and start earning today! Flexible hours, great pay, and a fantastic work environment. Apply now to get started.</strong>
+  </p>
+  <a href="delivery.html" style="text-decoration: none;">
+      <button style="background-color: black; color: white; font-size: 18px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+          Apply Now
+      </button>
+  </a>
+</div><br><br><br><br><br
+  <div class="container-fluid d-flex flex-column justify-content-center align-items-center py-4" 
+          style="background-color: rgb(12, 170, 243); height: 200px;">
+<h1 style="color: black; text-align: center; padding: 40px;">The road to survival lies through mouth</h1>
+ 
+  <button class=" b" style=" background-color: black; color: white; padding: 10px 20px; border: none; margin-top: 30px; cursor: pointer;">
+         <a     href="Contact.html" target="_blank" style="text-decoration: none; color: white;">Contact</a>
+        </button>
+
+
+</div>
+<br><br>
+
+
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+<hr>
+<footer class="bg-light text-dark py-4 mt-5" style="font-family: Arial, sans-serif; background-color: #faf7f7;">
+  <div class="container" style="max-width: 100%;">
+      <div class="row" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+          <div class="col-md-3 text-center text-md-start" style="flex: 1; padding: 10px;">
+              <img src="logo.jpg" alt="WRAP Logo" class="mb-2" style="width: 80px; height: auto;">
+              <p class="fw-bold" style="font-size: 16px; color: #343a40;">Waste Reduction & allocation platform</p>
+          </div>
+          <div class="col-md-3 text-center" style="flex: 1; padding: 10px;">
+              <h5 class="fw-bold" style="font-size: 18px;">HEAD OFFICE</h5>
+              <p style="font-size: 14px;">ITER, Bhubaneswar<br>Odisha, India</p>
+              <p style="font-size: 14px;">123-456-7890</p>
+              <p style="font-size: 14px;">info@mysite.com</p>
+          </div>
+          <div class="col-md-2 text-center" style="flex: 1; padding: 10px;">
+              <h5 class="fw-bold" style="font-size: 18px;">NAVIGATION</h5>
+              <p><a href="Service.html" class="text-dark text-decoration-none" style="font-size: 14px;">Services</a></p>
+              <p><a href="About Us.html" class="text-dark text-decoration-none" style="font-size: 14px;">About Us</a></p>
+              <p><a href="Contact.html" class="text-dark text-decoration-none" style="font-size: 14px;">Contact</a></p>
+          </div>
+          <div class="col-md-2 text-center" style="flex: 1; padding: 10px;">
+              <h5 class="fw-bold" style="font-size: 18px;">FOLLOW US</h5>
+              <p><a href="#" class="text-dark text-decoration-none" style="font-size: 14px;">Facebook</a></p>
+              <p><a href="#" class="text-dark text-decoration-none" style="font-size: 14px;">Instagram</a></p>
+              <p><a href="#" class="text-dark text-decoration-none" style="font-size: 14px;">LinkedIn</a></p>
+          </div>
+          <div class="col-md-2 text-center" style="flex: 1; padding: 10px;">
+              <h5 class="fw-bold" style="font-size: 18px;">LEGAL</h5>
+              <p><a href="T&C.html" class="text-dark text-decoration-none" style="font-size: 14px;">Terms & Conditions</a></p>
+              <p><a href="Privacy.html" class="text-dark text-decoration-none" style="font-size: 14px;">Privacy Policy</a></p>
+              <p><a href="assurancst.html" class="text-dark text-decoration-none" style="font-size: 14px;">Accessibility Statement</a></p>
+          </div>
+      </div>
+      <hr style="border-top: 1px solid #e0e0e0;">
+      <div class="row text-center" style="text-align: center;">
+          <div class="col-12 mt-2">
+              <p class="mb-0" style="font-size: 14px; color: #6c757d;">&copy; 2025 by Team Counter Productive</p>
+          </div>
+      </div>
+  </div>
+</footer>
+  
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

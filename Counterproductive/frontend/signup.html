@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sign Up Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; }
+        .container {
+             background-color: #fff;
+            padding: 20px;
+          border-radius: 8px;
+             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         width: 400px;
+        }
+        input[type="text"], input[type="password"], input[type="tel"], select {
+            width: 100%;
+             padding: 10px;
+         margin-bottom: 20px;
+             border: 1px solid #ccc;
+         border-radius: 4px;
+             box-sizing: border-box;  }
+        label {
+              display: block;
+          margin-bottom: 10px;
+             font-weight: bold;
+        }
+         .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+          }
+     .checkbox-container input {
+              margin-right: 10px;
+        }
+        .confirm-button {
+              width: 100%;
+            padding: 12px;
+             background-color: #000000;
+            color: white;
+             border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+         .confirm-button:hover {
+            background-color: #7e7b7b;  }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Sign Up</h1>
+        <form id="signupForm">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter phone number" required>
+
+            <label for="role">Select Role:</label>
+            <select id="role" name="role" required>
+                <option value="consumer">Consumer</option>
+                <option value="producer">Producer</option>
+            </select>
+
+            <div style="text-align: center;">Already a member? <a href="Login.html">Log-in here</a></div>
+            <br>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="terms" name="terms">
+                <label for="terms">Agree to the terms and conditions</label>
+            </div>
+
+            <button type="submit" class="confirm-button">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            var firstName = document.getElementById("firstName").value.trim();
+            var lastName = document.getElementById("lastName").value.trim();
+            var password = document.getElementById("password").value.trim();
+            var phone = document.getElementById("phoneNumber").value.trim();
+            var role = document.getElementById("role").value;
+            var termsChecked = document.getElementById("terms").checked;
+            
+            var valid = true;
+
+            if (firstName === "" || lastName === "" || password === "" || phone === "") {
+                alert("All fields must be filled out.");
+                return;
+            }
+
+            var phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return;
+            }
+
+            if (!termsChecked) {
+                alert("You must agree to the terms and conditions.");
+                return;
+            }
+
+            if (valid) {
+                if (role === 'consumer') {
+                    window.location.href = "product.html";
+                } else if (role === 'producer') {
+                    window.location.href = "Provider-Onboarding.html";
+                }
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            formData.append('phoneno', document.getElementById('phoneno').value);
+            formData.append('password', document.getElementById('password').value);
+            formData.append('lastname', document.getElementById('lastname').value);
+            formData.append('firstName', document.getElementById('firstName').value);
+            formData.append('role', document.getElementById('role').value);
+            
+
+            try {
+                const response = await axios.post('http://localhost:3000/api/v1/users/register', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+
+                if (response.status === 200) {
+                    alert('Registration successful');
+                    // Redirect or perform other actions
+                }
+            } catch (error) {
+                alert('Registration failed: ' + error.response.data.message);
+            }
+        });
+    </script>
+</body>
+</html>
