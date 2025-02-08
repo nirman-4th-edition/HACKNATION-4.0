@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E.N.C.O.D.E.S. Student - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        
+        @keyframes moveBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg,  #ff6b6b, #f8a5c2, #6a89cc, #48c9b0);
+            background-size: 400% 400%;
+            animation: moveBackground 12s ease infinite;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        
+        .education-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .education-icons img {
+            position: absolute;
+            width: 50px;
+            opacity: 0.8;
+            animation: floatIcons 5s infinite ease-in-out alternate;
+        }
+
+        @keyframes floatIcons {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-20px); }
+        }
+
+       
+        .icon1 { top: 10%; left: 15%; width: 60px; }
+        .icon2 { top: 50%; left: 80%; width: 50px; }
+        .icon3 { top: 30%; left: 40%; width: 70px; }
+        .icon4 { top: 70%; left: 10%; width: 50px; }
+        .icon5 { top: 80%; left: 90%; width: 60px; }
+
+        
+        .login-container {
+            background: rgba(255, 255, 255, 0);
+            
+            border-radius: 55px;
+            box-shadow: 0 18px 20px rgba(25, 160, 201, 0.317);
+            padding: 40px;
+            text-align: center;
+            width: 350px;
+            transition: transform 0.3s ease-in-out;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        
+        h1 {
+            font-size: 30px;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ffcc00; }
+            to { text-shadow: 0 0 20px #ffcc00, 0 0 30px #ffcc00; }
+        }
+
+       
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus {
+            background: rgba(14, 128, 148, 0.3);
+            border: 1px solid #ffcc00;
+            box-shadow: 0 0 10px #ffcc00;
+        }
+
+       
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        .login-btn:hover {
+            background: #ffd700;
+            color: #000;
+            box-shadow: 0 0 15px #ffcc00;
+        }
+
+        
+        .form-links {
+            margin-top: 15px;
+        }
+
+        .form-links a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .form-links a:hover {
+            text-decoration: underline;
+        }
+        .d
+        {
+            margin: right 20px;
+        }
+    </style>
+    
+</head>
+<body>  
+    </div>
+    
+    <img src="educ.png" height="350px" width="450px">
+
+    <div class="login-container">
+        <h1>Welcome</h1>
+        <form id="login-form">
+            <div class="input-box">
+                <label>Username</label>
+                <input type="text" name="username" id="login-username" required placeholder="Enter Your Username: ">
+                
+            </div>
+            <div class="input-box">
+                <label>Password</label>
+                <input type="password" name="password" id="login-password" required placeholder="Enter Your Password: ">
+                
+            </div>
+            <button type="submit" class="login-btn">LOG IN</button>
+        </form>
+        <div class="form-links">
+            <a href="forgot_password.html"><i class="fa fa-question-circle"></i> Forgot Password?</a>
+        </div>
+    </div>
+
+    <script>
+        function speak(text) {
+            const speech = new SpeechSynthesisUtterance();
+            speech.text = text;
+            speech.volume = 1; 
+            speech.rate = 1; 
+            speech.pitch = 1; 
+            speech.lang = 'en-US'; 
+            speechSynthesis.speak(speech);
+        }
+
+        window.onload = function() {
+            setTimeout(() => {
+                speak("Welcome to the student login page.");
+            }, 1000); 
+        };
+    </script>
+    <script>
+      document.getElementById('login-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+  
+          const username = document.getElementById('login-username').value;
+          const password = document.getElementById('login-password').value;
+  
+          const formData = new FormData();
+          formData.append('username', username);
+          formData.append('password', password);
+  
+          fetch('login.php', {
+              method: 'POST',
+              body: formData
+          })
+          .then(response => response.text())
+          .then(result => {
+              if (result === 'Login successful') {
+                  localStorage.setItem('loggedInUser', JSON.stringify({ username: username }));
+                  
+                  speak("Login successful. Welcome, " + username + "!");
+  
+                  setTimeout(() => {
+                      window.location.href = 'home.php'; 
+                  }, 2000); 
+                  
+              } else {
+                  
+                  alert('Login failed: ' + result);
+                  speak("Login failed. Please try again.");
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              speak("An error occurred. Please try again.");
+          });
+      });
+  
+      function speak(text) {
+          const speech = new SpeechSynthesisUtterance();
+          speech.text = text;
+          speech.volume = 1; 
+          speech.rate = 1; 
+          speech.pitch = 1; 
+          speech.lang = 'en-US'; 
+          speechSynthesis.speak(speech);
+      }
+  </script>
+</body>
+</html>
