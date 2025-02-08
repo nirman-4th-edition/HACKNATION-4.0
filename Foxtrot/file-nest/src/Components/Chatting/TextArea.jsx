@@ -31,6 +31,9 @@ export default function TextArea({ onSendMessage }) {
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
+      formData.append("type", file.type); // Add the file type to the form data
+      console.log("filetype", file.type);
+      console.log("filetype", file.type);
 
       try {
         const res = await axios.post(
@@ -58,6 +61,7 @@ export default function TextArea({ onSendMessage }) {
       file: fileUrl, // Either a valid URL or null
       fileName: file ? file.name : null, // Add the file name
       timestamp: new Date(), // Get time in 24-hour format
+      fileType: file ? file.type : null, // Add the file type
     };
 
     // Call onSendMessage provided by the parent (ChatPanel)
@@ -78,7 +82,7 @@ export default function TextArea({ onSendMessage }) {
         onChange={(e) => setInputValue(e.target.value)}
         className="min-h-full !border-0 focus:border-transparent text-gray-900 hide-scroll"
         onKeyDown={(e) => {
-          if (e.key === 'Enter') {
+          if (e.key === "Enter") {
             e.preventDefault(); // Prevent the default behavior of the Enter key
             handleSendMessage(); // Trigger the send message function
           }

@@ -13,13 +13,22 @@ const socketHandler = (io) => {
 
     socket.on(
       "sendMessage",
-      async ({ room, sender, message, file, fileName, timestamp }) => {
+      async ({
+        room,
+        sender,
+        message,
+        file,
+        fileName,
+        timestamp,
+        fileType,
+      }) => {
         const chatMessage = {
           sender,
           message,
           file: file || null, // file url
           timestamp: timestamp || new Date(),
           fileName: fileName || null,
+          fileType: fileType || null,
         };
 
         // Emit message to all users in the room
@@ -32,10 +41,11 @@ const socketHandler = (io) => {
         } catch (error) {
           console.error("Error saving message:", error);
         }
+        console.log("socket: " + fileType);
 
         if (file) {
           try {
-            const extractResult = await processImage(file);
+            const extractResult = await processImage(file, fileType);
             // console.log("Extract result:", extractResult);
 
             if (extractResult) {
@@ -46,6 +56,7 @@ const socketHandler = (io) => {
                 dir: extractResult.Result || extractResult, // Adjust according to your Flask API response format
                 timestamp: new Date(),
                 fileName,
+                fileType,
               };
 
               await imageMetaModel.create(imageMeta);

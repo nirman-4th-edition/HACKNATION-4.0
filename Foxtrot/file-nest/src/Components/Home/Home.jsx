@@ -14,7 +14,7 @@ const Home = () => {
     });
     console.log(response.data.username);
     localStorage.setItem("username", response.data.username.toString());
-
+    
     return response.data.username;
   }
 
@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center items-center">
         <SideBar />
         <ChatPanel />
       </div>

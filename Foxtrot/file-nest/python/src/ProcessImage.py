@@ -1,7 +1,7 @@
-import requests
-import PyPDF2 # type: ignore
+
+import PyPDF2
 import nltk
-from flask import Flask, request, jsonify
+from flask import Flask, requests, jsonify
 from pytesseract import pytesseract
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -38,6 +38,7 @@ subjects = {
         "CHAPTER-5":[ "jquery library", "jquery selectors", "$(document).ready()", "events", "event delegation", "chaining", "effects", "fadein", "fadeout", "slideup", "slidedown", "animation", "callback functions", "deferred objects", "ajax", "$.get()", "$.post()", "json parsing", "plugins", "ui", "mobile", "form validation", "datatables", "accordion", "autocomplete", "toggleclass()", "css()", "dimensions", "traversing methods", "parent-child relationship", "cloning", "dom manipulation", "prop() vs attr()", "scroll events", "interpolation", "template engines", "prototypes", "data attributes", "context", "memory leaks", "lazy loading", "performance optimization", "global variables", "debugging", "cdn", "vs vanilla js", "websockets", "intersection observer", "event bubbling", "namespacing", "widget factory", "ajax caching", "cross-origin requests"]
     },
     "AD": {
+
         # Chapter 1: ntroduction to Algorithmic Problems
         "CHAPTER-1": ['acceptance', 'algorithm', 'algorithmic', 'analysis', 'approximation', 'assessment', 'basis', 'bounds', 'brute', 'classes', 'complexity', 'computation', 'computational', 'conjectures', 'constraints', 'decision', 'deferred', 'design', 'dynamic', 'efficiency', 'evaluation', 'exploration', 'exponential', 'feasibility', 'force', 'formulation', 'gale-shapley', 'graph-based', 'greedy', 'hardness', 'heuristic', 'hierarchy', 'independent', 'instances', 'limits', 'lists', 'matching', 'models', 'network', 'np-completeness', 'optimization', 'performance', 'polynomial', 'preference', 'problem', 'problems', 'programming', 'pspace-complete', 'reduction', 'schemes', 'search', 'set', 'solution', 'space', 'stability', 'stable', 'strategies', 'testing', 'theoretical', 'theory', 'time', 'tractability', 'trade-offs', 'trees', 'validation', 'worst-case'],
 
@@ -49,9 +50,9 @@ subjects = {
         "CHAPTER-4": ['activity', 'algorithm', 'algorithms', 'allocation', 'analysis', 'and', 'approximate', 'approximation', 'argument', 'balancing', 'change', 'choice', 'clustering', 'coding', 'coin', 'coloring', 'compression', 'counterexample', 'cover', 'data', 'decision', 'depth-first', 'dynamic', 'event', 'exchange', 'fails', 'fractional', 'game', 'global', 'graph', 'greedy', 'heuristic', 'huffman', 'independent', 'interval', 'job', 'knapsack', 'kruskal’s', 'local', 'making', 'matching', 'matroids', 'maximal', 'minimum', 'optimal', 'optimization', 'optimum', 'path', 'prim’s', 'prioritization', 'priority', 'problem', 'programming', 'property', 'queue', 'ratio', 'recursive', 'scheduling', 'search', 'selection', 'set', 'shortest', 'solutions', 'sorting', 'spanning', 'strategy', 'subset', 'substructure', 'task', 'theory', 'traversal', 'tree', 'versus', 'weight'],
         # Chapter 5: Divide and ConquerI
         "CHAPTER-5": ['algorithm', 'algorithms', 'analysis', 'and', 'approach', 'binary', 'closest', 'combination', 'computation', 'conquer', 'convex', 'convolution', 'decomposition', 'depth', 'divide', 'efficiency', 'fast', 'fourier', 'geometric', 'hierarchical', 'hull', 'improvement', 'integer', 'karatsuba’s', 'logarithmic', 'master', 'match', 'matrix', 'merge', 'mergesort', 'multiplication', 'numerical', 'optimization', 'overlapping', 'pair', 'parallel', 'partitioning', 'pivoting', 'polynomial', 'problem', 'problem-solving', 'processing', 'quicksort', 'recurrence', 'recursion', 'recursive', 'reduction', 'relation', 'runtime', 'scaling', 'search', 'select', 'signal', 'sorting', 'strassen’s', 'strategy', 'subproblem', 'subproblems', 'theorem', 'transform', 'tree']
-    }
-}
 
+}
+}
 def extract_text_from_image(image_url):
     try:
         response = requests.get(image_url)

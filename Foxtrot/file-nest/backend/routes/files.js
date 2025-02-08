@@ -112,4 +112,20 @@ filesRouter.get("/subject/all", tokenVerify, async (req, res) => {
   }
 });
 
+filesRouter.get("/flags", tokenVerify, async (req, res) => {
+  try {
+    const flaggedFiles = await imageMetaModel.find({
+      "dir.message": "No matching subject or chapter found",
+    });
+
+    res.json({
+      flaggedCount: flaggedFiles.length,
+      flaggedFiles,
+    });
+  } catch (error) {
+    console.error("Error fetching flagged files:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 export { filesRouter };
