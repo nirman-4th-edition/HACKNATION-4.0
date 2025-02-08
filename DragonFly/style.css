@@ -1,0 +1,387 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+
+body {
+    background-color: #111111;
+    color: #fff;
+}
+
+/* Header and Navigation */
+.search-bar {
+    background: #2d2d2d;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-input {
+    background: #3d3d3d;
+    border: none;
+    padding: 8px 16px;
+    color: white;
+    border-radius: 4px;
+    width: 500px;
+}
+
+.nav-bar {
+    padding: 12px 24px;
+    border-bottom: 1px solid #333;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a.active {
+    color: #3b82f6;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 12px;
+}
+
+/* Main Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.briefing h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.date {
+    color: #888;
+}
+
+/* .weather {
+    background: #2d2d2d;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.icon .icons{
+    height: 50px;
+    width: 50px;
+}
+
+.weather .temp {
+    font-size: 24px;
+    font-weight: bold;
+} */
+
+
+.weather-sun {
+    background: linear-gradient(135deg, #0d0d0d, #191a1c);
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.weather-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+    height: 200px;
+}
+
+.search-box {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+#cityInput{
+height: 30px;
+width: 20px;
+}
+input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.weather-icon {
+    width: 60px;
+    height: 30px;
+    margin: 20px auto;
+    position: relative;
+    top: 9px;
+}
+
+.temperature {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 3px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.location {
+    font-size: 20px;
+    margin-bottom: 0.5px;
+    color: rgba(255, 255, 255, 0.9);
+height: 0px;
+
+}
+
+.description {
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: capitalize;
+    font-size: 18px;
+}
+
+/* Weather Icon Animations */
+.sun {
+    animation: rotate 20s linear infinite;
+}
+
+.cloud {
+    animation: float 3s ease-in-out infinite;
+}
+
+.rain {
+    animation: rain 1s linear infinite;
+}
+
+.snow {
+    animation: snow 2s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes rain {
+    0% { transform: translateY(-10px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(10px); opacity: 0; }
+}
+
+@keyframes snow {
+    0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(10px) rotate(360deg); opacity: 0; }
+}
+
+
+
+/* News Grid */
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    display: flex;
+    
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #3b82f6;
+}
+
+.news-card {
+    background: #2d2d2d;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.top-stories{
+width: 800px;
+}
+
+.news-card img {
+    width: 70%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+
+.news-content {
+    padding: 16px;
+}
+
+.source {
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.time {
+    color: #888;
+    font-size: 12px;
+}
+
+/* Local News */
+.local-news .news-card {
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+
+
+.local-news img {
+    width: 100px;
+    height: 100px;
+    margin: 16px;
+}
+
+.full-coverage {
+    background: #2d2d2d;
+    color: #3b82f6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    float: right;
+}
+
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 20px;
+    display: flex;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.footer-section {
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+}
+.footer-section h3 {
+    border-bottom: 2px solid #555;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+.footer-section ul li a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-section ul li a:hover {
+    color: white;
+}
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+.social-icons a {
+    color: white;
+    font-size: 24px;
+}
+.copyright {
+    background-color: #222;
+    color: #999;
+    text-align: center;
+    padding: 15px;
+}
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+    }
+    .footer-section {
+        margin: 10px 0;
+    }
+}
+
+.more
+{
+    height: 20px;
+}
+
+.fill{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.aa{
+    text-decoration: none;
+    color: #fff;
+}
+/* .fill img{
+flex-shrink: 0;
+min-width: 100%;
+min-height: 100%;
+
+} */
