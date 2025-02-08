@@ -87,6 +87,7 @@ id card1
 id card2
 id card3
 id cardview
+id chatContainer
 id chat_back
 id chat_tablayout
 id city
@@ -109,12 +110,14 @@ id linear1
 id listView
 id main
 id mapView
+id message_box
 id messagebox
 id mobilenumber
 id mylocation
 id name
 id phno
 id photosos
+id play_button
 id pname
 id profile_image
 id receivedmessage
@@ -124,7 +127,9 @@ id resendotp
 id sendm
 id sentmessage
 id signupbutt
+id sosbtn
 id sosm
+id sosmessage
 id submit
 id submitotp
 id textViewInfo
@@ -143,6 +148,7 @@ layout activity_otp_login
 layout activity_otp_verification
 layout bottom_sheet_layout
 layout camera
+layout chat_container
 layout chat_user_item
 layout fragment_chat_bat
 layout fragment_chat_fragment

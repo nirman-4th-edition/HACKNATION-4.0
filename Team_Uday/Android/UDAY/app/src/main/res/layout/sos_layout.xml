@@ -142,7 +142,7 @@
             </LinearLayout>
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/sosmessage"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/textfield"
@@ -211,7 +211,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/signupbutt"
+        android:id="@+id/sosbtn"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:text="SEND SOS"

@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -28,6 +30,18 @@
         android:theme="@style/Theme.UDAY"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".camera.video_activity"
+            android:exported="true" />
+        <activity
+            android:name=".camera.camera_activity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".sos.sos_activity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".Chat.ChatActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="com.mapbox.maps.token"

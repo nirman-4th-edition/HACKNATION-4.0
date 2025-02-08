@@ -1,20 +1,20 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:70:9-78:20
+INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:72:9-80:20
 	android:grantUriPermissions
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:74:13-47
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:76:13-47
 	android:authorities
 		INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:72:13-60
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:74:13-60
 	android:exported
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:73:13-37
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:75:13-37
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:71:13-62
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:73:13-62
 manifest
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:2:1-81:12
-INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:2:1-81:12
-INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:2:1-81:12
-INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:2:1-81:12
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:2:1-83:12
+INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:2:1-83:12
+INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:2:1-83:12
+INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:2:1-83:12
 MERGED from [androidx.databinding:viewbinding:8.7.2] C:\Users\Prach\.gradle\caches\8.9\transforms\a3cd68f4447738c0fd28698061d80586\transformed\viewbinding-8.7.2\AndroidManifest.xml:2:1-7:12
 MERGED from [com.mapbox.maps:android:11.8.0] C:\Users\Prach\.gradle\caches\8.9\transforms\54805cc3badcf85554f77da1dcc3f192\transformed\android-11.8.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.mapbox.plugin:maps-annotation:11.8.0] C:\Users\Prach\.gradle\caches\8.9\transforms\7468fe92933285651b3e3b0b0841c865\transformed\maps-annotation-11.8.0\AndroidManifest.xml:2:1-7:12
@@ -231,15 +231,19 @@ uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:14:5-79
 	android:name
 		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:14:22-77
-uses-feature#android.hardware.camera
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:15:5-17:35
-	android:required
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:17:9-32
+uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:15:5-84
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:16:9-47
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:15:22-82
+uses-feature#android.hardware.camera
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:17:5-19:35
+	android:required
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:19:9-32
+	android:name
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:18:9-47
 application
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:19:5-79:19
-INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:19:5-79:19
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:21:5-81:19
+INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:21:5-81:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\Prach\.gradle\caches\8.9\transforms\1b369cafe9bb3684ea6af5dcb07c13f2\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\Prach\.gradle\caches\8.9\transforms\1b369cafe9bb3684ea6af5dcb07c13f2\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Prach\.gradle\caches\8.9\transforms\e9152c3967e05de653cabddc37caddee\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -325,103 +329,103 @@ MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\Prach\.gradle\c
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.0] C:\Users\Prach\.gradle\caches\8.9\transforms\b8be51fc55c9ea6029e9ca1d85833f0f\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:27:9-35
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:29:9-35
 	android:label
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:24:9-41
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:26:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:22:9-54
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:24:9-54
 	android:roundIcon
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:26:9-47
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:28:9-47
 	tools:targetApi
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:30:9-29
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:32:9-29
 	android:icon
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:23:9-42
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:25:9-42
 	android:allowBackup
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:20:9-35
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:22:9-35
 	android:theme
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:28:9-42
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:30:9-42
 	android:networkSecurityConfig
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:25:9-69
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:27:9-69
 	android:dataExtractionRules
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:21:9-65
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:23:9-65
 	android:usesCleartextTraffic
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:29:9-44
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:31:9-44
 activity#com.example.uday.camera.video_activity
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:31:9-33:39
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:33:9-35:39
 	android:exported
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:33:13-36
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:35:13-36
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:32:13-50
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:34:13-50
 activity#com.example.uday.camera.camera_activity
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:34:9-36:48
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:36:9-38:48
 	android:exported
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:36:13-36
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:38:13-36
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:35:13-51
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:37:13-51
 activity#com.example.uday.sos.sos_activity
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:37:9-39:48
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:39:9-41:48
 	android:exported
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:39:13-36
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:41:13-36
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:38:13-45
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:40:13-45
 activity#com.example.uday.Chat.ChatActivity
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:40:9-42:39
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:42:9-44:39
 	android:exported
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:42:13-36
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:44:13-36
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:41:13-46
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:43:13-46
 meta-data#com.mapbox.maps.token
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:44:9-46:59
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:46:9-48:59
 	android:value
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:46:13-56
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:48:13-56
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:45:13-49
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:47:13-49
 activity#com.example.uday.login.loginpage
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:48:9-51:67
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:50:9-53:67
 	android:windowSoftInputMode
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:51:13-55
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:53:13-55
 	android:exported
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:50:13-36
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:52:13-36
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:49:13-44
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:51:13-44
 activity#com.example.uday.login.otp_verification
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:52:9-55:58
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:54:9-57:58
 	android:windowSoftInputMode
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:55:13-55
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:57:13-55
 	android:exported
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:54:13-37
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:53:13-51
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:55:13-51
 activity#com.example.uday.login.signup
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:56:9-59:67
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:58:9-61:67
 	android:windowSoftInputMode
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:59:13-55
-	android:exported
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:58:13-36
-	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:57:13-41
-activity#com.example.uday.start_pages.Connector_frag
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:60:9-68:20
-	android:exported
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:62:13-36
-	android:name
 		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:61:13-55
+	android:exported
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:60:13-36
+	android:name
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:59:13-41
+activity#com.example.uday.start_pages.Connector_frag
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:62:9-70:20
+	android:exported
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:64:13-36
+	android:name
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:63:13-55
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:63:13-67:29
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:65:13-69:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:64:17-69
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:66:17-69
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:64:25-66
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:66:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:66:17-77
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:68:17-77
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:66:27-74
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:68:27-74
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:75:13-77:54
+ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:77:13-79:54
 	android:resource
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:77:17-51
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:79:17-51
 	android:name
-		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:76:17-67
+		ADDED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml:78:17-67
 uses-sdk
 INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Prach\Desktop\kanha\Project MaYhem\Project MaYhem\UDAY\app\src\main\AndroidManifest.xml

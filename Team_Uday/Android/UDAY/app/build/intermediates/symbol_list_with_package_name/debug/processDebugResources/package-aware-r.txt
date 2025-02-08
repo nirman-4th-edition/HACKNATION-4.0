@@ -3500,6 +3500,7 @@ id center_vertical
 id chain
 id chain2
 id chains
+id chatContainer
 id chat_back
 id chat_tablayout
 id checkbox
@@ -3703,6 +3704,7 @@ id material_timepicker_view
 id material_value_index
 id matrix
 id message
+id message_box
 id messagebox
 id middle
 id mini
@@ -3794,6 +3796,7 @@ id performance
 id phno
 id photosos
 id pin
+id play_button
 id pname
 id pooling_container_listener_holder_tag
 id position
@@ -3859,7 +3862,9 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id sosbtn
 id sosm
+id sosmessage
 id south
 id spacer
 id special_effects_controller_view_tag
@@ -4096,6 +4101,7 @@ layout bottom_sheet_layout
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout camera
+layout chat_container
 layout chat_user_item
 layout custom_dialog
 layout design_bottom_navigation_item

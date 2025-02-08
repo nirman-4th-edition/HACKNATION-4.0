@@ -8,20 +8,20 @@
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
       rel="stylesheet"
     />
-    <!-- Mapbox GL JS -->
+  
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
     <link
       href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
       rel="stylesheet"
     />
-    <!-- Geocoder plugin -->
+
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.1-dev/mapbox-gl-geocoder.min.js"></script>
     <link
       rel="stylesheet"
       href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.1-dev/mapbox-gl-geocoder.css"
       type="text/css"
     />
-    <!-- Turf.js plugin -->
+   
     <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -41,6 +41,69 @@
         padding: 0;
         -webkit-font-smoothing: antialiased;
       }
+
+        /* Modal styles */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            margin: 15% auto;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        .modal-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .modal-body {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-ok {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-cancel {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
 
       * {
         box-sizing: border-box;
@@ -234,6 +297,16 @@
     </style>
   </head>
   <body>
+    <div id="customAlert" class="custom-modal">
+      <div class="modal-content">
+          <div class="modal-header">Affiliate Location</div>
+          <div class="modal-body" id="modalMessage"></div>
+          <div class="modal-footer">
+              <button class="btn btn-ok" onclick="confirmAction()">OK</button>
+              <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+          </div>
+      </div>
+  </div>
     <div>
         <div style="font-size: large;">
             <nav style="margin-top: 4px;margin-bottom: 4px;" class="navbar navbar-expand-sm ">
@@ -276,12 +349,38 @@
       <div id="listings" class="listings"></div>
     </div>
     <div id="map" class="map"></div>
-    <script type="module">
-     
-    </script>
     
     
     <script>
+       function showCustomAlert(store) {
+            let message = `
+                <strong>Address:</strong> ${store.properties.address} <br>
+                <strong>City:</strong> ${store.properties.city} <br>
+                <strong>Distance:</strong> ${store.properties.distance ? store.properties.distance.toFixed(2) + " km" : "N/A"} <br>
+                Click OK to send your location to the nearest affiliate.
+            `;
+            document.getElementById("modalMessage").innerHTML = message;
+            document.getElementById("customAlert").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("customAlert").style.display = "none";
+        }
+
+        function confirmAction() {
+            alert("User location sent to the nearest affiliate!");
+            closeModal();
+        }
+
+        // Example usage:
+        let store = {
+            properties: {
+                address: "123 Main St",
+                city: "New York",
+                distance: 5.67
+            }
+        };
+
       mapboxgl.accessToken = 'pk.eyJ1Ijoic291bXlhMDIwNCIsImEiOiJjbTNvcmxjamUwNmVwMmtzZDR2bG80ZXp0In0.tI6hEO9VxeqvW8AWAQwQOg';
 
       /**
@@ -620,11 +719,7 @@
           }
         ]
       };
-// Add this function before your map initialization
-/**
- * Custom local geocoder for coordinates.
- * Allows users to input "Lat, Lng" and get a valid search result.
- */
+
  const coordinatesGeocoder = function (query) {
     const matches = query.match(
         /^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
@@ -666,9 +761,7 @@
     return geocodes;
 };
 
-/**
- * Assign a unique id to each store
- */
+
 if (stores && stores.features) {
     stores.features.forEach((store, i) => {
         store.properties.id = i;
@@ -695,85 +788,7 @@ map.on('load', () => {
     map.addControl(geocoder, 'top-left');
     addMarkers();
 
-    // async function fetchAndSearchLocation() {
-    // console.log("🔄 Fetching location...");
-    // try {
-        // const res = await fetch('http://localhost:3000/responses');
-        // if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
 
-        // const data = await res.json();
-        // console.log("📦 Fetched data:", data);
-
-        // if (!Array.isArray(data) || data.length === 0) {
-        //     console.warn("⚠️ No valid location data found.");
-        //     return;
-        // }
-
-        // const firstValidEntry = data.find(entry => entry.location);
-        // if (!firstValidEntry) {
-        //     console.warn("⚠️ No valid location found in array.");
-        //     return;
-        // }
-
-        // let location = firstValidEntry.location;
-
-        // if (typeof location === "string" && location.includes(",")) {
-        //     location = location.split(",").map(coord => parseFloat(coord.trim()));
-        // }
-
-        // if (!Array.isArray(location) || location.length !== 2 || isNaN(location[0]) || isNaN(location[1])) {
-        //     console.warn("⚠️ Invalid location format:", location);
-        //     return;
-        // }
-
-        // console.log(`✅ Valid location: ${location}`);
-
-        // if (!map || !geocoder) {
-        //     console.warn("⚠️ Map or Geocoder not initialized.");
-        //     return;
-        // }
-
-        // geocoder.query(`${location[1]},${location[0]}`);
-        // map.flyTo({
-        //     center: location,
-        //     zoom: 12
-        // });
-
-//         console.log(`📍 Map moved to: ${location}`);
-
-//         // ✅ Update distances
-//         for (const store of stores.features) {
-//             store.properties.distance = turf.distance(
-//                 [location[1], location[0]], 
-//                 store.geometry.coordinates,
-//                 { units: 'kilometers' }
-//             );
-//         }
-
-//         stores.features.sort((a, b) => a.properties.distance - b.properties.distance);
-
-//         console.log("📌 Sorted store distances:", stores.features.map(s => s.properties.distance));
-
-//         buildLocationList(stores);
-//         createPopUp(stores.features[0]);
-
-//         // ✅ Highlight the closest listing
-//         const activeListing = document.getElementById(
-//             `listing-${stores.features[0].properties.id}`
-//         );
-//         if (activeListing) activeListing.classList.add('active');
-
-//         // ✅ Update markers
-//         if (map.getSource('places')) {
-//             console.log("🔄 Updating map source...");
-//             map.getSource('places').setData(stores);
-//         }
-//         addMarkers();
-
-//     } catch (error) {
-//         console.error('❌ Error fetching location:', error);
-//     }
-// }
 
 async function fetchAndSearchLocation() {
     try {
@@ -793,7 +808,7 @@ async function fetchAndSearchLocation() {
             return;
         }
 
-        // Pick the first valid location from the response
+   
         const firstValidEntry = data.find(entry => entry.location);
         if (!firstValidEntry) {
             console.warn("⚠️ No valid location found in array.");
@@ -804,15 +819,14 @@ async function fetchAndSearchLocation() {
         let locationId = firstValidEntry.id; 
         console.log("📍 Raw location from backend:", location);
 
-        // Convert "lat,lng" (string) to [lng, lat] (array)
+        
         if (Array.isArray(location) && location.length === 2) {
             location = [parseFloat(location[0]), parseFloat(location[1])];
         } else if (typeof location === "string" && location.includes(",")) {
             const [lat, lng] = location.split(",").map(coord => parseFloat(coord.trim()));
-            location = [lng, lat];  // Swap to [lng, lat]
+            location = [lng, lat]; 
         }
 
-        // Validate location format
         if (!Array.isArray(location) || location.length !== 2 || isNaN(location[0]) || isNaN(location[1])) {
             console.error("❌ Invalid location format after conversion:", location);
             return;
@@ -820,7 +834,7 @@ async function fetchAndSearchLocation() {
 
         console.log("✅ Final location format:", location);
 
-        // Set geocoder input (if available)
+       
         if (typeof geocoder !== "undefined" && geocoder !== null && geocoder.query) {
             console.log("✅ Geocoder is initialized:", geocoder);
             geocoder.setInput(`${location[1]},${location[0]}`);
@@ -829,7 +843,7 @@ async function fetchAndSearchLocation() {
             console.warn("⚠️ Geocoder is not initialized or invalid.");
         }
 
-        // Move map to location
+       
         if (map && map.loaded()) {
             console.log("✅ Map is initialized and loaded:", map);
             map.flyTo({
@@ -849,7 +863,7 @@ async function fetchAndSearchLocation() {
 
 
     fetchAndSearchLocation();
-// Function to add the delete button
+
 function addDeleteButton(locationId) {
     const listings = document.getElementById("listings");
     if (!listings) {
@@ -857,21 +871,21 @@ function addDeleteButton(locationId) {
         return;
     }
 
-    // Remove existing delete button
+    
     const existingButton = document.getElementById("delete-location-btn");
     if (existingButton) existingButton.remove();
 
-    // Create a new delete button
+  
     const deleteBtn = document.createElement("button");
     deleteBtn.id = "delete-location-btn";
     deleteBtn.innerText = "Delete This Location";
-    deleteBtn.className = "delete-btn"; // Add CSS class for styling
+    deleteBtn.className = "delete-btn"; 
     deleteBtn.onclick = () => deleteLocation(locationId);
 
     listings.appendChild(deleteBtn);
 }
 
-// Function to delete the current location and fetch the next one
+
 async function deleteLocation(locationId) {
     try {
         console.log(`🗑️ Deleting location with ID: ${locationId}`);
@@ -888,54 +902,30 @@ async function deleteLocation(locationId) {
 
         console.log(`✅ Successfully deleted location ID: ${locationId}`);
 
-        // Fetch and search for the next available location
-        fetchAndSearchLocation(); // 🟢 After deleting, fetch next location
+        
+        fetchAndSearchLocation(); 
     } catch (error) {
         console.error("❌ Error deleting location:", error);
     }
 }
 
 
-async function deleteAndSearchNext(storeId) {
-    try {
-        console.log(`🗑️ Deleting store ID: ${storeId}`);
-
-        // ✅ Step 1: Delete the location from the database
-        const deleteResponse = await fetch(`http://localhost:3000/responses/${storeId}`, {
-            method: 'DELETE'
-        });
-
-        if (!deleteResponse.ok) {
-            throw new Error(`Failed to delete. Status: ${deleteResponse.status}`);
-        }
-
-        console.log(`✅ Deleted store ID: ${storeId}`);
-
-        // ✅ Step 2: Fetch next location and search
-        await fetchAndSearchLocation();
-
-    } catch (error) {
-        console.error('❌ Error deleting location:', error);
-    }
-}
-
     geocoder.on('result', (event) => {
     const searchResult = event.result.geometry;
 
-    // ✅ Recalculate distances
+ 
     const options = { units: 'kilometers' };
     for (const store of stores.features) {
         store.properties.distance = turf.distance(
-            [searchResult.coordinates[0], searchResult.coordinates[1]],  // ✅ Correct order
+            [searchResult.coordinates[0], searchResult.coordinates[1]], 
             store.geometry.coordinates,
             options
         );
     }
 
-    // ✅ Sort stores by distance
+ 
     stores.features.sort((a, b) => a.properties.distance - b.properties.distance);
 
-    // ✅ Rebuild UI
     const listings = document.getElementById('listings');
     while (listings.firstChild) {
         listings.removeChild(listings.firstChild);
@@ -943,15 +933,14 @@ async function deleteAndSearchNext(storeId) {
     buildLocationList(stores);
     createPopUp(stores.features[0]);
 
-    // ✅ Highlight closest store
+
     const activeListing = document.getElementById(`listing-${stores.features[0].properties.id}`);
     if (activeListing) activeListing.classList.add('active');
 
-    // ✅ Adjust map view
     const bbox = getBbox(stores, 0, searchResult);
     map.fitBounds(bbox, { padding: 100 });
 
-    // ✅ Update markers
+  
     if (map.getSource('places')) {
         map.getSource('places').setData(stores);
     }
@@ -964,7 +953,7 @@ function buildLocationList(stores) {
     for (const store of stores.features) {
         const listings = document.getElementById('listings');
         const listing = listings.appendChild(document.createElement('div'));
-        listing.id = `listing-${store.properties.id || 'unknown'}`;  // 🟢 Handle missing ID
+        listing.id = `listing-${store.properties.id || 'unknown'}`; 
         listing.className = 'item';
 
         const link = listing.appendChild(document.createElement('a'));
@@ -982,18 +971,19 @@ function buildLocationList(stores) {
             const roundedDistance = Math.round(store.properties.distance * 100) / 100;
             details.innerHTML += `<div><strong>${roundedDistance} km away</strong></div>`; // Changed miles to km
         }
-        // ✅ Add "Delete & Search Next" Button
+
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete & Search Next';
         deleteButton.className = 'delete-button';
-        // 🟢 Ensure store.properties.id exists before adding the button
+ 
       if (store.properties && store.properties.id) {
-        //deleteButton.onclick = () => deleteAndSearchNext(store.properties.id);
+      
         deleteButton.addEventListener("click", () => {
         if (typeof deleteAndSearchNext === "function") {
           deleteAndSearchNext(store.properties.id);
         } else {
           console.error("❌ deleteAndSearchNext is not defined at runtime.");
+          showCustomAlert(store);
        }
     });
 
@@ -1004,7 +994,6 @@ function buildLocationList(stores) {
 
         listings.appendChild(listing);
 
-        // ✅ Link Click Event
         link.addEventListener('click', function () {
             flyToStore(store);
             createPopUp(store);
@@ -1097,6 +1086,10 @@ function createPopUp(currentFeature) {
         .addTo(map);
 }
 
+  // Refresh the page every 10 seconds
+  setTimeout(() => {
+            location.reload();
+        }, 20000); 
     </script>
   </body>
 </html>

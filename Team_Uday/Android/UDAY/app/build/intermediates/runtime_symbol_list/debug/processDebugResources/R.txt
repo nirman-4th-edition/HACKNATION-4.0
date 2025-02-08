@@ -3499,6 +3499,7 @@ int id center_vertical 0x7f090087
 int id chain 0x7f090088
 int id chain2 0x7f090089
 int id chains 0x7f09008a
+int id chatContainer 0x7f090264
 int id chat_back 0x7f09008b
 int id chat_tablayout 0x7f09008c
 int id checkbox 0x7f09008d
@@ -3702,6 +3703,7 @@ int id material_timepicker_view 0x7f090151
 int id material_value_index 0x7f090152
 int id matrix 0x7f090153
 int id message 0x7f090154
+int id message_box 0x7f090265
 int id messagebox 0x7f090155
 int id middle 0x7f090156
 int id mini 0x7f090157
@@ -3793,6 +3795,7 @@ int id performance 0x7f0901ac
 int id phno 0x7f0901ad
 int id photosos 0x7f0901ae
 int id pin 0x7f0901af
+int id play_button 0x7f090266
 int id pname 0x7f0901b0
 int id pooling_container_listener_holder_tag 0x7f0901b1
 int id position 0x7f0901b2
@@ -3858,7 +3861,9 @@ int id snackbar_action 0x7f0901ed
 int id snackbar_text 0x7f0901ee
 int id snap 0x7f0901ef
 int id snapMargins 0x7f0901f0
+int id sosbtn 0x7f090267
 int id sosm 0x7f0901f1
+int id sosmessage 0x7f090268
 int id south 0x7f0901f2
 int id spacer 0x7f0901f3
 int id special_effects_controller_view_tag 0x7f0901f4
@@ -4095,6 +4100,7 @@ int layout bottom_sheet_layout 0x7f0c0080
 int layout browser_actions_context_menu_page 0x7f0c0020
 int layout browser_actions_context_menu_row 0x7f0c0021
 int layout camera 0x7f0c0022
+int layout chat_container 0x7f0c0081
 int layout chat_user_item 0x7f0c0023
 int layout custom_dialog 0x7f0c0024
 int layout design_bottom_navigation_item 0x7f0c0025

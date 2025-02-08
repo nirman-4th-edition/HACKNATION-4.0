@@ -9,12 +9,10 @@ import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.Toast
@@ -22,7 +20,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.uday.R
-import com.example.uday.camera.video_activity
 import com.example.uday.sos.sos_activity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -110,7 +107,6 @@ class gotham_map : Fragment() {
         val showSheetButton: ImageButton = view.findViewById(R.id.firstresponders_datam)
         showSheetButton.setOnClickListener {
             showBottomSheet()
-            Log.d("BottomSheet", "BottomSheet clicked")
         }
 
         return view
@@ -143,7 +139,7 @@ class gotham_map : Fragment() {
             val view = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
 
             val listView = view.findViewById<ListView>(R.id.listView)
-            val options = listOf("Hospitals", "Fire Stations", "Police Stations")
+            val options = listOf("Hospitals", "Fire Stations", "Police Stations","❌-->DELETE")
 
             val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, options)
             listView.adapter = adapter
@@ -151,6 +147,12 @@ class gotham_map : Fragment() {
             listView.setOnItemClickListener { _, _, position, _ ->
                 val selectedOption = options[position]
                 dialog.dismiss()
+                if(selectedOption=="❌-->DELETE"){
+                    mapView.getMapboxMap().getStyle { style ->
+                        style.removeStyleLayer("location_layer")
+                        style.removeStyleSource("location_source")
+                    }
+                    }
                 displayLocationsOnMap(selectedOption)
             }
 
@@ -195,8 +197,10 @@ class gotham_map : Fragment() {
                     iconImage(iconName)
                     iconAllowOverlap(true)
                     iconIgnorePlacement(true)
+                    iconSize(0.2)  // Adjust size as needed
                 }
                 style.addLayer(locationLayer)
+
             }
         }
 

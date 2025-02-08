@@ -21,16 +21,16 @@ public final class SosLayoutChatBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final ImageView image;
+  public final TextView messageBox;
 
   @NonNull
-  public final TextView receivedmessage;
+  public final ImageView playButton;
 
-  private SosLayoutChatBinding(@NonNull LinearLayout rootView, @NonNull ImageView image,
-      @NonNull TextView receivedmessage) {
+  private SosLayoutChatBinding(@NonNull LinearLayout rootView, @NonNull TextView messageBox,
+      @NonNull ImageView playButton) {
     this.rootView = rootView;
-    this.image = image;
-    this.receivedmessage = receivedmessage;
+    this.messageBox = messageBox;
+    this.playButton = playButton;
   }
 
   @Override
@@ -60,19 +60,19 @@ public final class SosLayoutChatBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.image;
-      ImageView image = ViewBindings.findChildViewById(rootView, id);
-      if (image == null) {
+      id = R.id.message_box;
+      TextView messageBox = ViewBindings.findChildViewById(rootView, id);
+      if (messageBox == null) {
         break missingId;
       }
 
-      id = R.id.receivedmessage;
-      TextView receivedmessage = ViewBindings.findChildViewById(rootView, id);
-      if (receivedmessage == null) {
+      id = R.id.play_button;
+      ImageView playButton = ViewBindings.findChildViewById(rootView, id);
+      if (playButton == null) {
         break missingId;
       }
 
-      return new SosLayoutChatBinding((LinearLayout) rootView, image, receivedmessage);
+      return new SosLayoutChatBinding((LinearLayout) rootView, messageBox, playButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

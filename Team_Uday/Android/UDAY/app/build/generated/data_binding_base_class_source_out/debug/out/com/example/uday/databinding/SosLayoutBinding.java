@@ -50,16 +50,16 @@ public final class SosLayoutBinding implements ViewBinding {
   public final ImageButton done;
 
   @NonNull
-  public final EditText name;
-
-  @NonNull
   public final ImageButton photosos;
 
   @NonNull
   public final ImageButton record;
 
   @NonNull
-  public final Button signupbutt;
+  public final Button sosbtn;
+
+  @NonNull
+  public final EditText sosmessage;
 
   @NonNull
   public final TextView textViewInfo;
@@ -76,8 +76,8 @@ public final class SosLayoutBinding implements ViewBinding {
   private SosLayoutBinding(@NonNull ConstraintLayout rootView, @NonNull TextView Timer,
       @NonNull AppBarLayout appbar, @NonNull ImageButton btnDelete,
       @NonNull LinearLayout buttonLayout, @NonNull CardView card1, @NonNull CardView card2,
-      @NonNull CardView card3, @NonNull ImageButton done, @NonNull EditText name,
-      @NonNull ImageButton photosos, @NonNull ImageButton record, @NonNull Button signupbutt,
+      @NonNull CardView card3, @NonNull ImageButton done, @NonNull ImageButton photosos,
+      @NonNull ImageButton record, @NonNull Button sosbtn, @NonNull EditText sosmessage,
       @NonNull TextView textViewInfo, @NonNull TextView textViewInfo2,
       @NonNull TextView textViewInfo3, @NonNull ImageButton videosos) {
     this.rootView = rootView;
@@ -89,10 +89,10 @@ public final class SosLayoutBinding implements ViewBinding {
     this.card2 = card2;
     this.card3 = card3;
     this.done = done;
-    this.name = name;
     this.photosos = photosos;
     this.record = record;
-    this.signupbutt = signupbutt;
+    this.sosbtn = sosbtn;
+    this.sosmessage = sosmessage;
     this.textViewInfo = textViewInfo;
     this.textViewInfo2 = textViewInfo2;
     this.textViewInfo3 = textViewInfo3;
@@ -174,12 +174,6 @@ public final class SosLayoutBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.name;
-      EditText name = ViewBindings.findChildViewById(rootView, id);
-      if (name == null) {
-        break missingId;
-      }
-
       id = R.id.photosos;
       ImageButton photosos = ViewBindings.findChildViewById(rootView, id);
       if (photosos == null) {
@@ -192,9 +186,15 @@ public final class SosLayoutBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.signupbutt;
-      Button signupbutt = ViewBindings.findChildViewById(rootView, id);
-      if (signupbutt == null) {
+      id = R.id.sosbtn;
+      Button sosbtn = ViewBindings.findChildViewById(rootView, id);
+      if (sosbtn == null) {
+        break missingId;
+      }
+
+      id = R.id.sosmessage;
+      EditText sosmessage = ViewBindings.findChildViewById(rootView, id);
+      if (sosmessage == null) {
         break missingId;
       }
 
@@ -223,8 +223,8 @@ public final class SosLayoutBinding implements ViewBinding {
       }
 
       return new SosLayoutBinding((ConstraintLayout) rootView, Timer, appbar, btnDelete,
-          buttonLayout, card1, card2, card3, done, name, photosos, record, signupbutt, textViewInfo,
-          textViewInfo2, textViewInfo3, videosos);
+          buttonLayout, card1, card2, card3, done, photosos, record, sosbtn, sosmessage,
+          textViewInfo, textViewInfo2, textViewInfo3, videosos);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
