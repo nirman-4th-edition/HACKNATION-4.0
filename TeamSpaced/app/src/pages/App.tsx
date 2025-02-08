@@ -6,6 +6,8 @@ import Welcome from "./welcome/Welcome";
 import Location from "./location/Location";
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./home/Home";
+import Result from "./Result";
+import Result1 from "./Result2";
 
 function App() {
   const [splashStatus, setSplashStatus] = useState(true);
@@ -39,6 +41,8 @@ function App() {
           ></Route>
           <Route path="/location" element={<Location />}></Route>
           <Route path="/home" element={<Home />}></Route>
+          <Route path="/result0" element={<Result />}></Route>
+          <Route path="/result1" element={<Result1 />}></Route>
         </Routes>
       </BrowserRouter>
     </AppComponent>

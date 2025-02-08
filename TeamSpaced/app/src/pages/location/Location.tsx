@@ -6,6 +6,7 @@ import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import { Map, Marker } from "maplibre-gl";
 import { NavLink } from "react-router";
 import "./location.css";
+import Loading from "../../components/Loading";
 
 export interface Location {
   display_name: string;
@@ -24,35 +25,33 @@ export interface Location {
   };
 }
 
-const Location = () => {
-  async function fetchLocation(
-    lat: number,
-    lon: number
-  ): Promise<Location | undefined> {
-    const url = `https://us1.locationiq.com/v1/reverse?key=pk.9cdbea9db7c454cf8533ce829090fc62&lat=${lat}&lon=${lon}&format=json`;
-    let address: Location | undefined;
+export async function fetchLocation(
+  lat: number,
+  lon: number
+): Promise<Location | undefined> {
+  const url = `https://us1.locationiq.com/v1/reverse?key=pk.9cdbea9db7c454cf8533ce829090fc62&lat=${lat}&lon=${lon}&format=json`;
+  let address: Location | undefined;
 
-    try {
-      const res = await fetch(url);
-      const data = (await res.json()) as Location;
+  try {
+    const res = await fetch(url);
+    const data = (await res.json()) as Location;
 
-      address = data;
-    } catch (error) {
-      address = undefined;
-    }
-
-    return address;
+    address = data;
+  } catch (error) {
+    address = undefined;
   }
 
+  return address;
+}
+const Location = () => {
   const [position, setPosition] = useState<Position>();
   const [location, setLocation] = useState<Location>();
-  let map: Map;
+  let map: Map = {} as Map;
 
   useEffect(() => {
     Geolocation.getCurrentPosition().then((res) => {
       setPosition(res);
     });
-
     map = new Map({
       style: "https://tiles.openfreemap.org/styles/liberty",
       center: [78.9629, 20.5937],
@@ -97,12 +96,15 @@ const Location = () => {
       el2.style.width = "50px";
       el2.style.height = "50px";
 
-      // add marker to map
       new Marker(el2).setLngLat([long, lat]).addTo(map);
     }
   }, [position]);
+
+  const loaded = map.loaded;
+
   return (
     <Page className="flex flex-col overflow-hidden">
+      {!location ? <Loading /> : ""}
       <div className="flex-[10]" id="map"></div>
       <div className="flex-[2.5] flex flex-col gap-3">
         <div className="flex flex-row px-4 pt-4">

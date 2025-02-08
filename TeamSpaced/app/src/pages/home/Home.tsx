@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Block, Button, Card, Page, Tabbar, TabbarLink } from "konsta/react";
-import NavBar from "./NavBar";
-import Hero from "./Hero";
-import { Location } from "../location/Location";
+import { Geolocation } from "@capacitor/geolocation";
 import { CameraIcon, HomeIcon, UserIcon } from "@heroicons/react/24/outline";
+import { Block, Button, Card, Page, Tabbar, TabbarLink } from "konsta/react";
+import React, { useEffect, useState } from "react";
 import CameraPage from "../Camera/Camera";
+import { fetchLocation, Location } from "../location/Location";
+import Hero from "./Hero";
+import NavBar from "./NavBar";
 
 type tab = "tab-1" | "tab-2" | "tab-3";
 
 const Home = () => {
-  const [name, setName] = useState<string>("Loading...");
+  const [name, setName] = useState<string>("Mahindra Singh");
   const [location, setLocation] = useState<Location | null>();
   const [addressVisible, setAddressVisible] = useState(true);
   const [activeTab, setActiveTab] = useState<tab>("tab-1");
@@ -19,7 +20,20 @@ const Home = () => {
   const [tabbarVisible, setTabbarVisible] = useState(true);
 
   useEffect(() => {
-    const cachedLocation = localStorage.getItem("location");
+    let cachedLocation = localStorage.getItem("location");
+    if (!cachedLocation) {
+      Geolocation.getCurrentPosition().then((res) => {
+        const lat = res?.coords.latitude;
+        const long = res?.coords.longitude;
+        localStorage.setItem("lat", lat.toString());
+        localStorage.setItem("long", long.toString());
+
+        fetchLocation(lat, long).then((data) => {
+          localStorage.setItem("location", JSON.stringify(data));
+          cachedLocation = data as any;
+        });
+      });
+    }
     setLocation(cachedLocation ? JSON.parse(cachedLocation) : null);
   }, []);
 
@@ -29,7 +43,7 @@ const Home = () => {
 
   return (
     <Page className={`overflow-hidden`}>
-      {activeTab == "tab-1" && (
+      {activeTab === "tab-1" && (
         <>
           <NavBar
             name={name}
@@ -62,7 +76,7 @@ const Home = () => {
         </>
       )}
 
-      {activeTab == "tab-2" && (
+      {activeTab === "tab-2" && (
         <CameraPage
           onLoad={() => {
             setTabbarVisible(false);

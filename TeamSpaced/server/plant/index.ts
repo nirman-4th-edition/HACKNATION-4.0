@@ -15,6 +15,9 @@ interface CropData {
 
 const router = express.Router();
 
+let lati = 85.80054171123192,
+  loni = 20.250563612332872;
+
 async function suggestCrop(
   temp: number,
   humidity: number,
@@ -100,15 +103,17 @@ async function suggestCrop(
 }
 
 router.post("/", async (req, res) => {
-  const { lat, lon } = req.body;
-  const weatherData = await axios.get(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=bf0e84308ebc153f6348ffec3d56361d`
-  );
+  let { lat, lon, image } = req.body;
 
-  const attributes = weatherData.data.main;
-  const temp = new conv.Fahrenheit(attributes.temp);
+  try {
+    const weatherData = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lati}&lon=${loni}&appid=bf0e84308ebc153f6348ffec3d56361d`
+    );
+    const attributes = weatherData.data.main;
+    const temp = new conv.Fahrenheit(attributes.temp);
 
-  await suggestCrop(temp.toCelsius(), attributes.humidity, 160, 3.5, res);
+    await suggestCrop(temp.toCelsius(), attributes.humidity, 160, 3.5, res);
+  } catch (error) {}
 });
 
 export default router;
