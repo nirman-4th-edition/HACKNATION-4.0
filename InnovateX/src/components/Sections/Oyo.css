@@ -1,0 +1,127 @@
+.oyo-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: #f8f8f8;
+    margin: 70px 70px;
+}
+
+.search-bar {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filters button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #ff6347;
+    color: white;
+    font-size: 14px;
+}
+
+.filters button:hover {
+    background: #e53e3e;
+}
+
+.oyo-card {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+.oyo-image {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.oyo-details {
+    flex: 1;
+    padding-left: 15px;
+}
+
+.oyo-details h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.oyo-address {
+    color: #d9534f;
+    font-size: 14px;
+}
+
+.oyo-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 10px;
+}
+
+.discount {
+    font-size: 14px;
+    color: #d9534f;
+    margin-left: 10px;
+}
+
+.oyo-amenities {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.amenity-icon {
+    font-size: 16px;
+    color: #555;
+}
+
+.oyo-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.view-details {
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.book-now {
+    background: #28a745;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.view-details:hover {
+    background: #0056b3;
+}
+
+.book-now:hover {
+    background: #218838;
+}

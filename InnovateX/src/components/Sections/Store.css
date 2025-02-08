@@ -1,0 +1,106 @@
+.store-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .store-heading {
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    letter-spacing: 2px;
+    margin: 0;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .store-heading.animate {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateX(-50%) translateY(0px); }
+    50% { transform: translateX(-50%) translateY(-15px); }
+    100% { transform: translateX(-50%) translateY(0px); }
+  }
+  
+  .carousel-container {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    overflow: visible;
+  }
+  
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .card {
+    flex: 0 0 calc(100% / 3);
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    margin: 0 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .card h3 {
+    margin: 1rem 0;
+    color: white;
+  }
+  
+  .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 7, 7, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .nav-arrow.left {
+    left: 0px;
+  }
+  
+  .nav-arrow.right {
+    right: -90px;
+  }
+  
+  .arrow-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+  }

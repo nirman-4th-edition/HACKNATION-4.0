@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none;
+  /* cursor: none; */
 }
 
 html {
@@ -18,8 +18,8 @@ body {
 }
 
 .app {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+  /* scroll-snap-type: y mandatory;
+  overflow-y: scroll; */
   height: 100vh;
 }
 

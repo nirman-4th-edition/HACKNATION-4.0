@@ -22,11 +22,14 @@ const Home = ({ images }) => {
         />
       ))}
       <div className="home-content">
+        <div className="container">
         <h1>Welcome to Odisha</h1>
         <p>
           Discover the land of ancient temples, pristine beaches, and rich cultural heritage.
           Explore the beauty of Odisha through our curated experiences.
         </p>
+        </div>
+        
       </div>
     </section>
   );

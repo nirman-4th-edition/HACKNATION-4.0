@@ -1,0 +1,147 @@
+[
+    {
+      "id": 1,
+      "name": "Blackbuck Nature Camps (Ganjam)",
+      "location": "Saluapali",
+      "accommodation": ["Tent", "Suite"],
+      "price": 2476,
+      "image": "https://example.com/blackbuck.jpg",
+      "website": "https://example.com/blackbuck",
+      "tariff": "https://example.com/blackbuck-tariff",
+      "booking": "https://example.com/blackbuck-book",
+      "moreInfo": "https://example.com/blackbuck-info"
+    },
+    {
+      "id": 2,
+      "name": "Satkosia Sands Resort",
+      "location": "Baliput, Satkosia",
+      "accommodation": ["Cottage", "Tent"],
+      "price": 3100,
+      "image": "https://example.com/satkosia.jpg",
+      "website": "https://example.com/satkosia",
+      "tariff": "https://example.com/satkosia-tariff",
+      "booking": "https://example.com/satkosia-book",
+      "moreInfo": "https://example.com/satkosia-info"
+    },
+    {
+      "id": 3,
+      "name": "Chilika Nature Camp",
+      "location": "Barkul, Chilika",
+      "accommodation": ["Luxury Tent", "Eco Cottage"],
+      "price": 2850,
+      "image": "https://example.com/chilika.jpg",
+      "website": "https://example.com/chilika",
+      "tariff": "https://example.com/chilika-tariff",
+      "booking": "https://example.com/chilika-book",
+      "moreInfo": "https://example.com/chilika-info"
+    },
+    {
+      "id": 4,
+      "name": "Debrigarh Nature Camp",
+      "location": "Hirakud Dam, Sambalpur",
+      "accommodation": ["Cottage", "Swiss Tent"],
+      "price": 3250,
+      "image": "https://example.com/debrigarh.jpg",
+      "website": "https://example.com/debrigarh",
+      "tariff": "https://example.com/debrigarh-tariff",
+      "booking": "https://example.com/debrigarh-book",
+      "moreInfo": "https://example.com/debrigarh-info"
+    },
+    {
+      "id": 5,
+      "name": "Bhitarkanika Nature Camp",
+      "location": "Dangamal, Bhitarkanika",
+      "accommodation": ["Eco Cottage", "Deluxe Tent"],
+      "price": 2750,
+      "image": "https://example.com/bhitarkanika.jpg",
+      "website": "https://example.com/bhitarkanika",
+      "tariff": "https://example.com/bhitarkanika-tariff",
+      "booking": "https://example.com/bhitarkanika-book",
+      "moreInfo": "https://example.com/bhitarkanika-info"
+    },
+    {
+      "id": 6,
+      "name": "Simlipal Nature Camp",
+      "location": "Baripada, Mayurbhanj",
+      "accommodation": ["Wooden Cottage", "Luxury Tent"],
+      "price": 3500,
+      "image": "https://example.com/simlipal.jpg",
+      "website": "https://example.com/simlipal",
+      "tariff": "https://example.com/simlipal-tariff",
+      "booking": "https://example.com/simlipal-book",
+      "moreInfo": "https://example.com/simlipal-info"
+    },
+    {
+      "id": 7,
+      "name": "Daringbadi Nature Camp",
+      "location": "Daringbadi, Kandhamal",
+      "accommodation": ["Cottage", "Tent"],
+      "price": 2800,
+      "image": "https://example.com/daringbadi.jpg",
+      "website": "https://example.com/daringbadi",
+      "tariff": "https://example.com/daringbadi-tariff",
+      "booking": "https://example.com/daringbadi-book",
+      "moreInfo": "https://example.com/daringbadi-info"
+    },
+    {
+      "id": 8,
+      "name": "Bichitrapur Mangrove Nature Camp",
+      "location": "Balasore",
+      "accommodation": ["Swiss Tent", "Eco Cottage"],
+      "price": 2950,
+      "image": "https://example.com/bichitrapur.jpg",
+      "website": "https://example.com/bichitrapur",
+      "tariff": "https://example.com/bichitrapur-tariff",
+      "booking": "https://example.com/bichitrapur-book",
+      "moreInfo": "https://example.com/bichitrapur-info"
+    },
+    {
+      "id": 9,
+      "name": "Kuldiha Nature Camp",
+      "location": "Kuldiha Wildlife Sanctuary",
+      "accommodation": ["Tree House", "Cottage"],
+      "price": 3200,
+      "image": "https://example.com/kuldiha.jpg",
+      "website": "https://example.com/kuldiha",
+      "tariff": "https://example.com/kuldiha-tariff",
+      "booking": "https://example.com/kuldiha-book",
+      "moreInfo": "https://example.com/kuldiha-info"
+    },
+    {
+      "id": 10,
+      "name": "Tikarapada Nature Camp",
+      "location": "Tikarapada, Angul",
+      "accommodation": ["Eco Tent", "Luxury Cottage"],
+      "price": 3100,
+      "image": "https://example.com/tikarapada.jpg",
+      "website": "https://example.com/tikarapada",
+      "tariff": "https://example.com/tikarapada-tariff",
+      "booking": "https://example.com/tikarapada-book",
+      "moreInfo": "https://example.com/tikarapada-info"
+    },
+    {
+      "id": 11,
+      "name": "Nandankanan Nature Camp",
+      "location": "Nandankanan Zoological Park",
+      "accommodation": ["Cottage", "Tent"],
+      "price": 2600,
+      "image": "https://example.com/nandankanan.jpg",
+      "website": "https://example.com/nandankanan",
+      "tariff": "https://example.com/nandankanan-tariff",
+      "booking": "https://example.com/nandankanan-book",
+      "moreInfo": "https://example.com/nandankanan-info"
+    },
+    {
+      "id": 12,
+      "name": "Harishankar Nature Camp",
+      "location": "Harishankar, Balangir",
+      "accommodation": ["Cottage", "Tent"],
+      "price": 2750,
+      "image": "https://example.com/harishankar.jpg",
+      "website": "https://example.com/harishankar",
+      "tariff": "https://example.com/harishankar-tariff",
+      "booking": "https://example.com/harishankar-book",
+      "moreInfo": "https://example.com/harishankar-info"
+    }
+  ]
+  

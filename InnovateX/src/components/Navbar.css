@@ -12,7 +12,7 @@
   }
   
   .logo {
-    height: 100px;
+    height: 90px;
     width: auto;
   }
   
@@ -38,7 +38,7 @@
   
   .dropdown {
     position: absolute;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(11, 11, 11, 0.1);
     backdrop-filter: blur(10px);
     padding: 0.2rem;
     border-radius: 8px;
@@ -103,4 +103,8 @@
   
   .auth-item:hover span {
     color: #ffcc00;
+  }
+
+  .footer-section {
+    scroll-margin-top: 70px; /* Height of the navbar */
   }

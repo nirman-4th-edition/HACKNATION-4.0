@@ -1,0 +1,89 @@
+.agency-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .controls input,
+  .controls select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .agency-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .agency-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .agency-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .agency-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .agency-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .agency-details h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .agency-details p {
+    margin: 3px 0;
+    color: #555;
+  }
+  
+  .agency-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .agency-links a {
+    text-decoration: none;
+    color: #ff5733;
+    font-weight: bold;
+    margin-bottom: 5px;
+    transition: color 0.2s;
+  }
+  
+  .agency-links a:hover {
+    color: #ff2200;
+  }
+  .load-more {
+    background: #ff5733;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  

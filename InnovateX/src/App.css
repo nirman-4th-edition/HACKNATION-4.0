@@ -1,5 +1,26 @@
-/* Add these styles to your existing App.css */
+/* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: auto; /* Allow scrolling */
+}
+
+.app {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scroll-snap-stop: always;
+}
+
+/* Scroll-snap sections */
 .section {
   height: 100vh;
   scroll-snap-align: start;
@@ -24,26 +45,17 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
-.content {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
-}
-
-h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-p {
-  font-size: 1.2rem;
-  line-height: 1.6;
+/* Add this to prevent initial scroll jump */
+.app:not(.initial-load) {
+  scroll-snap-type: y mandatory;
 }
 
 /* Specific section styles */
+.home-section {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
 .about-section {
   background-attachment: fixed;
 }
@@ -83,7 +95,12 @@ p {
 
 /* Navbar adjustments */
 .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
   backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .nav-item {
@@ -114,22 +131,29 @@ p {
   color: #ffcc00;
 }
 
-/* Add this to your existing App.css */
-html, body {
-  height: 100%;
-  overflow: hidden;
+/* Regular pages (non-scroll-snap) */
+.page-container {
+  min-height: 100vh;
+  overflow-y: auto;
+  padding: 70px 20px 20px; /* Account for navbar height */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
 }
 
-.app {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  scroll-snap-stop: always; /* Prevent mid-scroll snapping */
+.page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.section {
-  height: 100vh;
-  scroll-snap-align: start;
-  position: relative;
+/* Remove snap for inner pages */
+.inner-page {
+  scroll-snap-type: none !important;
 }

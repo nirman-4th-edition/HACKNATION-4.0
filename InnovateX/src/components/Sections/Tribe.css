@@ -1,0 +1,73 @@
+.tribe-list {
+    width: 90%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  .tribe-intro{
+      margin-top: 50px;
+      margin-bottom: 60px;
+  }
+  .tribe-list h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    color: #333;
+  }
+  .tribe-list h1::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: red;
+    margin: 5px auto 0;
+  }
+  .tribe-para{
+      margin-top: 30px;
+      text-align: center;
+  }
+  
+  .tribe-list p {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .tribe-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .tribe-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .tribe-image {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 30px;
+  }
+  
+  /* .tribe-info {
+      flex: 1;
+    } */
+  
+  .tribe-info h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #222;
+  }
+  
+  .tribe-info p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.5;
+  }
+  
