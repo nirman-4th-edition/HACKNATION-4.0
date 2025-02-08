@@ -1,0 +1,10 @@
+<resources>
+    <string name="sell">Sell</string>
+    <string name="buy">Buy</string>
+    <string name="why_choose_farm2u">Why Choose Farm2U</string>
+    <string name="frequently_asked_questions">Frequently Asked Questions</string>
+    <string name="about_us">About Us</string>
+    <string name="fresh_from_farm">Fresh from Farm</string>
+    <string name="direct_to_doorstep">Direct to your doorstep</string>
+    <string name="app_name">Farm2U</string>
+</resources>
