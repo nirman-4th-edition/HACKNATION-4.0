@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="submit" type="id" />
+    <item name="resendotp" type="id" />
+    <item name="submitotp" type="id" />
+    <item name="phno" type="id"/>
+</resources>

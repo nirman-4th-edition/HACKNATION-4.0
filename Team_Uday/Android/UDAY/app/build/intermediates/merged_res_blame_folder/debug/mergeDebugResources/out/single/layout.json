@@ -1,0 +1,78 @@
+[
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/fragment_familymap.xml",
+        "source": "com.example.uday.app-main-91:/layout/fragment_familymap.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/receive_msg.xml",
+        "source": "com.example.uday.app-main-91:/layout/receive_msg.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/fragment_gotham_map.xml",
+        "source": "com.example.uday.app-main-91:/layout/fragment_gotham_map.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/sos_layout.xml",
+        "source": "com.example.uday.app-main-91:/layout/sos_layout.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/fragment_chat_fragment.xml",
+        "source": "com.example.uday.app-main-91:/layout/fragment_chat_fragment.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/activity_otp_login.xml",
+        "source": "com.example.uday.app-main-91:/layout/activity_otp_login.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/camera.xml",
+        "source": "com.example.uday.app-main-91:/layout/camera.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/bottom_sheet_layout.xml",
+        "source": "com.example.uday.app-main-91:/layout/bottom_sheet_layout.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/main_activity.xml",
+        "source": "com.example.uday.app-main-91:/layout/main_activity.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/fragment_chat_bat.xml",
+        "source": "com.example.uday.app-main-91:/layout/fragment_chat_bat.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/x.xml",
+        "source": "com.example.uday.app-main-91:/layout/x.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/activity_chat_room.xml",
+        "source": "com.example.uday.app-main-91:/layout/activity_chat_room.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/send_msg.xml",
+        "source": "com.example.uday.app-main-91:/layout/send_msg.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/signup_page.xml",
+        "source": "com.example.uday.app-main-91:/layout/signup_page.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/activity_otp_verification.xml",
+        "source": "com.example.uday.app-main-91:/layout/activity_otp_verification.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/chat_user_item.xml",
+        "source": "com.example.uday.app-main-91:/layout/chat_user_item.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/chat_container.xml",
+        "source": "com.example.uday.app-main-91:/layout/chat_container.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/sos_layout_chat.xml",
+        "source": "com.example.uday.app-main-91:/layout/sos_layout_chat.xml"
+    },
+    {
+        "merged": "com.example.uday.app-mergeDebugResources-88:/layout/fragment_news.xml",
+        "source": "com.example.uday.app-main-91:/layout/fragment_news.xml"
+    }
+]

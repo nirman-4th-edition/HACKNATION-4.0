@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+       <item
+           android:id="@+id/bottom_map"
+           android:title="Map"
+           android:icon="@drawable/map_nav"/>
+        <item
+        android:id="@+id/bottom_family"
+        android:title="Family"
+        android:icon="@drawable/family_loc_nav"/>
+       <item
+        android:id="@+id/bottom_news"
+        android:title="News"
+        android:icon="@drawable/news_icon"/>
+       <item
+          android:id="@+id/bottom_chat"
+          android:title="Chat"
+          android:icon="@drawable/chat_nav"/>
+</menu>

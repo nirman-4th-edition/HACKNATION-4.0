@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo: Sort stores by distance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
+      rel="stylesheet"
+    />
+  
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.1-dev/mapbox-gl-geocoder.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.1-dev/mapbox-gl-geocoder.css"
+      type="text/css"
+    />
+   
+    <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    <style>
+         .news{width: 160px}.news-scroll a{text-decoration: none}.dot{height: 6px;width: 6px;margin-left: 3px;margin-right: 3px;margin-top: 2px !important;background-color: rgb(207,23,23);border-radius: 50%;display: inline-block}
+      body {
+        color: #404040;
+        font:
+          400 15px/22px 'Source Sans Pro',
+          'Helvetica Neue',
+          sans-serif;
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+
+        /* Modal styles */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            margin: 15% auto;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        .modal-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .modal-body {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-ok {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-cancel {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .sidebar {
+        position: absolute;
+        width:25%;
+        height: 100%;
+        top: 150px;
+        left: 0;
+        overflow: hidden;
+        border-right: 1px solid rgb(0 0 0 / 25%);
+      }
+
+      .pad2 {
+        padding: 20px;
+      }
+
+      .map {
+        position: absolute;
+        left: 25%;
+        width: 75%;
+        top:150px;
+        bottom: 0;
+        height:100%
+      }
+
+      h1 {
+        font-size: 22px;
+        margin: 0;
+        font-weight: 400;
+        line-height: 20px;
+        padding: 20px 2px;
+      }
+
+      a {
+        color: #404040;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #101010;
+      }
+
+      .heading {
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        min-height: 60px;
+        line-height: 60px;
+        padding: 0 10px;
+        background-color: #00853e;
+        color: #fff;
+      }
+
+      .listings {
+        height: 100%;
+        overflow: auto;
+        padding-bottom: 60px;
+      }
+
+      .listings .item {
+        border-bottom: 1px solid #eee;
+        padding: 10px;
+        text-decoration: none;
+      }
+
+      .listings .item:last-child {
+        border-bottom: none;
+      }
+
+      .listings .item .title {
+        display: block;
+        color: #00853e;
+        font-weight: 700;
+      }
+
+      .listings .item .title small {
+        font-weight: 400;
+      }
+
+      .listings .item.active .title,
+      .listings .item .title:hover {
+        color: #8cc63f;
+      }
+
+      .listings .item.active {
+        background-color: #f8f8f8;
+      }
+
+      ::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+        border-left: 0;
+        background: rgb(0 0 0 / 10%);
+      }
+
+      ::-webkit-scrollbar-track {
+        background: none;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #00853e;
+        border-radius: 0;
+      }
+
+      .marker {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+
+      /* Marker tweaks */
+      .mapboxgl-popup {
+        padding-bottom: 50px;
+      }
+
+      .mapboxgl-popup-close-button {
+        display: none;
+      }
+
+      .mapboxgl-popup-content {
+        font:
+          400 15px/22px 'Source Sans Pro',
+          'Helvetica Neue',
+          sans-serif;
+        padding: 0;
+        width: 180px;
+      }
+
+      .mapboxgl-popup-content h3 {
+        background: #91c949;
+        color: #fff;
+        margin: -15px 0 0;
+        padding: 10px;
+        border-radius: 3px 3px 0 0;
+        font-weight: 700;
+      }
+
+      .mapboxgl-popup-content h4 {
+        margin: 0;
+        padding: 10px;
+        font-weight: 400;
+      }
+
+      .mapboxgl-popup-content div {
+        padding: 10px;
+      }
+
+      .mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+        margin-top: 15px;
+      }
+
+      .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+        border-bottom-color: #91c949;
+      }
+
+      .mapboxgl-ctrl-geocoder {
+        border-radius: 0;
+        position: relative;
+        top: 0;
+        width: 800px;
+        margin-top: 0;
+        border: 0;
+      }
+
+      .mapboxgl-ctrl-geocoder > div {
+        min-width: 100%;
+        margin-left: 0;
+      }
+
+      .store-button {
+    background-color: #007bff; /* Blue */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.store-button:hover {
+    background-color: #0fad64; /* Darker blue */
+}
+
+    </style>
+  </head>
+  <body>
+    <div id="customAlert" class="custom-modal">
+      <div class="modal-content">
+          <div class="modal-header">Affiliate Location</div>
+          <div class="modal-body" id="modalMessage"></div>
+          <div class="modal-footer">
+              <button class="btn btn-ok" onclick="confirmAction()">OK</button>
+              <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+          </div>
+      </div>
+  </div>
+    <div>
+        <div style="font-size: large;">
+            <nav style="margin-top: 4px;margin-bottom: 4px;" class="navbar navbar-expand-sm ">
+                <ul class="navbar-nav">
+                    <li id="x1" class="nav-item"><img src="uday.png" alt="logo" style="height: 40px;width:40px;  justify-content:center;"></li>
+                    <li id="x2" class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" role="button" data-toggle="dropdown" style="color:black;">DISASTERS</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="products.html">TSUNAMI</a>
+                            <a class="dropdown-item" href="buy.html">CYCLONE</a>
+                            <a class="dropdown-item" href="buy.html">EARTHQUAKE</a>
+                            <a class="dropdown-item" href="index.html">MANMADE</a>
+                        </div>
+                    </li>
+                    <li id="x3" class="nav-item"><a href="story.html" class="nav-link text-dark"> POLICE  </a></li>
+                    <li id="x4" class="nav-item"><a href="login.html" class="nav-link text-dark">HOSPITAL</a></li>
+                    <li id="x5" class="nav-item"><a href="products.html" class="nav-link text-dark">FIRE FIGHTERS</a></li>
+                    <li class="nav-item"><pre>                                                           </pre></li>
+                    <li class="nav-item"><div class="container" id="x6" style="background-color: rgb(41, 129, 201); border-radius: 15px;"><a href="buy.html" id="l1" class="nav-link" style="color:white;">CONNECT TO HEAD OFFICE</a></div></li>
+                </ul>
+            </nav>
+         </div>
+    </div>
+    <div class="container " >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-between align-items-center breaking-news bg-light ">
+                    <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news"><span class="d-flex align-items-center">&nbsp;CNN News</span></div>
+                    <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> <a href="#">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </a> <span class="dot"></span> <a href="#" class="text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </a> <span class="dot"></span> <a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse </a>
+                    </marquee>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="sidebar">
+      <div class="heading">
+        <h1>Our locations</h1>
+      </div>
+      <div id="listings" class="listings"></div>
+    </div>
+    <div id="map" class="map"></div>
+    
+    
+    <script>
+       function showCustomAlert(store) {
+            let message = `
+                <strong>Address:</strong> ${store.properties.address} <br>
+                <strong>City:</strong> ${store.properties.city} <br>
+                <strong>Distance:</strong> ${store.properties.distance ? store.properties.distance.toFixed(2) + " km" : "N/A"} <br>
+                Click OK to send your location to the nearest affiliate.
+            `;
+            document.getElementById("modalMessage").innerHTML = message;
+            document.getElementById("customAlert").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("customAlert").style.display = "none";
+        }
+
+        function confirmAction() {
+            alert("User location sent to the nearest affiliate!");
+            closeModal();
+        }
+
+        // Example usage:
+        let store = {
+            properties: {
+                address: "123 Main St",
+                city: "New York",
+                distance: 5.67
+            }
+        };
+
+      mapboxgl.accessToken = 'pk.eyJ1Ijoic291bXlhMDIwNCIsImEiOiJjbTNvcmxjamUwNmVwMmtzZDR2bG80ZXp0In0.tI6hEO9VxeqvW8AWAQwQOg';
+
+      /**
+       * Add the map to the page
+       */
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/satellite-streets-v12',
+        center: [85.8338500,20.2724100],
+        zoom: 13,
+       // scrollZoom: false
+      });
+
+      const stores = {
+        'type': 'FeatureCollection',
+        'features': [
+        {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.80552, 20.35160]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Sillicon marg',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751024',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.866058, 20.297100]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Rasulgarh',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751010',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.845294,20.29099]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Saheed nagar',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751007',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.833267, 20.358824]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Patia',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751024',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.826747, 20.29624]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Jaydev vihar',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751013',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.831676, 20.238301]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Old town ',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751002',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.82707, 20.33406]
+            },
+            'properties': {
+             'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'C.S pur',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751016',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.84494, 20.32218]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Mancheswar',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751017',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.82932, 20.29556]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Acharya vihar',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751022',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.84300, 20.27498]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Janpath road',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751001',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.82306, 20.33353]
+            },
+            'properties': {
+             'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Damana',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751016',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.88650, 20.34741]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Pahala',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '754001',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.84260, 20.29647]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Vani vihar',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751001',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.82661, 20.35338]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Nandankanan road',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751024',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.83413, 20.30103]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Utkal university',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751004',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.83799, 20.26521]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Ashok nagar',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751001',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.80665, 20.24158]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Pokhariput',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751020',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.779061,20.25697]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Khandagiri',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751030',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.81905, 20.25145]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Airport road',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751020',
+              'state': 'Odisha'
+            }
+          },
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [85.81515, 20.22922]
+            },
+            'properties': {
+              'phoneFormatted': '112',
+              'phone': '8117886435',
+              'address': 'Sundarpada',
+              'city': 'Bhubaneswar',
+              'country': 'India',
+              'postalCode': '751002',
+              'state': 'Odisha'
+            }
+          }
+        ]
+      };
+
+ const coordinatesGeocoder = function (query) {
+    const matches = query.match(
+        /^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
+    );
+    if (!matches) {
+        return null;
+    }
+
+    function coordinateFeature(lng, lat) {
+        return {
+            center: [lng, lat],
+            geometry: {
+                type: 'Point',
+                coordinates: [lng, lat]
+            },
+            place_name: `Lat: ${lat} Lng: ${lng}`,
+            place_type: ['coordinate'],
+            properties: {},
+            type: 'Feature'
+        };
+    }
+    const coord1 = Number(matches[1]);
+    const coord2 = Number(matches[2]);
+    const geocodes = [];
+
+    if (coord1 < -90 || coord1 > 90) {
+        geocodes.push(coordinateFeature(coord1, coord2));
+    }
+
+    if (coord2 < -90 || coord2 > 90) {
+        geocodes.push(coordinateFeature(coord2, coord1));
+    }
+
+    if (geocodes.length === 0) {
+        geocodes.push(coordinateFeature(coord1, coord2));
+        geocodes.push(coordinateFeature(coord2, coord1));
+    }
+
+    return geocodes;
+};
+
+
+if (stores && stores.features) {
+    stores.features.forEach((store, i) => {
+        store.properties.id = i;
+    });
+} else {
+    console.error("🚨 Error: 'stores' is undefined or has no features.");
+}
+
+map.on('load', () => {
+    map.addSource('places', {
+        'type': 'geojson',
+        'data': stores
+    });
+
+    const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        marker: true,
+        localGeocoder: coordinatesGeocoder,
+        bbox: [80.846291, 19.399755, 87.525979, 21.948638]
+    });
+
+    buildLocationList(stores);
+    map.addControl(geocoder, 'top-left');
+    addMarkers();
+
+
+
+async function fetchAndSearchLocation() {
+    try {
+        console.log("🔄 Fetching location...");
+
+        const res = await fetch('http://localhost:3000/responses');
+        if (!res.ok) {
+            console.error("❌ Fetch failed! Response:", await res.text());
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log("📦 Fetched data:", data);
+
+        if (!Array.isArray(data) || data.length === 0) {
+            console.warn("⚠️ No valid location data found.");
+            return;
+        }
+
+   
+        const firstValidEntry = data.find(entry => entry.location);
+        if (!firstValidEntry) {
+            console.warn("⚠️ No valid location found in array.");
+            return;
+        }
+
+        let location = firstValidEntry.location;
+        let locationId = firstValidEntry.id; 
+        console.log("📍 Raw location from backend:", location);
+
+        
+        if (Array.isArray(location) && location.length === 2) {
+            location = [parseFloat(location[0]), parseFloat(location[1])];
+        } else if (typeof location === "string" && location.includes(",")) {
+            const [lat, lng] = location.split(",").map(coord => parseFloat(coord.trim()));
+            location = [lng, lat]; 
+        }
+
+        if (!Array.isArray(location) || location.length !== 2 || isNaN(location[0]) || isNaN(location[1])) {
+            console.error("❌ Invalid location format after conversion:", location);
+            return;
+        }
+
+        console.log("✅ Final location format:", location);
+
+       
+        if (typeof geocoder !== "undefined" && geocoder !== null && geocoder.query) {
+            console.log("✅ Geocoder is initialized:", geocoder);
+            geocoder.setInput(`${location[1]},${location[0]}`);
+            geocoder.query(`${location[1]},${location[0]}`);
+        } else {
+            console.warn("⚠️ Geocoder is not initialized or invalid.");
+        }
+
+       
+        if (map && map.loaded()) {
+            console.log("✅ Map is initialized and loaded:", map);
+            map.flyTo({
+                center: location,  // [lng, lat]
+                zoom: 12
+            });
+            console.log(`📍 Map moved to location: ${location}`);
+        } else {
+            console.warn("⚠️ Map is not initialized or still loading.");
+        }
+        addDeleteButton(locationId);
+
+    } catch (error) {
+        console.error('❌ Error fetching location:', error);
+    }
+}
+
+
+    fetchAndSearchLocation();
+
+function addDeleteButton(locationId) {
+    const listings = document.getElementById("listings");
+    if (!listings) {
+        console.warn("⚠️ Listings container not found.");
+        return;
+    }
+
+    
+    const existingButton = document.getElementById("delete-location-btn");
+    if (existingButton) existingButton.remove();
+
+  
+    const deleteBtn = document.createElement("button");
+    deleteBtn.id = "delete-location-btn";
+    deleteBtn.innerText = "Delete This Location";
+    deleteBtn.className = "delete-btn"; 
+    deleteBtn.onclick = () => deleteLocation(locationId);
+
+    listings.appendChild(deleteBtn);
+}
+
+
+async function deleteLocation(locationId) {
+    try {
+        console.log(`🗑️ Deleting location with ID: ${locationId}`);
+
+        const res = await fetch(`http://localhost:3000/responses/${locationId}`, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" }
+        });
+
+        if (!res.ok) {
+            console.error("❌ Failed to delete location:", await res.text());
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+
+        console.log(`✅ Successfully deleted location ID: ${locationId}`);
+
+        
+        fetchAndSearchLocation(); 
+    } catch (error) {
+        console.error("❌ Error deleting location:", error);
+    }
+}
+
+
+    geocoder.on('result', (event) => {
+    const searchResult = event.result.geometry;
+
+ 
+    const options = { units: 'kilometers' };
+    for (const store of stores.features) {
+        store.properties.distance = turf.distance(
+            [searchResult.coordinates[0], searchResult.coordinates[1]], 
+            store.geometry.coordinates,
+            options
+        );
+    }
+
+ 
+    stores.features.sort((a, b) => a.properties.distance - b.properties.distance);
+
+    const listings = document.getElementById('listings');
+    while (listings.firstChild) {
+        listings.removeChild(listings.firstChild);
+    }
+    buildLocationList(stores);
+    createPopUp(stores.features[0]);
+
+
+    const activeListing = document.getElementById(`listing-${stores.features[0].properties.id}`);
+    if (activeListing) activeListing.classList.add('active');
+
+    const bbox = getBbox(stores, 0, searchResult);
+    map.fitBounds(bbox, { padding: 100 });
+
+  
+    if (map.getSource('places')) {
+        map.getSource('places').setData(stores);
+    }
+    addMarkers();
+});
+
+});
+
+function buildLocationList(stores) {
+    for (const store of stores.features) {
+        const listings = document.getElementById('listings');
+        const listing = listings.appendChild(document.createElement('div'));
+        listing.id = `listing-${store.properties.id || 'unknown'}`; 
+        listing.className = 'item';
+
+        const link = listing.appendChild(document.createElement('a'));
+        link.href = '#';
+        link.className = 'title';
+        link.id = `link-${store.properties.id}`;
+        link.innerHTML = `${store.properties.address}`;
+
+        const details = listing.appendChild(document.createElement('div'));
+        details.innerHTML = `${store.properties.city}`;
+        if (store.properties.phone) {
+            details.innerHTML += ` &middot; ${store.properties.phoneFormatted}`;
+        }
+        if (store.properties.distance) {
+            const roundedDistance = Math.round(store.properties.distance * 100) / 100;
+            details.innerHTML += `<div><strong>${roundedDistance} km away</strong></div>`; // Changed miles to km
+        }
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete & Search Next';
+        deleteButton.className = 'delete-button';
+ 
+      if (store.properties && store.properties.id) {
+      
+        deleteButton.addEventListener("click", () => {
+        if (typeof deleteAndSearchNext === "function") {
+          deleteAndSearchNext(store.properties.id);
+        } else {
+          console.error("❌ deleteAndSearchNext is not defined at runtime.");
+          showCustomAlert(store);
+       }
+    });
+
+      } else {
+        console.warn("⚠️ Store ID is missing! Button will not work.");
+      }
+        listing.appendChild(deleteButton);
+
+        listings.appendChild(listing);
+
+        link.addEventListener('click', function () {
+            flyToStore(store);
+            createPopUp(store);
+            document.querySelectorAll('.active').forEach(item => item.classList.remove('active'));
+            listing.classList.add('active');
+        });
+
+
+        link.addEventListener('click', function () {
+            for (const feature of stores.features) {
+                if (this.id === `link-${feature.properties.id}`) {
+                    flyToStore(feature);
+                    createPopUp(feature);
+                }
+            }
+            const activeItem = document.getElementsByClassName('active');
+            if (activeItem[0]) {
+                activeItem[0].classList.remove('active');
+            }
+            this.parentNode.classList.add('active');
+        });
+    }
+}
+
+
+
+function getBbox(sortedStores, storeIdentifier, searchResult) {
+    const lats = [
+        sortedStores.features[storeIdentifier].geometry.coordinates[1],
+        searchResult.coordinates[1]
+    ];
+    const lons = [
+        sortedStores.features[storeIdentifier].geometry.coordinates[0],
+        searchResult.coordinates[0]
+    ];
+
+    const sortedLons = lons.sort((a, b) => a - b);
+    const sortedLats = lats.sort((a, b) => a - b);
+
+    return [
+        [sortedLons[0], sortedLats[0]],
+        [sortedLons[1], sortedLats[1]]
+    ];
+}
+
+function addMarkers() {
+    console.log("🛠️ Clearing old markers...");
+    document.querySelectorAll('.marker').forEach(marker => marker.remove());
+
+    console.log(`📍 Adding ${stores.features.length} markers...`);
+    
+    for (const marker of stores.features) {
+        console.log(`➡️ Marker ID: ${marker.properties.id}, Location: ${marker.geometry.coordinates}`);
+        
+        const el = document.createElement('div');
+        el.id = `marker-${marker.properties.id}`;
+        el.className = 'marker';
+
+        new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .addTo(map);
+
+        el.addEventListener('click', (e) => {
+            flyToStore(marker);
+            createPopUp(marker);
+            e.stopPropagation();
+
+            document.querySelectorAll('.active').forEach(item => item.classList.remove('active'));
+            const listing = document.getElementById(`listing-${marker.properties.id}`);
+            if (listing) listing.classList.add('active');
+        });
+    }
+}
+
+
+function flyToStore(currentFeature) {
+    map.flyTo({
+        center: currentFeature.geometry.coordinates,
+        zoom: 15
+    });
+}
+
+function createPopUp(currentFeature) {
+    const popUps = document.getElementsByClassName('mapboxgl-popup');
+    if (popUps[0]) popUps[0].remove();
+
+    new mapboxgl.Popup({ closeOnClick: false })
+        .setLngLat(currentFeature.geometry.coordinates)
+        .setHTML(`<h3>Affiliates</h3><h4>${currentFeature.properties.address}</h4>`)
+        .addTo(map);
+}
+
+  // Refresh the page every 10 seconds
+  setTimeout(() => {
+            location.reload();
+        }, 20000); 
+    </script>
+  </body>
+</html>

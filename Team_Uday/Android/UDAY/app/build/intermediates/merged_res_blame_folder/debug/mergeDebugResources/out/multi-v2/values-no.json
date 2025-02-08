@@ -1,0 +1,77 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.uday.app-mergeDebugResources-87:/values-no/values-no.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Prach\\.gradle\\caches\\8.9\\transforms\\a87f590e06f61305941dd90c09dce162\\transformed\\maps-logo-11.8.0\\res\\values-no\\values-no.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "192",
+                        "endOffsets": "243"
+                    },
+                    "to": {
+                        "startLines": "14",
+                        "startColumns": "4",
+                        "startOffsets": "1301",
+                        "endColumns": "192",
+                        "endOffsets": "1489"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Prach\\.gradle\\caches\\8.9\\transforms\\b591c0d1c35c625908a6610458b60ab4\\transformed\\maps-compass-11.8.0\\res\\values-no\\values-no.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "127",
+                        "endOffsets": "178"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "727",
+                        "endColumns": "127",
+                        "endOffsets": "850"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Prach\\.gradle\\caches\\8.9\\transforms\\54805cc3badcf85554f77da1dcc3f192\\transformed\\android-11.8.0\\res\\values-no\\values-no.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,132,209",
+                        "endColumns": "76,76,69",
+                        "endOffsets": "127,204,274"
+                    },
+                    "to": {
+                        "startLines": "10,11,12",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "855,932,1009",
+                        "endColumns": "76,76,69",
+                        "endOffsets": "927,1004,1074"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Prach\\.gradle\\caches\\8.9\\transforms\\1633b7433ba379677fe1f4b65cbd4cda\\transformed\\maps-attribution-11.8.0\\res\\values-no\\values-no.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,180,335,413,492,562,646,727",
+                        "endColumns": "124,154,77,78,69,83,80,221",
+                        "endOffsets": "175,330,408,487,557,641,722,944"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,13",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,180,335,413,492,562,646,1079",
+                        "endColumns": "124,154,77,78,69,83,80,221",
+                        "endOffsets": "175,330,408,487,557,641,722,1296"
+                    }
+                }
+            ]
+        }
+    ]
+}
