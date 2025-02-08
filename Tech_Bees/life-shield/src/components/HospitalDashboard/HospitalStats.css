@@ -1,0 +1,42 @@
+/* styles3.css */
+.hospital-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    width:100%;
+    min-width: 900px;
+  }
+  
+  .stat-box {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .stat-box h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .stat-box p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .stat-box:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hospital-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+  

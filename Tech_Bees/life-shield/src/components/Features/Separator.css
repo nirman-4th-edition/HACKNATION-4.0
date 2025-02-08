@@ -1,0 +1,47 @@
+/* Container styles */
+.button-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* Button styles */
+.interactive-btn {
+    padding: 12px 32px;
+    background-color: white;
+    color: #1a202c;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 999px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .interactive-btn {
+        background-color: #1f2937;
+        color: white;
+    }
+}
+
+/* Hover effect */
+/* .interactive-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #f3f4f6;
+} */
+
+/* Click effect */
+.interactive-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Focus effect */
+.interactive-btn:focus {
+    outline: 3px solid #4a90e2;
+}

@@ -1,0 +1,30 @@
+.sponsors {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 20px 0;
+    background-color: #f8f8f8;
+    margin-bottom: 10px;
+  }
+  .sponsors-title{
+text-align: center;
+  }
+  .sponsor-slide {
+    display: inline-block;
+    animation: slide 20s linear infinite;
+  }
+  
+  .sponsor-slide img {
+    display: inline-block;
+    height: 50px;
+    margin: 0 20px;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  

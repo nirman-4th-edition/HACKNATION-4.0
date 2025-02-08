@@ -1,11 +1,10 @@
-import React from "react";
 import "./styles2.css";
 
 const HealthStats2 = () => {
   return (
     <div className="health-stats">
       <div className="stat-box">
-        <h3>Today's Appointments</h3>
+        <h3>Today&apos;s Appointments</h3>
         <p>9</p>
       </div>
       <div className="stat-box">

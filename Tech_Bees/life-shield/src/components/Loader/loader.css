@@ -1,0 +1,52 @@
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.loader {
+    height: 25vh;
+    width: 25vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    background: #333;
+    transform: translate(-50%, 100%) scale(0);
+    animation: push 2s infinite ease-in;
+}
+
+.loader:after {
+    animation-delay: 1s;
+}
+
+@keyframes push {
+    0% {
+        transform: translate(-50%, 100%) scale(1);
+    }
+
+    15%,
+    25% {
+        transform: translate(-50%, 50%) scale(1);
+    }
+
+    50%,
+    75% {
+        transform: translate(-50%, -30%) scale(0.5);
+    }
+
+    80%,
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+}

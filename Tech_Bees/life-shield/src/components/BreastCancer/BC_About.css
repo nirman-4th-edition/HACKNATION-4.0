@@ -1,0 +1,35 @@
+.about-breast-cancer {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    height: 100vh;
+    margin-bottom: 150px;
+  }
+  
+  .text-section {
+    width: 50%;
+  }
+  
+  .text-section h2 {
+    font-size: 2rem;
+    color: #b721ff;
+  }
+  
+  .text-section p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  .image-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-section img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  

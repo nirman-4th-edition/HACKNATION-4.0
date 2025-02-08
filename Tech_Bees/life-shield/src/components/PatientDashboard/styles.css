@@ -1,88 +1,85 @@
+.dashboard1 {
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+}
 
-  .dashboard {
-    padding: 20px;
-    text-align: center;
-    background: #f4f4f4;
-    min-height: 100vh;
-  }
-  
-  h1 {
-    /* color: #007bff; */
-    color: #17C964 !important;
-    margin-bottom: 20px;
-  }
+h1 {
+  /* color: #007bff; */
+  color: #17C964 !important;
+  margin-bottom: 20px;
+}
 
+.health-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  flex: 1;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.stat-box h3 {
+  /* color: #007bff; */
+  color: #17C964 !important;
+  margin-bottom: 10px;
+}
+
+.stat-box p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Upcoming Appointments */
+.appointments {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.appointments h2 {
+  color: #17C964 !important;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.appointments ul {
+  list-style-type: none;
+}
+
+.appointments li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.appointments li:last-child {
+  border-bottom: none;
+}
+
+.appointments strong {
+  color: #333;
+}
+
+.appointments span {
+  color: gray;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .health-stats {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 20px;
+    flex-direction: column;
   }
-  
-  .stat-box {
-    flex: 1;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .stat-box h3 {
-    /* color: #007bff; */
-    color: #17C964 !important;
-    margin-bottom: 10px;
-  }
-  
-  .stat-box p {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  /* Upcoming Appointments */
-  .appointments {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .appointments h2 {
-    color: #17C964 !important;
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  
-  .appointments ul {
-    list-style-type: none;
-  }
-  
-  .appointments li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .appointments li:last-child {
-    border-bottom: none;
-  }
-  
-  .appointments strong {
-    color: #333;
-  }
-  
-  .appointments span {
-    color: gray;
-    font-size: 14px;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .health-stats {
-      flex-direction: column;
-    }
-  }
-  
+}

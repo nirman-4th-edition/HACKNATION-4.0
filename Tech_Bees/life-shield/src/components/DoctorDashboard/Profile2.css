@@ -11,7 +11,7 @@
     /* padding: 20px; */
   }
   
- 
+  /* Title Styling */
   .profile-title {
     font-size: 28px;
     color: #000000;
@@ -21,7 +21,8 @@
     letter-spacing: 1px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   }
- 
+  
+  /* Form Styling */
   .profile-form {
     display: flex;
     flex-wrap: wrap;
@@ -38,7 +39,7 @@
   input{
     color: #000000;
   }
-
+  /* Form Inputs & Select */
   .profile-form input,
   .profile-form select {
     flex: 1;
@@ -54,13 +55,15 @@
     color: #000000 !important;
   }
   
+  /* Input & Select Focus Effect */
   .profile-form input:focus,
   .profile-form select:focus {
     background: white;
     transform: scale(1.05);
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
   }
-
+  
+  /* Update Button */
   .update-btn {
     background: #17C964 !important;
     /* background: #ff416c; */
@@ -77,7 +80,7 @@
   .dob-input{
     color: #000000;
   }
- 
+  /* Button Hover Effect */
   .update-btn:hover {
     background: #17C964 !important;
     /* background: #ff2a51; */
@@ -86,7 +89,7 @@
     transition: 0.5s all linear;
   }
   
- 
+  /* Fade-In Animation */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -98,6 +101,7 @@
     }
   }
   
+  /* Responsive Design */
   @media (max-width: 768px) {
     .profile-form {
       flex-direction: column;
