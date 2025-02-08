@@ -1,18 +1,17 @@
 package com.example.nirmandemo.controller;
 
 
+import com.example.nirmandemo.entities.AllData;
 import com.example.nirmandemo.entities.AllDataDTO;
 import com.example.nirmandemo.services.AdminServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin")
+@CrossOrigin(origins = "*")
 public class AdminController {
 
     AdminServices adminServices;
@@ -23,10 +22,8 @@ public class AdminController {
     }
 
     @GetMapping("/get-details")
-    public ResponseEntity<AllDataDTO> sendAdminData(){
-        AllDataDTO forAdminPanel = adminServices.getForAdminPanel();
-
-        System.out.println("Data in controller: " + forAdminPanel.toString());
+    public ResponseEntity<AllData> sendAdminData(){
+        AllData forAdminPanel = adminServices.getForAdminPanel();
         return new ResponseEntity<>(forAdminPanel, HttpStatus.OK);
     }
 }

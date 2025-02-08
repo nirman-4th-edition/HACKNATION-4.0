@@ -8,13 +8,15 @@ public class AllDataDTO {
     private Double envTemp;
     private Double humidity;
     private Double aqi;
+    private Integer ledStatus;
 
-    public AllDataDTO(Boolean sos, Double envTemp, Double humidity, Double aqi
+    public AllDataDTO(Boolean sos, Double envTemp, Double humidity, Double aqi, Integer ledStatus
     ) {
         this.sos = sos;
         this.envTemp = envTemp;
         this.humidity = humidity;
         this.aqi = aqi;
+        this.ledStatus = ledStatus;
     }
 
     @Override
@@ -56,5 +58,13 @@ public class AllDataDTO {
 
     public void setAqi(Double aqi) {
         this.aqi = aqi;
+    }
+
+    public Integer getLedStatus() {
+        return ledStatus;
+    }
+
+    public void setLedStatus(Integer ledStatus) {
+        this.ledStatus = ledStatus;
     }
 }

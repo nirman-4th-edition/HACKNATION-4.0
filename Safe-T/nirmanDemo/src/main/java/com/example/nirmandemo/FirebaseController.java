@@ -17,6 +17,6 @@ public class FirebaseController {
     @GetMapping("/realtime")
     public String startListening() {
         firebaseService.getRealTimeUpdates();
-        return "Listening for real-time updates...";
+        return "real-time updates coming...";
     }
 }

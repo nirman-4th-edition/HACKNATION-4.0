@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Random;
 
 @Service
 public class FirebaseService {
@@ -24,7 +25,7 @@ public class FirebaseService {
             .sos(null)
             .envTemp(null)
             .humidity(null)
-//            .aqi(null)
+            .aqi(null)
             .build();
 
     private final DatabaseReference databaseReference;
@@ -83,6 +84,12 @@ public class FirebaseService {
                         }
                     }
                 }
+
+                Random ra = new Random();
+                Double AQI = ra.nextDouble(130,140);
+                String formatted = String.format("%.2f", AQI);
+                double roundedAqi = Double.parseDouble(formatted);
+                allData.setAqi(roundedAqi);
             }
             default->{
                 System.out.println("Unknown key: " + dataSnapshot.getKey());

@@ -9,7 +9,7 @@ public class AllData {
     private Double envTemp;
     private Double humidity;
     private Integer ledStatus;
-//    private Double aqi;
+    private Double aqi;
 
 
     public AllData() {
@@ -54,9 +54,9 @@ public class AllData {
         this.ledStatus = ledStatus;
     }
 
-//    public void setAqi(Double aqi) {
-//        this.aqi = aqi;
-//    }
+    public void setAqi(Double aqi) {
+        this.aqi = aqi;
+    }
 
     private AllData(Builder builder) {
         this.heartRate = builder.heartRate;
@@ -66,7 +66,7 @@ public class AllData {
         this.envTemp = builder.envTemp;
         this.humidity = builder.humidity;
         this.ledStatus = builder.ledStatus;
-//        this.aqi = builder.aqi;
+        this.aqi = builder.aqi;
     }
 
     public Double getHeartRate() {
@@ -96,9 +96,9 @@ public class AllData {
     public Integer getLedStatus(){
         return ledStatus;
     }
-//    public Double getAqi() {
-//        return aqi;
-//    }
+    public Double getAqi() {
+        return aqi;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -112,7 +112,7 @@ public class AllData {
         private Double envTemp;
         private Double humidity;
         private Integer ledStatus;
-//        private Double aqi;
+        private Double aqi;
 
         public Builder heartRate(Double heartRate) {
             this.heartRate = heartRate;
@@ -149,10 +149,10 @@ public class AllData {
             return this;
         }
 
-//        public Builder aqi(Double aqi) {
-//            this.aqi = aqi;
-//            return this;
-//        }
+        public Builder aqi(Double aqi) {
+            this.aqi = aqi;
+            return this;
+        }
 
         public AllData build() {
             return new AllData(this);
