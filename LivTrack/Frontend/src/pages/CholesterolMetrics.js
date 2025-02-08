@@ -13,6 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import "../styles/cholesterol.css";
+import { ResponsiveContainer } from "recharts";
 
 const CholesterolMetrics = () => {
   const { user } = useAuth();
@@ -237,10 +238,10 @@ const CholesterolMetrics = () => {
               <Title order={4} className="section-title">
                 Historical Trends
               </Title>
-              <LineChart
+              <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={metrics}
                 width={600}
                 height={300}
-                data={metrics}
                 className="animated-chart"
               >
                 <CartesianGrid strokeDasharray="3 3" />
@@ -280,6 +281,7 @@ const CholesterolMetrics = () => {
                   className="hdl-line"
                 />
               </LineChart>
+</ResponsiveContainer> 
               <Button
                 onClick={() => navigate("/cholesterol-graph")}
                 style={{ marginTop: "1rem" }}
@@ -287,6 +289,7 @@ const CholesterolMetrics = () => {
                 View Detailed Graph
               </Button>
             </Card>
+            
           </div>
         </div>
       </div>
