@@ -69,6 +69,27 @@ type AuthRequest struct {
 	Signature  string    `json:"signature"`
 }
 
+type BlockchainStorage struct {
+	DeviceKeys    map[string]KeyPair `json:"deviceKeys"`
+	Nonces        []string           `json:"nonces"`
+	LastBlockHash string             `json:"lastBlockHash"`
+	Transactions  []Transaction      `json:"transactions"`
+}
+
+type KeyPair struct {
+	DeviceID  string `json:"deviceId"`
+	PublicKey string `json:"publicKey"`
+	Nonce     string `json:"nonce"`
+	Timestamp string `json:"timestamp"`
+}
+
+type Transaction struct {
+	Hash      string    `json:"hash"`
+	DeviceID  string    `json:"deviceId"`
+	Type      string    `json:"type"`
+	Timestamp time.Time `json:"timestamp"`
+}
+
 // SimulationType represents different simulation scenarios
 type SimulationType int
 
@@ -92,6 +113,26 @@ func (st SimulationType) String() string {
 type BlockchainSimulator struct {
 	Devices   map[string]*Device
 	Resources map[string]*ResourceHolder
+}
+
+func corsMiddleware(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		// Set CORS headers
+		w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type")
+		w.Header().Set("Access-Control-Allow-Credentials", "true") // Add this line
+		w.Header().Set("Access-Control-Max-Age", "3600")
+
+		// Handle preflight requests
+		if r.Method == "OPTIONS" {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		// Call the next handler
+		next(w, r)
+	}
 }
 
 // NewBlockchainSimulator creates a new blockchain simulator
@@ -151,6 +192,35 @@ func NewAuthenticationProtocol(bc *BlockchainSimulator) *AuthenticationProtocol 
 
 func (ap *AuthenticationProtocol) recordNonce(nonce string) {
 	ap.usedNonces[nonce] = true
+}
+
+func (ap *AuthenticationProtocol) SimulateMultipleDevices(count int) error {
+	if count > 10 {
+		return fmt.Errorf("maximum 10 devices allowed")
+	}
+
+	for i := 0; i < count; i++ {
+		deviceID := fmt.Sprintf("device%03d", i+1)
+		device := &Device{
+			ID:         deviceID,
+			Descriptor: fmt.Sprintf("IoT Device %d", i+1),
+		}
+
+		if err := ap.blockchain.RegisterDevice(device); err != nil {
+			return err
+		}
+
+		// Simulate connection for each device
+		resource := ap.blockchain.Resources["resource001"]
+		if resource != nil {
+			go func(d *Device) {
+				request, _ := ap.RequestAuthentication(d.ID, resource.ID)
+				ap.VerifyAuthentication(request)
+			}(device)
+		}
+	}
+
+	return nil
 }
 
 func (ap *AuthenticationProtocol) isNonceUsed(nonce string) bool {
@@ -381,10 +451,25 @@ func (ap *AuthenticationProtocol) SimulateSecureConnection(deviceA, deviceB *Dev
 	return connection, nil
 }
 
+type BlockchainStats struct {
+	TotalBlocks          int `json:"totalBlocks"`
+	VerifiedTransactions int `json:"verifiedTransactions"`
+	NetworkNodes         int `json:"networkNodes"`
+}
+
+type ConnectionStats struct {
+	ActiveConnections int     `json:"activeConnections"`
+	TotalConnections  int     `json:"totalConnections"`
+	AvgConnectionTime float64 `json:"avgConnectionTime"`
+}
+
 type MonitorData struct {
-	Devices     []*Device       `json:"devices"`
-	AuthMetrics AuthMetrics     `json:"authMetrics"`
-	Events      []SecurityEvent `json:"events"`
+	Devices           []*Device         `json:"devices"`
+	AuthMetrics       AuthMetrics       `json:"authMetrics"`
+	Events            []SecurityEvent   `json:"events"`
+	BlockchainStats   BlockchainStats   `json:"blockchainStats"`
+	ConnectionStats   ConnectionStats   `json:"connectionStats"`
+	BlockchainStorage BlockchainStorage `json:"blockchainStorage"`
 }
 
 type AuthMetrics struct {
@@ -476,20 +561,26 @@ var handshakeAnimationFrames = []string{
 }
 
 type Monitor struct {
-	blockchain *BlockchainSimulator
-	auth       *AuthenticationProtocol
-	clients    map[*websocket.Conn]bool
-	broadcast  chan MonitorData
-	mutex      sync.Mutex
-	metrics    AuthMetrics
-	events     []SecurityEvent
+	blockchain       *BlockchainSimulator
+	auth             *AuthenticationProtocol
+	clients          map[*websocket.Conn]bool
+	broadcast        chan MonitorData
+	mutex            sync.Mutex
+	metrics          AuthMetrics
+	events           []SecurityEvent
+	blockchainStats  BlockchainStats
+	connectionStats  ConnectionStats
+	simulatedDevices []*Device
 }
 
+// Update the WebSocket upgrader
+// Update the WebSocket upgrader as well
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
 	CheckOrigin: func(r *http.Request) bool {
-		return true // Allow all origins for demo
+		origin := r.Header.Get("Origin")
+		return origin == "http://localhost:3000"
 	},
 }
 
@@ -504,8 +595,9 @@ func NewMonitor(bc *BlockchainSimulator, auth *AuthenticationProtocol) *Monitor 
 }
 
 func (m *Monitor) StartServer() {
-	// Start HTTP server for WebSocket connections
+	// Update HTTP handlers with CORS middleware
 	http.HandleFunc("/ws", m.handleConnections)
+	http.HandleFunc("/api/simulate", corsMiddleware(m.handleSimulation))
 
 	// Start broadcasting goroutine
 	go m.handleBroadcasts()
@@ -517,6 +609,74 @@ func (m *Monitor) StartServer() {
 			log.Fatal("ListenAndServe:", err)
 		}
 	}()
+}
+
+func (m *Monitor) handleSimulation(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var req struct {
+		DeviceCount int `json:"deviceCount"`
+	}
+
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	m.mutex.Lock()
+	defer m.mutex.Unlock()
+
+	// Clear previous simulated devices
+	m.simulatedDevices = nil
+
+	// Create new devices
+	for i := 0; i < req.DeviceCount; i++ {
+		deviceID := fmt.Sprintf("device%03d", len(m.blockchain.Devices)+1)
+		device := &Device{
+			ID:         deviceID,
+			Descriptor: fmt.Sprintf("IoT Device %d", i+1),
+		}
+
+		if err := m.blockchain.RegisterDevice(device); err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		m.simulatedDevices = append(m.simulatedDevices, device)
+
+		// Simulate authentication for the device
+		go func(d *Device) {
+			resource := m.blockchain.Resources["resource001"]
+			if resource != nil {
+				request, _ := m.auth.RequestAuthentication(d.ID, resource.ID)
+				success, _ := m.auth.VerifyAuthentication(request)
+
+				// Update connection stats
+				m.mutex.Lock()
+				m.connectionStats.TotalConnections++
+				if success {
+					m.connectionStats.ActiveConnections++
+				}
+				m.mutex.Unlock()
+
+				// Record the auth event
+				m.RecordAuthEvent(LegitimateAuth, d.ID, success)
+			}
+		}(device)
+	}
+
+	// Update blockchain stats
+	m.blockchainStats.NetworkNodes = len(m.blockchain.Devices)
+	m.blockchainStats.TotalBlocks++
+	m.blockchainStats.VerifiedTransactions += req.DeviceCount
+
+	// Broadcast updated data
+	m.broadcast <- m.getMonitorData()
+
+	w.WriteHeader(http.StatusOK)
 }
 
 func (m *Monitor) handleConnections(w http.ResponseWriter, r *http.Request) {
@@ -601,9 +761,11 @@ func (m *Monitor) getMonitorData() MonitorData {
 	}
 
 	return MonitorData{
-		Devices:     devices,
-		AuthMetrics: m.metrics,
-		Events:      m.events,
+		Devices:         devices,
+		AuthMetrics:     m.metrics,
+		Events:          m.events,
+		BlockchainStats: m.blockchainStats,
+		ConnectionStats: m.connectionStats,
 	}
 }
 
