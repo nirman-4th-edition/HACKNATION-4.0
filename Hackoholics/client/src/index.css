@@ -1,0 +1,100 @@
+@import "tailwindcss";
+:root {
+  --primary: #3b82f6;
+  --primary-dark: #1e40af;
+  --border-gray-300: #d1d5db;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+.input-field {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--border-gray-300);
+  border-color: transparent;
+}
+.input-field:focus {
+  box-shadow: 0 0 0 2px var(--primary);
+}
+.btn-primary {
+  width: 100%;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+  font-weight: 500;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.login {
+  background-image: url("../public/bg1.png");
+  background-size: cover;
+}
+
+.signup {
+  background-image: url("../public/bg2.png");
+  background-size: cover;
+}
+
+.signupi {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.signupi::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.chat{ 
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #00bbd42e transparent; 
+}
+.chat::-webkit-scrollbar {
+  width: 0.3rem;
+  border-radius: 1rem;
+}
+@media (max-width: 1100px) {
+  .login {
+    padding: 0 3.5rem;
+    background-image: none;
+    background-color: #7560f1;
+  }
+  .signup {
+    padding: 0 3.5rem;
+    background-image: none;
+    background-color: #9999ff;
+  }
+}
+
+@media (max-width: 768px) {
+  .image {
+    display: none;
+  }
+  .sidebar {
+    display: none;
+  }
+}
