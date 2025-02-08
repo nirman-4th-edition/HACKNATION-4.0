@@ -76,7 +76,7 @@ function PDFSummarizer() {
   return (
     <div className="summarizer-container">
       <h1>PDF Summarizer</h1>
-      <input type="file" accept="application/pdf" multiple onChange={handleFileChange} />
+      <input type="file" accept="application/pdf" multiple onChange={handleFileChange} style={{width:"100vh"}} />
       <button onClick={uploadPdfs}>Upload PDFs</button>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {uploadSuccess && (

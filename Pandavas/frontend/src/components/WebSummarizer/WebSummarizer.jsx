@@ -40,11 +40,6 @@ function WebSummarizer() {
       };
       
 
-    const handleReset = () => {
-        // setChatHistory([]);
-        setSummary("");
-    };
-
     return (
         <div className="pdf-container">
             <h1>Web Page Summarizer</h1>
@@ -53,6 +48,7 @@ function WebSummarizer() {
                 value={pageUrl} 
                 onChange={(e) => setPageUrl(e.target.value)} 
                 placeholder="Enter Web Page URL" 
+                style={{width:"100vh"}} 
             />
             <button onClick={handleSummarize}>Summarize</button>
 
@@ -64,7 +60,6 @@ function WebSummarizer() {
                 </div>
             </div>
             )}
-            <button onClick={handleReset}>Reset</button>
         </div>
     );
 }

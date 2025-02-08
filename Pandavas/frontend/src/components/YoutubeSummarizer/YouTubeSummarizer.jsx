@@ -46,7 +46,8 @@ function YouTubeSummarizer() {
                 type="text" 
                 value={videoUrl} 
                 onChange={(e) => setVideoUrl(e.target.value)} 
-                placeholder="Enter YouTube URL" 
+                placeholder="Enter YouTube URL"
+                style={{width:"100vh"}} 
             />
             <button onClick={handleSummarize}>Summarize</button>
             <div className="summary-container">

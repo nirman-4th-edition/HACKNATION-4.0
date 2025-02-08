@@ -66,6 +66,7 @@ const Chatbot = () => {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type your question here..."
           className="chat-input"
+          style={{width:"96%"}} 
         />
         <button
           onClick={sendQuestion}
