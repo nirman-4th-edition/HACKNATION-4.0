@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" type="image/png" href="images/PAWXIELOGO.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/536ff07e99.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Loader styles */
+    .loader {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .container {
+          background: white;
+          border-radius: 1rem;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+  
+      h2 {
+          text-align: center;
+          color: white;
+          margin-bottom: 1.5rem;
+          font-size: 1.5rem;
+          font-weight: bold;
+      }
+
+    .social-icons {
+          display: flex;
+          gap: 2rem;
+          justify-content: center;
+      }
+  
+      .social-icon {
+          color: white;
+          font-size: 2rem;
+          transition: all 0.3s ease;
+          cursor: pointer;
+      }
+  
+      .social-icon:hover {
+          transform: translateY(-8px) scale(1.25);
+      }
+  
+      .fa-twitter:hover { color: #1DA1F2; }
+      .fa-github:hover { color: #333; }
+      .fa-linkedin:hover { color: #0077B5; }
+      .fa-instagram:hover { color: #E4405F; }
+      .fa-facebook:hover { color: #1877F2; }
+  
+      .footer {
+          padding: 2rem;
+          text-align: center;
+      }
+  
+      .footer__nav {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 2rem;
+          margin-bottom: 2rem;
+          padding: 0;
+      }
+  
+      .footer__item {
+          margin: 0;
+      }
+  
+      .footer__link {
+          text-decoration: none;
+          color: #4b5563;
+          transition: color 0.3s ease;
+      }
+  
+      .footer__link:hover {
+          color: #1f2937;
+      }
+  
+      .footer__logo {
+          max-width: 100px;
+          margin: 2rem 0;
+      }
+  
+      .social-media {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          margin: 2rem 0;
+      }
+  
+      .footer__copyright {
+          color: #4b5563;
+          margin-top: 2rem;
+      }
+  
+      .github-link {
+          color: #333;
+          font-weight: bold;
+      }
+
+</style>
+
+  <title>PAWXIE</title>
+</head>
+
+<body style="background-color: rgba(246, 232, 174, 0.624);">
+
+  <header class="header" id="#header">
+    <nav class="nav nav__desktop" style="padding-top: 10px;">
+      <img src="images/output.jpg" style="height: 80px;width: 90px;background: cover; border-radius: 48%;" alt="Pet Care logo" class="nav__logo" id="logo">
+
+      <ul class="nav__links" style="color: rgb(74, 9, 9);">
+        <li class="nav__item current">
+          <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--5" class="nav__link nav__link--section">Contact</a>
+        </li>
+        <li class="nav__item">
+          <a href="Login.html" class="nav__link btn nav__link--btn btn--show-modal"><img src="images/icon-user.svg"
+              alt="login icon"></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav__mobile--wrap">
+      <nav class="nav nav__mobile">
+        <img src="images/output.jpg"  style="height: 80px;width: 90px;background: cover; border-radius: 50%;" alt="Pet Care logo" id="logo">
+        <ul class="nav__links nav__links-mobile">
+          <li class="nav__item current">
+            <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--5" class="nav__link nav__link--section">Contact</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link btn nav__link--btn btn--show-modal"><img src="images/icon-user.svg"
+                alt="login icon"></a>
+          </li>
+        </ul>
+        <div class="nav__mobile--open">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="nav__mobile--close">
+          <i class="fa-solid fa-x"></i>
+        </div>
+      </nav>
+    </div>
+
+    <div class="header__title">
+      <h1>Your Trusted <br>Guide in<br>
+       <b><span class="highlight" style="color: rgb(235, 22, 22);font-size: 5.2rem;padding-left: 0%;">Medical <br>Emergencies</span></b></h1>
+     
+      <h4>Dedicated to Pets and People.</h4>
+      <button class="btn btn--header" type="button" onclick="window.location.href='Appointment.html' " onclick="delayedRedirect()" style="background-color: rgba(100, 200, 167, 0.56);color: rgb(18, 16, 16);">Book Appointment <i class="fa-solid fa-paw"></i></button>
+      <img src="images/header__img.jpg" alt="Image of dog" class="header__img">
+    </div>
+  </header>
+
+  <section class="section" id="section--1">
+    <div class="section__title">
+      <h2 class="section__desription">Our Services</h2>
+      <h3 class="section__header"></h3>
+    </div>
+
+    <div class="services">
+
+      <div class="services__service">
+        <div class="services__icon">
+          <img src="images/icon-vet.svg" alt="Vet" class="svg-icon">
+        </div>
+        <h5 class="services__header highlight">Vet Care</h5>
+        <p>Veterinary care, preventative and wellness service clinics, and expertise. We take careful measures to ensure
+          and enhance the well-being of all pets in our care.</p>
+      </div>
+      <img src="images/vet-lazy.jpg" data-src="images/vet.jpg" alt="Vet dog" class="services__img lazy-img">
+
+      <img src="images/2157.jpg" data-src="images/2157.jpg" alt="Dog with book"
+        class="services__img lazy-img">
+      <div class="services__service">
+        <div class="services__icon">
+          <img src="images/icon-boarding.svg" alt="Dog" class="svg-icon">
+        </div>
+        <h5 class="services__header highlight">Emergency and critical case</h5>
+        <p>Be their hope in times of crisis. Report, rescue, and rehabilitate.</p>
+      </div>
+
+      <div class="services__service">
+        <div class="services__icon">
+          <img src="images/icon-grooming.svg" alt="Grooming pet" class="svg-icon">
+        </div>
+        <h5 class="services__header highlight"> Pet Grooming</h5>
+        <p>Whether your pet needs a quick shampoo or “the works,” our expert groomers will make your furry friend
+          fabulous.</p>
+      </div>
+      <img src="images/grooming-lazy.jpg" data-src="images/grooming.jpg" alt="Dog with with toothbrush"
+        class="services__img lazy-img">
+
+      <img src="images/2250.jpg" data-src="images/2250.jpg" alt="Dog playing computer"
+        class="services__img lazy-img" style="background: center; width: 100%;height: 100%;">
+      <div class="services__service">
+        <div class="services__icon">
+          <img src="images/icon-camp.svg" alt="Bone" class="svg-icon">
+        </div>
+        <h5 class="services__header highlight">Online and health services</h5>
+        <p>Video calls, prescriptions, and expert advice—all from the comfort of your home.</p>
+      </div>
+      
+    </div>
+  </section>
+   
+  
+
+  <section class="section" id="section--2">
+    <div class="section__title">
+      <h2 class="section__desription">Our Values</h2>
+      <h3 class="section__header">Your pet’s well-being is our goal.</h3>
+    </div>
+
+    <div class="values">
+
+      <div class="values__tab-container">
+        <button class="btn values__tab values__tab--1 values__tab--active" data-tab="1">Open and honest
+        </button>
+        <button class="btn values__tab values__tab--2" data-tab="2">Enthusiasm,
+          energy and ambition
+        </button>
+        <button class="btn values__tab values__tab--3" data-tab="3">Innovation
+        </button>
+        <button class="btn values__tab values__tab--4" data-tab="4">Experience</button>
+      </div>
+
+      <div class="values__content values__content--1 values__content--active">
+        <div class="values__icon values__icon--1">
+          <img src="images/icon-values1.svg" alt="icon box with heart">
+        </div>
+        <h5 class="values__header">
+          We are open and honest.
+        </h5>
+        <p>
+          We like to speak our minds. We’re not big fans of jargon and prefer to keep things simple, direct and clear.
+          We like to listen and give direct answers to questions.
+        </p>
+      </div>
+
+      <div class="values__content values__content--2">
+        <div class="values__icon values__icon--2">
+          <img src="images/icon-values2.svg" alt="icon">
+        </div>
+        <h5 class="values__header">
+          We are fired up with enthusiasm, energy and ambition.
+        </h5>
+        <p>
+          Not just for growth, but for building a sustainable future for our people and pets.
+        </p>
+      </div>
+
+      <div class="values__content values__content--3">
+        <div class="values__icon values__icon--3">
+          <img src="images/icon-values3.svg" alt="icon">
+        </div>
+        <h5 class="values__header">
+          We are strategically agile and tactically capable.
+        </h5>
+        <p>
+          We like to challenge the way things are done, and always seek out innovative ways forward. That said, we are
+          not interested in change for change’s sake.
+        </p>
+      </div>
+
+      <div class="values__content values__content--4">
+        <div class="values__icon values__icon--4">
+          <img src="images/icon-values4.svg" alt="icon">
+        </div>
+        <h5 class="values__header">
+          We invest in people and drive results through innovation, commitment and integrity.
+        </h5>
+        <p>
+          We have a deep and intuitive understanding of the pet healthcare industry, as well as extensive experience in
+          driving the kinds of innovation that make a tangible difference.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="section" id="section--4">
+    <div class="section__title section__title--testimonials">
+      <h2 class="section__desription">Testimonials</h2>
+      <h3 class="section__header">What our clients are saying
+      </h3>
+    </div>
+
+    <div class="slider">
+      <div class="slide slider--1">
+        <div class="testimonial">
+          <blockquote class="testimonial__text">
+            <b>Review:</b>
+            <br>
+            ⭐⭐⭐⭐⭐  
+            <br>
+            "I can't express how grateful I am for this website! During a serious accident involving my cat, I was in complete panic and didn't know where to go. This platform quickly provided me with nearby hospitals and available doctors, which helped me get immediate medical attention. Thanks to this website, my cat's life was saved! Highly recommended for pet owners and emergencies. ❤️🐱"   
+
+          </blockquote>
+          <address class="testimonial__author">
+            <img src="images/testimonial1.jpg" alt="avatar" class="testimonial__avatar">
+            <h6 class="testimonial__name">Devi Shah</h6>
+            <p class="testimonial__date">Dec. 29, 2024</p>
+          </address>
+        </div>
+      </div>
+
+      <div class="slide slider--2">
+        <div class="testimonial">
+          <blockquote class="testimonial__text">
+            Review : 
+            <br>
+            ⭐⭐⭐⭐⭐  
+            <br>
+            "This website is a lifesaver—literally! When my cat had a medical emergency, I was able to find the nearest hospital with an available vet within seconds. The real-time doctor availability feature made all the difference. Thank you for creating such a helpful platform!"  
+            </blockquote>
+          <address class="testimonial__author">
+            <img src="images/testimonial2.jpg" alt="avatar" class="testimonial__avatar">
+            <h6 class="testimonial__name"> Durga Prasad Satapathy</h6>
+            <p class="testimonial__date">Jan 3rd, 2025</p>
+          </address>
+        </div>
+      </div>
+
+      <div class="slide slider--3">
+        <div class="testimonial">
+          <blockquote class="testimonial__text">
+            Review :  
+            <br>
+            ⭐⭐⭐⭐⭐  
+            <br>
+            "I never thought I’d need this website until my cat was seriously injured. In that moment of panic, this platform guided me to the nearest hospital, ensuring my cat got urgent care. I can’t thank you enough for making this service available!"
+          </blockquote>
+          <address class="testimonial__author">
+            <img src="images/testimonial3.jpg" alt="avatar" class="testimonial__avatar">
+            <h6 class="testimonial__name">Manoj Tiwari</h6>
+            <p class="testimonial__date">Nov 13, 2024</p>
+          </address>
+        </div>
+      </div>
+
+
+      <button class="slider__btn slider__btn--left"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="slider__btn slider__btn--right"><i class="fa-solid fa-arrow-right"></i></button>
+      <div class="dots"></div>
+
+    </div>
+
+
+  </section>
+
+  <section class="section section--contact " id="section--5">
+    <div class="section__title">
+      <h3 class="section__header">
+        Your feedback helps us improve and save more lives! Share your experience and suggestions with us.
+      </h3>
+    </div>
+    <button class="btn btn--show-modal-contact">Feedback</button>
+  </section>
+
+
+  <div class="container">
+  <footer class="footer">
+    <ul class="footer__nav">
+      <li class="footer__item">
+        <a href="#section--1" class="footer__link"style="color: white;">About</a>
+      </li>
+      <li class="footer__item">
+        <a href="" class="footer__link"style="color: white;">Terms of Use</a>
+      </li>
+      <li class="footer__item">
+        <a href="" class="footer__link"style="color: white;">Privacy Policy</a>
+      </li>
+      <li class="footer__item">
+        <a href="#section--5" class="footer__link"style="color: white;">Contact Us</a>
+      </li>
+    </ul>
+    
+    
+      <h2>Connect With Us</h2>
+      <div class="social-icons">
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <i class="social-icon fab fa-twitter"></i>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="social-icon fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="social-icon fab fa-linkedin"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="social-icon fab fa-instagram"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <i class="social-icon fab fa-facebook"></i>
+          </a>
+      </div>
+  </div>
+   
+  </footer>
+
+
+
+  
+
+
+  <div class="overlay hidden"></div>
+
+  <button class="btn btn--scroll"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+</body>
+
+
+</html>
+

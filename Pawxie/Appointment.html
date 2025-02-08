@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" href="images/PAWXIELOGO.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/536ff07e99.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+
+  <title>Appointment</title>
+  <style>
+    .book-appointment-btn {
+      text-align: center;
+      padding: 10px 20px;
+      border: none;
+      font-weight: 700;
+      font-size: 14px;
+      background: #22a4c4;
+      border-radius: 6px;
+      box-shadow: 2px 2px 0px 0px #E99F4C;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .book-appointment-btn:hover {
+      background: #1a7f9c;
+    }
+
+    .book-appointment-btn:active {
+      transform: translateY(2px);
+      box-shadow: 1px 1px 0px 0px #E99F4C;
+    }
+
+    #doctor-list h2 {
+      text-align: center;
+      width: 100%;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .emergency-btn {
+      text-align: center;
+      padding: 15px 10px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      background: #ff0000;
+      border-radius: 10px;
+      box-shadow: 3px 3px 0px 0px #E99F4C;
+      color: white;
+
+      cursor: pointer;
+
+      transition: background-color 0.3s ease;
+      margin-left: 0;
+
+      width: 100%;
+      margin: 0 5px;
+    }
+
+    .emergency-btn:hover {
+      background: #cc0000;
+    }
+
+    .emergency-btn:active {
+      transform: translateY(4px);
+      box-shadow: 1px 1px 0px 0px #E99F4C;
+    }
+
+    div[style*="display: flex; justify-content: center;"] {
+      width: 100%;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+
+    .box {
+      perspective: 1000px;
+
+    }
+
+
+    .box-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .doctors {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .doctors.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .box-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .box {
+      width: 280px;
+      height: 400px;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+
+    .box img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .doctors .box-container .box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .share {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .share a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .share a i {
+      color: white;
+      font-size: 20px;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s;
+    }
+
+    .share a i:hover {
+      background-color: #ff0000;
+      transform: scale(1.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #22a4c4;
+    }
+
+    .formbold-form-select {
+      width: 100%;
+      padding: 15px 15px;
+      border-radius: 6px;
+      background: white;
+      font-weight: 500;
+      font-size: 16px;
+      color: black;
+      outline: none;
+      border: 2px solid #264143;
+      box-shadow: 3px 4px 0px 1px #E99F4C;
+      margin-bottom: 20px;
+    }
+
+    .formbold-form-select:focus {
+      border-color: #6a64f1;
+    }
+
+    .formbold-mb-5 {
+      margin-bottom: 28px;
+      padding: 8px;
+    }
+
+    .formbold-pt-3 {
+      padding-top: 20px;
+    }
+
+    .formbold-main-wrapper {
+      display: flex;
+      align-items: center;
+      margin-left: 480px;
+      margin-bottom: 170px;
+    }
+
+    .formbold-form-wrapper {
+      max-width: 570px;
+      width: 100%;
+      background-color: #EDDCD9;
+      padding: 30px;
+      border: 2px solid #264143;
+      box-shadow: 3px 4px 0px 1px #E99F4C;
+      margin-top: 30px;
+    }
+
+    .formbold-form-label {
+      display: block;
+      font-weight: 600;
+      font-size: 16px;
+      color: #07074d;
+      margin-bottom: 10px;
+    }
+
+    .formbold-form-label-2 {
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .formbold-form-input {
+      width: 90%;
+      padding: 15px 15px;
+      border-radius: 6px;
+      background: white;
+      font-weight: 500;
+      font-size: 16px;
+      color: black;
+      outline: none;
+      resize: none;
+      border: 2px solid #264143;
+      box-shadow: 3px 4px 0px 1px #E99F4C;
+    }
+
+    .formbold-form-input:focus {
+      border-color: #6a64f1;
+      color: black;
+    }
+
+    .formbold-btn {
+      text-align: center;
+      padding: 15px 10px;
+      padding-left: 10px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      background: beige;
+      border-radius: 10px;
+      box-shadow: 3px 3px 0px 0px #E99F4C;
+      color: black;
+
+      cursor: pointer;
+
+      margin-left: 0;
+
+      width: 45%;
+      margin: 0 5px;
+    }
+
+    .formbold-btn:hover {
+      opacity: .9;
+      background-color:orangered;
+    }
+
+    .formbold-btn:active {
+      transform: translateY(4px);
+      box-shadow: 1px 1px 0px 0px #E99F4C;
+    }
+
+    .formbold--mx-3 {
+      margin-left: -12px;
+      margin-right: -12px;
+    }
+
+    .formbold-px-3 {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .w-full {
+      width: 90%;
+    }
+
+
+    @media (max-width: 1200px) {
+      .formbold-main-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .nav__desktop {
+        display: none;
+      }
+
+      .nav__mobile {
+        display: flex;
+      }
+
+      .box-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .box {
+        width: 80%;
+      }
+
+      .formbold-main-wrapper {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .formbold-main-wrapper {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .formbold-btn,
+      .emergency-btn {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .box {
+        width: 90%;
+      }
+
+      .nav__mobile--open {
+        display: block;
+      }
+
+      .nav__links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        background: white;
+        top: 60px;
+        left: 0;
+        z-index: 10;
+      }
+
+      .nav__links.active {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .box {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .formbold-form-wrapper {
+        padding: 15px;
+      }
+
+      .formbold-form-input {
+        padding: 10px;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    input,
+    button {
+      width: 100%;
+    }
+
+    .container {
+          background: white;
+          border-radius: 1rem;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+  
+      h2 {
+          text-align: center;
+          color: white;
+          margin-bottom: 1.5rem;
+          font-size: 1.5rem;
+          font-weight: bold;
+      }
+
+    .social-icons {
+          display: flex;
+          gap: 2rem;
+          justify-content: center;
+      }
+  
+      .social-icon {
+          color: white;
+          font-size: 2rem;
+          transition: all 0.3s ease;
+          cursor: pointer;
+      }
+  
+      .social-icon:hover {
+          transform: translateY(-8px) scale(1.25);
+      }
+  
+      .fa-twitter:hover { color: #1DA1F2; }
+      .fa-github:hover { color: #333; }
+      .fa-linkedin:hover { color: #0077B5; }
+      .fa-instagram:hover { color: #E4405F; }
+      .fa-facebook:hover { color: #1877F2; }
+  
+      .footer {
+          padding: 2rem;
+          text-align: center;
+      }
+  
+      .footer__nav {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 2rem;
+          margin-bottom: 2rem;
+          padding: 0;
+      }
+  
+      .footer__item {
+          margin: 0;
+      }
+  
+      .footer__link {
+          text-decoration: none;
+          color: #4b5563;
+          transition: color 0.3s ease;
+      }
+  
+      .footer__link:hover {
+          color: #1f2937;
+      }
+  
+      .footer__logo {
+          max-width: 100px;
+          margin: 2rem 0;
+      }
+  
+      .social-media {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          margin: 2rem 0;
+      }
+  
+      .footer__copyright {
+          color: #4b5563;
+          margin-top: 2rem;
+      }
+  
+      .github-link {
+          color: #333;
+          font-weight: bold;
+      }
+  </style>
+</head>
+
+
+
+<body style="background-color: rgba(246, 232, 174, 0.624);">
+
+  <header class="header" id="#header">
+    <nav class="nav nav__desktop">
+      <img src="images/output.jpg" style="height: 80px;width: 90px;background: cover; border-radius: 48%;margin-top: 9px;" alt="Pet Care logo" class="nav__logo"
+        id="logo">
+      <ul class="nav__links">
+        <li class="nav__item current">
+          <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
+        </li>
+        <li class="nav__item">
+          <a href="#section--5" class="nav__link nav__link--section">Contact</a>
+        </li>
+        <li class="nav__item">
+          <a href="#" class="nav__link btn nav__link--btn btn--show-modal"><img src="images/icon-user.svg"
+              alt="login icon"></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav__mobile--wrap">
+      <nav class="nav nav__mobile">
+        <img src="images/paw_logo.png" alt="Pet Care logo" class="nav__logo" id="logo">
+        <ul class="nav__links nav__links-mobile">
+          <li class="nav__item current">
+            <a href="#section--1" class="nav__link nav__link--section">Our Services</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--2" class="nav__link nav__link--section">Our Values</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--4" class="nav__link nav__link--section">Testimonials</a>
+          </li>
+          <li class="nav__item">
+            <a href="#section--5" class="nav__link nav__link--section">Contact</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link btn nav__link--btn btn--show-modal"><img src="images/icon-user.svg"
+                alt="login icon"></a>
+          </li>
+        </ul>
+        <div class="nav__mobile--open">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="nav__mobile--close">
+          <i class="fa-solid fa-x"></i>
+        </div>
+      </nav>
+    </div>
+
+    <section class="book" id="book">
+      <h1 class="heading" style="text-align: center;">Book <span style="text-align: center;">Now</span></h1>
+      <div class="row">
+        <div class="image">
+          <img src="images/book.jpg" alt="">
+        </div>
+        <div class="formbold-main-wrapper" style="margin-right: 480px;">
+          <div class="formbold-form-wrapper">
+            <form id="appointment-form">
+              <div class="formbold-mb-5">
+                <h2 style="text-align: center;color: black;">Book Appointment </h2>
+                <br>
+                <label for="name" class="formbold-form-label"> Enter Name </label>
+                <input type="text" name="name" id="name" placeholder="Enter Your Name" class="formbold-form-input" />
+              </div>
+              <div class="flex flex-wrap formbold--mx-3">
+                <div class="form-container" style="display: flex; gap: 20px; flex-wrap: wrap;">
+
+                  <div class="w-full sm:w-half formbold-px-3" style="flex: 1;">
+                    <div class="formbold-mb-5 w-full">
+                      <label for="date" class="formbold-form-label" style="font-weight: bold;">Date</label>
+                      <input type="date" name="date" id="date" class="formbold-form-input"
+                        style="width: 200px; color: black;" required>
+                    </div>
+                  </div>
+                  <div class="w-full sm:w-half formbold-px-3" style="flex: 1;">
+                    <div class="formbold-mb-5">
+                      <label for="shift" class="formbold-form-label" style="font-weight: bold;">Shift</label>
+                      <select id="shift" class="formbold-form-select">
+                        <option value="default">Select a Shift</option>
+                        <option value="shift-a">Shift A (6:00AM - 2:00PM)</option>
+                        <option value="shift-b">Shift B (2:00PM - 10:00PM)</option>
+                        <option value="shift-c">Shift C (10:00PM - 6:00AM)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full sm:w-half formbold-px-3">
+                  <div class="formbold-mb-5">
+                    <label for="location" class="formbold-form-label"> Location </label>
+                    <input id="location" placeholder="e.g., Remote or Physical Address" class="formbold-form-input" />
+                  </div>
+                  <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+                    <button type="button" id="offline-btn" class="formbold-btn">Offline Mode</button>
+                    <button type="button" id="online-btn" class="formbold-btn"onclick="window.location.href='Onlineform.html'">Online Mode</button>
+                  </div>
+                  <br>
+                  <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+                    <button type="button" class="emergency-btn" onclick="window.location.href='Emergency.html'">
+                      Emergency Booking <i class="fa-solid fa-paw"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doctors" id="doctors">
+      <h1 class="heading" style="text-align: center;">Available <span style="text-align: center;">Doctors</span></h1>
+      <br>
+      <h2 id="shift-heading" style="text-align: center;"></h2>
+      <br>
+      <div class="box-container" id="doctor-list">
+      </div>
+    </section>
+    
+    </div>
+
+    
+
+
+<div class="hero" style="border-radius: 5px; margin-bottom: 100px;width: 100%;">
+  <footer class="footer" style="width: 100%;border-radius: 25px;">
+    <ul class="footer__nav">
+      <li class="footer__item">
+        <a href="#section--1" class="footer__link"style="color: white;">About</a>
+      </li>
+      <li class="footer__item">
+        <a href="" class="footer__link"style="color: white;">Terms of Use</a>
+      </li>
+      <li class="footer__item">
+        <a href="" class="footer__link"style="color: white;">Privacy Policy</a>
+      </li>
+      <li class="footer__item">
+        <a href="#section--5" class="footer__link"style="color: white;">Contact Us</a>
+      </li>
+    </ul>
+    
+    
+      <h2>Connect With Us</h2>
+      <div class="social-icons">
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <i class="social-icon fab fa-twitter"></i>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="social-icon fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="social-icon fab fa-linkedin"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="social-icon fab fa-instagram"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <i class="social-icon fab fa-facebook"></i>
+          </a>
+      </div>
+  </div>
+   
+  </footer>
+
+<div class="overlay hidden"></div>
+
+  <button class="btn btn--scroll"><i class="fa-solid fa-arrow-up"></i></button>
+
+</body>
+
+<script>
+  const doctorsByShift = {
+    "shift-a": [
+      {
+        name: "Dr. Suvendra Sahoo",
+        image: "images/doctor1.jpg",
+        phd:"Master of Veterinary Science (MVSc) ",
+        availability: [
+          { date: "2025-01-01", time: "09:00" },
+          { date: "2025-01-10", time: "10:00" },
+        ],
+      },
+      {
+        name: "Dr. Prakash Behera",
+        image: "images/doctor2.jpg",
+        phd:"PhD in Veterinary Science ",
+        availability: [
+          { date: "2025-01-11", time: "09:00" },
+          { date: "2025-01-20", time: "10:00" },
+        ],
+      },
+      {
+        name: "Dr. Shyam Jena",
+        image: "images/doctor3.jpg",
+        phd:"Certified Veterinary Acupuncturist (CVA) ",
+        availability: [
+          { date: "2025-01-11", time: "09:00" },
+          { date: "2025-01-20", time: "10:00" },
+        ],
+      },
+    ],
+    "shift-b": [
+      {
+        name: "Dr. Sumitra Purohit",
+        image: "images/doctor4.jpg",
+        phd:"Bachelor of Veterinary Science (BVSc) ",
+        availability: [
+          { date: "2025-01-01", time: "14:00" },
+          { date: "2025-01-10", time: "15:00" },
+        ],
+      },
+      {
+        name: "Dr. Satyajit Rout",
+        image: "images/doctor5.jpg",
+        phd:"Doctor of Veterinary Medicine (DVM) ",
+        availability: [
+          { date: "2025-01-11", time: "09:00" },
+          { date: "2025-01-20", time: "10:00" },
+        ],
+      },
+      {
+        name: "Dr. Suvendu Patra",
+        image: "images/doctor6.jpg",
+        phd:"Vet surgeon ",
+        availability: [
+          { date: "2025-01-11", time: "09:00" },
+          { date: "2025-01-20", time: "10:00" },
+        ],
+      },
+    ],
+    "shift-c": [
+      {
+        name: "Dr. Susmita Mohanty",
+        image: "images/doctor7.jpg",
+        phd:"Doctor of Veterinary Medicine (DVM) ",
+        availability: [
+          { date: "2025-01-01", time: "22:00" },
+          { date: "2025-01-10", time: "23:00" },
+        ],
+      },
+      {
+        name: "Dr. Saswati Pradhan",
+        image: "images/doctor8.jpg",
+        phd:"Bachelor of Veterinary Science (BVSc) ",
+        availability: [
+          { date: "2025-01-11", time: "09:00" },
+          { date: "2025-01-20", time: "10:00" },
+        ],
+      },
+      {
+        name: "Dr.himanshu Bal ",
+        image: "images/doctor9.jpg",
+        phd:"Certified Veterinary Acupuncturist (CVA) ",
+        availability: [
+          { date: "2025-01-11", time: "09:00" },
+          { date: "2025-01-20", time: "10:00" },
+        ],
+      },
+    ],
+  };
+  function displayDoctors(shift) {
+    const doctorList = document.getElementById("doctor-list");
+    const shiftHeading = document.getElementById("shift-heading");
+    doctorList.innerHTML = "";
+    shiftHeading.textContent = ` ${shift.toUpperCase()} Doctors`;
+    const doctors = doctorsByShift[shift];
+    if (doctors && doctors.length > 0) {
+      doctors.forEach((doctor) => {
+        const doctorBox = `
+        <div class="box" style="border: 2px solid black; box-shadow: 2px 2px 2px 2px black;">
+          <img src="${doctor.image}" alt="" style="border: 2px solid black;">
+          <h3>${doctor.name}</h3>
+          <span>${doctor.phd}</span>
+          <div class="share">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+          <button class="book-appointment-btn">Book Appointment</button>
+        </div>
+      `;
+        doctorList.insertAdjacentHTML("beforeend", doctorBox);
+      });
+      const bookButtons = document.querySelectorAll(".book-appointment-btn");
+      bookButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          alert("Your appointment has been booked!");
+        });
+      });
+    } else {
+      doctorList.innerHTML = "<p>No doctors available for this shift.</p>";
+    }
+    const doctorsSection = document.getElementById("doctors");
+    doctorsSection.classList.add("visible");
+    doctorsSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+  document.getElementById("offline-btn").addEventListener("click", function () {
+    const selectedShift = document.getElementById("shift").value;
+    displayDoctors(selectedShift);
+  });
+</script>
+</html>
+
+
+  
