@@ -1,6 +1,5 @@
 import websocket
 import json
-import time
 
 def on_message(ws, message):
     print(f"Received from server: {message}")
@@ -8,9 +7,20 @@ def on_message(ws, message):
 def on_error(ws, error):
     print(f"Error: {error}")
 
-def on_close(ws):
-    print("Connection closed")
+def on_close(ws, close_status_code, close_msg):
+    print(f"Connection closed. Status code: {close_status_code}, Message: {close_msg}")
 
+def on_open(ws):
+    print("Connection opened")
+    test_data = {
+        "SensorData": {
+            "temperature": 26.5,
+            "ecg": 2000,
+            "pulse": 160
+        }
+    }
+    ws.send(json.dumps(test_data))
+    print("Sent test data.")
 
 ws = websocket.WebSocketApp(
     "ws://127.0.0.1:5000",

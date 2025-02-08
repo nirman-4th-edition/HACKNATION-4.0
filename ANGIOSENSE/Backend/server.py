@@ -30,8 +30,7 @@ async def fetch_data_from_dynamodb():
             "SensorData": {
                 "temperature": 0.0,
                 "ecg": 0,
-                "pulse": 0,
-                "timestamp":0
+                "pulse": 0
             }
         }
 
@@ -48,7 +47,6 @@ async def fetch_data_from_dynamodb():
                 data["SensorData"]["temperature"] = float(payload.get("temperature", 0))
                 data["SensorData"]["ecg"] = payload.get("ecg", 0)
                 data["SensorData"]["pulse"] = payload.get("pulse", 0)
-                data["SensorData"]["timestamp"] = payload.get("timestamp", 0)
             else:
                 print("No new payload detected. Using previous data.")
         else:
@@ -58,6 +56,49 @@ async def fetch_data_from_dynamodb():
     except Exception as e:
         print(f"Error fetching data from DynamoDB: {e}")
         return {}
+
+async def handle_client(websocket):
+    print("New client connected")
+    while True:
+        try:
+            message = await websocket.recv()
+            received_data = json.loads(message)
+            print("Received from client:", json.dumps(received_data, indent=4))
+
+        except websockets.exceptions.ConnectionClosed:
+            print("Connection with client closed.")
+            break
+
+        except Exception as e:
+            print(f"Error receiving data from client: {e}")
+            break
+
+async def send_data_from_dynamodb(websocket, path):
+    receive_task = asyncio.create_task(handle_client(websocket))
+
+    try:
+        while True:
+            data = await fetch_data_from_dynamodb()
+            print("Fetched data from DynamoDB:", json.dumps(data, indent=4))
+
+            if data:
+                print("Sending data to client...")
+                await websocket.send(json.dumps(data))
+            else:
+                print("No data to send.")
+
+            await asyncio.sleep(1)
+
+    except Exception as e:
+        print(f"Error sending data to client: {e}")
+
+    finally:
+        receive_task.cancel()
+        try:
+            await receive_task
+        except asyncio.CancelledError:
+            pass
+        print("Receive task cancelled.")
 
 start_server = websockets.serve(send_data_from_dynamodb, "127.0.0.1", 5000)
 
