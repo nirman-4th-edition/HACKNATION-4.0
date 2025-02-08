@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES6", // or ES2020/ES2021 depending on your Node.js version
+        "lib": ["DOM", "ESNext"],
+        "module": "commonjs",
+        "strict": true, // Enable strict mode for better type-checking
+        "esModuleInterop": true, // Allows default imports from modules without default exports
+        "skipLibCheck": true, // Skip checking .d.ts files for faster compilation
+        "forceConsistentCasingInFileNames": true, // Ensures consistent file casing
+        "outDir": "./dist", // Directory to output the compiled JS files
+        "rootDir": "./src", // Directory of your source code (adjust according to your project structure)
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "noImplicitAny": true, // Avoid implicit 'any' type
+        "strictNullChecks": true // Enforces null checks
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"],
+}
