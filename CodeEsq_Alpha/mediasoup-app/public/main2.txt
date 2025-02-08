@@ -1,0 +1,97 @@
+document.getElementById('join-button').addEventListener('click', () => {
+    const username = document.getElementById('username').value;
+    const roomId = document.getElementById('room-id').value;
+
+    if (username && roomId) {
+      // Connect to the server and join the room
+      const socket = io();
+      socket.emit('joinRoom', { username, roomId });
+
+      // Hide join screen and show controls and participant view
+      document.getElementById('join-screen').style.display = 'none';
+      document.getElementById('controls').style.display = 'block';
+      document.getElementById('participant-view').style.display = 'block';
+
+      // Handle further interactions with the server
+      socket.on('connect', () => {
+        console.log('Connected to server');
+      });
+
+      socket.on('roomJoined', (data) => {
+        console.log(`Joined room ${data.roomId} as ${data.username}`);
+        // Initialize media streams and UI updates here
+      });
+
+      socket.on('connect_error', (error) => {
+        console.error('Connection error:', error);
+        alert('Connection failed. Please try again.');
+      });
+
+      let localStream;
+      let audioEnabled = true;
+      let videoEnabled = true;
+
+      // Handle media stream setup
+      navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+        .then(stream => {
+          localStream = stream;
+          // Add stream to participant view
+          const videoElement = document.createElement('video');
+          videoElement.srcObject = stream;
+          videoElement.autoplay = true;
+          document.getElementById('participant-view').appendChild(videoElement);
+        })
+        .catch(error => {
+          console.error('Error accessing media devices.', error);
+          alert('Could not access your camera and microphone. Please check your permissions.');
+        });
+
+      // Handle mute button click
+      document.getElementById('mute-button').addEventListener('click', () => {
+        audioEnabled = !audioEnabled;
+        localStream.getAudioTracks()[0].enabled = audioEnabled;
+        document.getElementById('mute-button').textContent = audioEnabled ? 'Mute' : 'Unmute';
+      });
+
+      // Handle video button click
+      document.getElementById('video-button').addEventListener('click', () => {
+        videoEnabled = !videoEnabled;
+        localStream.getVideoTracks()[0].enabled = videoEnabled;
+        document.getElementById('video-button').textContent = videoEnabled ? 'Stop Video' : 'Start Video';
+      });
+
+      // Handle leave button click
+      document.getElementById('leave-button').addEventListener('click', () => {
+        socket.emit('leaveRoom', { username, roomId });
+        localStream.getTracks().forEach(track => track.stop());
+        socket.disconnect();
+
+        // Reset UI
+        document.getElementById('join-screen').style.display = 'block';
+        document.getElementById('controls').style.display = 'none';
+        document.getElementById('participant-view').style.display = 'none';
+        document.getElementById('participant-view').innerHTML = '';
+      });
+    } else {
+      alert('Please enter your name and room ID');
+    }
+  });
+
+
+// Server Handling: Server handles the joinRoom
+io.on('connection', (socket) => {
+  console.log('New client connected');
+
+  socket.on('joinRoom', async ({ username, roomId }) => {
+    console.log(`${username} is joining room: ${roomId}`);
+    // Create or join room logic
+    socket.join(roomId);
+    io.to(roomId).emit('roomJoined', { username, roomId });
+
+    // Further logic to handle room joining
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+  });
+});
