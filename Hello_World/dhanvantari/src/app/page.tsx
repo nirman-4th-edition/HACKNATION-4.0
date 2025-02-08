@@ -55,6 +55,11 @@ export default function Home() {
                 variants={getSlideLeftVariants(0.6)}
               >
                 <h3 className=' text-2xl font-semibold '>Queue</h3>
+                <div className="card">
+                  <div className="card_load"></div>
+                  <div className="card_load_extreme_title"></div>
+                  <div className="card_load_extreme_descripion"></div>
+                </div>
               </motion.div>
 
               <motion.div
@@ -126,11 +131,11 @@ export default function Home() {
               </motion.div>
             </div>
             <motion.button
-             className="btn absolute -bottom-44 -left-20"
-             initial={{opacity: 0}}
-             animate={{opacity: 1}}
-             transition={{duration: .5, delay: 1}}
-             >
+              className="btn absolute -bottom-44 -left-20"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: .5, delay: 1 }}
+            >
               <div className="scroll"> </div>
             </motion.button>
           </div>

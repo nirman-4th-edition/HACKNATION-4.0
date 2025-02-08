@@ -65,7 +65,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProp }) => {
       );
     case FormFieldType.DATE_PICKER:
       return (
-        <div className="flex items-center gap-2 rounded-lg border border-gray-300 bg-gray-100 p-2">
+        <div className="flex items-center gap-2 rounded-lg border border-gray-300 bg-transparent">
           <Image src='/assets/icons/calendar.svg' width={24} height={24} alt="calendar" />
           <FormControl>
             <DatePicker
@@ -97,6 +97,30 @@ const RenderField = ({ field, props }: { field: any; props: CustomProp }) => {
           <Textarea {...field} placeholder={placeholder} className="w-full rounded-lg border border-gray-300 bg-gray-100 p-2 focus:ring-0" disabled={props.disabled} />
         </FormControl>
       );
+    case FormFieldType.SKELETON:
+      return (
+        renderSkeleton ? renderSkeleton(field) : null
+      )
+
+    case FormFieldType.SELECT:
+      return (
+        <FormControl>
+          <Select onValueChange={field.onChange}
+            defaultValue={field.value}
+
+          >
+            <FormControl className='shad-select-trigger'>
+              <SelectTrigger>
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent className="shad-select-content">
+              {props.children}
+            </SelectContent>
+          </Select>
+        </FormControl>
+
+      )
     default:
       return null;
   }

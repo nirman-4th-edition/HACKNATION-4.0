@@ -8,6 +8,8 @@ export const UserFormValidation = z.object({
   email: z.string().email("Invalid email address"),
   phone: z
     .string(),
+    dob: z.coerce.date(),
+  gender: z.enum(["male", "female", "other"])
 });
 
 export const PatientFormValidation = z.object({
