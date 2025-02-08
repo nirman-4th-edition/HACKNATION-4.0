@@ -13,6 +13,7 @@ function LessonPlanner() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Check required fields
     if (!subject || !topic || !grade || !duration || !learningObjectives) {
       setError('Please fill out all required fields.');
       return;
@@ -42,6 +43,7 @@ function LessonPlanner() {
         return;
       }
 
+      // Read the stream from the response
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let done = false;
@@ -53,6 +55,7 @@ function LessonPlanner() {
         if (value) {
           const chunk = decoder.decode(value, { stream: true });
           accumulatedText += chunk;
+          // Update the lesson plan display as new chunks arrive
           setLessonPlan(accumulatedText);
         }
       }

@@ -1,0 +1,51 @@
+/* Container for quiz content with a max height and scroll */
+.quiz-content {
+  max-height: 80vh;       /* Limits the height to 80% of the viewport */
+  overflow-y: auto;       /* Adds a scrollbar if content exceeds container height */
+  padding: 1rem;
+  box-sizing: border-box; /* Ensures padding is included in the element's total width/height */
+}
+
+/* Styles for question blocks to prevent overlap */
+.question-block {
+  margin-bottom: 1rem;
+}
+
+/* Styles for option buttons */
+.option-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 8px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.option-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Highlight the selected option */
+.option-button.selected {
+  background-color: #cce5ff;
+  border-color: #66b0ff;
+}
+
+/* Result container styling */
+.result-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-height: 150px; /* Ensures the results container has a minimum height */
+}
+
+/* Optional: Styles for individual result items */
+.result-item {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}

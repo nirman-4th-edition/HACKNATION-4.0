@@ -1,7 +1,12 @@
-import "./Button.css";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Button = ({ onClick, text }) => {
-    return <button onClick={onClick} className="button">{text}</button>;
+const Button = ({ children, onClick }) => {
+    return (
+        <button className="custom-button" onClick={onClick}>
+            {children}
+        </button>
+    );
 };
 
 export default Button;

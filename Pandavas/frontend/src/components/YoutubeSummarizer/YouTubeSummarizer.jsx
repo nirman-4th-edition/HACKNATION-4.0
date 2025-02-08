@@ -49,7 +49,7 @@ function YouTubeSummarizer() {
                 placeholder="Enter YouTube URL" 
             />
             <button onClick={handleSummarize}>Summarize</button>
-            <div className="summary-output">
+            <div className="summary-container">
                 <MarkdownRenderer text={summary} />
             </div>
         </div>

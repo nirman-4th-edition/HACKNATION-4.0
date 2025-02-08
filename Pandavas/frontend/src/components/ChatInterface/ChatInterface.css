@@ -1,0 +1,22 @@
+.chat-container {
+    text-align: left;
+}
+
+.chat-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #2c2c2c;
+    color: white;
+}
+
+.reset-btn {
+    background: #ff3b3b;
+    margin-left: 10px;
+}
+
+.reset-btn:hover {
+    background: #b32727;
+}
