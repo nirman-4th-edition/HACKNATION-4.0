@@ -94,8 +94,8 @@ export default function Chatbot({ username = "User" }: ChatbotProps) {
                                     {msg.text}
                                     {msg.file && <p className="text-xs text-gray-400 mt-1 pb-2">📎 {msg.file.name}</p>}
                                     {msg.type == "call" && <p className="text-xs text-gray-400 mt-1">📞 Call {122}</p>}
-                                    {msg.type == "book" && <>{msg.doctors?.map((e: any, i: number) => {
-                                        return <div className="border-1 border-[1px] rounded-[5px] bg-white text-black py-2 px-2 flex justify-between items-center">
+                                    {msg.type == "book" && <div key={index}>{msg.doctors?.map((e: any, i: number) => {
+                                        return <div className="border-green-400 mt-4 border-[1.5px] rounded-[5px] bg-black/80 text-white py-2 px-5 flex justify-between items-center">
                                             <div onClick={() => {
                                                 // set local storage 
                                                 localStorage.setItem('boo', JSON.stringify({ doctors: msg.doctors?.[i], data: msg.data }));
@@ -105,7 +105,7 @@ export default function Chatbot({ username = "User" }: ChatbotProps) {
                                             </div>
                                             <ChevronRight />
                                         </div>
-                                    })}</>}
+                                    })}</div>}
                                 </div>
                             </div>
                             : <div key={index} className={`flex items-center space-x-3 p-3 rounded-xl max-w-[80%] w-fit ${"bg-black/40 text-white ml-auto flex-row-reverse"}`}>

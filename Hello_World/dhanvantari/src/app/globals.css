@@ -297,3 +297,28 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@media screen and (min-width:1440px) {
+  html {
+    font-size: 130%;
+  }
+}
+
+@media screen and (max-width:1080px) {
+  html {
+    font-size: 90%;
+  }
+}
+
+@media screen and (max-width:640px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media screen and (max-width:400px) {
+  html {
+    font-size: 70%;
+  }
+
+}

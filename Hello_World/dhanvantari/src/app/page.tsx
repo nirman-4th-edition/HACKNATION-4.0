@@ -49,7 +49,7 @@ export default function Home() {
               variants={getSlideLeftVariants(0.3)}
             >
               <motion.div
-                className="h-[63vh] w-[14vw] bg-white rounded-2xl absolute top-12 -left-16 shadow-black/40 shadow-inner flex flex-col gap-4 justify-center items-center"
+                className="h-[63vh] w-[14vw] bg-white rounded-2xl absolute top-12 -left-16 shadow-black/40 shadow-inner flex flex-col gap-4 justify-start pt-24 items-center"
                 initial="initial"
                 animate="animate"
                 variants={getSlideLeftVariants(0.6)}

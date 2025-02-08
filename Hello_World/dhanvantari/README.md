@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏥 AI-Powered Hospital Management System
 
-## Getting Started
+## 🚀 Overview
+The AI-Powered Hospital Management System is an advanced full-stack web application designed to automate and enhance hospital operations. It streamlines appointment booking, real-time dashboard management, patient record handling, and AI-driven automation to ensure efficiency, accuracy, and a seamless user experience.
 
-First, run the development server:
+## 🛠 Features
+- *Online Appointment Booking* – Patients can book appointments easily.
+- *Real-Time Dashboard* – Displays scheduled, pending, and canceled appointments.
+- *Automated Notifications* – SMS and email alerts for appointment confirmations, updates, and reminders.
+- *AI-Powered Chatbot* – Interacts with patients, fills out forms, and books appointments automatically.
+- *Smart Doctor Matching* – AI recommends the best doctor based on patient symptoms and availability.
+- *CRUD Operations* – Patients' medical records and appointments can be Created, Read, Updated, and Deleted dynamically.
 
-```bash
+## 🔍 Problem Statement
+Hospitals often face manual inefficiencies, long waiting times, and mismanagement of appointments. This project aims to solve these challenges by:
+- Reducing manual paperwork through AI automation.
+- Minimizing patient wait times with an optimized scheduling system.
+- Providing seamless communication via SMS and email alerts.
+- Enabling smarter patient-doctor matching with AI-based recommendations.
+- Ensuring accessibility with a user-friendly dashboard and chatbot assistance.
+
+## 🏗 Tech Stack
+
+### Frontend
+- Next.js 15 – Optimized React-based framework
+- React v19 – Modern Frontend Framework
+- ShadCn UI - Modern UI components
+- Tailwind CSS – Clean and responsive styling
+- Appwrite - For Authentication
+- Mongoose ODM - For Database 
+- Antropic API Key - For AI model and AI agent integration
+
+### Backend
+- Node.js  – REST API backend
+- FastAPI – AI integration and backend automation
+- MongoDB – NoSQL database for storing patient records
+
+### AI & Automation
+- LangChain & OpenAI API – AI chatbot integration
+- Twilio API – SMS notifications
+- Nodemailer – Email alerts
+
+## 🔄 Flowchart
+mermaid
+graph TD;
+    A[Patient Visits Website] --> B[Interacts with AI Chatbot]
+    B --> C[AI Collects Symptoms & Personal Data]
+    C --> D[Finds Best Doctor]
+    D --> E[Checks Doctor Availability]
+    E --> F[Books Appointment & Updates Database]
+    F --> G[SMS & Email Confirmation Sent]
+    G --> H[Real-Time Dashboard Updates]
+
+
+## 🎯 Solution We Provide
+- *Automated Patient Management* – AI handles form-filling and database updates.
+- *Smart Appointment Scheduling* – AI optimizes doctor availability and patient needs.
+- *Real-Time Tracking* – Live updates for doctors and hospital staff.
+- *Seamless Communication* – Automated email and SMS notifications for patients.
+
+## 📜 Installation & Setup
+
+### Clone the Repository
+bash
+git clone https://github.com/subhankar2004/HACKNATION-4.0.git
+cd dhanvantari
+
+
+### Install Dependencies
+bash
+npm install
+
+
+### Start the Backend
+bash
+cd backend
+npm start
+
+
+### Start the Frontend
+bash
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Future Enhancements
+- *AI-Driven Health Predictions* – Predict potential health issues based on medical records.
+- *Blockchain Integration* – Secure and decentralized patient records.
+- *Multi-Language Chatbot* – Support for regional languages for better accessibility.
+- *Doctor Performance Analytics* – AI-based feedback and efficiency tracking.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👥 Team
+| Name | Role |
+|------|------|
+| Subhankar Patra | 
+| Pritam Kumar Manohari | 
+| Piyush Kumar | 
+| K Suman Patra | 
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 License
+This project is our submission for SIT HACKNATION 2k25.
