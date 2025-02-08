@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediaSoup App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="join-screen">
+    <h2>Join Room</h2>
+    <input type="text" id="username" placeholder="Enter your name">
+    <input type="text" id="room-id" placeholder="Enter room ID">
+    <button id="join-button">Join</button>
+  </div>
+
+  <!--Implement controls-->
+  <div id="controls" style="display: none;">
+    <button id="mute-button">Mute</button>
+    <button id="video-button">Stop Video</button>
+    <button id="leave-button">Leave Room</button>
+  </div>  
+  <div id="participant-view" style="display: none;">
+  <!-- Participant video elements will be added here dynamically -->
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

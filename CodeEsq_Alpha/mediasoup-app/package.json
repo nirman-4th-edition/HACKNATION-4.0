@@ -1,0 +1,32 @@
+{
+  "name": "mediasoup-video-chat",
+  "version": "1.0.0",
+  "description": "A LAN-based SFU video chat application using MediaSoup and WebRTC.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "http": "0.0.1-security",
+    "mediasoup": "^3.11.17",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "mediasoup",
+    "sfu",
+    "webrtc",
+    "video-chat",
+    "lan",
+    "nodejs"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
