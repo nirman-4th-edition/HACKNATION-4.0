@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Upload FIR</title>
+    <link rel="stylesheet" href="fir.css">
+</head>
+
+<body>
+
+    <div class="user-dashboard">
+        <h1>Welcome, User!</h1>
+        <p>Upload your FIR for review:</p>
+        <form id="fir-upload-form" enctype="multipart/form-data">
+            <input type="file" id="fir-file" name="fir" accept=".pdf, .docx, .jpg, .png" required />
+            <button type="submit">Upload FIR</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script src="fir.js"></script>
+</body>
+
+</html>

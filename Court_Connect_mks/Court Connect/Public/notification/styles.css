@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+.notification-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.notification-section {
+    margin-bottom: 30px;
+}
+
+.notification-header {
+    font-size: 24px;
+    color: #e57cd5;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e972db;
+    padding-bottom: 10px;
+}
+
+.notification-card {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.notification-card p {
+    margin: 10px 0;
+}
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar-container #calendar,
+.calendar-container #schedule-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.calendar-container .day,
+.calendar-container .highlighted-day {
+    padding: 15px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-container .highlighted-day {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.calendar-container .day:hover,
+.calendar-container .highlighted-day:hover {
+    background-color: #e9ecef;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.calendar-container .day-name {
+    font-weight: bold;
+    color:#007bff;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}

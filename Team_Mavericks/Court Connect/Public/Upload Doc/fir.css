@@ -1,0 +1,54 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #efdaf6;
+}
+
+.user-dashboard {
+    padding: 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-dashboard h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+.user-dashboard p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.user-dashboard form {
+    margin-top: 20px;
+}
+
+.user-dashboard input[type="file"] {
+    margin: 10px 0;
+}
+
+.user-dashboard button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.user-dashboard button:hover {
+    background-color: #45a049;
+}
+
+.user-dashboard #message {
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #d9534f;
+}
