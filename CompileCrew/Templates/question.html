@@ -89,6 +89,9 @@
     <!-- Display Added Questions -->
     <div class="mt-5">
         <h3>Added Questions</h3>
+        <a href="/exam_set/" class="bg-blue-600 text-black py-2 px-4 rounded-lg hover:bg-blue-700 transition inline-block text-center">
+            Done
+        </a>
         {% for question in questions %}
             <div class="question-card">
                 <a href="{% url 'delete_question' question.id %}" class="delete-question">🗑</a>
@@ -109,6 +112,7 @@
         {% empty %}
             <p>No questions added yet.</p>
         {% endfor %}
+        
     </div>
 
     <script>

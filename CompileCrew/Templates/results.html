@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Result | ClearCheck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100">
+    <div class="container mx-auto p-8">
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-gray-800">Exam Result</h1>
+            <h2 class="text-xl text-gray-600 mt-2">Exam: <span class="font-semibold text-blue-500">{{ exam.exam_code }}</span></h2>
+        </header>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <table class="w-full table-auto border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-gray-300 px-4 py-2 text-left">Student Name</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Student ID</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Score</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Status</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left">Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr class="hover:bg-gray-100">
+                            <td class="border border-gray-300 px-4 py-2">{{ result.student_name }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ result.student_id }}</td>
+                            <td class="border border-gray-300 px-4 py-2">{{ result.score }}%</td>
+                            <td class="border border-gray-300 px-4 py-2">
+                                {% if result.status == "Pass" %}
+                                    <span class="text-green-500 font-bold">Pass</span>
+                                {% else %}
+                                    <span class="text-red-500 font-bold">Fail</span>
+                                {% endif %}
+                            </td>
+                            <td class="border border-gray-300 px-4 py-2">{{ result.timestamp }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center text-gray-500 py-4">No results found for this exam.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

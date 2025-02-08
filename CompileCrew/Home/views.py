@@ -19,10 +19,11 @@ from .helpers import *
 import os
 import pickle
 import numpy as np
+from django.utils.dateparse import parse_datetime
+from datetime import timedelta
 from PIL import Image
 import io
 
-flag = False
 
 # Create your views here.
 @login_required(login_url='signin')
@@ -33,14 +34,97 @@ def index(request):
 def dashboard(request):
     return render(request,'dashboard.html')
 
+
+@login_required(login_url='signin')
+def student_dashboard(request):
+    """Displays the student dashboard and allows students to enter an exam code."""
+    profile_obj = Profile.objects.get(user=request.user)
+    
+    if request.method == 'POST':
+        exam_code = request.POST.get('exam_code')
+        print(f"Exam code: {exam_code}")
+        
+        if not exam_code:
+            messages.error(request, "Please provide an exam code.")
+            return redirect('student_dashboard')
+
+        questions = Question.objects.filter(exam_code=f"EXAM - {exam_code}")
+        
+        if not questions.exists():
+            messages.error(request, "No exam found with the provided code.")
+            return redirect('student_dashboard')
+       
+            
+        request.session['exam_code'] = exam_code  # Store the exam code in the session
+        
+        if profile_obj.user_type == 'student':
+            return redirect('take_exam')
+        elif profile_obj:
+            return redirect('take_exam')
+        
+        else:
+            messages.error(request, "Run file2.exe First the try again")
+            return redirect('student_dashboard') # Redirect without passing questions directly
+    
+   
+    return render(request, 'student_dashboard.html')
+
+
+
+@login_required(login_url='signin')
+def take_exam(request):
+    """Handles the actual exam-taking process."""
+    exam_code = request.session.get('exam_code')
+    
+    if not exam_code:
+        messages.error(request, "No active exam session found. Please try again.")
+        return redirect('student_dashboard')
+
+    questions = Question.objects.filter(exam_code=f"EXAM - {exam_code}")
+    print(questions)
+    
+    if request.method == "POST":
+        answers = {}
+        for question in questions:
+            answer = request.POST.get(f"answer_{question.id}")
+            if answer:
+                is_correct = answer.strip().lower() == question.correct_answer.strip().lower()
+                
+                # Save the student's answer
+                StudentAnswer.objects.update_or_create(
+                    user=request.user,
+                    question=question,
+                    is_attempted = True,
+                    defaults={"answer": answer, "is_correct": is_correct}
+                )
+                answers[question.id] = is_correct
+        attempt = StudentAnswer.objects.filter(is_attempted=True)
+        correct_answers = sum(answers.values())
+        total_questions = questions.count()
+        score = int((correct_answers / total_questions) * 100) if total_questions > 0 else 0
+        attempted_questions = StudentAnswer.objects.filter(
+            user=request.user,
+            question__exam_code=f"EXAM - {exam_code}",
+            is_attempted=True
+        ).count()
+
+        Result.objects.create(user=request.user, exam_code=exam_code, score=score)
+        
+        messages.success(request, f"Exam submitted! Successfully ")
+        del request.session['exam_code']  # Clear the session after submission
+        return render(request,'thank_you.html',{"total":total_questions,"attempt":attempted_questions})
+
+    return render(request, "take_exam.html", {"questions": questions})
+
+
+@login_required(login_url='signin')
+def answer_exam(request):
+    """Deprecated: This view can be merged with take_exam."""
+    messages.info(request, "This functionality is now part of 'take_exam'.")
+    return redirect('student_dashboard')
+
 def generate_exam_code():
     return "EXAM - "+str(uuid.uuid4())[:8]
-
-def delete_question(request, question_id):
-    """Delete a specific question."""
-    question = Question.objects.get(id=question_id)
-    question.delete()
-    return redirect("question_form")
 
 def question_form(request):
     """Render the form and handle question submission."""
@@ -83,6 +167,12 @@ def question_form(request):
     # Fetch all questions to display in the frontend
     questions = Question.objects.all()
     return render(request, "question.html", {"questions": questions})
+
+def delete_question(request, question_id):
+    """Delete a specific question."""
+    question = Question.objects.get(id=question_id)
+    question.delete()
+    return redirect("question_form")
 
 def signup(request):
     if request.method == 'POST':
@@ -303,14 +393,176 @@ def verify_college(request, profile_id):
     messages.success(request, 'College ID verified successfully.')
     return redirect('verification_success')
 
-def check_condition(monitors, devices, webcams):
-    if len(monitors) == 1 and len(webcams) == 1 :
-        return False
+@login_required(login_url='signin')
+def result_view(request, exam_code):
+    """Displays the results for a specific exam."""
+    exam_questions = Question.objects.filter(exam_code=f"EXAM - {exam_code}")
+    print(exam_questions)
+    
+    if not exam_questions.exists():
+        messages.error(request, "Exam not found.")
+        return redirect('student_dashboard')
+    
+    # Fetching results for the given exam code
+    results = Result.objects.filter(exam_code=exam_code)
+    # Preparing the result data
+    result_data = [
+        {
+            "student_name": result.user.username if result.user else "Unknown",
+            "student_id": result.user.id if result.user else "N/A",
+            "score": result.score,
+            "status": "Pass" if result.score >= 50 else "Fail",  # Pass if score is 50 or higher
+            "timestamp": result.timestamp.strftime("%Y-%m-%d %H:%M:%S"),
+        }
+        for result in results
+    ]
+    
+    context = {
+        "exam_code": exam_code,
+        "exam": exam_questions.first(),  # Passing the first question as a reference to the exam
+        "results": result_data,
+    }
+    return render(request, "results.html", context)
+
+
+# @login_required(login_url='signin')
+# def answer_exam(request):
+#     if request.method == "POST":
+#         exam_code = request.POST.get("exam_code")
+
+#         if not exam_code:
+#             messages.error(request, "Please provide an exam code.")
+#             return redirect('student_dashboard')
+
+#         questions = Question.objects.filter(exam_code=exam_code)
+
+#         if not questions.exists():
+#             messages.error(request, "No exam found with the provided code.")
+#             return redirect('student_dashboard')
+
+#         request.session['exam_code'] = exam_code
+#         return render(request, "take_exam.html",{"questions":questions})
+
+#     return render(request, "answer_exam.html")
+
+
+# @login_required(login_url='signin')
+# def take_exam(request):
+#     exam_code = request.POST.get('exam_code')
+
+#     if not exam_code:
+#         messages.error(request, "Invalid exam session. Please try again.")
+#         return redirect('student_dashboard')
+
+#     questions = Question.objects.filter(exam_code=exam_code)
+    
+#     if request.method == "POST":
+#         answers = {}
+#         for question in questions:
+#             answer = request.POST.get(f"answer_{question.id}")
+#             if answer:  # Check if the answer is provided
+#                 is_correct = answer.strip().lower() == question.correct_answer.strip().lower()
+                
+#                 # Save the student's answer
+#                 StudentAnswer.objects.create(
+#                     user=request.user,
+#                     question=question,
+#                     answer=answer,
+#                     is_correct=is_correct
+#                 )
+#                 answers[question.id] = is_correct
+
+#         # Calculate the score
+#         correct_answers = sum(answers.values())
+#         total_questions = questions.count()
+#         score = int((correct_answers / total_questions) * 100) if total_questions > 0 else 0
+
+#         # Save the result
+#         Result.objects.create(user=request.user, exam_code=exam_code, score=score)
+
+#         messages.success(request, f"Exam submitted! Your score: {score}%")
+#         del request.session['exam_code']
+#         return redirect('student_dashboard')
+
+#     return render(request, "take_exam.html")
+latest_status = {}
+@csrf_exempt  # Disable CSRF protection for this endpoint (only if necessary)
+def receive_status(request):
+    global latest_status
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body.decode('utf-8'))
+
+            # Extract data from the request
+            monitors = data.get('monitors', [])
+            devices = data.get('devices', [])
+            webcams = data.get('webcams', [])
+            print(f"Monitors: {monitors}")
+            print(f"Devices: {devices}")
+            print(f"Webcams: {webcams}")
+
+            # Condition to trigger an action (replace this with your custom logic)
+            if check_condition(monitors, devices, webcams):
+                print("resume")
+                latest_status = {'status': 'resume', 'message': 'Condition met. Resuming exam.'}
+                # return JsonResponse({'status': 'resume', 'message': 'Condition met. Resuming exam.'})
+            else:
+                print("alert")
+                latest_status = {'status': 'alert', 'message': 'External Insertion Has Been Detected.'}
+                # return JsonResponse({'status': 'alert', 'message': 'Condition failed. Alert triggered!'})
+
+
+            # return JsonResponse({'status': 'success', 'message': 'Data received successfully'})
+
+        except json.JSONDecodeError:
+            print("error1")
+            return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
+    print("error2")
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=405)
+
+def get_status(request):
+    return JsonResponse(latest_status)
+
+def download_file(request, filename):
+    file_path = os.path.join(settings.MEDIA_ROOT, 'executables', filename)
+    if os.path.exists(file_path):
+        return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
     else:
+        return HttpResponseNotFound('File not found')
+
+def check_condition(monitors, devices, webcams):
+    if len(webcams)> 1 or len(monitors)>1:
+        return False
+    if any(device['type'] == 'external' for device in devices):
+        return False
+    else :
         return True
     
-   
+def exam_set(request):
+    if request.method == 'POST':
+        exam_code = request.POST.get('exam_code')
+        recipient = request.POST.get('recipient')
+        start_time = parse_datetime(request.POST.get('start_time'))
+        duration_minutes = request.POST.get('duration')
+
+        if not start_time or not duration_minutes:
+            return render(request, 'set_exam.html', {'error': 'All fields are required!'})
+        exam = Exam.objects.create(
+            exam_code=exam_code,
+            recipient=recipient,
+            start_time=start_time,
+           duration=timedelta(minutes=int(duration_minutes))
+        )
+        # Extract emails from the recipient string
+        send_to_recipient(recipient,exam)
+        return render(request, 'set_exam.html', {'success': 'Exam created successfully!'})
+    return render(request, 'set_exam.html')
+        
 def logout(request):
     auth.logout(request)
     return redirect('signin')
+
+# extra
+
         
+    

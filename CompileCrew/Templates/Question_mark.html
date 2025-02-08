@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proctoring System</title>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #CDC1FF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .container {
+            max-width: calc(100% - 330px);
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+        header {
+            background-color: #A294F9;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        h1 {
+            margin: 0;
+        }
+        .test-info {
+            background-color: #F5EFFF;
+            border-radius: 15px; 
+            padding: 20px;
+            margin-top: 80px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+            display: flex; 
+            flex-direction: row; 
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%; 
+            max-width: 800px; 
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease-in-out; 
+        }
+        
+        .test-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
+        }
+
+        .question-container {
+            background-color: #e1d2f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .option {
+            margin-bottom: 10px;
+        }
+        .option label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: none;
+        }
+        #webcam-container {
+            position: fixed;
+            top: 80px; 
+            right: 20px; 
+            width: 290px; 
+            height: 220px; 
+            border: 4px solid #dcccf7; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); 
+            overflow: hidden;
+            background-color: #fff;
+        }
+        
+        #webcam {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #face-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Proctoring System</h1>
+    </header>
+    <div class="container">
+        <div class="test-info">
+            <h2>Test Information:</h2>
+            <p><strong>Subject:</strong> Computer Science</p>
+            <p><strong>Duration:</strong> 60 minutes</p>
+            <p><strong>Total Questions:</strong> {{ questions|length }}</p>
+        </div>
+        <div class="timer" id="timer">Time Remaining: 60:00</div>
+        <div class="warning" id="warning">Warning: You are not in full-screen mode!</div>
+        <div class="warning" id="face-warning" style="display: none;">Warning: Face not detected!</div>
+        <div class="warning" id="movement-warning" style="display: none;">Warning: Excessive movement detected!</div>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Answer the questions for Exam Code: {{ questions.0.exam_code }}</h2>
+            {% for question in questions %}
+                <div class="question-container">
+                    <p><strong>Question {{ forloop.counter }}:</strong> {{ question.question_text }}</p>
+                    {% if question.question_type == "mcq" %}
+                        {% for option in question.get_options %}
+                            <div class="option">
+                                <input type="radio" name="answer_{{ question.id }}" value="{{ option }}" required>
+                                <label style="display:inline;">{{ option }}</label>
+                            </div>
+                        {% endfor %}
+                    {% elif question.question_type == "shortanswer" %}
+                        <textarea name="answer_{{ question.id }}" required></textarea>
+                    {% elif question.question_type == "truefalse" %}
+                        {% for option in question.get_options %}
+                            <div class="option">
+                                <input type="radio" name="answer_{{ question.id }}" value="{{ option }}" required>
+                                <label style="display:inline;">{{ option }}</label>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn">Submit Exam</button>
+        </form>
+    </div>
+    
+    <div id="webcam-container">
+        <video id="webcam" autoplay muted></video>
+        <canvas id="face-canvas"></canvas>
+    </div>
+
+    <script>
+        let timeRemaining = 60 * 60; // 60 minutes in seconds
+
+        function updateTimer() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('timer').textContent = `Time Remaining: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeRemaining > 0) {
+                timeRemaining--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                alert("Time's up!");
+            }
+        }
+
+        async function setupWebcam() {
+            const video = document.getElementById('webcam');
+            const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
+            video.srcObject = stream;
+
+            // Load face-api.js models
+            await faceapi.nets.tinyFaceDetector.loadFromUri('/static/models');
+            await faceapi.nets.faceLandmark68Net.loadFromUri('/static/models');
+            await faceapi.nets.faceRecognitionNet.loadFromUri('/static/models');
+
+            video.addEventListener('play', () => {
+                const canvas = document.getElementById('face-canvas');
+                const displaySize = { width: video.width, height: video.height };
+                faceapi.matchDimensions(canvas, displaySize);
+
+                setInterval(async () => {
+                    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors();
+                    const resizedDetections = faceapi.resizeResults(detections, displaySize);
+                    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+                    faceapi.draw.drawDetections(canvas, resizedDetections);
+                    faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+
+                    // Check if any face is detected
+                    if (detections.length === 0) {
+                        document.getElementById('face-warning').style.display = 'block';
+                    } else {
+                        document.getElementById('face-warning').style.display = 'none';
+                    }
+                }, 100);
+            });
+        }
+
+        setupWebcam();
+        updateTimer();
+    </script>
+</body>
+</html>

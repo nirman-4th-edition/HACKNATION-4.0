@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proctoring System</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        background-color: #cdc1ff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      .container {
+        max-width: calc(100% - 330px);
+        margin: 0 auto;
+        padding: 20px;
+        flex: 1;
+      }
+      #alert-icon {
+        display: none;
+        color: red;
+        font-size: 24px;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+      header {
+        background-color: #a294f9;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+      }
+      h1 {
+        margin: 0;
+      }
+      .test-info {
+        background-color: #f5efff;
+        border-radius: 15px;
+        padding: 20px;
+        margin-top: 80px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .timer {
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      #prediction-result {
+        margin-top: 20px;
+        font-weight: bold;
+        color: #e74c3c;
+        text-align: center;
+      }
+      #webcam-container {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        width: 290px;
+        height: 220px;
+        border: 4px solid #dcccf7;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        background-color: #fff;
+      }
+      #webcam {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      #face-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Proctoring System</h1>
+    </header>
+    <div class="container">
+      <div class="test-info">
+        <h2>Test Information:</h2>
+        <p><strong>Subject:</strong> Computer Science</p>
+        <p><strong>Duration:</strong> 60 minutes</p>
+        <p><strong>Total Questions:</strong> {{ questions|length }}</p>
+      </div>
+      <div class="timer" id="timer">Time Remaining: 60:00</div>
+      <div id="prediction-result">
+        Prediction: Waiting for frame analysis...
+      </div>
+      <form method="POST">
+        {% csrf_token %}
+        <h2>Answer the questions for Exam Code: {{ questions.0.exam_code }}</h2>
+        {% for question in questions %}
+        <div class="question-container">
+          <p>
+            <strong>Question {{ forloop.counter }}:</strong> {{question.question_text }}
+          </p>
+          {% if question.question_type == "mcq" %}
+          
+          {% for option in question.get_options %}
+          <div class="option">
+            <input
+              type="radio"
+              name="answer_{{ question.id }}"
+              value="{{ option }}"
+              required/>
+            <label style="display: inline">{{ option }}</label>
+          </div>
+          {% endfor %} 
+
+          {% elif question.question_type == "shortanswer" %}
+          <textarea name="answer_{{ question.id }}" required></textarea>
+          {% elif question.question_type == "truefalse" %} 
+          {% for option in question.get_options %}
+          <div class="option">
+            <input
+              type="radio"
+              name="answer_{{ question.id }}"
+              value="{{ option }}"
+              required
+            />
+            <label style="display: inline">{{ option }}</label>
+          </div>
+          {% endfor %} {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn">Submit Exam</button>
+      </form>
+    </div>
+
+    <div id="webcam-container">
+      <video id="webcam" autoplay muted></video>
+      <canvas id="face-canvas"></canvas>
+    </div>
+
+    <script>
+              // Disable right-click context menu
+             
+
+              function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            
+            (async function() {
+                console.log("Wait for 10 seconds...");
+                await sleep(10000);  // Pauses for 10 seconds (10,000 ms)
+                console.log("10 seconds later...");
+            })();
+            let fullScreenEnabled = false;
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'F11') {
+        event.preventDefault(); // Prevent the default F11 behavior
+
+        if (!fullScreenEnabled) {
+            // Enter fullscreen on the first F11 press
+            enterFullScreen();
+            fullScreenEnabled = true;
+            alert("Fullscreen enabled. F11 will be disabled after 10 seconds.");
+            
+            setTimeout(() => {
+                disableF11(); // Disable F11 after 10 seconds
+                alert("F11 is now disabled.");
+            }, 10000); // Wait for 10 seconds (10000 ms)
+        }
+    }
+});
+
+function enterFullScreen() {
+    const element = document.documentElement;
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+}
+
+function disableF11() {
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'F11') {
+            event.preventDefault(); // Disable F11 after 10 seconds
+        }
+    });
+}
+
+          document.addEventListener('contextmenu', function(e) {
+
+              e.preventDefault();
+
+              alert("Right-click is disabled on this page.");
+
+          });
+
+
+
+          // Prevent copy and paste actions
+
+          document.addEventListener('copy', function(e) {
+
+              e.preventDefault();
+
+              alert("Copying is disabled on this page.");
+
+          });
+
+
+
+          document.addEventListener('paste', function(e) {
+
+              e.preventDefault();
+
+              alert("Pasting is disabled on this page.");
+
+          });
+
+
+
+          // Prevent text selection with mouse
+
+
+
+
+
+          // Prevent copy and paste keyboard shortcuts
+
+          document.addEventListener('keydown', function(e) {
+
+              if (e.target.tagName !== 'TEXTAREA' && e.ctrlKey && (e.key === 'c' || e.key === 'v')) {
+
+                  e.preventDefault();
+
+                  alert("Copying and pasting using keyboard shortcuts is disabled on this page.");
+
+}});
+
+              let totalTime = 60 * 60; // 60 minutes in seconds
+              let timeRemaining = localStorage.getItem('timeRemaining') ? parseInt(localStorage.getItem('timeRemaining')) : totalTime;
+
+              function updateTimer() {
+                  const minutes = Math.floor(timeRemaining / 60);
+                  const seconds = timeRemaining % 60;
+                  document.getElementById('timer').textContent = `Time Remaining: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                  if (timeRemaining > 0) {
+                      timeRemaining--;
+                      localStorage.setItem('timeRemaining', timeRemaining); // Save the time remaining to localStorage
+                      setTimeout(updateTimer, 1000);
+                  } else {
+                      alert("Time's up!");
+                      localStorage.removeItem('timeRemaining'); // Clear the saved time
+                      document.querySelector('.btn').click();
+                  }
+              }
+
+              // Clear the timer if it's the first time or the previous session has expired
+              window.onload = function() {
+                  if (timeRemaining <= 0) {
+                      localStorage.removeItem('timeRemaining');
+                      timeRemaining = totalTime;
+                  }
+                  updateTimer();
+              };
+
+              async function setupWebcam() {
+                  const video = document.getElementById('webcam');
+                  const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
+                  video.srcObject = stream;
+              }
+
+              async function sendFrameToServer() {
+                  const video = document.getElementById('webcam');
+                  const canvas = document.createElement('canvas');
+                  canvas.width = video.videoWidth;
+                  canvas.height = video.videoHeight;
+                  const context = canvas.getContext('2d');
+                  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                  const frameBlob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg'));
+
+                  const formData = new FormData();
+                  formData.append('frame', frameBlob, 'frame.jpg');
+
+                  try {
+                      const response = await fetch('/process-frame/', {
+                          method: 'POST',
+                          body: formData,
+                      });
+
+                      const result = await response.json();
+                      document.getElementById('prediction-result').textContent = result.result;
+                  } catch (error) {
+                      console.error('Error sending frame to server:', error);
+                  }
+              }
+
+              setupWebcam();
+              updateTimer();
+              setInterval(sendFrameToServer, 2000);
+              {% comment %} async function sendStatusData(data) {
+                  try {
+                      const response = await fetch('http://127.0.0.1:8000/api/receive-status/', {
+                          method: 'POST',
+                          body: JSON.stringify(data),
+                          headers: { 'Content-Type': 'application/json' }
+                      });
+
+                      const result = await response.json();
+                      console.log("Server Response:", result);
+
+                      if (result.status === 'alert') {
+                          alert(result.message);  // Show the alert message
+                      } else if (result.status === 'resume') {
+                          resumeExam();  // Resume the exam
+                      } else if (result.status === 'success') {
+                          console.log(result.message);
+                      } else {
+                          console.warn('Unexpected response:', result);
+                      }
+                  } catch (error) {
+                      console.error('Error:', error);
+                      alert('Failed to send status data. Please try again.');
+                  }
+              }
+
+              function resumeExam() {
+                  console.log("Exam resumed successfully.");
+                  // Add additional logic if needed to continue the exam
+              }
+
+              // Fetch data from Flask and send it to Django every 10 seconds
+              setInterval(async function() {
+                  try {
+                      // Replace this with actual data from Flask
+                      const data = await fetchSystemStatusFromFlask();
+                      console.log("Sending system status to Django:", data);
+                      await sendStatusData(data);
+                  } catch (error) {
+                      console.error('Error fetching system status:', error);
+                  }
+              }, 10000);
+
+              // Dummy function to simulate fetching data from Flask
+              async function fetchSystemStatusFromFlask() {
+                  // Example: Fetching real data from the Flask endpoint
+                  const response = await fetch('http://127.0.0.1:8000/system_status');
+                  return response.json();
+              } {% endcomment %}
+              async function fetchStatusFromDjango() {
+                  try {
+                      const response = await fetch('http://127.0.0.1:8000/api/get-status/', {
+                          method: 'GET',
+                          headers: { 'Content-Type': 'application/json' }
+                      });
+
+                      const result = await response.json();
+                      console.log("Django Response:", result);
+
+                      if (result.status === 'alert') {
+                          alert(result.message);  // Show an alert message
+                      } else if (result.status === 'resume') {
+                          console.log("All Right")
+                          resumeExam();  // Resume the exam
+                      } else if (result.status === 'success') {
+                          console.log(result.message);
+                      } else {
+                          console.warn('Unexpected response:', result);
+                      }
+                  } catch (error) {
+                      console.error('Error fetching status from Django:', error);
+                      alert('Failed to fetch status. Please try again.');
+                  }
+              }
+
+              function resumeExam() {
+                  console.log("Exam resumed successfully.");
+                  // Add any other logic to continue the exam
+              }
+
+              // Poll Django every 5 seconds
+              setInterval(fetchStatusFromDjango, 5000);
+    </script>
+  </body>
+</html>

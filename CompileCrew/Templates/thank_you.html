@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #F5EFFF;
+            padding: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .summary {
+            font-size: 18px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .final-message {
+            display: none;
+            font-size: 18px;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Exam Completed!</h1>
+        <p class="summary">You have attempted <span id="attempted-count">{attempt}</span> out of {total} questions.</p>
+        <button class="btn" onclick="submitExam()">Submit Final Answers</button>
+        <p class="final-message" id="final-message">✅ Your answers have been submitted successfully! The exam is now closed.</p>
+    </div>
+
+    <script>
+        // Retrieve the attempted questions count from local storage (tracked during the exam)
+        let attemptedQuestions = localStorage.getItem("attemptedQuestions") || 0;
+        document.getElementById("attempted-count").textContent = attemptedQuestions;
+
+        function submitExam() {
+            // Prevent multiple submissions
+            document.querySelector(".btn").disabled = true;
+            document.querySelector(".btn").textContent = "Submitted";
+            
+            // Show final confirmation message
+            document.getElementById("final-message").style.display = "block";
+
+            // Optionally, clear local storage after submission
+            localStorage.removeItem("attemptedQuestions");
+
+            // Redirect or close the exam after a few seconds (optional)
+            setTimeout(() => {
+                alert("Exam session has ended. You can close the window.");
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>
