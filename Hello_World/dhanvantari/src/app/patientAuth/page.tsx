@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import PatientForm from "@/components/forms/PatientForm";
-import { AuroraBackground } from "@/components/ui/AuroraBackground";
 
 export default function Home() {
   return (

@@ -1,9 +1,11 @@
+"use client"
 import { AuroraBackground } from '@/components/ui/AuroraBackground'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { AlertCircle, Calendar, Clock, MapPin, User } from 'lucide-react';
+import { log } from 'console';
 
 function page() {
   return (
@@ -18,19 +20,44 @@ function page() {
 export default page
 
 const BookingCard = () => {
-    let consultation = null
+
+    console.log(localStorage.getItem("boo"));
+    
+    const [consultation,setConsultation] = useState<any>(null)
+   useEffect(()=>{
     try {
-        consultation=JSON.parse(localStorage.getItem("book")??"")
+        setConsultation(JSON.parse(localStorage.getItem("boo")??"{}"))
     } catch (error) {
+        console.log(error);
         
     }
+   },[])
 
     if(!consultation){
         return <div>No data found</div>
     }
     
-    
-  
+
+    const bookAppointmet = ()=>{
+        fetch('http://localhost:3001/appointment/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: localStorage.userId,
+                doctorId: consultation.doctors.id,
+                problemSummary: JSON.stringify(consultation)
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
     return (
       <div className="w-full max-w-2xl mx-auto p-4">
         <Card className="w-full bg-white/90 backdrop-blur-sm shadow-lg">
@@ -85,7 +112,7 @@ const BookingCard = () => {
           <CardFooter className="bg-gray-50 p-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
             <div className="flex items-center space-x-2 text-gray-600">
             </div>
-            <Button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
+            <Button onClick={bookAppointmet} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white">
               Book Appointment
             </Button>
           </CardFooter>

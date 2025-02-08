@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Paperclip, User, Bot, Send, ChevronRight } from "lucide-react";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
+import { log } from "console";
 
 interface Message {
     text: string;
@@ -94,12 +95,17 @@ export default function Chatbot({ username = "User" }: ChatbotProps) {
                                     {msg.text}
                                     {msg.file && <p className="text-xs text-gray-400 mt-1 pb-2">📎 {msg.file.name}</p>}
                                     {msg.type == "call" && <p className="text-xs text-gray-400 mt-1">📞 Call {122}</p>}
-                                    {msg.type == "book" && <>{msg.doctors?.map((e: any, i: number) => {
-                                        return <div className="border-1 border-[1px] rounded-[5px] bg-white text-black py-2 px-2 flex justify-between items-center">
-                                            <div onClick={() => {
-                                                // set local storage 
-                                                localStorage.setItem('boo', JSON.stringify({ doctors: msg.doctors?.[i], data: msg.data }));
-                                            }} className="flex flex-col ">
+                                    {msg.type == "book" && <>{msg.doctors?.map((e: any , i:number) => {
+                                        return <div 
+                                        onClick={()=>{
+                                          // set local storage 
+                                          console.log("local host ");
+                                          
+                                          localStorage.setItem('boo', JSON.stringify({doctors : msg.doctors?.[i] , data : msg.data},null,2));
+                                        }}
+
+                                        className="border-1 border-[1px] rounded-[5px] bg-white text-black py-2 px-2 flex justify-between items-center cursor-pointer">
+                                            <div  className="flex flex-col ">
                                                 <p className="text-[18px] font-semibold">{e.name}</p>
                                                 <p>{e.department}</p>
                                             </div>
