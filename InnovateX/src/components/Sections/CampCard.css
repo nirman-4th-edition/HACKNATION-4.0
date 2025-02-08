@@ -1,0 +1,69 @@
+.camp-card {
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  .camp-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .camp-details {
+    padding: 15px;
+    flex-grow: 1;
+  }
+  
+  .location {
+    color: red;
+    font-size: 14px;
+  }
+  
+  .accommodation {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .accommodation li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .price {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .buttons button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .view-details {
+    background-color: lightgray;
+  }
+  
+  .book-now {
+    background-color: blue;
+    color: white;
+  }
+  .quick-links {
+    width: 200px;
+    background: #f8f8f8;
+    padding: 15px;
+    text-align: center;
+  }
+  .quick-links li{
+      list-style: none;
+  }
+  .quick-links h3{
+      margin-bottom: 10px;
+  }
+  

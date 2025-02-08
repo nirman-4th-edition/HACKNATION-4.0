@@ -1,0 +1,159 @@
+/* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: auto; /* Allow scrolling */
+}
+
+.app {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scroll-snap-stop: always;
+}
+
+/* Scroll-snap sections */
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Add this to prevent initial scroll jump */
+.app:not(.initial-load) {
+  scroll-snap-type: y mandatory;
+}
+
+/* Specific section styles */
+.home-section {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+.about-section {
+  background-attachment: fixed;
+}
+
+.attractions-section {
+  background-attachment: fixed;
+}
+
+.plan-section {
+  background-attachment: fixed;
+}
+
+.store-section {
+  background-attachment: fixed;
+}
+
+.footer-section {
+  background-color: #000;
+  background-blend-mode: overlay;
+}
+
+.footer-section .links {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: #ffcc00;
+}
+
+/* Navbar adjustments */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item {
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+}
+
+.nav-item:hover {
+  color: #ffcc00;
+  transform: translateY(-2px);
+}
+
+.dropdown {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  color: white;
+  transition: all 0.3s;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffcc00;
+}
+
+/* Regular pages (non-scroll-snap) */
+.page-container {
+  min-height: 100vh;
+  overflow-y: auto;
+  padding: 70px 20px 20px; /* Account for navbar height */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+}
+
+.page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Remove snap for inner pages */
+.inner-page {
+  scroll-snap-type: none !important;
+}

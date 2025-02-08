@@ -1,0 +1,90 @@
+/* Footer.css */
+.footer-section {
+  background-color: #1a1a1a;
+  padding: 4rem 0 2rem; /* Extra padding at the top */
+  margin-top: 70px; /* Compensate for navbar height */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+  padding: 1rem;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align logo and emergency contacts */
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  width: 60px;
+  height: auto;
+}
+
+.emergency-contacts {
+  text-align: center; /* Center align emergency contacts */
+}
+
+.emergency-contacts h3 {
+  color: #ff4444;
+  margin-bottom: 1rem;
+}
+
+.emergency-contacts p {
+  color: #fff;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-column h3 {
+  color: #ffcc00;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: #ffcc00; /* Yellow on hover */
+  text-decoration: underline;
+}
+
+.social-media {
+  text-align: center; /* Center align social media section */
+}
+
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  justify-content: center; /* Center align social icons */
+}
+
+.social-icon {
+  font-size: 1.5rem;
+}

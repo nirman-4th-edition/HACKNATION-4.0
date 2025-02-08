@@ -1,0 +1,365 @@
+[
+    {
+      "id": 1,
+      "name": "The Chariot Resort & Spa",
+      "address": "Puri, Odisha",
+      "contact": [
+        "06752345444",
+        "9823265777"
+      ],
+      "website": "https://www.thechariotresort.com",
+      "image": "https://example.com/images/chariot_resort.jpg",
+      "proximity": {
+        "airport": "65 Km. Distance from Airport",
+        "railway": "10 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=The+Chariot+Resort+%26+Spa+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-spa",
+        "fa-pool"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "name": "Mayfair Lagoon Resort",
+      "address": "Bhubaneswar, Odisha",
+      "contact": [
+        "06742232020",
+        "9937040202"
+      ],
+      "website": "https://www.mayfairhotels.com/lagoon",
+      "image": "https://example.com/images/mayfair_lagoon.jpg",
+      "proximity": {
+        "airport": "8 Km. Distance from Airport",
+        "railway": "5 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Mayfair+Lagoon+Resort+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-pool",
+        "fa-spa",
+        "fa-gym"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 3,
+      "name": "Swosti Premium Hotel & Resort",
+      "address": "Bhubaneswar, Odisha",
+      "contact": [
+        "06742232829",
+        "9090988000"
+      ],
+      "website": "https://www.swostihotels.com",
+      "image": "https://example.com/images/swosti_premium.jpg",
+      "proximity": {
+        "airport": "10 Km. Distance from Airport",
+        "railway": "7 Km. Distance from Railway",
+        "bus": "3 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Swosti+Premium+Hotel+%26+Resort+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-spa",
+        "fa-restaurant"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 4,
+      "name": "Toshali Sands Puri",
+      "address": "Puri, Odisha",
+      "contact": [
+        "06752237474",
+        "9790978745"
+      ],
+      "website": "https://www.toshaliresorts.com/toshali-sands",
+      "image": "https://example.com/images/toshali_sands.jpg",
+      "proximity": {
+        "airport": "65 Km. Distance from Airport",
+        "railway": "12 Km. Distance from Railway",
+        "bus": "3 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Toshali+Sands+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-spa",
+        "fa-car"
+      ],
+      "rating": 4.3
+    },
+    {
+      "id": 5,
+      "name": "Sambit Palace Resort",
+      "address": "Konark, Odisha",
+      "contact": [
+        "06758226821",
+        "9437080708"
+      ],
+      "website": "https://www.sambitpalaceresort.com",
+      "image": "https://example.com/images/sambit_palace.jpg",
+      "proximity": {
+        "airport": "90 Km. Distance from Airport",
+        "railway": "25 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Sambit+Palace+Resort+Konark",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-spa"
+      ],
+      "rating": 4.1
+    },
+    {
+      "id": 6,
+      "name": "Sterling Gopalpur",
+      "address": "Gopalpur, Odisha",
+      "contact": [
+        "06787226000",
+        "9937111134"
+      ],
+      "website": "https://www.sterlingholidays.com/resorts/gopalpur",
+      "image": "https://example.com/images/sterling_gopalpur.jpg",
+      "proximity": {
+        "airport": "35 Km. Distance from Airport",
+        "railway": "15 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Sterling+Gopalpur",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-spa"
+      ],
+      "rating": 4.4
+    },
+    {
+      "id": 7,
+      "name": "Palm Beach Resort",
+      "address": "Puri, Odisha",
+      "contact": [
+        "06752258999",
+        "9437112233"
+      ],
+      "website": "https://www.palmbeachresort.com",
+      "image": "https://example.com/images/palm_beach_resort.jpg",
+      "proximity": {
+        "airport": "70 Km. Distance from Airport",
+        "railway": "10 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Palm+Beach+Resort+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-pool",
+        "fa-bar"
+      ],
+      "rating": 4.2
+    },
+    {
+      "id": 8,
+      "name": "The Villages Resort",
+      "address": "Bhubaneswar, Odisha",
+      "contact": [
+        "06742345678",
+        "9933289828"
+      ],
+      "website": "https://www.thevillageresort.com",
+      "image": "https://example.com/images/villages_resort.jpg",
+      "proximity": {
+        "airport": "15 Km. Distance from Airport",
+        "railway": "5 Km. Distance from Railway",
+        "bus": "3 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=The+Villages+Resort+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-pool",
+        "fa-gym"
+      ],
+      "rating": 4.3
+    },
+    {
+      "id": 9,
+      "name": "Blue Lily Beach Resort",
+      "address": "Puri, Odisha",
+      "contact": [
+        "06752285810",
+        "9437034522"
+      ],
+      "website": "https://www.bluelilybeachresort.com",
+      "image": "https://example.com/images/blue_lily.jpg",
+      "proximity": {
+        "airport": "60 Km. Distance from Airport",
+        "railway": "10 Km. Distance from Railway",
+        "bus": "1 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Blue+Lily+Beach+Resort+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-pool",
+        "fa-bar"
+      ],
+      "rating": 4.2
+    },
+    {
+      "id": 10,
+      "name": "Nature Camp Resort",
+      "address": "Gopalpur, Odisha",
+      "contact": [
+        "06787259876",
+        "9803364435"
+      ],
+      "website": "https://www.naturecampresort.com",
+      "image": "https://example.com/images/nature_camp_resort.jpg",
+      "proximity": {
+        "airport": "40 Km. Distance from Airport",
+        "railway": "20 Km. Distance from Railway",
+        "bus": "4 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Nature+Camp+Resort+Gopalpur",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-spa"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 11,
+      "name": "Daringbadi Hill Resort",
+      "address": "Daringbadi, Odisha",
+      "contact": [
+        "06786234567",
+        "9090987654"
+      ],
+      "website": "https://www.daringbadihillresort.com",
+      "image": "https://example.com/images/daringbadi_hill_resort.jpg",
+      "proximity": {
+        "airport": "100 Km. Distance from Airport",
+        "railway": "50 Km. Distance from Railway",
+        "bus": "10 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Daringbadi+Hill+Resort+Daringbadi",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-pool",
+        "fa-bar"
+      ],
+      "rating": 4.3
+    },
+    {
+      "id": 12,
+      "name": "Puri Beach Resort",
+      "address": "Puri, Odisha",
+      "contact": [
+        "06752310909",
+        "9437052345"
+      ],
+      "website": "https://www.puribeachresort.com",
+      "image": "https://example.com/images/puri_beach_resort.jpg",
+      "proximity": {
+        "airport": "70 Km. Distance from Airport",
+        "railway": "5 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Puri+Beach+Resort+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-pool",
+        "fa-spa"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 13,
+      "name": "Ocean Paradise Resort",
+      "address": "Puri, Odisha",
+      "contact": [
+        "06752223344",
+        "9437005678"
+      ],
+      "website": "https://www.oceanparadiseresort.com",
+      "image": "https://example.com/images/ocean_paradise_resort.jpg",
+      "proximity": {
+        "airport": "50 Km. Distance from Airport",
+        "railway": "15 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Ocean+Paradise+Resort+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-bar"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 14,
+      "name": "Dreams Beach Resort",
+      "address": "Gopalpur, Odisha",
+      "contact": [
+        "06787225678",
+        "9803367732"
+      ],
+      "website": "https://www.dreamsbeachresort.com",
+      "image": "https://example.com/images/dreams_beach_resort.jpg",
+      "proximity": {
+        "airport": "40 Km. Distance from Airport",
+        "railway": "25 Km. Distance from Railway",
+        "bus": "3 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Dreams+Beach+Resort+Gopalpur",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-pool",
+        "fa-bar"
+      ],
+      "rating": 4.3
+    },
+    {
+      "id": 15,
+      "name": "Sunset Beach Resort",
+      "address": "Konark, Odisha",
+      "contact": [
+        "06758327654",
+        "9383356789"
+      ],
+      "website": "https://www.sunsetbeachresort.com",
+      "image": "https://example.com/images/sunset_beach_resort.jpg",
+      "proximity": {
+        "airport": "40 Km. Distance from Airport",
+        "railway": "25 Km. Distance from Railway",
+        "bus": "3 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Dreams+Beach+Resort+Gopalpur",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-pool",
+        "fa-bar"
+      ],
+      "rating": 4.3
+    }
+]

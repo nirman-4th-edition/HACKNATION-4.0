@@ -1,0 +1,97 @@
+/* Jewellery.css */
+
+/* Page container */
+.jewellery-page {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Page title styling */
+  .page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-family: "Georgia", serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  /* Container for all jewellery cards */
+  .jewellery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 70px 70px; /* Added margin */
+  }
+  
+  /* Individual jewellery card styling */
+  .jewellery-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 350px; /* Updated width */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: auto; /* Changed to auto to allow content to dictate height */
+  }
+  
+  .jewellery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Jewellery image styling */
+  .jewellery-image {
+    width: 100%;
+    height: 200px; /* Fixed image height */
+    object-fit: cover;
+  }
+  
+  /* Jewellery details section */
+  .jewellery-details {
+    padding: 15px;
+    text-align: center;
+    height: auto; /* Allow content to dictate height */
+    overflow: hidden; /* Prevent overflow */
+  }
+  
+  .jewellery-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .jewellery-details h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  
+  .jewellery-details p {
+    font-size: 1rem;
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 10px; /* Added margin for spacing */
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .jewellery-card {
+      width: 100%;
+      max-width: 400px;
+    }
+  
+    .jewellery-image {
+      height: 250px;
+    }
+  
+    .page-title {
+      font-size: 2rem;
+    }
+  
+    .jewellery-container {
+      margin: 20px; /* Adjusted margin for smaller screens */
+    }
+  }

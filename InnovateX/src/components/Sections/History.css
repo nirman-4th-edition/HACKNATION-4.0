@@ -1,0 +1,54 @@
+.history-container {
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .history-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .history-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .history-item {
+    width: 300px;
+    text-align: center;
+  }
+  
+  .history-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .history-description {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .history-container {
+      padding: 10px;
+    }
+  
+    .history-title {
+      font-size: 22px;
+    }
+  
+    .history-item {
+      width: 90%;
+    }
+  }
+  

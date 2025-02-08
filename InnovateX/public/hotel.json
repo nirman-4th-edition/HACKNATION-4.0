@@ -1,0 +1,502 @@
+[
+    {
+      "id": 1,
+      "name": "MAYFAIR Lagoon",
+      "address": "8-B, Jaydev Vihar, Bhubaneswar",
+      "contact": [
+        "9237500101",
+        "06742660101"
+      ],
+      "website": "https://www.mayfairhotels.com/mayfair-lagoon/",
+      "image": "https://www.mayfairhotels.com/mayfair-lagoon.jpg",
+      "proximity": {
+        "airport": "8 Km. Distance from Airport",
+        "railway": "5 Km. Distance from Railway",
+        "bus": "1 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Mayfair+Lagoon+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-utensils",
+        "fa-car"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "name": "Swosti Premium",
+      "address": "6, Gandamunda, Bhubaneswar",
+      "contact": [
+        "9338888888",
+        "06742500000"
+      ],
+      "website": "https://www.swostipremium.com/",
+      "image": "https://www.swostipremium.com/images/hotel.jpg",
+      "proximity": {
+        "airport": "5 Km. Distance from Airport",
+        "railway": "4 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Swosti+Premium+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-utensils",
+        "fa-spa"
+      ],
+      "rating": 4.2
+    },
+    {
+      "id": 3,
+      "name": "The HHI Bhubaneswar",
+      "address": "A-112, Kharavela Nagar, Bhubaneswar",
+      "contact": [
+        "9437000000",
+        "06742000500"
+      ],
+      "website": "http://www.hhihotels.com/bhubaneswar/",
+      "image": "https://www.hhihotels.com/images/bhubaneswar.jpg",
+      "proximity": {
+        "airport": "7 Km. Distance from Airport",
+        "railway": "6 Km. Distance from Railway",
+        "bus": "3 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=The+HHI+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-utensils"
+      ],
+      "rating": 4.3
+    },
+    {
+      "id": 4,
+      "name": "Trident Bhubaneswar",
+      "address": "X-1, Nayapalli, Bhubaneswar",
+      "contact": [
+        "9337500101",
+        "06742350000"
+      ],
+      "website": "https://www.tridenthotels.com/bhubaneswar",
+      "image": "https://www.tridenthotels.com/bhubaneswar.jpg",
+      "proximity": {
+        "airport": "6 Km. Distance from Airport",
+        "railway": "4 Km. Distance from Railway",
+        "bus": "1 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Trident+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.7
+    },
+    {
+      "id": 5,
+      "name": "Hotel Kalinga Ashoka",
+      "address": "Janpath, Bhubaneswar",
+      "contact": [
+        "9437001010",
+        "06742350001"
+      ],
+      "website": "https://www.kalingaashoka.com/",
+      "image": "https://www.kalingaashoka.com/kalinga.jpg",
+      "proximity": {
+        "airport": "8 Km. Distance from Airport",
+        "railway": "3 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Hotel+Kalinga+Ashoka+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-utensils",
+        "fa-car"
+      ],
+      "rating": 4.0
+    },
+    {
+      "id": 6,
+      "name": "Lalit Suri Resort",
+      "address": "Bhubaneswar-Cuttack Road, Bhubaneswar",
+      "contact": [
+        "9337500201",
+        "06742320001"
+      ],
+      "website": "https://www.thelalit.com/",
+      "image": "https://www.thelalit.com/lalit.jpg",
+      "proximity": {
+        "airport": "9 Km. Distance from Airport",
+        "railway": "7 Km. Distance from Railway",
+        "bus": "3 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Lalit+Suri+Resort+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 7,
+      "name": "Mayfair Heritage",
+      "address": "Puri, Odisha",
+      "contact": [
+        "9437000301",
+        "06752400000"
+      ],
+      "website": "https://www.mayfairhotels.com/mayfair-heritage/",
+      "image": "https://www.mayfairhotels.com/mayfair-heritage.jpg",
+      "proximity": {
+        "airport": "70 Km. Distance from Airport",
+        "railway": "2 Km. Distance from Railway",
+        "bus": "500 m. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Mayfair+Heritage+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-utensils",
+        "fa-car"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 8,
+      "name": "Sterling Puri",
+      "address": "Puri, Odisha",
+      "contact": [
+        "9437000401",
+        "06752210000"
+      ],
+      "website": "https://www.sterlingholidays.com/sterling-puri",
+      "image": "https://www.sterlingholidays.com/sterling-puri.jpg",
+      "proximity": {
+        "airport": "60 Km. Distance from Airport",
+        "railway": "3 Km. Distance from Railway",
+        "bus": "200 m. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Sterling+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-spa",
+        "fa-car"
+      ],
+      "rating": 4.2
+    },
+    {
+      "id": 9,
+      "name": "Blue Lily Beach Resort",
+      "address": "Puri, Odisha",
+      "contact": [
+        "9437000501",
+        "06752330000"
+      ],
+      "website": "https://www.bluelilybeachresort.com/",
+      "image": "https://www.bluelilybeachresort.com/blue-lily.jpg",
+      "proximity": {
+        "airport": "70 Km. Distance from Airport",
+        "railway": "1 Km. Distance from Railway",
+        "bus": "300 m. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Blue+Lily+Beach+Resort+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.0
+    },
+    {
+      "id": 10,
+      "name": "Jungle Lodge & Resorts",
+      "address": "Simlipal, Odisha",
+      "contact": [
+        "9437000601",
+        "06762250000"
+      ],
+      "website": "https://www.junglelodgeandresorts.com/",
+      "image": "https://www.junglelodgeandresorts.com/jungle-lodge.jpg",
+      "proximity": {
+        "airport": "150 Km. Distance from Airport",
+        "railway": "80 Km. Distance from Railway",
+        "bus": "10 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Jungle+Lodge+%26+Resorts+Simlipal",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-campground"
+      ],
+      "rating": 4.4
+    },
+    {
+      "id": 11,
+      "name": "Kalinga Grand",
+      "address": "Plot No. 102, Bomikhal, Bhubaneswar",
+      "contact": [
+        "9437000701",
+        "06742360001"
+      ],
+      "website": "http://www.kalingagrand.com/",
+      "image": "http://www.kalingagrand.com/kalinga-grand.jpg",
+      "proximity": {
+        "airport": "5 Km. Distance from Airport",
+        "railway": "6 Km. Distance from Railway",
+        "bus": "1 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Kalinga+Grand+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.1
+    },
+    {
+      "id": 12,
+      "name": "Hotel Sambit Palace",
+      "address": "N-4, Nayapalli, Bhubaneswar",
+      "contact": [
+        "9437000801",
+        "06742370001"
+      ],
+      "website": "http://www.sambitpalace.com/",
+      "image": "http://www.sambitpalace.com/sambit-palace.jpg",
+      "proximity": {
+        "airport": "7 Km. Distance from Airport",
+        "railway": "5 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Hotel+Sambit+Palace+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-campground"
+      ],
+      "rating": 3.9
+    },
+    {
+      "id": 13,
+      "name": "Hotel Keshari",
+      "address": "2nd Lane, Saheed Nagar, Bhubaneswar",
+      "contact": [
+        "9437000901",
+        "06742380001"
+      ],
+      "website": "http://www.hotelkeshari.com/",
+      "image": "http://www.hotelkeshari.com/keshari.jpg",
+      "proximity": {
+        "airport": "8 Km. Distance from Airport",
+        "railway": "5 Km. Distance from Railway",
+        "bus": "1 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Hotel+Keshari+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-campground"
+      ],
+      "rating": 4.0
+    },
+    {
+      "id": 14,
+      "name": "Pal Heights",
+      "address": "Pal Heights, Lewis Road, Bhubaneswar",
+      "contact": [
+        "9437001001",
+        "06742390001"
+      ],
+      "website": "https://www.palheights.com/",
+      "image": "https://www.palheights.com/pal-heights.jpg",
+      "proximity": {
+        "airport": "7 Km. Distance from Airport",
+        "railway": "3 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Pal+Heights+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.3
+    },
+    {
+      "id": 15,
+      "name": "The Crown",
+      "address": "Bhubaneswar-Cuttack Road, Bhubaneswar",
+      "contact": [
+        "9437001101",
+        "06742400001"
+      ],
+      "website": "http://www.thecrownbhubaneswar.com/",
+      "image": "http://www.thecrownbhubaneswar.com/the-crown.jpg",
+      "proximity": {
+        "airport": "9 Km. Distance from Airport",
+        "railway": "5 Km. Distance from Railway",
+        "bus": "3 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=The+Crown+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.2
+    },
+    {
+      "id": 16,
+      "name": "Hotel Presidency",
+      "address": "Sahid Nagar, Bhubaneswar",
+      "contact": [
+        "9437001201",
+        "06742410001"
+      ],
+      "website": "http://www.hotelpresidencybhubaneswar.com/",
+      "image": "http://www.hotelpresidencybhubaneswar.com/presidency.jpg",
+      "proximity": {
+        "airport": "6 Km. Distance from Airport",
+        "railway": "4 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Hotel+Presidency+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.4
+    },
+    {
+      "id": 17,
+      "name": "Ramada by Wyndham",
+      "address": "Puri, Odisha",
+      "contact": [
+        "9437001301",
+        "06752220001"
+      ],
+      "website": "https://www.wyndhamhotels.com/ramada/puri",
+      "image": "https://www.wyndhamhotels.com/ramada-puri.jpg",
+      "proximity": {
+        "airport": "65 Km. Distance from Airport",
+        "railway": "2 Km. Distance from Railway",
+        "bus": "500 m. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Ramada+by+Wyndham+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.6
+    },
+    {
+      "id": 18,
+      "name": "Hare Krishna Resort",
+      "address": "Puri, Odisha",
+      "contact": [
+        "9437001401",
+        "06752230001"
+      ],
+      "website": "https://www.harekrishnaresort.com/",
+      "image": "https://www.harekrishnaresort.com/krishna-resort.jpg",
+      "proximity": {
+        "airport": "75 Km. Distance from Airport",
+        "railway": "3 Km. Distance from Railway",
+        "bus": "200 m. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Hare+Krishna+Resort+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.0
+    },
+    {
+      "id": 19,
+      "name": "Hotel Mayfair Beach Resort",
+      "address": "Puri, Odisha",
+      "contact": [
+        "9437001501",
+        "06752240001"
+      ],
+      "website": "https://www.mayfairhotels.com/mayfair-beach-resort/",
+      "image": "https://www.mayfairhotels.com/mayfair-beach-resort.jpg",
+      "proximity": {
+        "airport": "70 Km. Distance from Airport",
+        "railway": "2 Km. Distance from Railway",
+        "bus": "300 m. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Hotel+Mayfair+Beach+Resort+Puri",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.5
+    },
+    {
+      "id": 20,
+      "name": "Mango Hotels",
+      "address": "Bhubaneswar, Odisha",
+      "contact": [
+        "9437001601",
+        "06742510001"
+      ],
+      "website": "https://www.mangohotels.in/",
+      "image": "https://www.mangohotels.in/mango.jpg",
+      "proximity": {
+        "airport": "6 Km. Distance from Airport",
+        "railway": "4 Km. Distance from Railway",
+        "bus": "2 Km. Distance from Bus Stop"
+      },
+      "mapLink": "https://www.google.com/maps?q=Mango+Hotels+Bhubaneswar",
+      "amenities": [
+        "fa-bed",
+        "fa-wifi",
+        "fa-swimming-pool",
+        "fa-car",
+        "fa-spa"
+      ],
+      "rating": 4.3
+    }
+  ]

@@ -1,0 +1,136 @@
+.hotel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin: 70px 70px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .sorting-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .sorting-options button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6347;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .sorting-options button:hover {
+    background-color: #e53e3e;
+  }
+  
+  .hotel-card {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hotel-image-container {
+    position: relative;
+    width: 250px;
+  }
+  
+  .hotel-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .hotel-details {
+    flex: 1;
+    padding: 15px;
+  }
+  
+  .hotel-details h3 {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .hotel-address {
+    color: red;
+  }
+  
+  .hotel-contact a {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .hotel-amenities {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .amenity-icon {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .hotel-rating {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  .hotel-proximity {
+    width: 200px;
+    background: #f8f8f8;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .hotel-proximity h4 {
+    margin-bottom: 10px;
+  }
+  
+  .hotel-proximity p {
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .view-map {
+    display: block;
+    margin-top: 10px;
+    padding: 8px;
+    background: red;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  .load-more-button {
+      padding: 12px 16px;  
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 14px;  
+      cursor: pointer;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;  
+    }
+    
+    .load-more-button:hover {
+      background-color: #218838;
+    }
+  

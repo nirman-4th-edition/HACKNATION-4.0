@@ -1,0 +1,23 @@
+.introduction {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .introduction h1 {
+    text-align: center;
+    text-decoration: underline;
+    color: #B22222;
+  }
+  .intro-content {
+    max-width: 70%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  .intro-content p {
+    /* text-align: center; */
+    color: #696969;
+    line-height: 1.6;
+    font-size: 18px;
+  }
+  
