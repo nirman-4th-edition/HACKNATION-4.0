@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Mental Health Detection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Health & Mental Health Detection</h1>
+        <p>Assess your physical and mental health for a better future.</p>
+    </header>
+
+    <!-- BMI Calculator -->
+    <section id="bmiCalculator">
+        <h2>BMI Calculator</h2>
+        <form id="bmiForm">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" required placeholder="Enter your weight in kg">
+            
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" required placeholder="Enter your height in cm">
+            
+            <button type="submit">Calculate BMI</button>
+        </form>
+
+        <div id="bmiResult" style="display:none;">
+            <h3>Your BMI: <span id="bmiValue"></span></h3>
+            <p id="bmiCategory"></p>
+        </div>
+    </section>
+
+    <!-- Disease Detection Survey -->
+    <section id="diseaseDetection">
+        <h2>Disease Detection Survey</h2>
+        <form id="diseaseForm">
+            <!-- Modified to match our SYMPTOMS_MAP -->
+            <div class="symptom-group">
+                <label>
+                    <input type="radio" name="symptom1" value="yes"> Frequent headaches
+                </label>
+                <label>
+                    <input type="radio" name="symptom1" value="no"> No headaches
+                </label>
+            </div>
+
+            <div class="symptom-group">
+                <label>
+                    <input type="radio" name="symptom2" value="yes"> Unexplained fatigue
+                </label>
+                <label>
+                    <input type="radio" name="symptom2" value="no"> No fatigue
+                </label>
+            </div>
+
+            <div class="symptom-group">
+                <label>
+                    <input type="radio" name="symptom3" value="yes"> Chest pain
+                </label>
+                <label>
+                    <input type="radio" name="symptom3" value="no"> No chest pain
+                </label>
+            </div>
+
+            <div class="symptom-group">
+                <label>
+                    <input type="radio" name="symptom4" value="yes"> Swelling in the body
+                </label>
+                <label>
+                    <input type="radio" name="symptom4" value="no"> No swelling
+                </label>
+            </div>
+
+            <div class="symptom-group">
+                <label>
+                    <input type="radio" name="symptom5" value="yes"> Frequent urination
+                </label>
+                <label>
+                    <input type="radio" name="symptom5" value="no"> No frequent urination
+                </label>
+            </div>
+
+            <div class="symptom-group">
+                <label>
+                    <input type="radio" name="symptom6" value="yes"> Blurred vision
+                </label>
+                <label>
+                    <input type="radio" name="symptom6" value="no"> No blurred vision
+                </label>
+            </div>
+
+            <div class="symptom-group">
+                <label>
+                    <input type="radio" name="symptom7" value="yes"> Nausea
+                </label>
+                <label>
+                    <input type="radio" name="symptom7" value="no"> No nausea
+                </label>
+            </div>
+
+            <div class="symptom-group">
+                <label>
+                    <input type="radio" name="symptom8" value="yes"> Abdominal pain
+                </label>
+                <label>
+                    <input type="radio" name="symptom8" value="no"> No abdominal pain
+                </label>
+            </div>
+
+            <div class="symptom-group">
+                <label>
+                    <input type="radio" name="symptom9" value="yes"> Weight loss
+                </label>
+                <label>
+                    <input type="radio" name="symptom9" value="no"> No weight loss
+                </label>
+            </div>
+            
+            <button type="submit">Submit Symptoms</button>
+        </form>
+        <div id="diseaseResult"></div>
+    </section>
+
+    <!-- Mental Health Survey -->
+    <section id="mentalHealthSurvey">
+        <h2>Mental Health Survey</h2>
+        <form id="mentalHealthForm">
+            <div class="question-group">
+                <label for="stress1">Do you feel anxious or nervous often?</label>
+                <input type="radio" name="stress1" value="yes"> Yes
+                <input type="radio" name="stress1" value="no"> No
+            </div>
+
+            <div class="question-group">
+                <label for="stress2">Do you experience mood swings?</label>
+                <input type="radio" name="stress2" value="yes"> Yes
+                <input type="radio" name="stress2" value="no"> No
+            </div>
+
+            <div class="question-group">
+                <label for="stress3">Do you feel overwhelmed by stress?</label>
+                <input type="radio" name="stress3" value="yes"> Yes
+                <input type="radio" name="stress3" value="no"> No
+            </div>
+
+            <div class="question-group">
+                <label for="stress4">Do you have trouble sleeping?</label>
+                <input type="radio" name="stress4" value="yes"> Yes
+                <input type="radio" name="stress4" value="no"> No
+            </div>
+
+            <button type="submit">Submit Mental Health Survey</button>
+        </form>
+
+        <div id="mentalHealthResultSection">
+            <h3>Your Mental Health Assessment:</h3>
+            <p id="mentalHealthResult"></p>
+        </div>
+    </section>
+
+    <!-- Hydration & Diet Plan -->
+    <section id="hydrationAndDiet">
+        <h3>Hydration Plan</h3>
+        <p>Drink at least 2-3 liters of water daily. Carry a reusable water bottle with you to remind yourself to stay hydrated throughout the day. Water helps to improve energy levels, maintain skin health, and detoxify the body.</p>
+        
+        <h3>Diet Plan</h3>
+        <p><strong>Breakfast:</strong> Whole grain oatmeal with berries, chia seeds, and a handful of nuts. A glass of fresh orange juice or herbal tea.</p>
+        <p><strong>Lunch:</strong> Grilled chicken or tofu salad with leafy greens, avocado, and quinoa. Drink water with lemon to stay refreshed.</p>
+        <p><strong>Dinner:</strong> Baked salmon or a vegetarian stir-fry with brown rice and steamed vegetables. Avoid eating too late to improve digestion and sleep quality.</p>
+
+        <h3>Foods to Include in Your Diet:</h3>
+        <ul>
+            <li>Leafy greens (spinach, kale)</li>
+            <li>Fruits (apples, bananas, berries)</li>
+            <li>Whole grains (quinoa, brown rice)</li>
+            <li>Healthy fats (avocado, nuts, seeds)</li>
+            <li>Lean proteins (chicken, turkey, beans, tofu)</li>
+            <li>Hydrating foods (cucumbers, watermelon, celery)</li>
+        </ul>
+    </section>
+
+    <!-- Health Precautions -->
+    <section id="healthPrecautions">
+        <h2>Health Precautions</h2>
+        <ul>
+            <li>Ensure to get 7-9 hours of sleep every night for better physical and mental health.</li>
+            <li>Exercise regularly, aiming for at least 150 minutes of moderate activity per week.</li>
+            <li>Reduce stress through relaxation techniques such as meditation or deep breathing.</li>
+            <li>Eat a balanced diet with plenty of fruits, vegetables, and whole grains.</li>
+            <li>Limit your intake of processed foods, sugars, and unhealthy fats.</li>
+            <li>Drink plenty of water to stay hydrated and improve skin health.</li>
+            <li>Practice good hygiene, wash your hands regularly, and avoid touching your face.</li>
+            <li>Schedule regular health checkups with your doctor for early detection of potential health issues.</li>
+            <li>Avoid smoking and limit alcohol consumption to lower the risk of chronic diseases.</li>
+            <li>Maintain a positive mental attitude by practicing gratitude and seeking support when needed.</li>
+        </ul>
+    </section>
+
+    <!-- Mental Health Activities -->
+    <section id="mentalActivities">
+        <h2>Engaging Mental Health Activities</h2>
+        <div class="activity" id="journaling">
+            <h3>Journaling</h3>
+            <p>Write down your thoughts and feelings to release stress.</p>
+        </div>
+        <div class="activity" id="meditation">
+            <h3>Meditation</h3>
+            <p>Practice mindfulness and breathing exercises.</p>
+        </div>
+        <div class="activity" id="exercise">
+            <h3>Exercise</h3>
+            <p>Physical activity improves both your physical and mental health.</p>
+        </div>
+    </section>
+
+    <!-- Doctor Appointment -->
+    <section id="doctorAppointment">
+        <h2>Book an Appointment with a Doctor</h2>
+        <form id="appointmentForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+
+            <label for="appointmentDate">Date</label>
+            <input type="date" id="appointmentDate" required>
+
+            <label for="appointmentTime">Time</label>
+            <input type="time" id="appointmentTime" required>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Health & Mental Health Detection. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
