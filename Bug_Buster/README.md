@@ -26,6 +26,5 @@ Our solution provides **real-time, AI-based targeted suppression**, ensuring **e
 ---
 
 ## 🔧 Tech Stack
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Firebase Realtime Database
-- **AI & IoT**: Computer Vision, Sensors, Cloud Analytics
+- **Frontend**: React, Tailwind, GSAP, Framer motion
+- **Backend**: Firebase Realtime Database, MongoDB
