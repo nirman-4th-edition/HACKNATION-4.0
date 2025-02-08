@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_admin.css') }}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <div class="header">
+        <span class="title">N.O.D.E.S</span>
+    </div>
+    <div class="login-container">
+        <h2>Log In</h2>
+        <form action="submit_form.php" method="post">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <a href="reset_password.php" style="padding-top: 3px; padding-bottom: 3px; color: white; text-decoration: none;">Forgot Password ?</a>
+            <div class="captcha">
+                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div> <!--As we haven't activated the captcha key, it'll not work, this is just for demo purpose for this hackathon-->
+            </div>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+</body>
+</html>

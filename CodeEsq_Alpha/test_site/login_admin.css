@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Futura Book BT');
+body {
+    font-family: 'Futura Book BT', sans-serif;
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #011422, #122266);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.title {
+    font-size: 32px; /* Updated font size */
+    font-weight: bold; /* Bold text */
+    color: white;
+    margin-right: 10px;
+}
+
+.login-container {
+    background-color: rgba(51, 55, 102, 0.48); /* 48% transparency */
+    width: 461px;
+    height: 470px;
+    padding: 20px;
+    border-radius: 34px; /* Rounded corners */
+    box-shadow: none; /* Removing default shadow */
+    position: relative;
+    text-align: left;
+    overflow: hidden; /* Ensure button stays within container */
+}
+
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 10px; /* Adjust if necessary */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out elements evenly */
+    align-items: center;
+    height: calc(100% - 80px); /* Adjusted height to fit button */
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0; /* Reduced margin to decrease gap */
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.19); /* Faded underline */
+    color: white;
+    outline: none;
+    text-align: left; /* Align text to the left */
+}
+
+form input[type="text"]::placeholder,
+form input[type="email"]::placeholder,
+form input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.19); /* Faded placeholder text */
+    text-align: left; /* Align placeholder text to the left */
+}
+
+.captcha {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 181px; /* Specific width */
+    height: 53px; /* Specific height */
+    background-color: #0a1c47;
+    border: none;
+    border-radius: 15px; /* Rounded corners */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Bottom shadow */
+    margin-top: 10px; /* Adjusted margin to fit within the container */
+    position: relative;
+    z-index: 1; /* Ensure it stays inside the container */
+}
+
+button:hover {
+    background-color: #122266;
+}
+
+.login-container::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Positioning for the bottom shadow */
+    left: 0;
+    right: 0;
+    height: 20px; /* Height of the shadow */
+    background: rgba(0, 0, 0, 0.2); /* Shadow color and transparency */
+    filter: blur(15px); /* Smoothing the shadow */
+}

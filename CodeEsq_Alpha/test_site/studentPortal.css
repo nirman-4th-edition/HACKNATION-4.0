@@ -1,0 +1,112 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #011422, #122266);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    text-align: center;
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #2C2F48;
+}
+
+.title {
+    font-size: 24px;
+}
+
+.welcome {
+    font-size: 18px;
+}
+
+.dropdown-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    padding-top: 80px;
+    flex-wrap: wrap;
+}
+
+.dropdown {
+    margin: 10px;
+    position: relative;
+}
+
+.dropbtn {
+    background-color: #333766;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 225px;
+    height: 152px;
+    border: 2px solid;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.dropbtn:hover {
+    transform: scale(1.05);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 160px;
+    left: 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .title, .welcome {
+        font-size: 20px;
+        padding: 5px;
+    }
+    .dropdown-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .dropbtn {
+        width: 80%;
+        height: auto;
+        padding: 20px;
+    }
+    .dropdown-content {
+        min-width: 90%;
+        position: static;
+    }
+}

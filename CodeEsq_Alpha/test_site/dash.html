@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.O.D.E.S</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title">N.O.D.E.S</div>
+            <div class="user-info">
+                <span>Welcome Shreyash!</span>
+                <img src="{{ url_for('static', filename='images/user-icon.png') }}" alt="User Icon" style="width: 40px; height: 34px;">
+            </div>
+        </header>
+        
+        <main>
+            <div class="upload-section">
+                <!-- Form for file uploads -->
+                <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+                    <label for="zip_file">ZIP File:</label>
+                    <input type="file" name="zip_file" required><br><br>
+                    <label for="csv_file">CSV File:</label>
+                    <input type="file" name="csv_file" required><br><br>
+                    <button type="submit" class="upload-btn">Upload Files</button>
+                </form>
+            </div>
+
+            <div class="log-section" id="log-section">
+                <div class="log-header">LOGS</div>
+                <div class="log-content">
+                    <div class="no-logs" id="no-logs">
+                        <img src="{{ url_for('static', filename='images/no-logs-icon.png') }}" alt="No Logs Icon" style="width: 20%; height: 20%; padding-top: 60px;">
+                        <p style="color: #444e6d; font-size: 50px; font-weight: bold; font-family: sans-serif;">No Logs Yet!</p>
+                    </div>
+                    <div class="logs" id="logs">
+                        <!-- Logs will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dash.js') }}"></script>
+</body>
+</html>
