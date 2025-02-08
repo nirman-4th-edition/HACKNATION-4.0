@@ -116,7 +116,7 @@ const Prescriptions = () => {
             <input
               value={formData.patient}
               onChange={(e) => setFormData({...formData, patient: e.target.value})}
-              className="w-full p-2.5 bg-white border border-gray-300 rounded-lg focus:ring-2 ring-purple-500 text-gray-900 placeholder-gray-400 "
+              className="w-full p-2.5 bg-white border border-gray-300 rounded-lg focus:ring-2 ring-purple-500 text-gray-900 placeholder-gray-400"
               placeholder="Enter patient name"
             />
           </div>

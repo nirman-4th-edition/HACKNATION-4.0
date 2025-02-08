@@ -1,0 +1,82 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "age": 35,
+        "income": 45000,
+        "documents": ["aadhar", "pan"],
+        "eligibleSchemes": ["National Health Protection Scheme"],
+        "status": "approved"
+      }
+    ],
+    "medicines": [
+      {
+        "id": 1,
+        "name": "Paracetamol",
+        "brand": "Calpol",
+        "price": 50,
+        "description": "Fever and pain relief",
+        "requiresPrescription": false,
+        "stock": 100
+      },
+      {
+        "id": 2,
+        "name": "Amoxicillin",
+        "brand": "Mox",
+        "price": 120,
+        "description": "Antibiotic",
+        "requiresPrescription": true,
+        "stock": 50
+      }
+    ],
+    "orders": [
+      {
+        "id": 1,
+        "userId": 1,
+        "items": [
+          {
+            "medicineId": 1,
+            "quantity": 2,
+            "price": 50
+          }
+        ],
+        "totalAmount": 100,
+        "status": "processing",
+        "orderDate": "2025-02-05",
+        "prescriptionUrl": null
+      }
+    ],
+    "reports": [
+      {
+        "id": 1,
+        "userId": 1,
+        "type": "Blood Test",
+        "date": "2025-01-15",
+        "doctorName": "Dr. Smith",
+        "reportUrl": "/reports/blood-test.pdf",
+        "summary": "Normal blood count levels"
+      }
+    ],
+    "schemes": [
+      {
+        "id": 1,
+        "name": "National Health Protection Scheme",
+        "coverage": 500000,
+        "eligibilityCriteria": {
+          "maxIncome": 50000,
+          "requiredDocuments": ["aadhar", "pan"],
+          "minAge": 18
+        }
+      },
+      {
+        "id": 2,
+        "name": "Senior Citizen Healthcare Program",
+        "coverage": 300000,
+        "eligibilityCriteria": {
+          "minAge": 60,
+          "requiredDocuments": ["aadhar"]
+        }
+      }
+    ]
+  }
