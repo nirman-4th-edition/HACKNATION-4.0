@@ -37,7 +37,7 @@ const PatientForm = () => {
       email: "",
       phone: "",
       dob: new Date(),
-      gender: "male",
+      gender: "Male",
     },
   });
 
@@ -50,12 +50,38 @@ const PatientForm = () => {
       // User creation logic is commented for now
       const { name, email, phone, dob, gender } = values;
       const userData = { name, email, phone, dob, gender };
-      const user = await createUser(userData);
-      if (user) {
-        console.log("User created successfully:", user);
-        localStorage.setItem("user", JSON.stringify(user));
-        router.push(`/patientAuth/${user.$id}/chatBox`);
+      // const user = await createUser(userData);
+      // if (user) {
+      //   console.log("User created successfully:", user);
+      //   localStorage.setItem("user", JSON.stringify(user));
+      //   router.push(`/patientAuth/${user.$id}/chatBox`);
+      // }
+
+      const response = await fetch('http://localhost:3001/user/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: userData.name,
+          year: new Date(userData.dob).getFullYear(),
+          sex: userData.gender,
+        }),
+      });
+
+      //send to /doctorBook
+      
+      if (!response.ok) {
+        throw new Error('Failed to add user');
       }
+      
+      const result = await response.json();
+      console.log('User added to external system:', result);
+      
+      localStorage.setItem("uid",result._id)
+      router.push(`/doctorBook`);
+
+
     } catch (err) {
       console.log("Error during form submission:", err);
     } finally {
@@ -63,7 +89,7 @@ const PatientForm = () => {
     }
   }
 
-  const GenderOptions = ["male", "female", "other"];
+  const GenderOptions = ["Male", "Female", "other"];
 
   return (
     <Form {...form}>

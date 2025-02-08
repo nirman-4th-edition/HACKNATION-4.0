@@ -19,10 +19,7 @@ function page() {
 
 export default page
 
-const BookingCard = () => {
-
-    console.log(localStorage.getItem("boo"));
-    
+const BookingCard = () => {    
     const [consultation,setConsultation] = useState<any>(null)
    useEffect(()=>{
     try {

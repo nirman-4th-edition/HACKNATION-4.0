@@ -100,8 +100,9 @@ export default function Chatbot({ username = "User" }: ChatbotProps) {
                                         onClick={()=>{
                                           // set local storage 
                                           console.log("local host ");
-                                          
+                                        
                                           localStorage.setItem('boo', JSON.stringify({doctors : msg.doctors?.[i] , data : msg.data},null,2));
+                                          window.location.href = "/doctorBook";
                                         }}
 
                                         className="border-1 border-[1px] rounded-[5px] bg-white text-black py-2 px-2 flex justify-between items-center cursor-pointer">

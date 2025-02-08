@@ -9,7 +9,7 @@ export const UserFormValidation = z.object({
   phone: z
     .string(),
     dob: z.coerce.date(),
-  gender: z.enum(["male", "female", "other"])
+  gender: z.enum(["Male", "Female", "other"])
 });
 
 export const PatientFormValidation = z.object({
