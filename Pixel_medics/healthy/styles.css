@@ -1,0 +1,360 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #F4F8FB; /* Light soothing blue background */
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Section */
+header {
+    background-color: #1E88E5; /* Strong Medical Blue */
+    color: white;
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 0;
+}
+
+/* Main Section */
+section {
+    margin: 30px 0;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* BMI Calculator Styles */
+#bmiCalculator {
+    background-color: #e1f5fe; /* Light Blue background */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#bmiCalculator h2 {
+    font-size: 2.2em;
+    color: #0277BD; /* Medical Blue */
+    margin-bottom: 15px;
+}
+
+#bmiCalculator label {
+    font-size: 1.1em;
+    color: #333;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+#bmiCalculator input {
+    padding: 10px;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#bmiCalculator button {
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    font-size: 1.2em;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#bmiCalculator button:hover {
+    background-color: #45a049;
+}
+
+#bmiResult {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#bmiResult h3 {
+    font-size: 1.8em;
+    color: #388E3C; /* Dark Green for result */
+}
+
+#bmiResult p {
+    font-size: 1.2em;
+    color: #333;
+}
+
+
+/* Survey */
+#diseaseSurvey, #mentalHealthSurvey {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2.2em;
+    color: #1E88E5; /* Medical Blue */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Form Labels */
+label {
+    font-size: 1.1em;
+    color: #333;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* Radio Buttons */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Submit Button */
+button {
+    background-color: #4CAF50; /* Green for 'Go' or action */
+    color: white;
+    font-size: 1.2em;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Disease Results */
+#diseaseResultSection, #mentalHealthResultSection {
+    margin-top: 30px;
+    background-color: #E0F7FA; /* Light blue background for results */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#diseaseResultSection p, #mentalHealthResultSection p {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Hydration and Diet Section */
+/* Hydration and Diet Plan Section */
+#hydrationAndDiet {
+    background-color: #E3F2FD; /* Light blue background */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    font-size: 1.2em;
+}
+
+#hydrationAndDiet h3 {
+    font-size: 1.8em;
+    color: #0277BD; /* Darker Blue */
+    font-weight: bold;
+}
+
+#hydrationAndDiet p {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 10px;
+}
+
+
+/* Health Precautions */
+/* Health Precautions */
+#healthPrecautions {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+#healthPrecautions ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+#healthPrecautions li {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+
+/* Mental Activities Section */
+#mentalActivities {
+    background-color: #F0F4C3; /* Light Green background */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+#mentalActivities h2 {
+    font-size: 2em;
+    color: #2E7D32; /* Green */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.activity {
+    background-color: #C8E6C9; /* Light green background */
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.activity:hover {
+    background-color: #A5D6A7; /* Darker Green */
+}
+
+.activity h3 {
+    font-size: 1.6em;
+    color: #388E3C; /* Dark Green */
+    font-weight: bold;
+}
+
+.activity p {
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* Animated Mental Health Activity */
+@keyframes animateActivity {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.activity.animated {
+    animation: animateActivity 1.5s ease-in-out infinite;
+}
+
+/* Hydration Alert Section */
+#hydrationAlert {
+    background-color: #FFEB3B; /* Yellow for hydration */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#hydrationAlert img {
+    max-width: 100px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+#hydrationAlert div {
+    flex: 1;
+}
+
+#hydrationAlert h3 {
+    font-size: 1.8em;
+    color: #E65100; /* Dark orange */
+    font-weight: bold;
+}
+
+#hydrationAlert p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Appointment Form */
+#doctorAppointment {
+    background-color: #FFF3E0; /* Light Orange */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+#doctorAppointment form {
+    display: flex;
+    flex-direction: column;
+}
+
+#doctorAppointment label {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#doctorAppointment input[type="text"], 
+#doctorAppointment input[type="date"], 
+#doctorAppointment input[type="time"] {
+    padding: 10px;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#doctorAppointment button {
+    background-color: #FF9800; /* Orange color */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+#doctorAppointment button:hover {
+    background-color: #FB8C00;
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1E88E5; /* Matching Blue */
+    color: white;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    font-size: 1.1em;
+}
