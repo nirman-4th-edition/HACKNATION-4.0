@@ -1,0 +1,64 @@
+=== Expense Analysis ===
+
+Category Totals:
+Transfer/Payment: ₹4388.00
+Travel: ₹305.00
+Dining/Food: ₹1695.00
+Utilities: ₹1168.82
+
+Total Income: ₹4941.00
+Total Expenses: ₹7556.82
+
+Detailed Breakdown by Category:
+
+
+Transfer/Payment:
+  Feb 02, 2025 - DEEPAK KUMAR SAHOO: ₹30.00 (DEBIT)
+  Feb 02, 2025 - SRITIK PRADHAN: ₹40.00 (DEBIT)
+  Feb 02, 2025 - Santosh Kumar Behera: ₹15.00 (DEBIT)
+  Feb 01, 2025 - Sabyasachi: ₹500.00 (DEBIT)
+  Jan 31, 2025 - Sabyasachi: ₹500.00 (DEBIT)
+  Jan 31, 2025 - KAUSTUVA BHUSAN MOHANTY: ₹10.00 (DEBIT)
+  Jan 31, 2025 - Sabyasachi: ₹500.00 (DEBIT)
+  Jan 31, 2025 - RASMIRANJAN  PRIYADARSHAN: ₹25.00 (DEBIT)
+  Jan 31, 2025 - MIHIR CHOUDHURY: ₹80.00 (DEBIT)
+  Jan 30, 2025 - SOUMYA RANJAN SAHOO: ₹10.00 (DEBIT)
+  Jan 30, 2025 - Sarfaraj  Ahmad: ₹240.00 (DEBIT)
+  Jan 29, 2025 - SHIVANI PATRA: ₹40.00 (DEBIT)
+  Jan 28, 2025 - SHIVANI PATRA: ₹90.00 (DEBIT)
+  Jan 28, 2025 - DILLIP KUMAR SAH00: ₹20.00 (DEBIT)
+  Jan 27, 2025 - Sabyasachi: ₹500.00 (DEBIT)
+  Jan 26, 2025 - SUSILA KUMAR PARIDA: ₹92.00 (DEBIT)
+  Jan 26, 2025 - Nini: ₹249.00 (DEBIT)
+  Jan 25, 2025 - SHIVANI PATRA: ₹130.00 (DEBIT)
+  Jan 23, 2025 - MIR LIAKAT ALLI: ₹50.00 (DEBIT)
+  Jan 22, 2025 - Subham Prasad Singh: ₹18.00 (DEBIT)
+  Jan 22, 2025 - AYUSH PATTANAIK: ₹20.00 (DEBIT)
+  Jan 21, 2025 - MOHIT KAUL: ₹50.00 (DEBIT)
+  Jan 21, 2025 - RAJESH KUMAR ROUT: ₹133.00 (DEBIT)
+  Jan 21, 2025 - Bharathkumar Traders: ₹230.00 (DEBIT)
+  Jan 19, 2025 - Mama: ₹1.00 (DEBIT)
+  Jan 13, 2025 - Mr ANKIT KUMAR SAHU: ₹750.00 (DEBIT)
+  Jan 07, 2025 - DILLIP KUMAR SAH00: ₹20.00 (DEBIT)
+  Jan 06, 2025 - KANHU GOUDA: ₹45.00 (DEBIT)
+
+Travel:
+  Jan 30, 2025 - CAPITAL REGION URBAN TRANSPORT: ₹5.00 (DEBIT)
+  Jan 27, 2025 - MAA GOURI FILLING STATION: ₹100.00 (DEBIT)
+  Jan 03, 2025 - TAUFEEQUE AHMAD: ₹200.00 (DEBIT)
+
+Dining/Food:
+  Jan 30, 2025 - ITER Mio Amore: ₹50.00 (DEBIT)
+  Jan 28, 2025 - The Burger Bites: ₹150.00 (DEBIT)
+  Jan 28, 2025 - URBAN CAFE: ₹50.00 (DEBIT)
+  Jan 25, 2025 - SHYAMA BETEL SHOP: ₹10.00 (DEBIT)
+  Jan 24, 2025 - SAHOO TIFFIN CENTER: ₹30.00 (DEBIT)
+  Jan 23, 2025 - Ss momos: ₹60.00 (DEBIT)
+  Jan 23, 2025 - Amrut omfed: ₹17.00 (DEBIT)
+  Jan 23, 2025 - ITER Mio Amore: ₹10.00 (DEBIT)
+  Jan 20, 2025 - Eazydiner: ₹1318.00 (DEBIT)
+
+Utilities:
+  Jan 23, 2025 - Unknown: ₹252.00 (DEBIT)
+  Jan 22, 2025 - RELIANCE JIO INFOCOMM: ₹470.82 (DEBIT)
+  Jan 13, 2025 - Unknown: ₹446.00 (DEBIT)

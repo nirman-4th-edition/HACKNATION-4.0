@@ -1,0 +1,11 @@
+.input-field {
+  @apply w-full bg-transparent border border-gray-500 text-white p-3 rounded-md mt-2 focus:outline-none focus:border-blue-400 transition-all placeholder-gray-400;
+}
+
+.btn-primary-bordered {
+  @apply border-2 border-blue-400 bg-transparent text-blue-400 px-6 py-2 rounded-full font-bold uppercase tracking-wide transition-all duration-150 hover:bg-blue-400 hover:text-white;
+}
+
+.btn-secondary-bordered {
+  @apply border-2 border-white bg-transparent text-white px-6 py-2 rounded-full font-bold uppercase tracking-wide transition-all duration-150 hover:bg-white hover:text-blue-500;
+}

@@ -13,7 +13,6 @@ const SpendingOverview = () => {
   const [loading, setLoading] = useState(false);
   const [fileUploaded, setFileUploaded] = useState(false);
 
-  // Handle file upload from either drag and drop or file selection
   const handleFileUpload = async (acceptedFiles) => {
     const formData = new FormData();
     formData.append("file", acceptedFiles[0]);
@@ -21,11 +20,11 @@ const SpendingOverview = () => {
     setLoading(true);
     try {
       // Make the API call to upload the file
-      const response = await axios.post('http://localhost:5000/api/upload_pdf/67a4d88cc3bde7e1ac54a400', formData);
-      console.log(response);
+      const response = await axios.post("http://localhost:5000/api/upload_pdf/67a3bee1916bc50950f8115a", formData);
 
       // Assuming response.data contains the JSON data with the expenses
       const expenses = response.data.expenses;
+      console.log(expenses);
       const expenseLabels = [
         "Travel",
         "Food",

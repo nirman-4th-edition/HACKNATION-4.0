@@ -4,6 +4,7 @@ import requests
 import json
 from datetime import datetime
 import pandas as pd
+from Ai_insights import AirthFinancialInsights
 
 from expense_tracker import extract_pdf_content, analyze_expenses
 
