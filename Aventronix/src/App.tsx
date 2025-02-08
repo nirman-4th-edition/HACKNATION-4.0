@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatsOverview } from './components/StatsOverview';
 import { TokenCard } from './components/TokenCard';
 import { TokenDetails } from './components/TokenDetails';
@@ -7,52 +7,32 @@ import { FilterBar } from './components/FilterBar';
 import { useTokenFilters } from './hooks/useTokenFilters';
 import { Coins } from 'lucide-react';
 import { StakingToken } from './types';
-
-const mockTokens = [
-  {
-    id: '1',
-    name: 'Staked Ethereum',
-    symbol: 'stETH',
-    price: 3245.67,
-    marketCap: 15000000000,
-    volume24h: 523000000,
-    tvl: 12000000000,
-    apy: 4.5,
-    ratio: 1.0023
-  },
-  {
-    id: '2',
-    name: 'Rocket Pool ETH',
-    symbol: 'rETH',
-    price: 3250.12,
-    marketCap: 8000000000,
-    volume24h: 321000000,
-    tvl: 6000000000,
-    apy: 4.8,
-    ratio: 1.0045
-  },
-  {
-    id: '3',
-    name: 'Staked BNB',
-    symbol: 'sBNB',
-    price: 456.78,
-    marketCap: 3000000000,
-    volume24h: 156000000,
-    tvl: 2500000000,
-    apy: 5.2,
-    ratio: 1.0012
-  }
-];
+import data from "./types/constant"; // Importing constant data
 
 function App() {
+  const [tokens, setTokens] = useState<StakingToken[]>([]);
   const [selectedToken, setSelectedToken] = useState<StakingToken | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Simulating API fetch with constant.ts data
+    try {
+      setTokens(data); // Using imported JSON data
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to load data");
+      setLoading(false);
+    }
+  }, []);
+
   const {
     searchQuery,
     setSearchQuery,
     activeFilter,
     setActiveFilter,
     filteredTokens,
-  } = useTokenFilters(mockTokens);
+  } = useTokenFilters(tokens);
 
   return (
     <div className="min-h-screen bg-[#0B0B1E]">
@@ -89,6 +69,18 @@ function App() {
           dailyVolume={1000000000}
         />
 
+        {loading && (
+          <div className="text-center py-12">
+            <p className="text-indigo-300/80">Loading tokens...</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="text-center py-12 text-red-500">
+            <p>{error}</p>
+          </div>
+        )}
+
         {selectedToken && (
           <div className="mb-8">
             <TokenDetails token={selectedToken} onClose={() => setSelectedToken(null)} />
@@ -108,7 +100,7 @@ function App() {
           ))}
         </div>
 
-        {filteredTokens.length === 0 && (
+        {filteredTokens.length === 0 && !loading && (
           <div className="text-center py-12">
             <p className="text-indigo-300/80">No tokens found matching your criteria</p>
           </div>
