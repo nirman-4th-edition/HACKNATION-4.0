@@ -13,6 +13,7 @@ import ScheduleForm from "./components/ScheduleForm";
 import FertilizerRecommender from "./components/FertilizerRecommender";
 import CropRecommandations from "./pages/CropRecommadations";
 import { useQuery } from "@tanstack/react-query";
+import GovtScheme from "./pages/GovtScheme";
 
 const App = () => {
   // const { data: authUser, isLoading } = useQuery({
@@ -51,10 +52,7 @@ const App = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/soilTest"
-          element={authUser ? <SoilTest /> : <Navigate to="/" />}
-        />
+        <Route path="/soilTest" element={<SoilTest />} />
         <Route path="/solutions" element={<Solutions />} />
         <Route path="/weather" element={<Weather />} />
         <Route path="/schedule" element={<ScheduleForm />} />
@@ -63,6 +61,7 @@ const App = () => {
           element={<FertilizerRecommender />}
         />
         <Route path="/recommandation/crop" element={<CropRecommandations />} />
+        <Route path="/schemes" element={<GovtScheme />} />
       </Routes>
     </>
   );
