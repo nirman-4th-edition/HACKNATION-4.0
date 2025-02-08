@@ -48,9 +48,9 @@ const SignUp = () => {
             <GiNestBirds className="text-4xl text-gray-50" />
             FileNest
           </a>
-          <div className="w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gray-200 border-2 border-white shadow-[0_0_10px_white]">
+          <div className="w-full rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gray-200/60 border-2 border-[#f8f4ff] shadow-[0_0_10px_#f8f4ff]">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-50 md:text-2xl">
                 Sign up to your account
               </h1>
               <form className="space-y-6" onSubmit={handleSubmit} action="#">
@@ -58,7 +58,7 @@ const SignUp = () => {
                   <span>
                     <label
                       htmlFor="text"
-                      className="block mb-2 text-sm font-medium text-gray-900 "
+                      className="block mb-2 text-sm font-medium text-gray-50 "
                     >
                       First Name
                     </label>
@@ -66,7 +66,7 @@ const SignUp = () => {
                       type="text"
                       name="first"
                       id="first"
-                      className="bg-gray-300 border border-gray-300 text-black-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 border-gray-600 placeholder-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-300 border text-black-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 border-gray-400 placeholder-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Ex: Joe"
                       required
                       value={firstName}
@@ -76,7 +76,7 @@ const SignUp = () => {
                   <span>
                     <label
                       htmlFor="text"
-                      className="block mb-2 text-sm font-medium text-gray-900 "
+                      className="block mb-2 text-sm font-medium text-gray-50 "
                     >
                       Last Name
                     </label>
@@ -84,7 +84,7 @@ const SignUp = () => {
                       type="text"
                       name="second"
                       id="second"
-                      className="bg-gray-300 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-300 border text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 border-gray-600 dark:placeholder-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Ex: Rogan"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
@@ -95,7 +95,7 @@ const SignUp = () => {
                   <span>
                     <label
                       htmlFor="email"
-                      className="block mb-2 text-sm font-medium text-gray-900 "
+                      className="block mb-2 text-sm font-medium text-gray-50 "
                     >
                       Your email
                     </label>
@@ -103,7 +103,7 @@ const SignUp = () => {
                       type="email"
                       name="email"
                       id="email"
-                      className="bg-gray-300 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-300 border text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 border-gray-600 dark:placeholder-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="username@gmail.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -114,7 +114,7 @@ const SignUp = () => {
                   <span>
                     <label
                       htmlFor="password"
-                      className="block mb-2 text-sm font-medium text-gray-900 "
+                      className="block mb-2 text-sm font-medium text-gray-50 "
                     >
                       Password
                     </label>
@@ -123,7 +123,7 @@ const SignUp = () => {
                       name="password"
                       id="password"
                       placeholder="••••••••"
-                      className="border rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-300 border-gray-600 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500"
+                      className="border rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-300 border-gray-600 placeholder-gray-600 text-black focus:ring-blue-500 focus:border-blue-500"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       required
@@ -136,15 +136,15 @@ const SignUp = () => {
 
                 <button
                   type="submit"
-                  className="w-full text-white bg-primary-600 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 cursor-pointer"
+                  className="w-full text-white bg-primary-600 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-[#610A70] dark:hover:bg-[#A210BC] focus:ring-[#610A70] cursor-pointer"
                 >
                   Sign up
                 </button>
-                <p className="text-sm font-light text-gray-700">
+                <p className="text-sm font-light text-gray-50/70">
                   Already have an account?{" "}
                   <Link
                     to="/"
-                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                    className="font-medium hover:text-gray-50 hover:underline dark:text-primary-500"
                   >
                     Sign in
                   </Link>

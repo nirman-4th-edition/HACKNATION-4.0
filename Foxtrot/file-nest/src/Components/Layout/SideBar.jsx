@@ -15,8 +15,8 @@ const SideBar = () => {
 
   return (
     <>
-      <div className="flex w-[45%] justify-center">
-        <div className="flex flex-col gap-5 justify-start items-start bg-[#0D021F] w-[45%] relative overflow-hidden">
+      <div className="flex w-[45%]">
+        <div className="flex flex-col gap-5 justify-start items-start bg-[#0D021F] w-[50%] relative overflow-hidden">
           <div className="h-full w-full px-3 py-4 overflow-y-auto bg-[#0d021f]">
             <a className="flex items-center ml-1">
               <GiNestBirds className="text-4xl text-gray-100 mr-2" />
@@ -36,7 +36,7 @@ const SideBar = () => {
                   } group`}
                   onClick={() => setSelectedSubject("AD")}
                 >
-                  <SiThealgorithms className="text-xl text-white" />
+                  <SiThealgorithms className="text-2xl text-white" />
                   <span className="ms-3">Algorithm Design</span>
                 </a>
               </li>
@@ -50,7 +50,7 @@ const SideBar = () => {
                   } group`}
                   onClick={() => setSelectedSubject("ALA")}
                 >
-                  <RiAB className="text-xl text-white" />
+                  <RiAB className="text-2xl text-white" />
                   <span className="flex-1 ms-3 whitespace-nowrap">ALA</span>
                 </a>
               </li>
@@ -77,7 +77,7 @@ const SideBar = () => {
                       : "hover:bg-gray-100 dark:hover:bg-[#3a0842]"
                   } group`}
                   onClick={() => setSelectedSubject("Discussions")}>
-                  <GoDiscussionClosed className="text-xl text-white" />
+                  <GoDiscussionClosed className="text-2xl text-white" />
                   <span className="flex-1 ms-3 whitespace-nowrap">
                     Discussions
                   </span>
@@ -87,13 +87,13 @@ const SideBar = () => {
                 <a
                   href="#"
                   className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white ${
-                    selectedSubject === "Flag"
+                    selectedSubject === "flags"
                       ? "bg-[#3a0842]"
                       : "hover:bg-gray-100 dark:hover:bg-[#3a0842]"
                   } group`}
-                  onClick={() => setSelectedSubject("Flag")}
+                  onClick={() => setSelectedSubject("flags")}
                 >
-                  <CiFlag1 className="text-xl text-white" />
+                  <CiFlag1 className="text-2xl text-white" />
                   <span className="flex-1 ms-3 whitespace-nowrap">
                     Flag
                   </span>

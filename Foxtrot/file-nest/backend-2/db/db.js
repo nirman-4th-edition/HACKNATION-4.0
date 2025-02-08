@@ -18,6 +18,7 @@ const MessageSchema = new Schema({
   file: { type: String, default: null }, // url
   timestamp: { type: Date, default: Date.now },
   fileName: { type: String, default: null },
+  fileType: { type: String, default: null },
 });
 
 const imageMetaSchema = new Schema({
@@ -27,6 +28,7 @@ const imageMetaSchema = new Schema({
   dir: { type: Object, required: true },
   timestamp: { type: Date, default: Date.now },
   fileName: { type: String, required: true },
+  fileType: { type: String, required: true },
 });
 
 // Collection Models
