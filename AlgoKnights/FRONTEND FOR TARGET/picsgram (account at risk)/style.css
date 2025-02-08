@@ -1,0 +1,186 @@
+/* General Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 935px;
+    margin: 0 auto;
+}
+
+/* Layout for row */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+/* Image Section */
+.img-section img {
+    width: 380px;
+    height: auto;
+}
+
+/* Login Section */
+.login-section {
+    width: 350px;
+}
+
+.white-bg {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.white-bg h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.white-bg input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.white-bg input::placeholder {
+    color: #8e8e8e;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0095f6;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #0077c2;
+}
+
+.or {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.or span {
+    flex: 1;
+    border-top: 1px solid #dbdbdb;
+}
+
+.or p {
+    margin: 0 10px;
+    color: #8e8e8e;
+    font-size: 14px;
+}
+
+.fb-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #385185;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.fb-login img {
+    width: 16px;
+    margin-right: 8px;
+}
+
+.forgot p {
+    color: #00376b;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+.mt {
+    margin-top: 10px;
+}
+
+.get-app p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.d-flex img {
+    height: 40px;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #fafafa;
+    padding: 10px 0;
+    border-top: 1px solid #dbdbdb;
+}
+
+footer ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+footer ol li a {
+    color: #8e8e8e;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+footer .d-flex {
+    justify-content: center;
+    margin-top: 10px;
+}
+
+footer select {
+    border: none;
+    background: none;
+    color: #8e8e8e;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+footer small {
+    color: #8e8e8e;
+    font-size: 12px;
+}

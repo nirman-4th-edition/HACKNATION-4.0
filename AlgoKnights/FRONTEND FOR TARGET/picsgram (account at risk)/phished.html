@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phished</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #ff0000;
+            text-align: center;
+            position: relative;
+            animation: glitch 2s infinite, colorChange 5s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(5px, -5px); }
+            60% { transform: translate(-5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes colorChange {
+            0% { color: #ff0000; }
+            25% { color: #00ff00; }
+            50% { color: #0000ff; }
+            75% { color: #ff00ff; }
+            100% { color: #ff0000; }
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+            opacity: 0.1;
+            z-index: -1;
+            animation: backgroundAnimation 10s infinite;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <h1>HEHEH YOU HAVE BEEN PHISHED</h1>
+
+    <!-- Add Background Music -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="phissed audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Ensure autoplay works across all browsers
+        document.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById("bgMusic");
+            audio.volume = 1.0; // Adjust volume (0.0 to 1.0)
+            audio.play().catch(error => console.log("Autoplay blocked by browser: ", error));
+        });
+    </script>
+</body>
+</html>

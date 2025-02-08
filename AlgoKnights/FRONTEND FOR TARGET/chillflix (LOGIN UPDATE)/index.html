@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Netflix Login Page</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    /* Basic CSS for the pop-up */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      color: #000;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#"><img src="2c72fb860f25f3cdc1b9c8a975669bf8.png" alt="logo"></a>
+  </nav>
+  <!-- http://codingstella.com/wp-content/uploads/2024/01/580b57fcd9996e24bc43c529.png -->
+  <div class="form-wrapper">
+    <h2>Sign In</h2>
+    <form id="loginForm">
+      <div class="form-control">
+        <input type="text" required>
+        <label>Email or phone number</label>
+      </div>
+      <div class="form-control">
+        <input type="password" required>
+        <label>Password</label>
+      </div>
+      <button type="submit">Sign In</button>
+      <div class="form-help">
+        <div class="remember-me">
+          <input type="checkbox" id="remember-me">
+          <label for="remember-me">Remember me</label>
+        </div>
+        <a href="#">Need help?</a>
+      </div>
+    </form>
+    <p>New to Netflix? <a href="#">Sign up now</a></p>
+    <small>
+      This page is protected by Google reCAPTCHA to ensure you're not a bot.
+      <a href="#">Learn more.</a>
+    </small>
+  </div>
+
+  <!-- Pop-up and Overlay -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    <p>Signed In Successfully!</p>
+  </div>
+
+  <script>
+    // JavaScript for form submission, pop-up, and redirection
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Show the pop-up and overlay
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+
+      // Redirect to the "phished" page after 2 seconds
+      setTimeout(function () {
+        window.location.href = 'phished.html'; // Replace with your desired URL
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+
+.logo img {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.login-box h1 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-box label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.login-box button:hover {
+  background-color: #ddb347;
+}
+
+.terms {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.terms a {
+  color: #0066c0;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+.help a {
+  color: #0066c0;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.help a:hover {
+  text-decoration: underline;
+}
+
+.new-to-amazon {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.new-to-amazon hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.new-to-amazon span {
+  margin: 0 10px;
+  font-size: 12px;
+  color: #555;
+}
+
+.create-account {
+  width: 100%;
+  padding: 10px;
+  background-color: #e7e9ec;
+  border: 1px solid #a2a6ac;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.create-account:hover {
+  background-color: #d8dadd;
+}
+
+.message {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
