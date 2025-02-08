@@ -145,6 +145,7 @@ export interface Feedback {
 }
 
 export interface Student {
+  id: string;
   name: string;
   branch: string;
   admissionYear: number;
@@ -152,7 +153,7 @@ export interface Student {
 }
 
 export interface StudentData {
-  _id: string;
+  id: string;
   name: string;
   section: string;
   branch: string;

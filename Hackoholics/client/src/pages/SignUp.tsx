@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "../../public/signup.png";
 import { useAuth } from "../contexts/auth.context";
-import { studentRegisterInfoType, HrRegisterInfoType } from "../types/index";
+import { Eye, EyeOff } from "lucide-react";
 
 export const SignUp = () => {
   const [userType, setUserType] = useState("student");
+  const [showPassword, setShowPassword] = useState(false);
   const {
     studentRegister,
     hrRegister,
@@ -12,8 +13,6 @@ export const SignUp = () => {
     hrRegisterInfo,
     updateStudentRegisterInfo,
     updateHrRegisterInfo,
-    isRegisterLoading,
-    registerError,
   } = useAuth();
 
   const changeUserType = (type: string) => {
@@ -32,6 +31,10 @@ export const SignUp = () => {
       ...hrRegisterInfo,
       [event.target.name]: event.target.value,
     });
+  }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   }
 
   return (
@@ -250,16 +253,25 @@ export const SignUp = () => {
                 >
                   Password
                 </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={userType === "student" ? studentRegisterInfo.password : hrRegisterInfo.password}
-                  onChange={userType === "student" ? handleStudentRegisterInfoChange : handleHrRegisterInfoChange}
-                  className="input-field text-base"
-                  placeholder="Enter your password"
-                  required
-                />
+                <div className="relative">
+                  <input
+                    id="password"
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    value={userType === "student" ? studentRegisterInfo.password : hrRegisterInfo.password}
+                    onChange={userType === "student" ? handleStudentRegisterInfoChange : handleHrRegisterInfoChange}
+                    className="input-field text-base"
+                    placeholder="Enter your password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                  >
+                    {showPassword ? <EyeOff /> : <Eye />}
+                  </button>
+                </div>
               </div>
 
               <button type="submit" className="btn-primary text-base py-2 px-4">

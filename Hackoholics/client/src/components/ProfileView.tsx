@@ -1,11 +1,12 @@
+import React from "react";
 import { Admin, Hr, Student } from "../contexts/auth.context.tsx";
+import { Profile } from "../pages/Profile.tsx";
 
 interface ProfileViewProps {
   user: Student | Hr | Admin | null;
 }
 
 export const ProfileView = ({ user }: ProfileViewProps) => {
-  console.log(user);
   return (
     <div className="bg-gray-200 rounded-3xl p-8">
       <div className="flex items-center gap-4 mb-8">

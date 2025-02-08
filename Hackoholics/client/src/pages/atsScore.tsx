@@ -4,7 +4,6 @@ import { LoadingState } from "../components/atsScore/LoadingState";
 import { AnalysisResults } from "../components/atsScore/AnalysisResults";
 import { useUIContext } from "../contexts/ui.context";
 import axios from "axios";
-import { set } from "mongoose";
 
 interface ButtonProps {
     onClick: () => void;
@@ -36,7 +35,7 @@ function atsScore() {
     const [jobDescription, setJobDescription] = useState<string>("");
     const [response, setResponse] = useState<string>("");
     const [btn, setBtn] = useState<string>("");
-    const fileInputRef = useRef<HTMLInputElement>(null);
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
     const { isSidebarVisible } = useUIContext();
 
     const handleFileUpload = (uploadedFile: File) => {

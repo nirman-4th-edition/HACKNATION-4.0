@@ -87,7 +87,7 @@ export const StudentDashboard: React.FC = () => {
             </div>
           </div>
 
-          <div className="cursor-pointer bg-white p-6 rounded-xl shadow-sm" onClick={() => {navigate('/contest-main')}}>
+          <div className="cursor-pointer bg-white p-6 rounded-xl shadow-sm" onClick={() => {navigate('/contest')}}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold">Join a Contest</h3>
               <Plus size={24} />
