@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enco Buddy - Educational Chatbot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a7d1e7, #d0e6f5); /* Gradient Background */
+            color: #333;
+        }
+        .chat-container {
+            max-width: 700px; /* Increased width */
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px; /* Increased padding */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+            border-radius: 15px; /* More rounded corners */
+        }
+        .chat-header {
+            font-size: 2.2rem; /* Larger header */
+            text-align: center;
+            color: #2962ff; /* Vibrant header color */
+            margin-bottom: 30px; /* Increased margin */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+        }
+        .chat-box {
+            height: 400px; /* Increased height */
+            overflow-y: auto;
+            border: 1px solid #c5cae9;
+            padding: 15px; /* Increased padding */
+            border-radius: 10px; /* More rounded */
+            margin-bottom: 25px; /* Increased margin */
+            background: #f5f5f5; /* Lighter background */
+        }
+        .chat-input-container {
+            display: flex;
+            align-items: center;
+        }
+        .chat-input {
+            width: calc(100% - 120px); /* Adjusted width */
+            padding: 12px; /* Increased padding */
+            border: 1px solid #c5cae9;
+            border-radius: 8px; /* More rounded */
+            font-size: 1.1rem; /* Slightly larger font */
+            margin-right: 10px;
+            transition: border-color 0.3s ease; /* Smooth transition */
+        }
+        .chat-input:focus {
+            border-color: #2962ff;
+            outline: none;
+        }
+        .send-btn {
+            width: 110px;
+            padding: 12px;
+            background-color: #2962ff; /* Consistent button color */
+            color: white;
+            border: none;
+            font-size: 1.1rem;
+            border-radius: 8px; /* More rounded */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+        .send-btn:hover {
+            background-color: #1a45b8; /* Darker shade on hover */
+        }
+        .message {
+            margin: 12px 0;
+            padding: 12px;
+            border-radius: 10px; /* More rounded */
+            max-width: 80%;
+            word-wrap: break-word; /* Prevents long words from breaking layout */
+        }
+        .user-message {
+            background-color: #b3e5fc;
+            margin-left: auto;
+            text-align: right;
+            color: #1a237e;
+        }
+        .bot-message {
+            background-color: #e0f2f1;
+            margin-right: auto;
+            color: #004d40;
+        }
+        .processing-animation {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 20px;
+        }
+        .processing-animation span {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #2962ff; /* Animation color matches button */
+            border-radius: 50%;
+            animation: processing 1.4s infinite ease-in-out;
+        }
+        .processing-animation span:nth-child(1) {
+            left: 0;
+            animation-delay: -0.32s;
+        }
+        .processing-animation span:nth-child(2) {
+            left: 20px;
+            animation-delay: -0.16s;
+        }
+        .processing-animation span:nth-child(3) {
+            left: 40px;
+        }
+        @keyframes processing {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+        /* Scrollbar styling */
+        .chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-box::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .chat-box::-webkit-scrollbar-thumb {
+            background: #c5cae9;
+            border-radius: 4px;
+        }
+        .chat-box::-webkit-scrollbar-thumb:hover {
+            background: #9fa8da;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">Enco Buddy - Educational Chatbot</div>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="chat-input" placeholder="Ask me anything..." />
+            <button class="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+       async function loadGreeting() {
+            const chatBox = document.getElementById('chat-box');
+            const response = await fetch('/greeting');
+            const data = await response.json();
+            chatBox.innerHTML += `<div class="message bot-message"><strong>Enco Buddy:</strong> ${data.response}</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+
+        async function sendMessage() {
+            const chatBox = document.getElementById('chat-box');
+            const chatInput = document.getElementById('chat-input');
+            const userMessage = chatInput.value;
+
+            if (userMessage.trim() === "") return;
+
+            chatBox.innerHTML += `<div class="message user-message"><strong>You:</strong> ${userMessage}</div>`;
+            chatInput.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const processingElement = document.createElement('div');
+            processingElement.className = 'processing-animation';
+            processingElement.innerHTML = '<span></span><span></span><span></span>';
+            chatBox.appendChild(processingElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(async () => {
+                processingElement.remove();
+                const response = await fetch('/query', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query: userMessage })
+                });
+                const data = await response.json();
+                chatBox.innerHTML += `<div class="message bot-message"><strong>Enco Buddy:</strong> ${data.response}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 2000);
+        }
+
+        window.onload = loadGreeting;
+    </script>
+</body>
+</html>
