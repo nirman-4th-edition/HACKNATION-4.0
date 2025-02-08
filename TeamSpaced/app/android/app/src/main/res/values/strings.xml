@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">agrispaced</string>
+    <string name="title_activity_main">agrispaced</string>
+    <string name="package_name">com.agrispaced.app</string>
+    <string name="custom_url_scheme">com.agrispaced.app</string>
+</resources>
