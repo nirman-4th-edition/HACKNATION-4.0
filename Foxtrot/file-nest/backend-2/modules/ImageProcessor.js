@@ -6,10 +6,13 @@ import axios from "axios";
  * @returns {Object|null} - The JSON result from the Flask API or null if there was an error.
  */
 
-async function processImage(fileUrl) {
+async function processImage(fileUrl, fileType) {
   try {
+    console.log("Imgaeprocessor: : ", fileType);
+
     const response = await axios.post("http://localhost:5000/extract", {
       url: fileUrl,
+      type: fileType,
     });
     // console.log("Response from Flask API:", response.data);
     return response.data; // Expecting something like { Result: { Subject: ..., Chapter: ..., Frequency: ... } }
