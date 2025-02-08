@@ -1,7 +1,7 @@
 import {ProfileView} from '../components/ProfileView';
 import {DocumentSection} from '../components/DocumentSection.tsx';
 import { useUIContext } from "../contexts/ui.context.tsx";
-import { useAuth, Student, Admin, Hr } from '../contexts/auth.context.tsx';
+import { useAuth } from '../contexts/auth.context.tsx';
 
 export function Profile() {
   const { isSidebarVisible } = useUIContext();

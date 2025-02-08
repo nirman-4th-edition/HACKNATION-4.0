@@ -16,6 +16,7 @@ import {
 import { NavItem } from "../types";
 import { useUIContext } from "../contexts/ui.context";
 import { useAuth } from "../contexts/auth.context";
+import { useCompany } from "../contexts/company.context";
 
 // const { getAllCompanies } = useCompany();
 

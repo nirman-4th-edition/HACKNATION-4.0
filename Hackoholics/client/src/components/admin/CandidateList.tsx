@@ -1,6 +1,5 @@
-import React from "react";
-import { Candidate } from "../../types";
 import { useStudent } from "../../contexts/student.context";
+import StudentFeedback from "../../pages/Feedbackform";
 
 interface CandidateListProps {
   filter: string;
@@ -9,13 +8,14 @@ interface CandidateListProps {
 
 export function CandidateList({ filter, majorFilter }: CandidateListProps) {
   const { students } = useStudent();
-
+  console.log("ahjsbhj",students);
   const filteredStudents = students.filter(
     (student) =>
       (student.name.toLowerCase().includes(filter.toLowerCase()) ||
       (student.status.toLowerCase().includes(filter.toLowerCase()))) &&
         student.branch.toLowerCase().includes(majorFilter.toLowerCase())
   );
+
 
   return (
     <div className="overflow-x-auto">
@@ -26,7 +26,7 @@ export function CandidateList({ filter, majorFilter }: CandidateListProps) {
             <th className="py-3 px-4">Branch</th>
             <th className="py-3 px-4">Batch</th>
             <th className="py-3 px-4">Status</th>
-            {/* <th className="py-3 px-4">Status</th> */}
+            <th className="py-3 px-4">Actions</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-100">
@@ -50,6 +50,14 @@ export function CandidateList({ filter, majorFilter }: CandidateListProps) {
                 >
                   {student.status}
                 </span>
+              </td>
+              <td className="py-3 px-4">
+                <button
+                  onClick={() => window.location.href = `/feedbackForm/:${student.id}`}
+                  className="bg-blue-500 text-white px-3 py-1 rounded"
+                >
+                  Feedback
+                </button>
               </td>
             </tr>
           ))}

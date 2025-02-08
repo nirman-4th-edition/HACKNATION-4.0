@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import "../../public/Login1.png";
 import "../../public/bg1.png";
 import { useAuth } from "../contexts/auth.context";
-export const Login: React.FC = () => {
+import { Eye, EyeOff } from 'lucide-react';
 
+export const Login: React.FC = () => {
   const { login, loginInfo, loginError, isLoginLoading, updateLoginInfo } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     updateLoginInfo({ ...loginInfo, [name]: value });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -72,34 +78,30 @@ export const Login: React.FC = () => {
               >
                 Password
               </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={loginInfo.password}
-                onChange={handleInputChange}
-                className="input-field text-lg"
-                placeholder="Enter your password"
-                required
-              />
+              <div className="relative">
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  value={loginInfo.password}
+                  onChange={handleInputChange}
+                  className="input-field text-lg pr-10"
+                  placeholder="Enter your password"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-700"
+                >
+                  {showPassword ? (
+                    <Eye />
+                  ) : (
+                    <EyeOff />
+                  )}
+                </button>
+              </div>
             </div>
-{/* 
-            <div className="flex items-center">
-              <input
-                id="keepSignedIn"
-                name="keepSignedIn"
-                type="checkbox"
-                checked={formData.keepSignedIn}
-                onChange={handleInputChange}
-                className="h-5 w-5 text-primary border-gray-300 rounded focus:ring-primary"
-              />
-              <label
-                htmlFor="keepSignedIn"
-                className="ml-3 block text-lg text-gray-700"
-              >
-                Keep me signed in
-              </label>
-            </div> */}
 
             <button type="submit" className="btn-primary text-lg py-3 px-6">
               Log in
