@@ -1,0 +1,69 @@
+.hospital-page {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .title {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 2rem;
+  }
+  
+  .hospital-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .hospital-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .hospital-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .hospital-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .hospital-card h2 {
+    font-size: 1.3rem;
+    color: #2d3436;
+    margin-bottom: 1rem;
+  }
+  
+  .book-btn {
+    background: #007bff;
+    color: #ffffff;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .book-btn:hover {
+    background: #0056b3;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hospital-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  

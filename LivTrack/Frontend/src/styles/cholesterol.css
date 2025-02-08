@@ -1,0 +1,102 @@
+/* Fix body layout */
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Improved Last Reports Section */
+.lastreports {
+  background: #0b1e36;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  margin: 1.5rem;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #dfe6e9;
+  overflow: auto; /* Prevent content overflow */
+}
+
+/* Better Responsive Handling */
+.metrics-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+  color: #2097d7;
+  flex: 1; /* Fill available space */
+  width: 100%;
+  box-sizing: border-box; /* Prevent overflow */
+}
+h2{
+  color: #466374;
+}
+
+/* Fix Card Background Color */
+.metrics-container .mantine-Card-root {
+  background-color: #fff; /* Changed from red to white */
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden; /* Prevent content overflow */
+}
+
+/* Improved Mobile Layout */
+@media (max-width: 768px) {
+  body {
+    display: block; /* Remove flex for mobile */
+  }
+
+  .lastreports {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .metrics-container {
+    padding: 1rem;
+    animation: none;
+  }
+
+  .metrics-container .mantine-Card-root {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Better Grid Handling */
+.metrics-container .mantine-Grid-root {
+  margin: 0 -0.5rem; /* Compensate for column padding */
+}
+
+.metrics-container .mantine-Grid-col {
+  padding: 0 0.5rem; /* Add column spacing */
+}
+
+/* Fix Button Overflow */
+.metrics-container .mantine-Button-root {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  /* Add these new rules */
+  .mantine-TextInput-input, .mantine-Button-root {
+    width: 100% !important;
+  }
+  
+  .cholesterol-chart {
+    overflow-x: auto;
+  }
+
+  .lastreports p {
+    font-size: 14px;
+    margin: 0.5rem 0;
+  }
+
+  .metrics-container .mantine-Grid-root {
+    flex-direction: column;
+  }
+}
