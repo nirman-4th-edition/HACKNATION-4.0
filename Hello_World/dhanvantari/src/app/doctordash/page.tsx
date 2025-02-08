@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import { Bell, ChevronRight, Pause, X, Heart, Thermometer, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
