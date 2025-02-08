@@ -1,23 +1,25 @@
-// File: MainActivity.kt
 package com.silicon.bibliotheca
+
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-// Import your existing screens (adjust package names as needed)
-import com.silicon.bibliotheca.LoginScreen
-import com.silicon.bibliotheca.SignupScreen
 import com.silicon.bibliotheca.ForgotPasswordScreen
 import com.silicon.bibliotheca.HomeScreen
-// Import your new screens
-import com.silicon.bibliotheca.BookIssueScreen
-import com.silicon.bibliotheca.CheckRoomScreen
-import com.silicon.bibliotheca.NotifyScreen
+import com.silicon.bibliotheca.LoginScreen
+import com.silicon.bibliotheca.SignupScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,18 +31,18 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
+
 @Composable
 fun MainApp() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "login") {
-        // Existing routes
         composable("login") { LoginScreen(navController = navController) }
-        composable("signup") { SignupScreen(navController = navController) }
-        composable("forgot_password") { ForgotPasswordScreen(navController = navController) }
-        composable("home") { HomeScreen(navController = navController) }
-        // New routes
-        composable("book_issue") { BookIssueScreen(navController = navController) }
-        composable("check_room") { CheckRoomScreen(navController = navController) }
-        composable("notify") { NotifyScreen(navController = navController) }
+        composable("signup") { SignupScreen(navController) }
+        composable("forgot_password") { ForgotPasswordScreen(navController) }
+        composable("home") { HomeScreen(navController) }
+        composable("book_issue") { BookIssue(navController) }
+        composable("room_booking") { DiscussionRoom(navController) }
+        composable("notify") { Notify(navController) }
     }
 }

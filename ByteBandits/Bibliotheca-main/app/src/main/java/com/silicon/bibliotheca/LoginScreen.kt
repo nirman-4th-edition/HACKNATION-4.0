@@ -206,9 +206,14 @@ fun LoginScreen(navController: NavHostController) {
     }
 }
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignupScreen(navController: NavHostController) {
+    // Declare the state variables for the dropdown menu
+    var expandedCollege by remember { mutableStateOf(false) } // fixes "Unresolved reference: expandedCollege"
+    var college by remember { mutableStateOf("") }            // fixes "Unresolved reference: college"
+
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) { paddingValues ->
@@ -218,7 +223,7 @@ fun SignupScreen(navController: NavHostController) {
                 .background(
                     Brush.verticalGradient(
                         colors = listOf(
-                            Color(0xFF1A237E), //  Midnight Blue
+                            Color(0xFF1A237E), // Midnight Blue
                             Color(0xFFD1C4E9)  // Lavender Gradient
                         )
                     )
@@ -236,7 +241,7 @@ fun SignupScreen(navController: NavHostController) {
                 Icon(
                     painter = painterResource(id = R.drawable.quiblib_logo),
                     contentDescription = "Library Logo",
-                    modifier = Modifier.size(80.dp),
+                    modifier = Modifier.padding(0.dp).height(80.dp),
                     tint = Color.White
                 )
 
@@ -253,53 +258,6 @@ fun SignupScreen(navController: NavHostController) {
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // Profession Dropdown
-                var expandedProfession by remember { mutableStateOf(false) }
-                var profession by remember { mutableStateOf("") }
-
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentSize(Alignment.TopStart)
-                ) {
-                    OutlinedTextField(
-                        value = profession,
-                        onValueChange = {},
-                        label = { Text("Select Your Profession") },
-                        readOnly = true,
-                        trailingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.ArrowDropDown,
-                                contentDescription = null,
-                                modifier = Modifier.clickable { expandedProfession = !expandedProfession }
-                            )
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { expandedProfession = true }
-                    )
-
-                    DropdownMenu(
-                        expanded = expandedProfession,
-                        onDismissRequest = { expandedProfession = false },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(Color(0xFFF3E5F5)) // Light Lavender
-                    ) {
-                        listOf("Faculty", "Student").forEach { item ->
-                            DropdownMenuItem(
-                                onClick = {
-                                    profession = item
-                                    expandedProfession = false
-                                },
-                                text = { Text(text = item) }
-                            )
-                        }
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
                 // ID Input Field
                 OutlinedTextField(
                     value = "",
@@ -310,19 +268,17 @@ fun SignupScreen(navController: NavHostController) {
                         Icon(Icons.Default.Person, contentDescription = "User Icon")
                     },
                     modifier = Modifier.fillMaxWidth(),
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        containerColor = Color.White,
-                        unfocusedBorderColor = Color.Gray,
-                        focusedBorderColor = Color.White
+                    colors = TextFieldDefaults.colors( // FIXED: replaced outlinedTextFieldColors
+                        unfocusedContainerColor = Color.White,
+                        focusedContainerColor = Color.White,
+                        unfocusedIndicatorColor = Color.Gray,
+                        focusedIndicatorColor = Color.White
                     )
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // College/Institute Dropdown
-                var expandedCollege by remember { mutableStateOf(false) }
-                var college by remember { mutableStateOf("") }
-
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -342,7 +298,13 @@ fun SignupScreen(navController: NavHostController) {
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable { expandedCollege = true }
+                            .clickable { expandedCollege = true },
+                        colors = TextFieldDefaults.colors( // FIXED: replaced outlinedTextFieldColors
+                            unfocusedContainerColor = Color.White,
+                            focusedContainerColor = Color.White,
+                            unfocusedIndicatorColor = Color.Gray,
+                            focusedIndicatorColor = Color.White
+                        )
                     )
 
                     DropdownMenu(
@@ -350,7 +312,7 @@ fun SignupScreen(navController: NavHostController) {
                         onDismissRequest = { expandedCollege = false },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(Color(0xFFF3E5F5)) // Light Lavender
+                            .background(Color(0xFFF3E5F5))
                     ) {
                         listOf(
                             "Silicon University, Bhubaneswar",
@@ -381,10 +343,11 @@ fun SignupScreen(navController: NavHostController) {
                     },
                     visualTransformation = PasswordVisualTransformation(),
                     modifier = Modifier.fillMaxWidth(),
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        containerColor = Color.White,
-                        unfocusedBorderColor = Color.Gray,
-                        focusedBorderColor = Color.White
+                    colors = TextFieldDefaults.colors( // FIXED: replaced outlinedTextFieldColors
+                        unfocusedContainerColor = Color.White,
+                        focusedContainerColor = Color.White,
+                        unfocusedIndicatorColor = Color.Gray,
+                        focusedIndicatorColor = Color.White
                     )
                 )
 
@@ -392,9 +355,9 @@ fun SignupScreen(navController: NavHostController) {
 
                 // Sign-Up Button
                 Button(
-                    onClick = { navController.navigate("login") },// Navigate to Login screen
+                    onClick = { navController.navigate("login") }, // Navigate to Login screen
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF283593) //Midnight Blue
+                        containerColor = Color(0xFF283593) // Midnight Blue
                     ),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -414,7 +377,7 @@ fun SignupScreen(navController: NavHostController) {
                 Text(
                     text = "Empowering knowledge, one click at a time!",
                     fontStyle = FontStyle.Italic,
-                    color = Color(0xFF283593),//Purple
+                    color = Color(0xFF283593),
                     textAlign = TextAlign.Center
                 )
             }

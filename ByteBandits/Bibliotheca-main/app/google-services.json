@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "551259549807",
+    "project_id": "library-automation-a293f",
+    "storage_bucket": "library-automation-a293f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551259549807:android:b062a288ff1c144a9fdd9a",
+        "android_client_info": {
+          "package_name": "com.silicon.bibliotheca"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmaIkjUytReIafnND0VY8wYW7q99l_w5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

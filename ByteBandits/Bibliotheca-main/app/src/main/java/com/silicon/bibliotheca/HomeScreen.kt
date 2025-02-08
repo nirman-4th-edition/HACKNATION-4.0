@@ -1,4 +1,3 @@
-// File: HomeScreen.kt
 package com.silicon.bibliotheca
 
 import androidx.compose.foundation.background
@@ -15,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -28,15 +28,86 @@ fun HomeScreen(navController: NavHostController) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val coroutineScope = rememberCoroutineScope()
 
+    // UPDATED: Drawer now shows a custom layout with an upper and lower section.
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(text = "User: John Doe", fontWeight = FontWeight.Bold)
-                Text(text = "Email: johndoe@example.com")
-                Spacer(modifier = Modifier.height(16.dp))
-                Button(onClick = { /* Handle Logout */ }) {
-                    Text("Logout")
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight()            // Full height of the drawer
+                    .fillMaxWidth(0.5f)           // Half screen width
+            ) {
+                // Upper part (40% height): Midnight blue background with centered Student ID text.
+                Box(
+                    modifier = Modifier
+                        .weight(0.4f)
+                        .fillMaxWidth()
+                        .background(Color(0xFF1A237E)),  // Midnight Blue
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Student ID: 22BEEF71", // Replace with dynamic ID if needed
+                        color = Color.White,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+                }
+                // Lower part (60% height): Light grey background with three text fields.
+                Column(
+                    modifier = Modifier
+                        .weight(0.6f)
+                        .fillMaxWidth()
+                        .background(Color.LightGray)
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    OutlinedTextField(
+                        value = "Ayush Patra",
+                        onValueChange = { /* Handle name change */ },
+                        label = { Text("Name") },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    OutlinedTextField(
+                        value = "22BEEF71",
+                        onValueChange = { /* Handle branch change */ },
+                        label = { Text("SIC") },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    OutlinedTextField(
+                        value = "EEE",
+                        onValueChange = { /* Handle branch change */ },
+                        label = { Text("BRANCH") },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    OutlinedTextField(
+                        value = "Semester 6",
+                        onValueChange = { /* Handle semester change */ },
+                        label = { Text("Semester") },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Column(
+                        modifier = Modifier
+                            .weight(0.6f)
+                            .fillMaxWidth()
+                            .background(Color.LightGray)
+                            .padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        Button(
+                            onClick = { /* Handle Edit action */ },
+                            modifier = Modifier.fillMaxWidth(0.7f)
+                        ) {
+                            Text(text = "Edit")
+                        }
+                        Button(
+                            onClick = { navController.navigate("login")  },
+                            modifier = Modifier.fillMaxWidth(0.7f)
+                        ) {
+                            Text(text = "Log Out")
+                        }
+                    }
                 }
             }
         }
@@ -46,26 +117,28 @@ fun HomeScreen(navController: NavHostController) {
                 TopAppBar(
                     title = {
                         Text(
-                            text = "Bibliotheca Library",
+                            text = "Bibliotheca",
                             modifier = Modifier.fillMaxWidth(),
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold
                         )
                     },
                     navigationIcon = {
                         IconButton(onClick = {
-                            coroutineScope.launch {
-                                drawerState.open()
-                            }
+                            coroutineScope.launch { drawerState.open() }
                         }) {
                             Icon(Icons.Default.Menu, contentDescription = "Menu")
                         }
                     },
                     actions = {
-                        IconButton(onClick = { /* Handle Notifications if needed */ }) {
+                        IconButton(onClick = { /* Handle Notifications */ }) {
                             Icon(Icons.Default.Notifications, contentDescription = "Notifications")
                         }
                     },
-                    colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = Color(0xFF1A237E))
+                    colors = TopAppBarDefaults.mediumTopAppBarColors(
+                        containerColor = Color(0xFF1A237E)
+                    )
                 )
             }
         ) { paddingValues ->
@@ -81,45 +154,82 @@ fun HomeScreen(navController: NavHostController) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Book Issue Navigation Box
-                Box(
+                // Books Card
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFF1A237E)
+                    ),
+                    shape = RoundedCornerShape(12.dp),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
                         .height(100.dp)
-                        .background(Color(0xFF6A1B9A), shape = RoundedCornerShape(12.dp))
-                        .clickable { navController.navigate("book_issue") },
-                    contentAlignment = Alignment.Center
+                        .clickable { navController.navigate("book_issue") }
                 ) {
-                    Text(text = "Book Issue", color = Color.White, fontSize = 18.sp)
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "Books", color = Color.White, fontSize = 18.sp)
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                // Discussion Room (Check Room) Navigation Box
-                Box(
+                // Discussion Rooms Card
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFF1A237E)
+                    ),
+                    shape = RoundedCornerShape(12.dp),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
                         .height(100.dp)
                         .background(Color(0xFF1976D2), shape = RoundedCornerShape(12.dp))
-                        .clickable { navController.navigate("check_room") },
-                    contentAlignment = Alignment.Center
+                        .clickable { navController.navigate("room_booking") }
                 ) {
-                    Text(text = "Room Availability", color = Color.White, fontSize = 18.sp)
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "Discussion Rooms", color = Color.White, fontSize = 18.sp)
+                    }
                 }
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                // Pending Returns Navigation Box
-                Box(
+                // Notify Card
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFF1A237E)
+                    ),
+                    shape = RoundedCornerShape(12.dp),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
                     modifier = Modifier
                         .fillMaxWidth(0.8f)
                         .height(100.dp)
-                        .background(Color(0xFFD32F2F), shape = RoundedCornerShape(12.dp))
-                        .clickable { navController.navigate("notify") },
-                    contentAlignment = Alignment.Center
+                        .background(Color(0xFF1976D2), shape = RoundedCornerShape(12.dp))
+                        .clickable { navController.navigate("notify") }
                 ) {
-                    Text(text = "Pending Returns", color = Color.White, fontSize = 18.sp)
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "Notify", color = Color.White, fontSize = 18.sp)
+                    }
                 }
+
+                Spacer(modifier = Modifier.height(220.dp))
+
+                // Footer Text
+                Text(
+                    text = "Empowering knowledge, one click at a time!",
+                    fontStyle = FontStyle.Italic,
+                    color = Color(0xFF283593),
+                    textAlign = TextAlign.Center,
+                    fontSize = 20.sp
+                )
             }
         }
     }
