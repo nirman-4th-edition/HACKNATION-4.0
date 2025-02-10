@@ -1,0 +1,17 @@
+flask
+flask-cors
+python-dotenv
+youtube-transcript-api
+langchain_groq
+langchain-community
+langchain_experimental
+langchain-ai21
+chromadb
+sentence-transformers
+huggingface_hub 
+transformers
+requests
+beautifulsoup4
+crawl4ai
+psycopg2
+tiktoken
